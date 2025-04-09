@@ -50,8 +50,5 @@
   },
   "engines": {
     "node": ">=20.0.0"
-  },
-  "remix": {
-    "configPath": "./remix.config.ts"
   }
 }
