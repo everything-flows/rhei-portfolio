@@ -12,7 +12,7 @@ declare module "@remix-run/cloudflare" {
 }
 
 export default defineConfig({
-  base: "/",
+  base: "https://rhei-resume.pages.dev/",
   plugins: [
     remixCloudflareDevProxy(),
     remix({
