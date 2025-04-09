@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer utilities {
   .content-x {
     @apply mx-4 sm:mx-6 md:mx-12;
