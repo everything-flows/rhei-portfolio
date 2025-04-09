@@ -1,3 +1,5 @@
+@import "../../../packages/ui/styles/utilities.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -57,92 +59,6 @@
 }
 
 @layer utilities {
-  .content-x {
-    @apply mx-4 sm:mx-6 md:mx-12;
-  }
-  .-content-x {
-    @apply -mx-4 sm:-mx-6 md:-mx-12;
-  }
-
-  .bg-normal {
-    @apply bg-gray-white dark:bg-gray-black;
-  }
-  .bg-reverse {
-    @apply bg-gray-black dark:bg-gray-white;
-  }
-  .bg-brand {
-    @apply bg-blue-500 dark:bg-orange-500;
-  }
-
-  .text-normal {
-    @apply text-gray-black dark:text-gray-white;
-  }
-  .text-reverse {
-    @apply text-gray-white dark:text-gray-black;
-  }
-  .text-brand {
-    @apply text-blue-500 dark:text-orange-500;
-  }
-
-  .border-normal {
-    @apply border-gray-white dark:border-gray-black;
-  }
-  .border-reverse {
-    @apply border-gray-black dark:border-gray-white;
-  }
-  .border-brand {
-    @apply border-blue-500 dark:border-orange-500;
-  }
-
-  .logo-label::before {
-    content: "Panta Rhei";
-  }
-  .logo-label:hover::before {
-    content: "Everything Flows";
-  }
-
-  .handle-label::before {
-    content: "Panta-Rhei";
-  }
-  .handle-label:hover::before {
-    content: "Everything-Flows";
-  }
-
-  .text-display {
-    font-family: "PyeongChangPeace-Bold";
-    font-size: clamp(3.5rem, 10vw, 6rem);
-    line-height: 1.2;
-  }
-  .text-display-empty {
-    font-family: "PyeongChangPeace-Bold";
-    font-size: clamp(3.5rem, 10vw, 6rem);
-    color: transparent;
-
-    -webkit-text-stroke: 1px black;
-
-    @media (prefers-color-scheme: dark) {
-      -webkit-text-stroke: 1px white;
-    }
-    line-height: 1.2;
-  }
-  .text-display-sub {
-    @apply text-blue-500 dark:text-orange-500;
-
-    font-family: "PyeongChangPeace-Light";
-    font-size: clamp(2rem, 6vw, 4rem);
-    line-height: 1.2;
-  }
-  .text-display-caption {
-    font-family: "PyeongChangPeace-Light";
-    font-size: clamp(1rem, 3vw, 1.75rem);
-  }
-
-  .text-title {
-    @apply font-bold text-gray-black dark:text-gray-white;
-
-    font-size: clamp(2rem, 5vw, 3rem);
-  }
-
   .blob-outer-container {
     position: absolute;
     height: 100%;

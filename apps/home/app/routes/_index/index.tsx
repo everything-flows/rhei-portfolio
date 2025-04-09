@@ -1,6 +1,5 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Button } from "@rhei/ui";
 
 import Blog from "./_components/Blog";
 import { Link } from "@remix-run/react";
@@ -24,8 +23,6 @@ export default function Index() {
   return (
     <QueryClientProvider client={queryClient}>
       <div>
-        <Button>버튼</Button>
-
         <header className="content-x py-2">
           <nav className="flex items-center justify-between">
             <Link to="/">
