@@ -12,7 +12,7 @@ declare module "@remix-run/cloudflare" {
 }
 
 export default defineConfig({
-  base: "/resume/",
+  base: "https://rhei-resume.pages.dev/",
   build: {
     assetsDir: "assets",
   },
