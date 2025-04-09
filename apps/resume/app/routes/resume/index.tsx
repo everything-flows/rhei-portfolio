@@ -13,9 +13,7 @@ export default function ResumePage() {
       </header>
 
       <main className="content-x text-p">
-        <section className="mx-auto max-w-6xl">
-          <h1>FRONT-END DEVELOPER</h1>
-
+        <div className="mx-auto flex max-w-6xl flex-col gap-8">
           <StickyHeading>
             <h2 className="text-h2 bg-normal">요약</h2>
           </StickyHeading>
@@ -23,7 +21,7 @@ export default function ResumePage() {
           <Award />
           <Education />
           <Activity />
-        </section>
+        </div>
       </main>
     </div>
   );

@@ -21,7 +21,7 @@ const EDUCATION = [
 
 export default function Education() {
   return (
-    <div>
+    <section>
       <StickyHeading>
         <h2 className="text-h2 bg-normal">교육</h2>
       </StickyHeading>
@@ -53,6 +53,6 @@ export default function Education() {
           </li>
         ))}
       </ol>
-    </div>
+    </section>
   );
 }

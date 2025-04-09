@@ -25,7 +25,7 @@ const ACTIVITY_EXTRA = [
 
 export default function Activity() {
   return (
-    <div>
+    <section>
       <StickyHeading>
         <h2 className="text-h2 bg-normal">활동</h2>
       </StickyHeading>
@@ -95,6 +95,6 @@ export default function Activity() {
           ))}
         </ol>
       </section>
-    </div>
+    </section>
   );
 }
