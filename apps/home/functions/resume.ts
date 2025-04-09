@@ -1,9 +1,18 @@
 export const onRequest = async ({ request }: { request: Request }) => {
   const url = new URL(request.url);
-  const pathname = url.pathname;
 
-  const targetPath = pathname.replace(/^\/resume/, "") || "/";
-  const target = `https://rhei-resume.pages.dev${targetPath}${url.search}`;
+  if (!url.pathname.startsWith("/resume")) {
+    return new Response("Not found", { status: 404 });
+  }
+
+  if (
+    url.pathname.startsWith("/resume/assets") ||
+    url.pathname.startsWith("/resume/build")
+  ) {
+    return new Response("Not found", { status: 404 });
+  }
+
+  const target = `https://rhei-resume.pages.dev${url.pathname.replace(/^\/resume/, "")}${url.search}`;
 
   const headers = new Headers(request.headers);
   headers.set("host", "rhei-resume.pages.dev");
