@@ -23,7 +23,7 @@ export default function Index() {
   return (
     <QueryClientProvider client={queryClient}>
       <div>
-        <header className="content-x py-2">
+        <header className="content-x">
           <GNB />
         </header>
         <main className="content-x">

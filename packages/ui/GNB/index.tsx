@@ -1,6 +1,6 @@
 export default function GNB() {
   return (
-    <nav className="flex items-center justify-between mx-auto max-w-6xl">
+    <nav className="flex items-center justify-between mx-auto max-w-6xl py-2">
       <a href="/">
         <p className="logo-label w-fit" />
       </a>
