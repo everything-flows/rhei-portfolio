@@ -29,7 +29,7 @@ export default function Award() {
   return (
     <section>
       <StickyHeading>
-        <h2 className="text-h2 bg-normal">수상</h2>
+        <h2 className="text-h2 bg-normal border-sub mb-2 border-b">수상</h2>
       </StickyHeading>
 
       <div className="overflow-auto">

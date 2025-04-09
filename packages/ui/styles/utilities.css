@@ -35,6 +35,9 @@
   .border-brand {
     @apply border-blue-500 dark:border-orange-500;
   }
+  .border-sub {
+    @apply border-gray-200 dark:border-gray-400;
+  }
 
   .logo-label::before {
     content: "Panta Rhei";

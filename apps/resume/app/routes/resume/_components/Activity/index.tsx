@@ -27,7 +27,7 @@ export default function Activity() {
   return (
     <section>
       <StickyHeading>
-        <h2 className="text-h2 bg-normal">활동</h2>
+        <h2 className="text-h2 bg-normal border-sub mb-2 border-b">활동</h2>
       </StickyHeading>
 
       <section className="ml-4">

@@ -23,7 +23,7 @@ export default function Education() {
   return (
     <section>
       <StickyHeading>
-        <h2 className="text-h2 bg-normal">교육</h2>
+        <h2 className="text-h2 bg-normal border-sub mb-2 border-b">교육</h2>
       </StickyHeading>
 
       <ol className="flex list-disc flex-col gap-2 ps-5">
