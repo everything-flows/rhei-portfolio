@@ -2,8 +2,9 @@
 
 export const onRequest = async ({ request }: { request: Request }) => {
   const url = new URL(request.url);
+  const strippedPath = url.pathname.replace(/^\/resume/, "") || "/";
   // [todo] fix this route
-  const target = `https://rhei-resume.pages.dev${url.pathname.replace(/^\/resume/, "")}${url.search}`;
+  const target = `https://rhei-resume.pages.dev${strippedPath}${url.search}`;
 
   return fetch(target, {
     method: request.method,
