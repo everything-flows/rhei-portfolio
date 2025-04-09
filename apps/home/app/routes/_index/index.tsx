@@ -1,0 +1,74 @@
+import type { MetaFunction } from "@remix-run/cloudflare";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Button } from "@rhei/ui";
+
+import Blog from "./_components/Blog";
+import { Link } from "@remix-run/react";
+import Footer from "~/_components/Footer";
+import Header from "./_components/Header";
+import Banner from "./_components/Banner";
+import Tools from "./_components/Tools";
+import Toc from "./_components/Toc";
+import About from "./_components/About";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "New Remix App" },
+    { name: "description", content: "Welcome to Remix!" },
+  ];
+};
+
+const queryClient = new QueryClient();
+
+export default function Index() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <div>
+        <Button>버튼</Button>
+
+        <header className="content-x py-2">
+          <nav className="flex items-center justify-between">
+            <Link to="/">
+              <p className="logo-label w-fit" />
+            </Link>
+
+            <ul className="flex gap-2">
+              <li>
+                <Link to="/">home</Link>
+              </li>
+              <li>
+                <Link to="/blog">blog</Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main className="content-x">
+          <Header />
+
+          {/* <Banner /> */}
+
+          <Toc />
+
+          <About />
+
+          <Tools />
+
+          {/* <section>
+            <ul className="flex">
+              <li className="flex flex-col items-center gap-2">
+                <div className="size-8 bg-black" />
+                <p>GitHub</p>
+              </li>
+              <li className="flex flex-col items-center gap-2">
+                <div className="size-8 bg-black" />
+                <p>Resume</p>
+              </li>
+            </ul>
+          </section> */}
+          <Blog />
+        </main>
+        <Footer />
+      </div>
+    </QueryClientProvider>
+  );
+}

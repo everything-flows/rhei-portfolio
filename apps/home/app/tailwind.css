@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "PyeongChangPeace-Light";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Light.woff2")
+    format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PyeongChangPeace-Bold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@layer base {
+  * {
+    word-break: keep-all;
+
+    font-family:
+      "Pretendard Variable",
+      Pretendard,
+      -apple-system,
+      BlinkMacSystemFont,
+      system-ui,
+      Roboto,
+      "Helvetica Neue",
+      "Segoe UI",
+      "Apple SD Gothic Neo",
+      "Noto Sans KR",
+      "Malgun Gothic",
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
+      sans-serif;
+  }
+
+  .mySwiper .swiper-slide {
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .mySwiper .swiper-slide {
+      border-color: #27272a;
+    }
+  }
+
+  .swiper-3d .swiper-slide-shadow {
+    background: #8885 !important;
+  }
+}
+
+@layer utilities {
+  .content-x {
+    @apply mx-4 sm:mx-6 md:mx-12;
+  }
+  .-content-x {
+    @apply -mx-4 sm:-mx-6 md:-mx-12;
+  }
+
+  .bg-normal {
+    @apply bg-gray-white dark:bg-gray-black;
+  }
+  .bg-reverse {
+    @apply bg-gray-black dark:bg-gray-white;
+  }
+  .bg-brand {
+    @apply bg-blue-500 dark:bg-orange-500;
+  }
+
+  .text-normal {
+    @apply text-gray-black dark:text-gray-white;
+  }
+  .text-reverse {
+    @apply text-gray-white dark:text-gray-black;
+  }
+  .text-brand {
+    @apply text-blue-500 dark:text-orange-500;
+  }
+
+  .border-normal {
+    @apply border-gray-white dark:border-gray-black;
+  }
+  .border-reverse {
+    @apply border-gray-black dark:border-gray-white;
+  }
+  .border-brand {
+    @apply border-blue-500 dark:border-orange-500;
+  }
+
+  .logo-label::before {
+    content: "Panta Rhei";
+  }
+  .logo-label:hover::before {
+    content: "Everything Flows";
+  }
+
+  .handle-label::before {
+    content: "Panta-Rhei";
+  }
+  .handle-label:hover::before {
+    content: "Everything-Flows";
+  }
+
+  .text-display {
+    font-family: "PyeongChangPeace-Bold";
+    font-size: clamp(3.5rem, 10vw, 6rem);
+    line-height: 1.2;
+  }
+  .text-display-empty {
+    font-family: "PyeongChangPeace-Bold";
+    font-size: clamp(3.5rem, 10vw, 6rem);
+    color: transparent;
+
+    -webkit-text-stroke: 1px black;
+
+    @media (prefers-color-scheme: dark) {
+      -webkit-text-stroke: 1px white;
+    }
+    line-height: 1.2;
+  }
+  .text-display-sub {
+    @apply text-blue-500 dark:text-orange-500;
+
+    font-family: "PyeongChangPeace-Light";
+    font-size: clamp(2rem, 6vw, 4rem);
+    line-height: 1.2;
+  }
+  .text-display-caption {
+    font-family: "PyeongChangPeace-Light";
+    font-size: clamp(1rem, 3vw, 1.75rem);
+  }
+
+  .text-title {
+    @apply font-bold text-gray-black dark:text-gray-white;
+
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  .blob-outer-container {
+    position: absolute;
+    height: 100%;
+    max-height: 16rem;
+    aspect-ratio: 1;
+    z-index: -1;
+    filter: blur(50px);
+  }
+  .blob-inner-container {
+    border-radius: 100rem;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.8, 0.8);
+    overflow: hidden;
+  }
+  .blob {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    margin: auto;
+    background: conic-gradient(
+      from 0deg,
+      #fff,
+      #fff,
+      #ff91af,
+      #fff,
+      #ffe556,
+      #00bcf0,
+      #fff
+    );
+    animation: spinBlob 6s linear infinite;
+    border-radius: 100rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .blob-outer-container {
+      opacity: 0.5;
+    }
+
+    .blob {
+      background: conic-gradient(
+        from 0deg,
+        #0000,
+        #271b48,
+        #ff91af,
+        #271b48,
+        #ffe556,
+        #00bcf0,
+        #0000
+      );
+    }
+  }
+
+  @keyframes spinBlob {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+}

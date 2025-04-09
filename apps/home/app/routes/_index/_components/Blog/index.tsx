@@ -1,0 +1,46 @@
+import { useOutletContext } from "@remix-run/react";
+import { createClient } from "@supabase/supabase-js";
+import { useQuery } from "@tanstack/react-query";
+
+import { getPostById } from "~/utils/getPostById";
+
+import PostList from "./PostList";
+
+export default function Blog() {
+  const { supabaseCredential } = useOutletContext();
+
+  const { data: pinnedPostList } = useQuery({
+    queryKey: ["pinnedPosts"],
+    queryFn: async () => {
+      const supabaseClient = createClient(
+        supabaseCredential.url,
+        supabaseCredential.key,
+      );
+
+      const { data } = await supabaseClient
+        .from("pinnedPosts")
+        .select("list")
+        .single();
+
+      const postList = await Promise.all(
+        data?.list.map((postId: string) =>
+          getPostById({ supabaseClient, postId, isDetail: false }),
+        ),
+      );
+
+      return postList;
+    },
+  });
+
+  return (
+    <section className="flex flex-col">
+      <h2>BLOG</h2>
+
+      <div className="-content-x overflow-x-clip">
+        <div className="mx-auto w-[80%] max-w-2xl">
+          <PostList list={pinnedPostList} />
+        </div>
+      </div>
+    </section>
+  );
+}
