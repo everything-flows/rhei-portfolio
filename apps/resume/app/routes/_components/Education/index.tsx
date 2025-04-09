@@ -21,12 +21,12 @@ const EDUCATION = [
 
 export default function Education() {
   return (
-    <div>
+    <section>
       <StickyHeading>
-        <h2 className="text-h2 bg-normal">교육</h2>
+        <h2 className="text-h2 bg-normal border-sub mb-2 border-b">교육</h2>
       </StickyHeading>
 
-      <ol className="flex list-disc flex-col gap-2 ps-4">
+      <ol className="flex list-disc flex-col gap-2 ps-5">
         {EDUCATION.map((education) => (
           <li key={education.title}>
             <article>
@@ -43,7 +43,7 @@ export default function Education() {
               </div>
 
               {education.description && (
-                <ul className="list-disc ps-4">
+                <ul className="list-disc ps-5">
                   {education.description?.map((desc) => (
                     <li key={desc.content}>{desc.content}</li>
                   ))}
@@ -53,6 +53,6 @@ export default function Education() {
           </li>
         ))}
       </ol>
-    </div>
+    </section>
   );
 }

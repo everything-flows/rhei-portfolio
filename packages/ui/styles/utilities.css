@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer utilities {
   .content-x {
     @apply mx-4 sm:mx-6 md:mx-12;
@@ -34,6 +38,9 @@
   }
   .border-brand {
     @apply border-blue-500 dark:border-orange-500;
+  }
+  .border-sub {
+    @apply border-gray-200 dark:border-gray-400;
   }
 
   .logo-label::before {

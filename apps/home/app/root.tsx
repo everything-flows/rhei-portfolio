@@ -9,6 +9,7 @@ import {
 
 import Font from "./_components/Font";
 import "./tailwind.css";
+import "@rhei/ui/styles/utilities.css";
 import ThemeColor from "./_components/ThemeColor";
 
 export { loader } from "./_utils/loader";
