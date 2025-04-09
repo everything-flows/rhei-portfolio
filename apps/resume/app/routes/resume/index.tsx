@@ -2,6 +2,7 @@ import { StickyHeading } from "@rhei/react";
 import { GNB } from "@rhei/ui";
 
 import Education from "./_components/Education";
+import Activity from "./_components/Activity";
 
 export default function ResumePage() {
   return (
@@ -19,6 +20,8 @@ export default function ResumePage() {
           </StickyHeading>
 
           <Education />
+
+          <Activity />
         </section>
       </main>
     </div>
