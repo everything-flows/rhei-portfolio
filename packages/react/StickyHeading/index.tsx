@@ -8,7 +8,11 @@ import {
 
 import getAncestorHeadingHeights from "./getAncestorHeadingHeights";
 
-export function StickyHeading({ children }: { children: React.ReactElement }) {
+export default function StickyHeading({
+  children,
+}: {
+  children: React.ReactElement;
+}) {
   const ref = useRef<HTMLElement>(null);
   const [top, setTop] = useState(0);
   const [zIndex, setZIndex] = useState(1);
@@ -31,7 +35,7 @@ export function StickyHeading({ children }: { children: React.ReactElement }) {
     const observer = new ResizeObserver(updateTop);
 
     const allHeadings = Array.from(
-      document.querySelectorAll("h1, h2, h3, h4, h5, h6"),
+      document.querySelectorAll("h1, h2, h3, h4, h5, h6")
     ) as HTMLElement[];
 
     const targetIndex = allHeadings.indexOf(element);

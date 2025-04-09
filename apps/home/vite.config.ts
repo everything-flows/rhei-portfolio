@@ -27,7 +27,7 @@ export default defineConfig({
   ],
   server: {
     watch: {
-      ignored: ['!../../packages/ui/**'],
+      ignored: ["!../../packages/ui/**", "!../../packages/react/**"],
     },
   },
 });

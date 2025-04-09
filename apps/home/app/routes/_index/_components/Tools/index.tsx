@@ -1,4 +1,4 @@
-import { StickyHeading } from "~/components/StickyHeading";
+import { StickyHeading } from "@rhei/react";
 
 const TOOL_LIST = [
   {

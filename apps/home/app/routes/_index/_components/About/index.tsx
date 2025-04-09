@@ -1,4 +1,4 @@
-import { StickyHeading } from "~/components/StickyHeading";
+import { StickyHeading } from "@rhei/react";
 
 export default function About() {
   return (
