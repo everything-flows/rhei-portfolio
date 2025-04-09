@@ -1,8 +1,8 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { GNB } from "@rhei/ui";
 
 import Blog from "./_components/Blog";
-import { Link } from "@remix-run/react";
 import Footer from "~/_components/Footer";
 import Header from "./_components/Header";
 import Banner from "./_components/Banner";
@@ -24,20 +24,7 @@ export default function Index() {
     <QueryClientProvider client={queryClient}>
       <div>
         <header className="content-x py-2">
-          <nav className="flex items-center justify-between">
-            <Link to="/">
-              <p className="logo-label w-fit" />
-            </Link>
-
-            <ul className="flex gap-2">
-              <li>
-                <Link to="/">home</Link>
-              </li>
-              <li>
-                <Link to="/blog">blog</Link>
-              </li>
-            </ul>
-          </nav>
+          <GNB />
         </header>
         <main className="content-x">
           <Header />
