@@ -1,14 +1,26 @@
-// apps/home/functions/resume.ts
-
 export const onRequest = async ({ request }: { request: Request }) => {
   const url = new URL(request.url);
-  const strippedPath = url.pathname.replace(/^\/resume/, "") || "/";
-  // [todo] fix this route
-  const target = `https://rhei-resume.pages.dev${strippedPath}${url.search}`;
+  const pathname = url.pathname;
 
-  return fetch(target, {
+  const targetPath = pathname.replace(/^\/resume/, "") || "/";
+  const target = `https://rhei-resume.pages.dev${targetPath}${url.search}`;
+
+  const headers = new Headers(request.headers);
+  headers.set("host", "rhei-resume.pages.dev");
+
+  const response = await fetch(target, {
     method: request.method,
-    headers: request.headers,
-    body: request.body,
+    headers,
+    body: ["GET", "HEAD"].includes(request.method) ? undefined : request.body,
+    redirect: "manual",
+  });
+
+  const newHeaders = new Headers(response.headers);
+  newHeaders.set("x-proxied-from", "rhei-resume.pages.dev");
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: newHeaders,
   });
 };
