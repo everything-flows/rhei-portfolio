@@ -8,13 +8,16 @@
   .text-h2 {
     @apply font-bold;
     font-size: clamp(2rem, 5vw, 2.5rem);
+    line-height: 1.6;
   }
   .text-h3 {
     @apply font-bold;
     font-size: clamp(1.75rem, 4.5vw, 2.25rem);
+    line-height: 1.6;
   }
   .text-p {
-    font-size: clamp(1.1rem, 3vw, 1.25rem);
+    font-size: clamp(1.2rem, 3vw, 1.3rem);
+    line-height: 1.4;
   }
 
   .text-sub {
