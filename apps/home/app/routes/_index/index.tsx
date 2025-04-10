@@ -28,7 +28,7 @@ export default function Index() {
     <QueryClientProvider client={queryClient}>
       <div>
         <header className="content-x">
-          <GNB isLoggedIn={!user} />
+          <GNB isLoggedIn={!!user} />
         </header>
         <main className="content-x">
           <Header />
