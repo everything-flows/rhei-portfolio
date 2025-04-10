@@ -10,6 +10,12 @@ importers:
 
   apps/blog:
     dependencies:
+      '@rhei/react':
+        specifier: workspace:*
+        version: link:../../packages/react
+      '@rhei/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       next:
         specifier: 15.3.0
         version: 15.3.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
