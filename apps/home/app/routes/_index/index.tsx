@@ -22,14 +22,13 @@ export const meta: MetaFunction = () => {
 const queryClient = new QueryClient();
 
 export default function Index() {
-  const data = useLoaderData();
-  console.log(data);
+  const { user } = useLoaderData();
 
   return (
     <QueryClientProvider client={queryClient}>
       <div>
         <header className="content-x">
-          <GNB />
+          <GNB isLoggedIn={!user} />
         </header>
         <main className="content-x">
           <Header />

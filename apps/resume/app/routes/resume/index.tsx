@@ -1,3 +1,4 @@
+import { useLoaderData } from "@remix-run/react";
 import { StickyHeading } from "@rhei/react";
 import { GNB } from "@rhei/ui";
 
@@ -5,11 +6,15 @@ import Education from "./_components/Education";
 import Activity from "./_components/Activity";
 import Award from "./_components/Award";
 
+export { default as loader } from "./_utils/loader";
+
 export default function ResumePage() {
+  const { user } = useLoaderData();
+
   return (
     <div>
       <header className="content-x">
-        <GNB />
+        <GNB isLoggedIn={!user} />
       </header>
 
       <main className="content-x text-p">
