@@ -5,7 +5,7 @@ const preset: Partial<Config> = {
     extend: {
       colors: {
         gray: {
-          white: "#f9f9f9",
+          white: "#ffffff",
           100: "#e5e5e5",
           200: "#d4d4d4",
           300: "#a3a3a3",
@@ -15,7 +15,7 @@ const preset: Partial<Config> = {
           700: "#262626",
           800: "#171717",
           900: "#0a0a0a",
-          black: "#1a1a1a",
+          black: "#000000",
         },
         blue: {
           500: "#3b82f6",
@@ -26,7 +26,6 @@ const preset: Partial<Config> = {
       },
     },
   },
-  plugins: [],
 };
 
 export default preset;
