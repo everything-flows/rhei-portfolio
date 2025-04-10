@@ -8,16 +8,12 @@ import {
 export default async function loader({ context, request }: LoaderFunctionArgs) {
   const headers = new Headers();
 
-  const SUPABASE_URL = context.env.SUPABASE_URL;
-  const SUPABASE_ANON_KEY = context.env.SUPABASE_ANON_KEY;
-
-  return { user: SUPABASE_URL };
+  const SUPABASE_URL = context.cloudflare.env.SUPABASE_URL;
+  const SUPABASE_ANON_KEY = context.cloudflare.env.SUPABASE_ANON_KEY;
 
   if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
     throw new Error("Missing SUPABASE env variables");
   }
-
-  return { user: null };
 
   const supabase = createServerClient(SUPABASE_URL!, SUPABASE_ANON_KEY!, {
     cookies: {

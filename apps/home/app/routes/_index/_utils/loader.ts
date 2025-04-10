@@ -5,13 +5,13 @@ import {
   serializeCookieHeader,
 } from "@supabase/ssr";
 
-export default async function loader({ request }: LoaderFunctionArgs) {
+export default async function loader({ context, request }: LoaderFunctionArgs) {
   const headers = new Headers();
 
-  const SUPABASE_URL = process.env.SUPABASE_URL;
-  const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+  const SUPABASE_URL = context.cloudflare.env.SUPABASE_URL;
+  const SUPABASE_ANON_KEY = context.cloudflare.env.SUPABASE_ANON_KEY;
 
-  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
     throw new Error("Missing SUPABASE env variables");
   }
 
