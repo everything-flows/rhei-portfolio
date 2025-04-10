@@ -15,7 +15,6 @@ export default function ResumePage() {
     <div>
       <header className="content-x">
         <GNB isLoggedIn={!!user} />
-        <GNB />
       </header>
 
       <main className="content-x text-p">
