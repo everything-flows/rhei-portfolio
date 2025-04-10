@@ -57,6 +57,7 @@ function PostCard({ post }: { post: DocumentSummary }) {
 }
 
 export default function PostList({ list }: { list?: DocumentSummary[] }) {
+  return null;
   return (
     <Swiper
       effect="cards"
