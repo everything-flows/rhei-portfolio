@@ -6,8 +6,6 @@ import {
 } from "@supabase/ssr";
 
 export default async function loader({ request }: LoaderFunctionArgs) {
-  return false;
-
   const headers = new Headers();
 
   const SUPABASE_URL = process.env.SUPABASE_URL;
@@ -16,6 +14,8 @@ export default async function loader({ request }: LoaderFunctionArgs) {
   if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
     throw new Error("Missing SUPABASE env variables");
   }
+
+  return { user: null };
 
   const supabase = createServerClient(SUPABASE_URL!, SUPABASE_ANON_KEY!, {
     cookies: {
