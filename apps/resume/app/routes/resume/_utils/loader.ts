@@ -6,6 +6,8 @@ import {
 } from "@supabase/ssr";
 
 export default async function loader({ request }: LoaderFunctionArgs) {
+  return false;
+
   const headers = new Headers();
 
   const SUPABASE_URL = process.env.SUPABASE_URL;
