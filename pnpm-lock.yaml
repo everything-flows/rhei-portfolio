@@ -11,11 +11,11 @@ importers:
   apps/blog:
     dependencies:
       '@rhei/react':
-        specifier: workspace:*
-        version: link:../../packages/react
+        specifier: file:../../packages/react
+        version: file:packages/react(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@rhei/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
+        specifier: file:../../packages/ui
+        version: file:packages/ui(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       next:
         specifier: 15.3.0
         version: 15.3.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -78,10 +78,10 @@ importers:
         specifier: ^2.16.4
         version: 2.16.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
       '@rhei/react':
-        specifier: workspace:*
+        specifier: file:../../packages/react
         version: link:../../packages/react
       '@rhei/ui':
-        specifier: workspace:*
+        specifier: file:../../packages/ui
         version: link:../../packages/ui
       '@supabase/ssr':
         specifier: ^0.6.1
@@ -181,10 +181,10 @@ importers:
         specifier: ^2.15.3
         version: 2.16.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
       '@rhei/react':
-        specifier: workspace:*
+        specifier: file:../../packages/react
         version: link:../../packages/react
       '@rhei/ui':
-        specifier: workspace:*
+        specifier: file:../../packages/ui
         version: link:../../packages/ui
       '@supabase/ssr':
         specifier: ^0.6.1
@@ -1829,6 +1829,18 @@ packages:
 
   '@remix-run/web-stream@1.1.0':
     resolution: {integrity: sha512-KRJtwrjRV5Bb+pM7zxcTJkhIqWWSy+MYsIxHK+0m5atcznsf15YwUBWHWulZerV2+vvHH1Lp1DD7pw6qKW8SgA==}
+
+  '@rhei/react@file:packages/react':
+    resolution: {directory: packages/react, type: directory}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
+
+  '@rhei/ui@file:packages/ui':
+    resolution: {directory: packages/ui, type: directory}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
 
   '@rollup/pluginutils@5.1.4':
     resolution: {integrity: sha512-USm05zrsFxYLPdWWq+K3STlWiT/3ELn3RcV5hJMghpeAIhxfsUIg6mt12CBJBInWMV4VneoV7SfGv8xIwo2qNQ==}
@@ -7448,6 +7460,16 @@ snapshots:
   '@remix-run/web-stream@1.1.0':
     dependencies:
       web-streams-polyfill: 3.3.3
+
+  '@rhei/react@file:packages/react(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+
+  '@rhei/ui@file:packages/ui(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
 
   '@rollup/pluginutils@5.1.4(rollup@4.39.0)':
     dependencies:
