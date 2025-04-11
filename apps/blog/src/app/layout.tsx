@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GNBWrapper from "./_components/GNBWrapper";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body className="bg-normal text-normal">
+        <GNBWrapper />
+        {children}
+      </body>
     </html>
   );
 }
