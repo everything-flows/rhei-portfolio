@@ -8,7 +8,7 @@ export default {
     "../../packages/ui/**/*.{ts,tsx,css}",
   ],
   theme: {
-    extend: { colors: { test: "#f00" } },
+    extend: {},
   },
   plugins: [],
 } satisfies Config;

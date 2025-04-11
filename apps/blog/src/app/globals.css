@@ -1,3 +1,46 @@
 @import "tailwindcss";
 @import "../../../..//packages/ui/styles/utilities.css";
 @config "../../tailwind.config.ts";
+
+@layer base {
+  * {
+    word-break: keep-all;
+
+    font-family: "Pretendard Variable", Pretendard, -apple-system,
+      BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+      "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  }
+}
+
+@layer components {
+  .text-responsive-h1 {
+    font-size: clamp(2.5rem, 6vw, 3rem);
+    line-height: 1.6;
+    font-weight: 800;
+    text-wrap: pretty;
+  }
+
+  .text-responsive-h2 {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    line-height: 1.6;
+    font-weight: 700;
+    text-wrap: pretty;
+  }
+
+  .text-responsive-h3 {
+    font-size: clamp(1.75rem, 4.5vw, 2.25rem);
+    line-height: 1.6;
+    font-weight: 700;
+    text-wrap: pretty;
+  }
+
+  .text-responsive-p {
+    font-size: clamp(1.2rem, 3vw, 1.3rem);
+    line-height: 1.4;
+  }
+}
+
+@utility text-block {
+  @apply px-4 rounded-full;
+}
