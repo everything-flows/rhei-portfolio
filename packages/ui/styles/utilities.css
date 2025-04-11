@@ -19,6 +19,9 @@
   .bg-brand {
     @apply bg-blue-500 dark:bg-orange-500;
   }
+  .bg-brand-reverse {
+    @apply bg-orange-500 dark:bg-blue-500;
+  }
 
   .text-normal {
     @apply text-gray-black dark:text-gray-white;
@@ -29,6 +32,9 @@
   .text-brand {
     @apply text-blue-500 dark:text-orange-500;
   }
+  .text-brand-reverse {
+    @apply text-orange-500 dark:text-blue-500;
+  }
 
   .border-normal {
     @apply border-gray-white dark:border-gray-black;
@@ -38,6 +44,9 @@
   }
   .border-brand {
     @apply border-blue-500 dark:border-orange-500;
+  }
+  .border-brand-reverse {
+    @apply border-orange-500 dark:border-blue-500;
   }
   .border-sub {
     @apply border-gray-200 dark:border-gray-400;
