@@ -18,10 +18,10 @@ const preset: Partial<Config> = {
           black: "#000000",
         },
         blue: {
-          500: "#3b82f6",
+          500: "#0270ff",
         },
         orange: {
-          500: "#f97316",
+          500: "#f94b28",
         },
       },
     },
