@@ -1,0 +1,42 @@
+import type { SupabaseClient } from "@supabase/supabase-js";
+
+import type { Document } from "@/types/post";
+import type { Database } from "@/types/supabase";
+import {
+  POST_DETAIL_ATTR,
+  POST_SUMMARY_ATTR,
+  POST_TABLE,
+} from "@/constants/supabase";
+import getTagListOfPost from "./getTagListOfPost";
+import snakeToCamel from "./snakeToCamel";
+
+export async function getPostById({
+  supabaseClient,
+  postId,
+  isDetail = true,
+}: {
+  supabaseClient: SupabaseClient<Database, "public">;
+  postId: string;
+  isDetail?: boolean;
+}): Promise<Document | null> {
+  const { data, error } = await supabaseClient
+    .from(POST_TABLE)
+    .select(isDetail ? POST_DETAIL_ATTR : POST_SUMMARY_ATTR)
+    .eq("id", postId)
+    .returns<Document>()
+    .single();
+
+  const tagData = await getTagListOfPost({
+    supabaseClient,
+    postId,
+  });
+
+  if (error || data === null) {
+    return null;
+  }
+
+  return {
+    ...snakeToCamel(data as never as Document), // [todo] fix this
+    tags: tagData,
+  };
+}
