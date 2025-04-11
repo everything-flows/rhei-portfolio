@@ -1,7 +1,28 @@
-export default function Home() {
+import { GNB } from "@rhei/ui";
+
+import { createClient } from "@/utils/supabase-server";
+
+export default async function Home() {
+  const supabase = await createClient();
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  const user = session?.user;
+
   return (
-    <h1 className="bg-reverse text-reverse text-[3rem] font-bold text-test">
-      home
-    </h1>
+    <>
+      <header className="content-x">
+        <GNB isLoggedIn={!!user} />
+      </header>
+
+      <main className="content-x">
+        <section className="mx-auto max-w-6xl">section</section>
+        <section className="mx-auto max-w-6xl">section</section>
+        <section className="mx-auto max-w-6xl">section</section>
+        <section className="mx-auto max-w-6xl">section</section>
+      </main>
+    </>
   );
 }
