@@ -19,8 +19,10 @@
     "@remix-run/cloudflare": "^2.15.3",
     "@remix-run/cloudflare-pages": "^2.15.3",
     "@remix-run/react": "^2.15.3",
-    "@rhei/ui": "workspace:*",
-    "@rhei/react": "workspace:*",
+    "@rhei/react": "file:../../packages/react",
+    "@rhei/ui": "file:../../packages/ui",
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.49.4",
     "isbot": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
