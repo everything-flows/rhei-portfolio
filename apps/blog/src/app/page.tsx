@@ -2,7 +2,7 @@ import PinnedSection from "./_components/PinnedSection";
 
 export default async function Home() {
   return (
-    <main className="content-x">
+    <main className="content-x flex flex-col gap-40">
       <PinnedSection />
     </main>
   );

@@ -47,9 +47,30 @@
     text-wrap: pretty;
   }
 
-  .text-responsive-p {
-    font-size: clamp(1.2rem, 3vw, 1.3rem);
+  .text-responsive-h4 {
+    font-size: clamp(1.5rem, 4vw, 1.75rem);
+    line-height: 1.6;
+    font-weight: 700;
+    text-wrap: pretty;
+  }
+
+  .text-responsive-h5 {
+    font-size: clamp(1.25rem, 3.5vw, 1.5rem);
     line-height: 1.4;
+    font-weight: 700;
+    text-wrap: pretty;
+  }
+
+  .text-responsive-p {
+    font-size: clamp(1.125rem, 2.5vw, 1.2rem);
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  .text-p {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    text-wrap: pretty;
   }
 }
 
