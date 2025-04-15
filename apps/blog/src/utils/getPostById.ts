@@ -17,7 +17,7 @@ export async function getPostById({
   isDetail = true,
 }: {
   supabaseClient: SupabaseClient<Database, "public">;
-  subBlogId: string;
+  subBlogId?: string;
   postId: string;
   isDetail?: boolean;
 }): Promise<Document | null> {

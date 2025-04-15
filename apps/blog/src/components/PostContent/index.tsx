@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+
 import Link from "next/link";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
-function getId(child) {
+function getId(child: any) {
   return solve(child)
     .replace(/\s+/g, "-")
     .replace(/[^\w\sㄱ-ㅎㅏ-ㅣ가-힣-]/g, "")

@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 import { Database } from "@/types/supabase";
+import { Document } from "@/types/post";
 import { POST_SUMMARY_ATTR, POST_TABLE } from "@/constants/supabase";
 import addTagListToPostList from "./addTagListToPostList";
 import snakeToCamel from "./snakeToCamel";
@@ -10,7 +11,7 @@ export async function getChildPostList({
   subBlogId,
   parentId,
 }: {
-  supabaseClient: SupabaseClient<Database, "public", any>;
+  supabaseClient: SupabaseClient<Database, "public">;
   subBlogId: string;
   parentId: string;
 }) {

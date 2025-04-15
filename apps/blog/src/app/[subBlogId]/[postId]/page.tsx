@@ -5,8 +5,12 @@ import { getPostData } from "./getPostData";
 import PostContent from "@/components/PostContent";
 import PostDirectory from "@/components/PostDirectory";
 
-export default async function PostPage({ params }) {
-  const { subBlog: subBlogId, post: postId } = await params;
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ subBlogId: string; postId: string }>;
+}) {
+  const { subBlogId, postId } = await params;
   const data = await getPostData(subBlogId, postId);
 
   if (!data) {
@@ -22,7 +26,7 @@ export default async function PostPage({ params }) {
       )}
 
       {data.postData?.type === DocumentType.Directory && (
-        <PostDirectory postList={data.childPostList} />
+        <PostDirectory postList={data.childPostList!} />
       )}
     </main>
   );
