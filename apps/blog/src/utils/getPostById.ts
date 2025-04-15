@@ -12,16 +12,19 @@ import snakeToCamel from "./snakeToCamel";
 
 export async function getPostById({
   supabaseClient,
+  subBlogId = "cse",
   postId,
   isDetail = true,
 }: {
   supabaseClient: SupabaseClient<Database, "public">;
+  subBlogId: string;
   postId: string;
   isDetail?: boolean;
 }): Promise<Document | null> {
   const { data, error } = await supabaseClient
     .from(POST_TABLE)
     .select(isDetail ? POST_DETAIL_ATTR : POST_SUMMARY_ATTR)
+    .eq("sub_blog", subBlogId)
     .eq("id", postId)
     .returns<Document>()
     .single();

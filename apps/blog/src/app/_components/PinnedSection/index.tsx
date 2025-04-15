@@ -15,7 +15,7 @@ export default async function PinnedSection() {
           className="aspect-16/9 w-full shrink-0 rounded-3xl border border-gray-200 object-cover sm:aspect-4/3 dark:border-gray-600"
         />
         <div>
-          <h3 className="text-responsive-h4 font-900">{data[0].title}</h3>
+          <h3 className="text-responsive-h2 font-900">{data[0].title}</h3>
           <p className="text-responsive-p">{data[0].subTitle}</p>
           <div className="r flex flex-wrap gap-x-2 gap-y-1">
             {data[0].tags.map((tag) => (
@@ -47,7 +47,7 @@ export default async function PinnedSection() {
                   </div>
                 )}
                 <div className="overflow-auto">
-                  <h3 className="text-responsive-h5 font-900">{post.title}</h3>
+                  <h3 className="text-responsive-h3 font-900">{post.title}</h3>
                   <p className="text-p">{post.subTitle}</p>
                 </div>
               </article>

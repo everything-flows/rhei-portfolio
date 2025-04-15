@@ -26,35 +26,28 @@
 }
 
 @layer components {
-  .text-responsive-h1 {
-    font-size: clamp(2.5rem, 6vw, 3rem);
-    line-height: 1.6;
-    font-weight: 800;
-    text-wrap: pretty;
-  }
-
-  .text-responsive-h2 {
+  .text-responsive-display {
     font-size: clamp(2rem, 5vw, 2.5rem);
     line-height: 1.6;
     font-weight: 700;
     text-wrap: pretty;
   }
 
-  .text-responsive-h3 {
+  .text-responsive-h1 {
     font-size: clamp(1.75rem, 4.5vw, 2.25rem);
-    line-height: 1.6;
+    line-height: 1.5;
     font-weight: 700;
     text-wrap: pretty;
   }
 
-  .text-responsive-h4 {
+  .text-responsive-h2 {
     font-size: clamp(1.5rem, 4vw, 1.75rem);
-    line-height: 1.6;
+    line-height: 1.5;
     font-weight: 700;
     text-wrap: pretty;
   }
 
-  .text-responsive-h5 {
+  .text-responsive-h3 {
     font-size: clamp(1.25rem, 3.5vw, 1.5rem);
     line-height: 1.4;
     font-weight: 700;
