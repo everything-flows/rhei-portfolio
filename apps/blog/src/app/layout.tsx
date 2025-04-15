@@ -23,10 +23,10 @@ export default function RootLayout({
       <body className="bg-normal text-normal">
         {/* bg gradient */}
         <div className="fixed inset-0 z-[-1] opacity-[0.2] blur-[min(100px,10dvw)]">
-          <div className="absolute -top-4 -right-8 h-[50dvh] w-[80dvw] rounded-[100%] bg-yellow-400 dark:bg-blue-600">
+          <div className="absolute -top-4 -right-8 h-[50dvh] w-[80dvw] rounded-[100%] bg-orange-200 dark:bg-blue-600">
             <div className="bg-normal h-[30dvh] w-[50dvw] rounded-[100%]" />
           </div>
-          <div className="bg-skyblue-400 absolute top-[30dvh] h-[80dvh] w-[70dvw] rounded-[100%] dark:bg-orange-700">
+          <div className="absolute top-[30dvh] h-[80dvh] w-[70dvw] rounded-[100%] bg-orange-100 dark:bg-blue-700">
             <div className="bg-normal absolute right-0 bottom-0 h-[50dvh] w-[50dvw] rounded-[100%]" />
           </div>
         </div>
@@ -38,4 +38,4 @@ export default function RootLayout({
   );
 }
 
-// opacity-[0.3] blur-[min(100px,10dvw)]
+//

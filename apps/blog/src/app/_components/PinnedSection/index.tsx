@@ -43,7 +43,7 @@ export default async function PinnedSection() {
                   />
                 ) : (
                   <div className="aspect-16/9 w-full shrink-0 overflow-hidden rounded-3xl border border-gray-200 object-cover dark:border-gray-600">
-                    <div className="h-full w-full rounded-3xl bg-conic-180 from-orange-400 from-10% via-blue-400 via-30% to-orange-600 to-90% opacity-[0.8] blur-[80px]" />
+                    <div className="h-full w-full rounded-3xl bg-conic-180 from-orange-300 from-10% via-blue-400 via-70% to-orange-300 to-90% opacity-[0.8] blur-[80px] dark:from-blue-900 dark:via-orange-900 dark:to-blue-800" />
                   </div>
                 )}
                 <div className="overflow-auto">
