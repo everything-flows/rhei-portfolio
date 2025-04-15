@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 
-import Link from "next/link";
+"use client";
 
+import Link from "next/link";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism";
+
+import parse from "@/app/[subBlogId]/[postId]/parse";
 
 function getId(child) {
   return solve(child)
@@ -32,11 +35,11 @@ function solve(child) {
 }
 
 export default function PostContent({ content }) {
-  return (
+  return parse("# Table Of Contents\n" + content).then((res) => (
     <div className="text-responsive-p mx-auto max-w-6xl">
-      {renderNodes(content, 0)}
+      {renderNodes(res, 0)}
     </div>
-  );
+  ));
 }
 
 function renderNodes(node, index) {

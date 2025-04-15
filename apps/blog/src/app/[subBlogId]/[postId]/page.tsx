@@ -22,7 +22,7 @@ export default async function PostPage({
       <PostHeader data={data} />
 
       {data.postData?.type === DocumentType.Post && (
-        <PostContent content={data.parsedContent} />
+        <PostContent content={data.postData.content} />
       )}
 
       {data.postData?.type === DocumentType.Directory && (
