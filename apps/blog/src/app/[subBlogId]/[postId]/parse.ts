@@ -8,13 +8,14 @@ import remarkToc from "remark-toc";
 import { VFile } from "vfile";
 
 export default async function parse(content: string) {
-  const processor = await unified()
-    .use(remarkParse)
-    .use([remarkMath, remarkGfm, remarkToc])
-    .use(remarkRehype, {
-      allowDangerousHtml: true,
-    })
-    .use([rehypeKatex]);
+  const processor = await unified().use([
+    remarkParse,
+    remarkMath,
+    remarkGfm,
+    remarkToc,
+    remarkRehype,
+    rehypeKatex,
+  ]);
 
   const file = new VFile();
   file.value = content;
