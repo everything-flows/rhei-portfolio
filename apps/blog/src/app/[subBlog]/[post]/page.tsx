@@ -3,6 +3,7 @@ import { DocumentType } from "@/types/post";
 import PostHeader from "./_components/PostHeader";
 import { getPostData } from "./getPostData";
 import PostContent from "@/components/PostContent";
+import PostDirectory from "@/components/PostDirectory";
 
 export default async function PostPage({ params }) {
   const { subBlog: subBlogId, post: postId } = await params;
@@ -20,20 +21,9 @@ export default async function PostPage({ params }) {
         <PostContent content={data.parsedContent} />
       )}
 
-      {/* <PostHeader
-        id={postData.id}
-        title={postData.title}
-        subTitle={postData?.sub_title}
-        tags={postData?.tags}
-        postDate={postData?.created_at}
-        categoryData={categoryData}
-      />
-      {postData.type === DocumentType.Post && (
-        <PostContent content={parsedContent} />
+      {data.postData?.type === DocumentType.Directory && (
+        <PostDirectory postList={data.childPostList} />
       )}
-      {postData.type === DocumentType.Directory && (
-        <PostDatabase posts={childPostList} />
-      )} */}
     </main>
   );
 }

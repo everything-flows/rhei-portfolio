@@ -1,6 +1,7 @@
 import { Document, DocumentType } from "@/types/post";
 import { getPostById } from "@/utils/getPostById";
 import { createClient } from "@/utils/supabase-server";
+import { getChildPostList } from "@/utils/getChildPostList";
 import parse from "./parse";
 
 function isNormalPost(data: Document) {
@@ -23,13 +24,12 @@ export async function getPostData(subBlogId: string, postId: string) {
     };
   }
 
-  return null;
-  //   return {
-  //     postData,
-  //     childPostList: await getChildPostList({
-  //       supabaseClient,
-  //       subBlogId,
-  //       parentId: postId,
-  //     }),
-  //   };
+  return {
+    postData,
+    childPostList: await getChildPostList({
+      supabaseClient,
+      subBlogId,
+      parentId: postId,
+    }),
+  };
 }
