@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
-function getId(child: any) {
+function getId(child) {
   return solve(child)
     .replace(/\s+/g, "-")
     .replace(/[^\w\sㄱ-ㅎㅏ-ㅣ가-힣-]/g, "")

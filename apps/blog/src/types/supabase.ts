@@ -12,7 +12,7 @@ export interface Database {
           content: string | null;
           parent_id: string | null;
           emoji: string | null;
-          tags: any[] | null;
+          tags: { title: string; isSpoiler: boolean }[] | null;
         };
       };
       tags: {

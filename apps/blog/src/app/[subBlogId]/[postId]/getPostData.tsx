@@ -14,7 +14,7 @@ export async function getPostData(subBlogId: string, postId: string) {
   const postData = await getPostById({ supabaseClient, subBlogId, postId });
 
   if (!postData) {
-    return { postData: null };
+    return null;
   }
 
   if (isNormalPost(postData)) {

@@ -1,4 +1,6 @@
-export default function PostHeader({ data }: { data: any }) {
+import { Document } from "@/types/post";
+
+export default function PostHeader({ data }: { data: { postData: Document } }) {
   const { postData } = data;
   const { title, subTitle } = postData;
 
