@@ -70,7 +70,7 @@ function renderNodes(node, index) {
           return (
             <h1
               key={index}
-              className="text-responsive-h1 mt-4 mb-3 flex flex-col"
+              className="text-responsive-h1 mt-6 mb-3 flex flex-col"
             >
               <span id={getId(node.children)} className="" {...node.properties}>
                 {node.children.map((child, index: number) =>
@@ -86,7 +86,7 @@ function renderNodes(node, index) {
           return (
             <h3
               key={index}
-              className="text-responsive-h2 mt-3 mb-2"
+              className="text-responsive-h2 mt-5 mb-2"
               {...node.properties}
             >
               {node.children.map((child, index: number) =>
@@ -100,7 +100,7 @@ function renderNodes(node, index) {
           return (
             <h4
               key={index}
-              className="text-responsive-h3 mt-2 mb-1"
+              className="text-responsive-h3 mt-4 mb-1"
               {...node.properties}
             >
               {node.children.map((child, index: number) =>
@@ -124,7 +124,7 @@ function renderNodes(node, index) {
           return (
             <img
               key={index}
-              className="max-w-[50%] rounded-md border"
+              className="border-sub mx-auto my-4 w-full rounded-md border sm:w-[80dvw] md:w-[75dvw] lg:w-[60%]"
               alt={node.properties.alt}
               src={node.properties.src}
             />

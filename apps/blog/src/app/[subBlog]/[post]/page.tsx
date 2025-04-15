@@ -8,7 +8,6 @@ export default async function PostPage({ params }) {
   const { subBlog: subBlogId, post: postId } = await params;
   const data = await getPostData(subBlogId, postId);
 
-  console.log(data);
   if (!data) {
     return <div />;
   }
@@ -35,8 +34,6 @@ export default async function PostPage({ params }) {
       {postData.type === DocumentType.Directory && (
         <PostDatabase posts={childPostList} />
       )} */}
-
-      <section>body</section>
     </main>
   );
 }
