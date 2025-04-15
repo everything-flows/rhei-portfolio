@@ -32,4 +32,4 @@ export default async function PostPage({
   );
 }
 
-export const runtime = "nodejs";
+export const runtime = "edge";
