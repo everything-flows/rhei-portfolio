@@ -1,38 +1,17 @@
-// functions/blog.ts
 export const onRequest: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
-  console.log("[request url]", url.pathname);
 
-  const isBlogRequest =
-    url.pathname === "/blog" || url.pathname.startsWith("/blog/");
-  const isRootDataRequest = url.pathname === "/blog.data";
-  const isNestedDataRequest = url.pathname.endsWith(".data");
+  const isBlogRequest = url.pathname.startsWith("/blog");
+  const isDataRequest = url.pathname === "/blog.data";
 
-  if (!isBlogRequest && !isRootDataRequest && !isNestedDataRequest) {
+  if (!isBlogRequest) {
     return new Response("Not found", { status: 404 });
   }
 
-  if (isRootDataRequest) {
-    // Remix root loader corresponds to /blog/.data not /blog.data
+  if (isDataRequest) {
     return fetch("https://rhei-blog.pages.dev/blog/.data", {
       method: request.method,
       headers: request.headers,
-      body:
-        request.method !== "GET" && request.method !== "HEAD"
-          ? request.body
-          : null,
-    });
-  }
-
-  if (isNestedDataRequest) {
-    const pathname = url.pathname.replace(/\.data$/, "/.data");
-    return fetch(`https://rhei-blog.pages.dev${pathname}${url.search}`, {
-      method: request.method,
-      headers: request.headers,
-      body:
-        request.method !== "GET" && request.method !== "HEAD"
-          ? request.body
-          : null,
     });
   }
 
