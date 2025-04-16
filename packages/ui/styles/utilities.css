@@ -100,4 +100,11 @@
 
     font-size: clamp(2rem, 5vw, 3rem);
   }
+
+  .font-PyeongChangPeaceBold {
+    font-family: "PyeongChangPeace-Bold";
+  }
+  .font-PyeongChangPeaceLight {
+    font-family: "PyeongChangPeace-Light";
+  }
 }
