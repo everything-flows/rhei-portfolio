@@ -13,7 +13,12 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  const { pinnedPostList } = useLoaderData();
+  const data = useLoaderData();
+  if (!data) {
+    return null;
+  }
+
+  const { pinnedPostList } = data;
 
   return (
     <>
