@@ -9,8 +9,8 @@ export const onRequest: PagesFunction = async ({ request }) => {
   }
 
   if (isDataRequest) {
-    const pathname = url.pathname.split(".data")[0];
-    return fetch(`https://rhei-blog.pages.dev${pathname}/.data`, {
+    const actualPath = url.pathname.replace(/\.data$/, "/.data");
+    return fetch(`https://rhei-blog.pages.dev${actualPath}${url.search}`, {
       method: request.method,
       headers: request.headers,
       body:
