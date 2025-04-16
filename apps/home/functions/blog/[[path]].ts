@@ -8,7 +8,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
     url.pathname.startsWith("/blog.data") ||
     (url.pathname.startsWith("/blog/") && url.pathname.endsWith(".data"));
 
-  if (!isBlogRequest || !isDataRequest) {
+  if (!isBlogRequest) {
     return new Response("Not found", { status: 404 });
   }
 
