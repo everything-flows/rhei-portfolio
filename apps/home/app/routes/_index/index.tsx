@@ -33,7 +33,7 @@ export default function Index() {
         <main className="content-x">
           <Header />
 
-          {/* <Banner /> */}
+          <Banner />
 
           <Toc />
 
