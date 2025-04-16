@@ -1,5 +1,7 @@
+// functions/blog.ts
 export const onRequest: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
+  console.log("[request url]", url.pathname);
 
   const isBlogRequest =
     url.pathname === "/blog" || url.pathname.startsWith("/blog/");
@@ -11,6 +13,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
   }
 
   if (isRootDataRequest) {
+    // Remix root loader corresponds to /blog/.data not /blog.data
     return fetch("https://rhei-blog.pages.dev/blog/.data", {
       method: request.method,
       headers: request.headers,

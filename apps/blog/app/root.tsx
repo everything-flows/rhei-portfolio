@@ -4,7 +4,14 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "@remix-run/react";
+
+function Logger() {
+  const location = useLocation();
+  console.log("💬 Current location:", location.pathname);
+  return null;
+}
 
 import "./tailwind.css";
 
@@ -26,6 +33,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             <div className="bg-normal absolute bottom-0 right-0 h-[50dvh] w-[50dvw] rounded-[100%]" />
           </div>
         </div>
+        <Logger />
         {children}
         <ScrollRestoration />
         <Scripts />
