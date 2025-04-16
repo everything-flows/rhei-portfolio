@@ -4,14 +4,25 @@ export const onRequest: PagesFunction = async ({ request }) => {
   const isBlogRequest =
     url.pathname === "/blog" || url.pathname.startsWith("/blog/");
 
-  // const isDataRequest = url.pathname.startsWith("/blog.data");
+  const isDataRequest = url.pathname.endsWith(".data");
 
   if (!isBlogRequest) {
     return new Response("Not found", { status: 404 });
   }
 
-  const targetUrl = `https://rhei-blog.pages.dev${url.pathname}${url.search}`;
-  return fetch(targetUrl, {
+  if (isDataRequest) {
+    const pathname = url.pathname.split(".data")[0];
+    return fetch(`https://rhei-blog.pages.dev${pathname}/.data`, {
+      method: request.method,
+      headers: request.headers,
+      body:
+        request.method !== "GET" && request.method !== "HEAD"
+          ? request.body
+          : null,
+    });
+  }
+
+  return fetch(`https://rhei-blog.pages.dev${url.pathname}${url.search}`, {
     method: request.method,
     headers: request.headers,
     body:
