@@ -22,7 +22,16 @@
     "@supabase/ssr": "^0.6.1",
     "isbot": "^4.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-syntax-highlighter": "^15.5.0",
+    "rehype-katex": "^7.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "remark-toc": "^9.0.0",
+    "unified": "^11.0.5",
+    "vfile": "^6.0.3"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240512.0",

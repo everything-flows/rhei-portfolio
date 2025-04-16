@@ -1,9 +1,9 @@
 import { DocumentType } from "@/types/post";
+import PostContent from "@/components/PostContent";
+import PostDirectory from "@/components/PostDirectory";
 
 import PostHeader from "./_components/PostHeader";
 import { getPostData } from "./getPostData";
-import PostContent from "@/components/PostContent";
-import PostDirectory from "@/components/PostDirectory";
 
 export default async function PostPage({
   params,
