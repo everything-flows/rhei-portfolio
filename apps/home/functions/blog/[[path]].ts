@@ -2,20 +2,19 @@ export const onRequest: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
 
   const isBlogRequest =
-    url.pathname === "/blog" ||
-    url.pathname.startsWith("/blog/") ||
-    url.pathname === "/blog.data" ||
-    url.pathname === "/blog/blog.data" ||
+    url.pathname === "/blog" || url.pathname.startsWith("/blog/");
+
+  const isDataRequest =
+    url.pathname.startsWith("/blog.data") ||
     (url.pathname.startsWith("/blog/") && url.pathname.endsWith(".data"));
 
-  if (!isBlogRequest) {
+  if (!isBlogRequest || !isDataRequest) {
     return new Response("Not found", { status: 404 });
   }
 
-  const proxyPath =
-    url.pathname === "/blog.data" ? "/blog/blog.data" : url.pathname;
-
-  const targetUrl = `https://rhei-blog.pages.dev${proxyPath}${url.search}`;
+  const targetUrl = isDataRequest
+    ? `https://rhei-blog.pages.dev/blog${url.pathname}${url.search}`
+    : `https://rhei-blog.pages.dev${url.pathname}${url.search}`;
   return fetch(targetUrl, {
     method: request.method,
     headers: request.headers,
