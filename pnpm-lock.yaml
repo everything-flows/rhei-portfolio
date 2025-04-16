@@ -29,6 +29,9 @@ importers:
       '@rhei/ui':
         specifier: file:../../packages/ui
         version: link:../../packages/ui
+      '@supabase/ssr':
+        specifier: ^0.6.1
+        version: 0.6.1(@supabase/supabase-js@2.49.4)
       isbot:
         specifier: ^4.1.0
         version: 4.4.0

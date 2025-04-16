@@ -1,8 +1,10 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
-
 import { GNB } from "@rhei/ui";
-import PinnedSection from "./_components/PinnedSection";
 
+import PinnedSection from "./_components/PinnedSection";
+import { useLoaderData } from "@remix-run/react";
+
+export { default as loader } from "./_utils/loader";
 export const meta: MetaFunction = () => {
   return [
     { title: "New Remix App" },
@@ -11,6 +13,8 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const { pinnedPostList } = useLoaderData();
+
   return (
     <>
       <header className="content-x">
@@ -18,7 +22,7 @@ export default function Index() {
       </header>
 
       <main className="content-x flex flex-col gap-40">
-        <PinnedSection />
+        <PinnedSection postList={pinnedPostList} />
       </main>
     </>
   );

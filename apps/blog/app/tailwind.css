@@ -50,4 +50,26 @@
     line-height: 1.4;
     text-wrap: pretty;
   }
+
+  .bg-thumbnail {
+    background-image: conic-gradient(
+      from 180deg,
+      #ff8f57 10%,
+      #1688ff 70%,
+      #ff8f57 90%
+    );
+    opacity: 0.8;
+    filter: blur(80px);
+
+    @media (prefers-color-scheme: dark) {
+      .custom-background {
+        background-image: conic-gradient(
+          from 180deg,
+          #05173b 10%,
+          #471409 70%,
+          #0b2878 90%
+        );
+      }
+    }
+  }
 }

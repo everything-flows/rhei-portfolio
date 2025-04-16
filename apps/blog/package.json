@@ -17,11 +17,12 @@
     "@remix-run/cloudflare": "^2.16.5",
     "@remix-run/cloudflare-pages": "^2.16.5",
     "@remix-run/react": "^2.16.5",
+    "@rhei/react": "file:../../packages/react",
+    "@rhei/ui": "file:../../packages/ui",
+    "@supabase/ssr": "^0.6.1",
     "isbot": "^4.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@rhei/react": "file:../../packages/react",
-    "@rhei/ui": "file:../../packages/ui"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240512.0",

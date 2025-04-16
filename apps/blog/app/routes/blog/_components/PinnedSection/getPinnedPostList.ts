@@ -1,32 +1,36 @@
-// import { createClient } from "@/utils/supabase-server";
-// import addTagListToPostList from "@/utils/addTagListToPostList";
-// import { getPostById } from "@/utils/getPostById";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
-// export default async function getPinnedPostList() {
-//   const supabaseClient = await createClient();
+import { Database } from "~/types/supabase";
+import addTagListToPostList from "~/utils/addTagListToPostList";
+import { getPostById } from "~/utils/getPostById";
 
-//   const PINNED_POST_LIST = [
-//     "search-filter-with-url",
-//     "connect-types-and-constants",
-//     "requestanimationframe-guide",
-//     "cspg-design-system-text",
-//     "commit-message",
-//     "js-coding-test-1-input",
-//   ];
+export default async function getPinnedPostList({
+  supabaseClient,
+}: {
+  supabaseClient: SupabaseClient<Database, "public">;
+}) {
+  const PINNED_POST_LIST = [
+    "search-filter-with-url",
+    "connect-types-and-constants",
+    "requestanimationframe-guide",
+    "cspg-design-system-text",
+    "commit-message",
+    "js-coding-test-1-input",
+  ];
 
-//   const data = await Promise.all(
-//     PINNED_POST_LIST.map(
-//       async (id) =>
-//         await getPostById({
-//           supabaseClient,
-//           postId: id,
-//           isDetail: false,
-//         })
-//     )
-//   );
+  const data = await Promise.all(
+    PINNED_POST_LIST.map(
+      async (id) =>
+        await getPostById({
+          supabaseClient,
+          postId: id,
+          isDetail: false,
+        })
+    )
+  );
 
-//   return await addTagListToPostList({
-//     supabaseClient,
-//     postList: data.filter((post) => post !== null),
-//   });
-// }
+  return await addTagListToPostList({
+    supabaseClient,
+    postList: data.filter((post) => post !== null),
+  });
+}
