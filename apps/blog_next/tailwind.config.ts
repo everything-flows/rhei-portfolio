@@ -2,11 +2,13 @@ import type { Config } from "tailwindcss";
 import preset from "../../packages/ui/tailwind-preset";
 
 export default {
-  presets: [preset],
+  presets: [preset as Config],
   content: [
-    "./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
     "../../packages/ui/**/*.{ts,tsx,css}",
   ],
-  theme: {},
+  theme: {
+    extend: {},
+  },
   plugins: [],
 } satisfies Config;
