@@ -1,9 +1,7 @@
 export const onRequest: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
 
-  const isBlogRequest =
-    url.pathname === "/blog" || url.pathname.startsWith("/blog");
-
+  const isBlogRequest = url.pathname.startsWith("/blog");
   const isDataRequest = url.pathname.endsWith(".data");
 
   if (!isBlogRequest) {
