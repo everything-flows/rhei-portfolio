@@ -29,7 +29,9 @@ function solve(child) {
 
 export default function PostContent({ content }) {
   return (
-    <section className="mx-auto max-w-6xl">{renderNodes(content, 0)}</section>
+    <section className="text-responsive-p mx-auto max-w-6xl break-keep">
+      {renderNodes(content, 0)}
+    </section>
   );
 }
 
