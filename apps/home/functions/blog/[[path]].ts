@@ -1,30 +1,18 @@
 export const onRequest: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
 
-  const isBlogAsset = url.pathname.startsWith("/blog/assets/");
   const isBlogRoute =
     url.pathname === "/blog" || url.pathname.startsWith("/blog/");
+  if (!isBlogRoute) return new Response("Not found", { status: 404 });
 
-  if (isBlogAsset) {
-    const assetPath = url.pathname.replace("/blog", "/");
-    const assetTarget = `https://rhei-blog.pages.dev/blog${assetPath}${url.search}`;
+  const targetUrl = `https://rhei-blog.pages.dev${url.pathname}${url.search}`;
 
-    return fetch(assetTarget, {
-      method: request.method,
-      headers: request.headers,
-      body: request.body,
-    });
-  }
-
-  if (isBlogRoute) {
-    const target = `https://rhei-blog.pages.dev${url.pathname}${url.search}`;
-
-    return fetch(target, {
-      method: request.method,
-      headers: request.headers,
-      body: request.body,
-    });
-  }
-
-  return new Response("Not found", { status: 404 });
+  return fetch(targetUrl, {
+    method: request.method,
+    headers: request.headers,
+    body:
+      request.method !== "GET" && request.method !== "HEAD"
+        ? request.body
+        : undefined,
+  });
 };
