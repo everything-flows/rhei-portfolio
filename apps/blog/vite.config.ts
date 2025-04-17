@@ -12,10 +12,11 @@ declare module "@remix-run/cloudflare" {
 }
 
 export default defineConfig({
-  base: "/blog",
+  base: "/blog/",
   plugins: [
     remixCloudflareDevProxy(),
     remix({
+      basename: "/blog",
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
