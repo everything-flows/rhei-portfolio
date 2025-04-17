@@ -7,7 +7,9 @@ export const onRequest: PagesFunction = async ({ request }) => {
     return new Response("Not found", { status: 404 });
   }
 
-  return fetch(`https://rhei-blog.pages.dev${url.pathname}${url.search}`, {
+  const targetUrl = `https://rhei-blog.pages.dev${url.pathname}${url.search}`;
+
+  return fetch(targetUrl, {
     method: request.method,
     headers: request.headers,
     body:
