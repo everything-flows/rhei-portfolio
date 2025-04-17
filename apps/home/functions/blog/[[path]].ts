@@ -3,12 +3,13 @@ export const onRequest: PagesFunction = async ({ request }) => {
   const { pathname, search } = url;
 
   let targetPath = pathname;
+  targetPath = targetPath.slice(0, 5);
 
   if (pathname.endsWith(".data") && !pathname.endsWith("/.data")) {
     targetPath = pathname.slice(0, -5) + "/.data";
   }
 
-  const targetUrl = `https://rhei-blog.pages.dev/blog${targetPath}${search}`;
+  const targetUrl = `https://rhei-blog.pages.dev${targetPath}${search}`;
 
   const safeHeaders = new Headers();
   safeHeaders.set("Accept", request.headers.get("Accept") || "*/*");
