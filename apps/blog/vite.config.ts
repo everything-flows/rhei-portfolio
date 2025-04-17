@@ -16,6 +16,7 @@ export default defineConfig({
   plugins: [
     remixCloudflareDevProxy(),
     remix({
+      basename: "/blog",
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
