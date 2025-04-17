@@ -6,7 +6,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
     url.pathname === "/blog" || url.pathname.startsWith("/blog/");
 
   if (isBlogAsset) {
-    const assetPath = url.pathname.replace("/blog", "");
+    const assetPath = url.pathname.replace("/blog", "/");
     const assetTarget = `https://rhei-blog.pages.dev/blog${assetPath}${url.search}`;
 
     return fetch(assetTarget, {
