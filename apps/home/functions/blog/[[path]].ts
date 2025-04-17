@@ -1,8 +1,13 @@
+// functions/blog.ts
 export const onRequest: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
 
-  const isBlogRoute =
-    url.pathname === "/blog" || url.pathname.startsWith("/blog/");
+  if (url.pathname === "/blog") {
+    url.pathname = "/blog/";
+    return Response.redirect(url.toString(), 301);
+  }
+
+  const isBlogRoute = url.pathname.startsWith("/blog/");
   if (!isBlogRoute) return new Response("Not found", { status: 404 });
 
   const targetUrl = `https://rhei-blog.pages.dev${url.pathname}${url.search}`;
