@@ -1,14 +1,8 @@
 export const onRequest: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
-  const { pathname, search } = url;
 
-  let targetPath = pathname;
-
-  if (pathname.endsWith(".data") && !pathname.endsWith("/.data")) {
-    targetPath = pathname.slice(0, -5) + "/.data";
-  }
-
-  const targetUrl = `https://rhei-blog.pages.dev${targetPath}${search}`;
+  const pathWithoutBlog = url.pathname.replace(/^\/blog/, "") || "/";
+  const targetUrl = `https://rhei-blog.pages.dev${pathWithoutBlog}${url.search}`;
 
   const safeHeaders = new Headers();
   safeHeaders.set("Accept", request.headers.get("Accept") || "*/*");
