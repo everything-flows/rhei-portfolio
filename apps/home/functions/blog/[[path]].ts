@@ -1,26 +1,23 @@
+// functions/blog.ts
 export const onRequest: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
 
-  const isBlogRequest = url.pathname.startsWith("/blog");
-  const isDataRequest = url.pathname === "/blog.data";
-
-  if (!isBlogRequest) {
-    return new Response("Not found", { status: 404 });
+  if (url.pathname === "/blog") {
+    url.pathname = "/blog/";
+    return Response.redirect(url.toString(), 301);
   }
 
-  if (isDataRequest) {
-    return fetch("https://rhei-blog.pages.dev/blog/.data", {
-      method: request.method,
-      headers: request.headers,
-    });
-  }
+  const isBlogRoute = url.pathname.startsWith("/blog/");
+  if (!isBlogRoute) return new Response("Not found", { status: 404 });
 
-  return fetch(`https://rhei-blog.pages.dev${url.pathname}${url.search}`, {
+  const targetUrl = `https://rhei-blog.pages.dev${url.pathname}${url.search}`;
+
+  return fetch(targetUrl, {
     method: request.method,
     headers: request.headers,
     body:
       request.method !== "GET" && request.method !== "HEAD"
         ? request.body
-        : null,
+        : undefined,
   });
 };

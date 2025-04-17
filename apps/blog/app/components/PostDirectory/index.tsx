@@ -7,7 +7,7 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
       <ol className="flex flex-col">
         {postList?.map((post) => (
           <li key={post.id}>
-            <Link to={`/blog/${post.subBlog}/${post.id}`}>
+            <Link to={`/${post.subBlog}/${post.id}`}>
               <article className="grid grid-cols-1 gap-4 py-1 sm:grid-cols-[10rem_auto]">
                 {post.thumbnail ? (
                   <img
