@@ -11,7 +11,7 @@ export default function PostList({ postList }: { postList: Document[] }) {
 
   return (
     <>
-      <Link to={`/blog/${firstPost.subBlog}/${firstPost.id}`}>
+      <Link to={`/${firstPost.subBlog}/${firstPost.id}`}>
         <article className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-[1fr_1fr] md:grid-cols-[2fr_3fr] lg:grid-cols-[1fr_2fr]">
           <img
             src={firstPost.thumbnail}
@@ -39,7 +39,7 @@ export default function PostList({ postList }: { postList: Document[] }) {
         <ul className="mt-4 flex gap-4 overflow-auto">
           {leftPostList.map((post: Document) => (
             <li key={post.id}>
-              <Link to={`/blog/${post.subBlog}/${post.id}`}>
+              <Link to={`/${post.subBlog}/${post.id}`}>
                 <article className="grid w-[min(80dvw,280px)] grid-rows-[auto,auto] gap-3">
                   {post.thumbnail ? (
                     <img
