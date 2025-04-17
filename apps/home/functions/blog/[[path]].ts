@@ -3,7 +3,6 @@ export const onRequest: PagesFunction = async ({ request }) => {
   const { pathname, search } = url;
 
   let targetPath = pathname;
-  targetPath = targetPath.slice(0, 5);
 
   if (pathname.endsWith(".data") && !pathname.endsWith("/.data")) {
     targetPath = pathname.slice(0, -5) + "/.data";
