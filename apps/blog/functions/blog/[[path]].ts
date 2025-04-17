@@ -1,12 +1,13 @@
 export const onRequest: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
   let targetUrl = "";
+  const { pathname, search } = url;
 
   if (url.pathname.endsWith(".data") && !url.pathname.endsWith("/.data")) {
-    const pathname = url.pathname.split(".data");
-    targetUrl = `https://rhei-blog.pages.dev${pathname}/.data`;
+    const basePath = pathname.slice(0, -5); // ".data" 잘라내기
+    targetUrl = `https://rhei-blog.pages.dev${basePath}/.data${search}`;
   } else {
-    targetUrl = `https://rhei-blog.pages.dev${url.pathname}${url.search}`;
+    targetUrl = `https://rhei-blog.pages.dev${pathname}${search}`;
   }
 
   return fetch(targetUrl, {
