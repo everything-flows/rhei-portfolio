@@ -1,6 +1,20 @@
+import { Link } from "@remix-run/react";
 import { StickyHeading } from "@rhei/react";
 
-const ACTIVITY_UNIV = [
+interface Activity {
+  title: string;
+  description: string;
+  period: string;
+  list: {
+    content: string;
+    link?: {
+      title: string;
+      href: string;
+    };
+  }[];
+}
+
+const ACTIVITY_UNIV: Activity[] = [
   {
     title: "SGCC",
     description: "서강대학교 중앙 컴퓨터 동아리",
@@ -11,10 +25,42 @@ const ACTIVITY_UNIV = [
     title: "Sogang ICPC Team",
     description: "서강대학교 컴퓨터공학과 알고리즘 문제해결 학회",
     period: "2020.11 - 2023.08",
+    list: [
+      {
+        content: "Baekjoon & Solved.ac Platinum II",
+        link: {
+          title: "psst54 →",
+          href: "https://www.acmicpc.net/user/psst54",
+        },
+      },
+      {
+        content:
+          "2023 겨울 신촌지역 대학교 프로그래밍 동아리 연합 알고리즘 캠프 콘테스트 초급 부문 B번 문항 출제",
+        link: {
+          title: "문제 링크 →",
+          href: "https://www.acmicpc.net/problem/27495",
+        },
+      },
+    ],
+  },
+  {
+    title: "학부 수업 멘토",
+    description: "",
+    period: "",
+    list: [
+      {
+        content:
+          "서강대학교 봄학기 컴퓨팅사고력 강좌 조교 (2021.03. - 2021.06.) ",
+      },
+      {
+        content:
+          "서강대학교 예비대학생을 위한 파이썬 강좌 멘토(2021.01. - 2021.02.)",
+      },
+    ],
   },
 ];
 
-const ACTIVITY_EXTRA = [
+const ACTIVITY_EXTRA: Activity[] = [
   {
     title: "세오스(CEOS)",
     description: "신촌 연합 IT 창업 동아리",
@@ -30,12 +76,12 @@ export default function Activity() {
         <h2 className="text-h2 bg-normal border-sub mb-2 border-b">활동</h2>
       </StickyHeading>
 
-      <section className="ml-4">
+      <section>
         <StickyHeading>
           <h3 className="text-h3 bg-normal">교내활동</h3>
         </StickyHeading>
 
-        <ol className="flex list-disc flex-col gap-2 ps-5">
+        <ol className="flex flex-col gap-2 ps-6">
           {ACTIVITY_UNIV.map((activity) => (
             <li key={activity.title}>
               <article>
@@ -51,9 +97,21 @@ export default function Activity() {
                 </div>
 
                 {activity?.list && (
-                  <ul className="list-disc ps-5">
+                  <ul className="ps-6">
                     {activity.list.map((desc) => (
-                      <li key={desc.content}>{desc.content}</li>
+                      <li key={desc.content}>
+                        <p>
+                          {desc.content}{" "}
+                          {desc.link && (
+                            <Link
+                              to={desc.link.href}
+                              className="text-brand underline"
+                            >
+                              {desc.link.title}
+                            </Link>
+                          )}
+                        </p>
+                      </li>
                     ))}
                   </ul>
                 )}
@@ -63,12 +121,12 @@ export default function Activity() {
         </ol>
       </section>
 
-      <section className="ml-4">
+      <section>
         <StickyHeading>
           <h3 className="text-h3 bg-normal">외부활동</h3>
         </StickyHeading>
 
-        <ol className="flex list-disc flex-col gap-2 ps-5">
+        <ol className="flex flex-col gap-2 ps-6">
           {ACTIVITY_EXTRA.map((activity) => (
             <li key={activity.title}>
               <article>
@@ -84,9 +142,21 @@ export default function Activity() {
                 </div>
 
                 {activity?.list && (
-                  <ul className="list-disc ps-5">
+                  <ul className="ps-6">
                     {activity.list.map((desc) => (
-                      <li key={desc.content}>{desc.content}</li>
+                      <li key={desc.content}>
+                        <p>
+                          {desc.content}{" "}
+                          {desc.link && (
+                            <Link
+                              to={desc.link.href}
+                              className="text-brand underline"
+                            >
+                              {desc.link.title}
+                            </Link>
+                          )}
+                        </p>
+                      </li>
                     ))}
                   </ul>
                 )}

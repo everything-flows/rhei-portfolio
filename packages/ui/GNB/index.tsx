@@ -10,8 +10,12 @@ export default function GNB({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
           <a href="/">home</a>
         </li>
         <li>
+          <a href="/resume">resume</a>
+        </li>
+        <li>
           <a href="/blog">blog</a>
         </li>
+
         {isLoggedIn && (
           <li>
             <a href="/admin">admin</a>
