@@ -1,4 +1,3 @@
-// functions/blog.ts
 export const onRequest: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
 
