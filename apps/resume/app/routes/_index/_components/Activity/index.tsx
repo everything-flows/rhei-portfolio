@@ -35,7 +35,7 @@ export default function Activity() {
           <h3 className="text-h3 bg-normal">교내활동</h3>
         </StickyHeading>
 
-        <ol className="flex list-disc flex-col gap-2 ps-5">
+        <ol className="flex flex-col gap-2 ps-6">
           {ACTIVITY_UNIV.map((activity) => (
             <li key={activity.title}>
               <article>
@@ -51,7 +51,7 @@ export default function Activity() {
                 </div>
 
                 {activity?.list && (
-                  <ul className="list-disc ps-5">
+                  <ul className="ps-6">
                     {activity.list.map((desc) => (
                       <li key={desc.content}>{desc.content}</li>
                     ))}
@@ -68,7 +68,7 @@ export default function Activity() {
           <h3 className="text-h3 bg-normal">외부활동</h3>
         </StickyHeading>
 
-        <ol className="flex list-disc flex-col gap-2 ps-5">
+        <ol className="flex flex-col gap-2 ps-6">
           {ACTIVITY_EXTRA.map((activity) => (
             <li key={activity.title}>
               <article>
@@ -84,7 +84,7 @@ export default function Activity() {
                 </div>
 
                 {activity?.list && (
-                  <ul className="list-disc ps-5">
+                  <ul className="ps-6">
                     {activity.list.map((desc) => (
                       <li key={desc.content}>{desc.content}</li>
                     ))}
