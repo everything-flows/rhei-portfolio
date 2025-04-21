@@ -20,7 +20,7 @@ const AWARD = [
   },
   {
     date: "2019.08",
-    content: "성적우수상",
+    content: "국제인문학부 성적 상위 1% 최우수학생",
     place: "성적우수상",
   },
 ];
@@ -44,7 +44,7 @@ export default function Award() {
           <tbody>
             {AWARD.map((award) => (
               <tr key={award.content}>
-                <td>
+                <td className="min-w-[10rem]">
                   <span className="font-extrabold">{award.place}</span>
                 </td>
                 <td className="w-full min-w-[20rem]">{award.content}</td>

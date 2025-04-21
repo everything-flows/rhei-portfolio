@@ -7,6 +7,7 @@ const EDUCATION = [
     period: "2019.03 - 2023.08",
     location: "서울시 마포구",
     description: [
+      { content: "우등(Cum Laude) 졸업" },
       { content: "CGPA 3.94 / 4.5" },
       { content: "전공 GPA 3.73 / 4.5" },
     ],
@@ -26,7 +27,7 @@ export default function Education() {
         <h2 className="text-h2 bg-normal border-sub mb-2 border-b">교육</h2>
       </StickyHeading>
 
-      <ol className="flex list-disc flex-col gap-2 ps-5">
+      <ol className="flex flex-col gap-2">
         {EDUCATION.map((education) => (
           <li key={education.title}>
             <article>
@@ -43,7 +44,7 @@ export default function Education() {
               </div>
 
               {education.description && (
-                <ul className="list-disc ps-5">
+                <ul className="ps-6">
                   {education.description?.map((desc) => (
                     <li key={desc.content}>{desc.content}</li>
                   ))}
