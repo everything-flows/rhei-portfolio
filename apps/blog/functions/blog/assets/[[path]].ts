@@ -1,6 +1,10 @@
-export const onRequest: PagesFunction = async ({ request }) => {
-  const targetUrl = new URL(request.url);
-  targetUrl.pathname = targetUrl.pathname.replace("blog/assets", "assets");
+export const onRequest: PagesFunction = async ({ request, params }) => {
+  const { path } = params;
 
-  return fetch(targetUrl.toString(), request);
+  const originalUrl = new URL(request.url);
+
+  const assetPath = Array.isArray(path) ? path.join("/") : path;
+  originalUrl.pathname = `/assets/${assetPath}`;
+
+  return fetch(originalUrl.toString(), request);
 };
