@@ -29,6 +29,8 @@ const Marquee = ({
       parentSelector.insertAdjacentHTML("beforeend", clone);
       parentSelector.insertAdjacentHTML("beforeend", clone);
       parentSelector.insertAdjacentHTML("beforeend", clone);
+      parentSelector.insertAdjacentHTML("beforeend", clone);
+      parentSelector.insertAdjacentHTML("beforeend", clone);
 
       if (reverse) {
         parentSelector.classList.add("reverse");
