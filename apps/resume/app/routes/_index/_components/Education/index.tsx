@@ -7,6 +7,7 @@ const EDUCATION = [
     period: "2019.03 - 2023.08",
     location: "서울시 마포구",
     description: [
+      { content: "우등(Cum Laude) 졸업" },
       { content: "CGPA 3.94 / 4.5" },
       { content: "전공 GPA 3.73 / 4.5" },
     ],
