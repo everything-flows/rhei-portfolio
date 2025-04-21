@@ -4,7 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix vite:build",
+    "build": "remix vite:build && mkdir -p build/client/blog && mv build/client/assets build/client/blog/assets",
     "deploy": "wrangler pages deploy ./build/client",
     "dev": "remix vite:dev",
     "local": "remix vite:dev --host",
