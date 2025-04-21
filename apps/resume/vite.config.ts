@@ -16,7 +16,6 @@ export default defineConfig({
   plugins: [
     remixCloudflareDevProxy(),
     remix({
-      basename: "/resume/",
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
