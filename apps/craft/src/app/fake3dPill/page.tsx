@@ -1,7 +1,7 @@
 import { Footer } from "@rhei/ui";
 import Pill from "./Pill";
 
-export default async function SpinningPillPage() {
+export default async function fake3dPillPage() {
   return (
     <>
       <main className="content-x">
