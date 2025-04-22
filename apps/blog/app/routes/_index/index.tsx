@@ -1,5 +1,5 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
-import { GNB } from "@rhei/ui";
+import { Footer, GNB } from "@rhei/ui";
 
 import PinnedSection from "./_components/PinnedSection";
 import { useLoaderData } from "@remix-run/react";
@@ -29,6 +29,8 @@ export default function Index() {
       <main className="content-x flex flex-col gap-40">
         <PinnedSection postList={pinnedPostList} />
       </main>
+
+      <Footer />
     </>
   );
 }
