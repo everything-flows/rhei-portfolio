@@ -21,14 +21,16 @@ export default function Pill() {
       const s = Math.sin(value);
 
       setSin(s);
-      setCos(Math.sin(value));
+      setCos(Math.cos(value));
       setAbsSin(Math.abs(s));
       if (s < 0) {
-        setBlueTop(`calc(${s} * 4rem + 2rem)`);
+        // blue is top, black is bottom
+        setBlueTop(`calc(${s} * 3rem + 2rem)`);
         setBlackTop("2rem");
       } else {
+        // blue is bottom, black is top
         setBlueTop("2rem");
-        setBlackTop(`calc(${-s} * 4rem + 2rem)`);
+        setBlackTop(`calc(${s} * -3rem + 2rem)`);
       }
       requestAnimationFrame((t) => rotate(t));
     }
@@ -42,22 +44,24 @@ export default function Pill() {
   }, []);
 
   return (
-    <div className="relative m-40 size-40">
+    <div className="relative m-4 h-20 w-8">
       {/* circle */}
       <div
         className="border-brand bg-brand absolute rounded-full border-2"
         style={{
-          top: `calc(${sin} * 4rem)`,
+          top: `calc(${sin} * 3rem)`,
           width: "4rem",
           height: "4rem",
+          zIndex: cos > 0 ? 0 : 1,
         }}
       />
       <div
         className="border-reverse bg-reverse absolute rounded-full border-2"
         style={{
-          top: `calc(-1 * ${sin} * 4rem)`,
+          top: `calc(-1 * ${sin} * 3rem)`,
           width: "4rem",
           height: "4rem",
+          zIndex: cos > 0 ? 1 : 0,
         }}
       />
 
@@ -67,7 +71,8 @@ export default function Pill() {
         style={{
           top: blueTop,
           width: "4rem",
-          height: `calc(${absSin} * 4rem)`,
+          height: `calc(${absSin} * 3rem)`,
+          zIndex: cos > 0 ? 0 : 1,
         }}
       />
       <div
@@ -75,7 +80,8 @@ export default function Pill() {
         style={{
           top: blackTop,
           width: "4rem",
-          height: `calc(${absSin} * 4rem)`,
+          height: `calc(${absSin} * 3rem)`,
+          zIndex: cos > 0 ? 1 : 0,
         }}
       />
 
@@ -87,7 +93,7 @@ export default function Pill() {
           width: "4rem",
           height: "4rem",
           transform: `scaleY(${1 - absSin})`,
-          opacity: cos > 0 ? 0 : 1,
+          zIndex: cos > 0 ? 0 : 1,
         }}
       />
       <div
@@ -97,7 +103,7 @@ export default function Pill() {
           width: "4rem",
           height: "4rem",
           transform: `scaleY(${1 - absSin})`,
-          opacity: cos > 0 ? 1 : 0,
+          zIndex: cos > 0 ? 1 : 0,
         }}
       />
 
