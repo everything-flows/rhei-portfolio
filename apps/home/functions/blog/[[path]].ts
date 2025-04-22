@@ -9,7 +9,7 @@ export const onRequest: PagesFunction = async ({ request }) => {
   const isBlogRoute = url.pathname.startsWith("/blog/");
   if (!isBlogRoute) return new Response("Not found", { status: 404 });
 
-  const targetUrl = `https://rhei-blog.pages.dev${url.pathname}${url.search}`;
+  const targetUrl = `https://blog.rhei.me${url.pathname}${url.search}`;
 
   return fetch(targetUrl, {
     method: request.method,

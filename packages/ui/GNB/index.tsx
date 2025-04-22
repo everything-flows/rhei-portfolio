@@ -7,13 +7,13 @@ export default function GNB({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
 
       <ul className="flex gap-2 items-center">
         <li>
-          <a href="/">home</a>
-        </li>
-        <li>
           <a href="/resume">resume</a>
         </li>
         <li>
           <a href="/blog">blog</a>
+        </li>
+        <li>
+          <a href="/craft">craft</a>
         </li>
 
         {isLoggedIn && (

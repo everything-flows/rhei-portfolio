@@ -1,0 +1,13 @@
+name = "rhei-blog"
+compatibility_date = "2024-05-01"
+
+[build]
+command = "npm run build && mkdir -p build/client/blog && mv build/client/assets build/client/blog/"
+upload = { dir = "./build/client", format = "directory" }
+
+[site]
+bucket = "./build/client"
+
+[env.production]
+# optional: custom domains (if using)
+# routes = ["blog.rhei.me/*"]

@@ -1,10 +1,9 @@
 import { useLoaderData } from "@remix-run/react";
 import type { MetaFunction } from "@remix-run/cloudflare";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { GNB } from "@rhei/ui";
+import { GNB, Footer } from "@rhei/ui";
 
 import Blog from "./_components/Blog";
-import Footer from "~/_components/Footer";
 import Header from "./_components/Header";
 import Banner from "./_components/Banner";
 import Tools from "./_components/Tools";
@@ -55,6 +54,7 @@ export default function Index() {
           </section> */}
           <Blog />
         </main>
+
         <Footer />
       </div>
     </QueryClientProvider>
