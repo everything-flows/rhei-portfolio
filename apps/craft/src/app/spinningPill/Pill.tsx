@@ -69,7 +69,7 @@ export default function Pill({
         }}
       />
       <div
-        className={`border-reverse ${fill ? "bg-reverse" : ""} absolute rounded-full border-2`}
+        className={`border-gray-white ${fill ? "bg-gray-white" : ""} absolute rounded-full border-2`}
         style={{
           top: `calc(-1 * ${sin} * ${height} + ${height})`,
           width: width,
@@ -89,7 +89,7 @@ export default function Pill({
         }}
       />
       <div
-        className={`border-reverse ${fill ? "bg-reverse" : ""} absolute border-2`}
+        className={`border-gray-white ${fill ? "bg-gray-white" : ""} absolute border-2`}
         style={{
           top: `calc(${blackTop} + ${height})`,
           width: width,
@@ -110,7 +110,7 @@ export default function Pill({
         }}
       />
       <div
-        className={`border-reverse ${fill ? "bg-reverse" : ""} absolute rounded-full border-2`}
+        className={`border-gray-white ${fill ? "bg-gray-white" : ""} absolute rounded-full border-2`}
         style={{
           top: height,
           width: width,
