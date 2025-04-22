@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  basePath: "/blog",
-  assetPrefix: "/blog",
+  basePath: "/craft",
+  assetPrefix: "/craft",
   transpilePackages: ["@rhei/ui", "@rhei/react"],
 };
 
