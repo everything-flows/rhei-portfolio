@@ -32,7 +32,7 @@ export default function Header() {
 
       <h2 className="text-display-sub">FRONT-END 개발자</h2>
 
-      <ul className="mt-6 list-disc text-pretty pl-5 text-[clamp(1.2rem,3vw,1.5rem)] leading-[1.2]">
+      <ul className="mt-6 flex list-disc flex-col gap-2 text-pretty ps-6 text-[clamp(1.2rem,3vw,1.5rem)] leading-[1.2]">
         <li>
           인턴, 창업 동아리 활동을 통해{" "}
           <strong className="font-extrabold">빠르고 정확하게 MVP를 개발</strong>
@@ -44,10 +44,6 @@ export default function Header() {
           좋아합니다.
         </li>
       </ul>
-
-      <Link to="/contact" className="mt-6 w-fit text-[clamp(1rem,3vw,1.5rem)]">
-        🤙 연락하고 지내요!
-      </Link>
     </section>
   );
 }
