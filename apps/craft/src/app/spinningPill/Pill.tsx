@@ -88,6 +88,7 @@ export default function Pill({
         ref={topCircleRef}
         className={`border-brand ${fill ? "bg-brand" : ""} absolute rounded-full border-2`}
         style={{
+          top: height,
           width: width,
           height: width,
         }}
@@ -96,6 +97,7 @@ export default function Pill({
         ref={bottomCircleRef}
         className={`border-gray-white ${fill ? "bg-gray-white" : ""} absolute rounded-full border-2`}
         style={{
+          top: height,
           width: width,
           height: width,
         }}
@@ -107,6 +109,7 @@ export default function Pill({
         className={`border-brand ${fill ? "bg-brand" : ""} absolute border-2`}
         style={{
           width: width,
+          top: `calc(${height} + ${width} / 2)`,
         }}
       />
       <div
@@ -114,6 +117,7 @@ export default function Pill({
         className={`border-gray-white ${fill ? "bg-gray-white" : ""} absolute border-2`}
         style={{
           width: width,
+          top: `calc(${height} + ${width} / 2)`,
         }}
       />
 
