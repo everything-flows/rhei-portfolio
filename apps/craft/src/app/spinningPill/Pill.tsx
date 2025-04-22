@@ -37,33 +37,35 @@ export default function Pill({
 
       const value = (timestamp - startTimeRef.current) / speed;
 
-      const s = Math.sin(value);
-
       const sin = Math.sin(value);
+      const absSin = Math.abs(sin);
       const cos = Math.cos(value);
 
       topCircleRef.current.style.top = `calc(${sin} * ${height} + ${height})`;
-      topCircleRef.current.style.zIndex = cos > 0 ? "0" : "1";
       bottomCircleRef.current.style.top = `calc(-1 * ${sin} * ${height} + ${height})`;
-      bottomCircleRef.current.style.zIndex = cos > 0 ? "1" : "0";
-
-      topSquareRef.current.style.height = `calc(${Math.abs(sin)} * ${height})`;
-      topSquareRef.current.style.zIndex = cos > 0 ? "0" : "1";
-      bottomSquareRef.current.style.height = `calc(${Math.abs(sin)} * ${height})`;
-      bottomSquareRef.current.style.zIndex = cos > 0 ? "1" : "0";
+      topSquareRef.current.style.height = `calc(${absSin} * ${height})`;
+      bottomSquareRef.current.style.height = `calc(${absSin} * ${height})`;
 
       if (sin < 0) {
-        topSquareRef.current.style.top = `calc(${s} * ${height} + ${width} / 2 + ${height})`;
+        topSquareRef.current.style.top = `calc(${sin} * ${height} + ${width} / 2 + ${height})`;
         bottomSquareRef.current.style.top = `calc(${width} / 2 + ${height})`;
       } else {
         topSquareRef.current.style.top = `calc(${width} / 2 + ${height})`;
-        bottomSquareRef.current.style.top = `calc(${s} * -${height} + ${width} / 2 + ${height})`;
+        bottomSquareRef.current.style.top = `calc(-1 * ${sin} * ${height} + ${width} / 2 + ${height})`;
       }
 
-      topCenterRef.current.style.transform = `scaleY(${1 - Math.abs(sin)})`;
-      topCenterRef.current.style.zIndex = cos > 0 ? "0" : "1";
-      bottomCenterRef.current.style.transform = `scaleY(${1 - Math.abs(sin)})`;
-      bottomCenterRef.current.style.zIndex = cos > 0 ? "1" : "0";
+      topCenterRef.current.style.transform = `scaleY(${1 - absSin})`;
+      bottomCenterRef.current.style.transform = `scaleY(${1 - absSin})`;
+
+      const getTopZIndex = () => (cos > 0 ? "0" : "1");
+      const getBottomZIndex = () => (cos > 0 ? "1" : "0");
+
+      topCircleRef.current.style.zIndex = getTopZIndex();
+      topSquareRef.current.style.zIndex = getTopZIndex();
+      topCenterRef.current.style.zIndex = getTopZIndex();
+      bottomCircleRef.current.style.zIndex = getBottomZIndex();
+      bottomSquareRef.current.style.zIndex = getBottomZIndex();
+      bottomCenterRef.current.style.zIndex = getBottomZIndex();
 
       requestAnimationFrame((t) => rotate(t));
     }
