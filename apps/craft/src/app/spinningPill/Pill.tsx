@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Pill({
   width = "4rem",
@@ -14,15 +14,24 @@ export default function Pill({
   fill?: boolean;
 }) {
   const startTimeRef = useRef<number | null>(null);
-  const [sin, setSin] = useState(0);
-  const [cos, setCos] = useState(0);
-  const [absSin, setAbsSin] = useState(0);
-  const [blueTop, setBlueTop] = useState(`calc(${width} / 2)`);
-  const [blackTop, setBlackTop] = useState(`calc(${width} / 2)`);
+  const topCircleRef = useRef<HTMLDivElement>(null);
+  const bottomCircleRef = useRef<HTMLDivElement>(null);
+  const topSquareRef = useRef<HTMLDivElement>(null);
+  const bottomSquareRef = useRef<HTMLDivElement>(null);
+  const topCenterRef = useRef<HTMLDivElement>(null);
+  const bottomCenterRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function rotate(timestamp: number) {
-      if (!startTimeRef.current) {
+      if (
+        !startTimeRef.current ||
+        !topCircleRef.current ||
+        !bottomCircleRef.current ||
+        !topSquareRef.current ||
+        !bottomSquareRef.current ||
+        !topCenterRef.current ||
+        !bottomCenterRef.current
+      ) {
         return;
       }
 
@@ -30,18 +39,32 @@ export default function Pill({
 
       const s = Math.sin(value);
 
-      setSin(s);
-      setCos(Math.cos(value));
-      setAbsSin(Math.abs(s));
-      if (s < 0) {
-        // blue is top, black is bottom
-        setBlueTop(`calc(${s} * ${height} + ${width} / 2)`);
-        setBlackTop(`calc(${width} / 2)`);
+      const sin = Math.sin(value);
+      const cos = Math.cos(value);
+
+      topCircleRef.current.style.top = `calc(${sin} * ${height} + ${height})`;
+      topCircleRef.current.style.zIndex = cos > 0 ? "0" : "1";
+      bottomCircleRef.current.style.top = `calc(-1 * ${sin} * ${height} + ${height})`;
+      bottomCircleRef.current.style.zIndex = cos > 0 ? "1" : "0";
+
+      topSquareRef.current.style.height = `calc(${Math.abs(sin)} * ${height})`;
+      topSquareRef.current.style.zIndex = cos > 0 ? "0" : "1";
+      bottomSquareRef.current.style.height = `calc(${Math.abs(sin)} * ${height})`;
+      bottomSquareRef.current.style.zIndex = cos > 0 ? "1" : "0";
+
+      if (sin < 0) {
+        topSquareRef.current.style.top = `calc(${s} * ${height} + ${width} / 2 + ${height})`;
+        bottomSquareRef.current.style.top = `calc(${width} / 2 + ${height})`;
       } else {
-        // blue is bottom, black is top
-        setBlueTop(`calc(${width} / 2)`);
-        setBlackTop(`calc(${s} * -${height} + ${width} / 2)`);
+        topSquareRef.current.style.top = `calc(${width} / 2 + ${height})`;
+        bottomSquareRef.current.style.top = `calc(${s} * -${height} + ${width} / 2 + ${height})`;
       }
+
+      topCenterRef.current.style.transform = `scaleY(${1 - Math.abs(sin)})`;
+      topCenterRef.current.style.zIndex = cos > 0 ? "0" : "1";
+      bottomCenterRef.current.style.transform = `scaleY(${1 - Math.abs(sin)})`;
+      bottomCenterRef.current.style.zIndex = cos > 0 ? "1" : "0";
+
       requestAnimationFrame((t) => rotate(t));
     }
 
@@ -51,7 +74,7 @@ export default function Pill({
     }
 
     requestAnimationFrame(firstFrame);
-  }, [width, height]);
+  }, [width, height, speed]);
 
   return (
     <div
@@ -60,63 +83,55 @@ export default function Pill({
     >
       {/* circle */}
       <div
+        ref={topCircleRef}
         className={`border-brand ${fill ? "bg-brand" : ""} absolute rounded-full border-2`}
         style={{
-          top: `calc(${sin} * ${height} + ${height})`,
           width: width,
           height: width,
-          zIndex: cos > 0 ? 0 : 1,
         }}
       />
       <div
+        ref={bottomCircleRef}
         className={`border-gray-white ${fill ? "bg-gray-white" : ""} absolute rounded-full border-2`}
         style={{
-          top: `calc(-1 * ${sin} * ${height} + ${height})`,
           width: width,
           height: width,
-          zIndex: cos > 0 ? 1 : 0,
         }}
       />
 
       {/* square */}
       <div
+        ref={topSquareRef}
         className={`border-brand ${fill ? "bg-brand" : ""} absolute border-2`}
         style={{
-          top: `calc(${blueTop} + ${height})`,
           width: width,
-          height: `calc(${absSin} * ${height})`,
-          zIndex: cos > 0 ? 0 : 1,
         }}
       />
       <div
+        ref={bottomSquareRef}
         className={`border-gray-white ${fill ? "bg-gray-white" : ""} absolute border-2`}
         style={{
-          top: `calc(${blackTop} + ${height})`,
           width: width,
-          height: `calc(${absSin} * ${height})`,
-          zIndex: cos > 0 ? 1 : 0,
         }}
       />
 
       {/* center circle */}
       <div
+        ref={topCenterRef}
         className={`border-brand ${fill ? "bg-brand" : ""} absolute rounded-full border-2`}
         style={{
           top: height,
           width: width,
           height: width,
-          transform: `scaleY(${1 - absSin})`,
-          zIndex: cos > 0 ? 0 : 1,
         }}
       />
       <div
+        ref={bottomCenterRef}
         className={`border-gray-white ${fill ? "bg-gray-white" : ""} absolute rounded-full border-2`}
         style={{
           top: height,
           width: width,
           height: width,
-          transform: `scaleY(${1 - absSin})`,
-          zIndex: cos > 0 ? 1 : 0,
         }}
       />
 
