@@ -8,7 +8,7 @@ export default async function SpinningPillPage() {
         <h1 className="mx-auto w-full max-w-6xl text-[2rem] font-bold">
           Fake 3D 알약
         </h1>
-        <p>
+        <p className="mx-auto w-full max-w-6xl">
           reference:{" "}
           <a
             href="https://x.com/astelance/status/1911492586839412775"
