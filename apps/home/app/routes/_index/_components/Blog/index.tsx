@@ -33,14 +33,8 @@ export default function Blog() {
   });
 
   return (
-    <section className="flex flex-col">
-      <h2>BLOG</h2>
-
-      <div className="-content-x overflow-x-clip">
-        <div className="mx-auto w-[80%] max-w-2xl">
-          <PostList list={pinnedPostList} />
-        </div>
-      </div>
+    <section id="tools" className="mx-auto max-w-6xl py-4">
+      {/* blog */}
     </section>
   );
 }

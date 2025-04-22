@@ -25,16 +25,22 @@ const Marquee = ({
       const clone = parentSelector.innerHTML;
       const firstElement =
         parentSelector.firstElementChild as HTMLParagraphElement | null;
-      let i = 0;
+
+      parentSelector.insertAdjacentHTML("beforeend", clone);
+      parentSelector.insertAdjacentHTML("beforeend", clone);
+      parentSelector.insertAdjacentHTML("beforeend", clone);
       parentSelector.insertAdjacentHTML("beforeend", clone);
       parentSelector.insertAdjacentHTML("beforeend", clone);
 
-      if (reverse) parentSelector.classList.add("reverse");
+      if (reverse) {
+        parentSelector.classList.add("reverse");
+      }
 
       if (!firstElement) {
         return;
       }
 
+      let i = 0;
       const moveItem = () => {
         if (reverse) {
           firstElement.style.marginRight = `-${i}px`;
