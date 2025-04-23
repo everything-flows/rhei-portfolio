@@ -9,6 +9,7 @@ import Banner from "./_components/Banner";
 import Tools from "./_components/Tools";
 import Toc from "./_components/Toc";
 import About from "./_components/About";
+import Notification from "./_components/Notification";
 
 export { default as loader } from "./_utils/loader";
 export const meta: MetaFunction = () => {
@@ -34,7 +35,9 @@ export default function Index() {
 
           <Banner />
 
-          <Toc />
+          <Notification />
+
+          {/* <Toc /> */}
 
           <About />
 
