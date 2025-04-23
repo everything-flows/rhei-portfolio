@@ -6,9 +6,9 @@ export default async function Home() {
     <>
       <main className="content-x">
         <section className="mx-auto w-full max-w-6xl">
-          <h1></h1>
+          <h1>나의 작은 쓰레기장</h1>
 
-          <div className="flex">
+          <div className="mt-8 flex">
             <Link
               href="/fake3dPill"
               className="border-sub rounded-md border p-4"
