@@ -37,22 +37,10 @@ const WORK = [
     stack: ["TypeScript", "React.js", "Supabase"],
     content: [
       {
-        title: "한글 검색 성능 향상",
+        title: "모노레포 도입",
         list: [
-          "증상 검색시, 한글 검색 성능을 개선하기 위해 N-gram 및 레벤슈타인 거리 알고리즘을 활용",
-          "Hangul.js 라이브러리를 사용하여 한글 처리의 정확성을 높이고, 사용자 경험을 향상",
-        ],
-      },
-      {
-        title: "AB 테스트",
-        list: [
-          "Google Analytics를 이용해 증상 검색에서 실제 문항 풀이로의 전환율을 높이기 위한 AB테스트 실시",
-        ],
-      },
-      {
-        title: "비동기 처리를 통한 블록 실행 개선",
-        list: [
-          "Redux persist를 이용한 상태 관리로 문항 중간 저장 및 복구 기능을 제공하여 사용자 경험 향상에 기여",
+          "Git Submodules로 관리되던 웹, 앱 및 패키지 레포를 Yarn Workspaces를 이용해 모노레포로 통합",
+          "배포 과정을 간소화하고, 웹과 앱의 버전 및 의존성을 통일하여 관리 효율성을 향상",
         ],
       },
     ],
@@ -66,10 +54,22 @@ const WORK = [
     stack: ["TypeScript", "Next.js", "React Native"],
     content: [
       {
-        title: "모노레포 도입",
+        title: "한글 검색 성능 향상",
         list: [
-          "Git Submodules로 관리되던 웹, 앱 및 패키지 레포를 Yarn Workspaces를 이용해 모노레포로 통합",
-          "배포 과정을 간소화하고, 웹과 앱의 버전 및 의존성을 통일하여 관리 효율성을 향상",
+          "증상 검색시, 한글 검색 성능을 개선하기 위해 N-gram 및 레벤슈타인 거리 알고리즘을 활용",
+          "Hangul.js 라이브러리를 사용하여 한글 처리의 정확성을 높이고, 사용자 경험을 향상",
+        ],
+      },
+      {
+        title: "AB 테스트",
+        list: [
+          "Google Analytics를 이용해 증상 검색에서 실제 문항 풀이로의 전환율을 높이기 위한 AB테스트 실시",
+        ],
+      },
+      {
+        title: "상태관리",
+        list: [
+          "Redux persist를 이용한 상태 관리로 문항 중간 저장 및 복구 기능을 제공하여 사용자 경험 향상에 기여",
         ],
       },
     ],
