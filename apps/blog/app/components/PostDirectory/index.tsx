@@ -26,6 +26,19 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
                     <p className="text-responsive-p font-normal text-gray-300">
                       {post.subTitle}
                     </p>
+
+                    <ul className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
+                      {post.tags.map((tag) => (
+                        <li>
+                          <Link
+                            to={`/tags/${tag}`}
+                            className="text-brand border-brand rounded-full border px-2 py-[2px] text-[1rem]"
+                          >
+                            {tag.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </article>
