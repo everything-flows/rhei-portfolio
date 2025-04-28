@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import {
-  SITE_TITLE,
   SITE_NAME,
   AUTHOR,
   SITE_DESCRIPTION,
