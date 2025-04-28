@@ -14,7 +14,9 @@ import "./tailwind.css";
 import "./breadcrumb.css";
 import useCategoryStore from "./stores/category";
 import fetchCategoryData from "./_utils/fetchCategoryData";
+
 export { loader } from "./_utils/loader";
+export { meta } from "./_utils/meta";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { supabaseCredential } = useLoaderData();

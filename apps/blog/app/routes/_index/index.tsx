@@ -1,16 +1,9 @@
-import type { MetaFunction } from "@remix-run/cloudflare";
 import { Footer, GNB } from "@rhei/ui";
 
 import PinnedSection from "./_components/PinnedSection";
 import { useLoaderData } from "@remix-run/react";
 
 export { default as loader } from "./_utils/loader";
-export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
-};
 
 export default function Index() {
   const data = useLoaderData();
