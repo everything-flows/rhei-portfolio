@@ -6,7 +6,7 @@ import { POST_TABLE } from "~/constants/supabase";
 
 const SITEMAP_ATTR_LIST = ["id", "sub_blog", "last_edited_at"];
 
-export async function getSitemapData({
+export async function getSitemapPostList({
   supabaseClient,
 }: {
   supabaseClient: SupabaseClient<Database, "public">;

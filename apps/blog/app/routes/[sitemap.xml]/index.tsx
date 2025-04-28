@@ -1,15 +1,16 @@
+import { SITE_URL } from "@rhei/meta";
 import { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import {
   createServerClient,
   parseCookieHeader,
   serializeCookieHeader,
 } from "@supabase/ssr";
-import { SITE_URL } from "@rhei/meta";
 
-import { getSitemapPostList } from "./getSitemapPostList";
-import { getSitemapTagList } from "./getSitemapTagList";
+import { getSitemapPostList } from "../getSitemapPostList";
 
-export async function loader({ context, request }: LoaderFunctionArgs) {
+export default async function loader({ context, request }: LoaderFunctionArgs) {
+  const headers = new Headers();
+
   const SUPABASE_URL = context.cloudflare.env.SUPABASE_URL;
   const SUPABASE_ANON_KEY = context.cloudflare.env.SUPABASE_ANON_KEY;
 
@@ -33,44 +34,27 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
     },
   });
 
-  const posts = await getSitemapPostList({ supabaseClient });
-  const tags = await getSitemapTagList({ supabaseClient });
+  const posts = await getSitemapData({ supabaseClient });
 
-  const content = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${SITE_URL}</loc>
-    <lastmod>${new Date().toISOString()}</lastmod>
-    <priority>1.0</priority>
-  </url>
+  // XML 생성
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
 ${posts
   .map(
     (post) => `
   <url>
-    <loc>${SITE_URL}/${post.sub_blog}/${post.id}</loc>
+    <loc>${SITE_URL}/blog/${post.sub_blog}/${post.id}</loc>
     <lastmod>${new Date(post.last_edited_at).toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
   </url>`,
   )
-  .join("")}
-  ${tags
-    .map(
-      (tag) => `
-  <url>
-    <loc>${SITE_URL}/tag/${tag.id}</loc>
-    <lastmod>${new Date(tag.created_at).toISOString()}</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>`,
-    )
-    .join("")}
+  .join("\n")}
 </urlset>`;
 
-  return new Response(content, {
-    status: 200,
+  // 응답 반환
+  return new Response(sitemap.trim(), {
     headers: {
       "Content-Type": "application/xml",
-      "xml-version": "1.0",
-      encoding: "UTF-8",
     },
   });
 }
