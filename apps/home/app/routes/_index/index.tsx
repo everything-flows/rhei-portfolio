@@ -1,5 +1,4 @@
 import { useLoaderData } from "@remix-run/react";
-import type { MetaFunction } from "@remix-run/cloudflare";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { GNB, Footer } from "@rhei/ui";
 
@@ -7,17 +6,11 @@ import Blog from "./_components/Blog";
 import Header from "./_components/Header";
 import Banner from "./_components/Banner";
 import Tools from "./_components/Tools";
-import Toc from "./_components/Toc";
+// import Toc from "./_components/Toc";
 import About from "./_components/About";
 import Notification from "./_components/Notification";
 
 export { default as loader } from "./_utils/loader";
-export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
-};
 
 const queryClient = new QueryClient();
 

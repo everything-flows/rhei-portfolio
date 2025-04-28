@@ -13,6 +13,7 @@ import "@rhei/ui/styles/utilities.css";
 import ThemeColor from "./_components/ThemeColor";
 
 export { loader } from "./_utils/loader";
+export { meta } from "./_utils/meta";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
