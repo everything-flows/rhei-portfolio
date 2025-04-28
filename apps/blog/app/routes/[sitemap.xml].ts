@@ -39,7 +39,7 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
   const content = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>${SITE_URL}</loc>
+    <loc>${SITE_URL}/blog/</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <priority>1.0</priority>
   </url>
@@ -47,7 +47,7 @@ ${posts
   .map(
     (post) => `
   <url>
-    <loc>${SITE_URL}/${post.sub_blog}/${post.id}</loc>
+    <loc>${SITE_URL}/blog/${post.sub_blog}/${post.id}</loc>
     <lastmod>${new Date(post.last_edited_at).toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
   </url>`,
@@ -57,7 +57,7 @@ ${posts
     .map(
       (tag) => `
   <url>
-    <loc>${SITE_URL}/tag/${tag.id}</loc>
+    <loc>${SITE_URL}/blog/tag/${tag.id}</loc>
     <lastmod>${new Date(tag.created_at).toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
   </url>`,
