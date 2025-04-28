@@ -11,6 +11,7 @@
   "dependencies": {
     "@rhei/react": "file:../../packages/react",
     "@rhei/ui": "file:../../packages/ui",
+    "@rhei/meta": "file:../../packages/meta",
     "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.49.4",
     "next": "15.3.0",
