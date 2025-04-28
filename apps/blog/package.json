@@ -31,7 +31,8 @@
     "remark-rehype": "^11.1.2",
     "remark-toc": "^9.0.0",
     "unified": "^11.0.5",
-    "vfile": "^6.0.3"
+    "vfile": "^6.0.3",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240512.0",
