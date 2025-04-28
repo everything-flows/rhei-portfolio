@@ -1,5 +1,7 @@
 import { Link } from "@remix-run/react";
+
 import { Document } from "~/types/post";
+import TagList from "~/components/TagList";
 
 export default function PostList({ postList }: { postList: Document[] }) {
   if (!postList || postList.length === 0) {
@@ -21,16 +23,8 @@ export default function PostList({ postList }: { postList: Document[] }) {
           <div>
             <h3 className="text-responsive-h2 font-900">{firstPost.title}</h3>
             <p className="text-responsive-p">{firstPost.subTitle}</p>
-            <div className="flex flex-wrap gap-x-2 gap-y-1">
-              {firstPost.tags.map((tag) => (
-                <p
-                  key={tag.title}
-                  className="text-responsive-p text-brand border-brand mt-2 rounded-full border-[1.5px] px-2"
-                >
-                  {tag.title}
-                </p>
-              ))}
-            </div>
+
+            <TagList tagList={firstPost.tags} bold />
           </div>
         </article>
       </Link>
