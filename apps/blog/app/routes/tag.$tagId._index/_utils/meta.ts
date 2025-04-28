@@ -1,15 +1,27 @@
 import {
-  SITE_TITLE,
   SITE_NAME,
   AUTHOR,
   SITE_DESCRIPTION,
   SITE_THUMBNAIL,
   SITE_URL,
-  GITHUB_URL,
 } from "@rhei/meta";
 
-export function meta() {
-  const title = `${SITE_TITLE} | ${SITE_NAME}`;
+import { Document } from "~/types/post";
+
+export default function meta({
+  data,
+}: {
+  data: {
+    tagData: { content: string[]; id: string };
+    postList: Document[];
+  };
+}) {
+  const { tagData, postList } = data;
+
+  const title = `${tagData.id} 관련 포스트 | ${SITE_NAME}`;
+  const description = `${tagData.id} 관련 포스트 모음입니다. | ${SITE_DESCRIPTION}`;
+  const thumbnail = SITE_THUMBNAIL;
+  const url = `${SITE_URL}/blog/tag/${tagData.id}`;
 
   return [
     {
@@ -17,7 +29,7 @@ export function meta() {
     },
     {
       name: "description",
-      content: SITE_DESCRIPTION,
+      content: description,
     },
     {
       name: "author",
@@ -29,11 +41,11 @@ export function meta() {
     },
     {
       property: "og:description",
-      content: SITE_DESCRIPTION,
+      content: description,
     },
     {
       property: "og:image",
-      content: SITE_THUMBNAIL,
+      content: thumbnail,
     },
     {
       property: "og:type",
@@ -45,7 +57,7 @@ export function meta() {
     },
     {
       property: "og:url",
-      content: URL,
+      content: url,
     },
     {
       name: "twitter:card",
@@ -57,25 +69,26 @@ export function meta() {
     },
     {
       name: "twitter:description",
-      content: SITE_DESCRIPTION,
+      content: description,
     },
     {
       name: "twitter:image",
-      content: SITE_THUMBNAIL,
+      content: thumbnail,
     },
     {
       rel: "canonical",
-      href: SITE_URL,
+      href: url,
     },
     {
       "script:ld+json": {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        name: SITE_NAME,
-        url: SITE_URL,
-        logo: SITE_THUMBNAIL,
-        description: SITE_DESCRIPTION,
-        sameAs: [GITHUB_URL],
+        "@type": "ItemList",
+        itemListElement: postList.map((post: Document, index: number) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: `${SITE_URL}/blog/${post.subBlog}/${post.id}`,
+          name: post.title,
+        })),
       },
     },
   ];
