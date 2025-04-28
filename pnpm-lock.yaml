@@ -338,6 +338,9 @@ importers:
       '@remix-run/react':
         specifier: ^2.15.3
         version: 2.16.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
+      '@rhei/meta':
+        specifier: file:../../packages/meta
+        version: link:../../packages/meta
       '@rhei/react':
         specifier: file:../../packages/react
         version: link:../../packages/react

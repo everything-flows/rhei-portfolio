@@ -21,6 +21,7 @@
     "@remix-run/react": "^2.15.3",
     "@rhei/react": "file:../../packages/react",
     "@rhei/ui": "file:../../packages/ui",
+    "@rhei/meta": "file:../../packages/meta",
     "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.49.4",
     "isbot": "^4.1.0",
