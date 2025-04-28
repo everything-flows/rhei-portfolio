@@ -2,7 +2,7 @@ import {
   SITE_NAME,
   AUTHOR,
   SITE_DESCRIPTION,
-  SITE_THUMBNAIL,
+  BLOG_THUMBNAIL,
   SITE_URL,
 } from "@rhei/meta";
 
@@ -18,7 +18,7 @@ export default function meta({
 
   const title = `${postInfo.title} | ${SITE_NAME}`;
   const description = `${postInfo.subTitle} | ${SITE_DESCRIPTION}`;
-  const thumbnail = postInfo.thumbnail || SITE_THUMBNAIL;
+  const thumbnail = postInfo.thumbnail || BLOG_THUMBNAIL;
   const url = `${SITE_URL}/blog/${postInfo.subBlog}/${postInfo.id}`;
 
   return [
@@ -95,7 +95,7 @@ export default function meta({
           name: SITE_NAME,
           logo: {
             "@type": "ImageObject",
-            url: SITE_THUMBNAIL,
+            url: BLOG_THUMBNAIL,
           },
         },
         mainEntityOfPage: {

@@ -3,7 +3,7 @@ import {
   SITE_NAME,
   AUTHOR,
   SITE_DESCRIPTION,
-  SITE_THUMBNAIL,
+  BLOG_THUMBNAIL,
   SITE_URL,
   GITHUB_URL,
 } from "@rhei/meta";
@@ -33,7 +33,7 @@ export function meta() {
     },
     {
       property: "og:image",
-      content: SITE_THUMBNAIL,
+      content: BLOG_THUMBNAIL,
     },
     {
       property: "og:type",
@@ -61,7 +61,7 @@ export function meta() {
     },
     {
       name: "twitter:image",
-      content: SITE_THUMBNAIL,
+      content: BLOG_THUMBNAIL,
     },
     {
       rel: "canonical",
@@ -73,7 +73,7 @@ export function meta() {
         "@type": "Organization",
         name: SITE_NAME,
         url: SITE_URL,
-        logo: SITE_THUMBNAIL,
+        logo: BLOG_THUMBNAIL,
         description: SITE_DESCRIPTION,
         sameAs: [GITHUB_URL],
       },
