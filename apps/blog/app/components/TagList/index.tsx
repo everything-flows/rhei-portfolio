@@ -5,7 +5,7 @@ import type { Tag } from "~/types/post";
 function TagItem({ item, bold = false }: { item: Tag; bold?: boolean }) {
   function goToTagPage(event: MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    window.location.href = `/tags/${item.id}`;
+    window.location.href = `/tag/${item.id}`;
   }
 
   return (
