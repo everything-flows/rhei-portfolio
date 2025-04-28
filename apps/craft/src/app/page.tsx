@@ -6,15 +6,15 @@ export default async function Home() {
     <>
       <main className="content-x">
         <section className="mx-auto w-full max-w-6xl">
-          <h1></h1>
+          <h1>나의 작은 쓰레기장</h1>
 
-          <div className="flex">
+          <div className="mt-8 flex">
             <Link
               href="/fake3dPill"
               className="border-sub rounded-md border p-4"
             >
               <img
-                src="/images/fake3dPill.png"
+                src="/craft/fake3dPill.png"
                 alt="fake3dPill thumbnail"
                 className="border-sub mb-4 h-40 w-60 rounded-md border object-cover"
               />

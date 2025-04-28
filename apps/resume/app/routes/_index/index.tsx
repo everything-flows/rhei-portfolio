@@ -1,5 +1,5 @@
 import { useLoaderData } from "@remix-run/react";
-import { GNB } from "@rhei/ui";
+import { Footer, GNB } from "@rhei/ui";
 
 import Summary from "./_components/Summary";
 import Education from "./_components/Education";
@@ -13,7 +13,7 @@ export default function ResumePage() {
   const { user } = useLoaderData();
 
   return (
-    <div>
+    <>
       <header className="content-x">
         <GNB isLoggedIn={!!user} />
       </header>
@@ -27,6 +27,8 @@ export default function ResumePage() {
           <Activity />
         </div>
       </main>
-    </div>
+
+      <Footer />
+    </>
   );
 }

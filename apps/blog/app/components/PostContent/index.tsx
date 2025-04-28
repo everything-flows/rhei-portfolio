@@ -10,7 +10,9 @@ function getId(child) {
 }
 
 function solve(child) {
-  if (!child) return "";
+  if (!child) {
+    return "";
+  }
 
   if (typeof child === "string") {
     return child;
@@ -22,7 +24,11 @@ function solve(child) {
         return item;
       }
 
-      return solve(item.props?.children);
+      if (item.value) {
+        return solve(item.value);
+      }
+
+      return solve(item.children);
     })
     .join("");
 }
@@ -69,17 +75,18 @@ function renderNodes(node, index) {
 
         case "h1": {
           return (
-            <h1
+            <h2
               key={index}
+              id={getId(node.children)}
               className="text-responsive-h1 mb-3 mt-6 flex flex-col"
             >
-              <span id={getId(node.children)} className="" {...node.properties}>
+              <span className="" {...node.properties}>
                 {node.children.map((child, index: number) =>
                   renderNodes(child, index),
                 )}
               </span>
               <span className="flex-1 border-b-2" />
-            </h1>
+            </h2>
           );
         }
 
@@ -87,6 +94,7 @@ function renderNodes(node, index) {
           return (
             <h3
               key={index}
+              id={getId(node.children)}
               className="text-responsive-h2 mb-2 mt-5"
               {...node.properties}
             >
@@ -101,6 +109,7 @@ function renderNodes(node, index) {
           return (
             <h4
               key={index}
+              id={getId(node.children)}
               className="text-responsive-h3 mb-1 mt-4"
               {...node.properties}
             >

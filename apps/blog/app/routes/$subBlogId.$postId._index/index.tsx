@@ -1,5 +1,5 @@
 import { useLoaderData } from "@remix-run/react";
-import { GNB } from "@rhei/ui";
+import { Footer, GNB } from "@rhei/ui";
 
 import { DocumentType } from "~/types/post";
 import PostHeader from "./_components/PostHeader";
@@ -7,6 +7,7 @@ import PostContent from "~/components/PostContent";
 import PostDirectory from "~/components/PostDirectory";
 
 export { default as loader } from "./_utils/loader";
+export { default as meta } from "./_utils/meta";
 
 export default function PostPage() {
   const { postData } = useLoaderData();
@@ -32,6 +33,8 @@ export default function PostPage() {
           <PostDirectory postList={postData.childPostList!} />
         )}
       </main>
+
+      <Footer />
     </>
   );
 }

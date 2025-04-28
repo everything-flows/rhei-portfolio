@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @keyframes pulse {
+    0%,
+    100% {
+      @apply bg-gray-100;
+    }
+    50% {
+      @apply bg-gray-200;
+    }
+  }
+
+  @keyframes pulse-dark {
+    0%,
+    100% {
+      @apply bg-gray-700;
+    }
+    50% {
+      @apply bg-gray-600;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 2s infinite;
+
+    @media (prefers-color-scheme: dark) {
+      animation: pulse-dark 2s infinite;
+    }
+  }
+}

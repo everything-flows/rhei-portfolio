@@ -1,5 +1,7 @@
 import { Link } from "@remix-run/react";
+
 import type { Document } from "~/types/post";
+import TagList from "../TagList";
 
 export default function PostDirectory({ postList }: { postList: Document[] }) {
   return (
@@ -8,20 +10,27 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
         {postList?.map((post) => (
           <li key={post.id}>
             <Link to={`/${post.subBlog}/${post.id}`}>
-              <article className="grid grid-cols-1 gap-4 py-1 sm:grid-cols-[10rem_auto]">
+              <article className="grid grid-cols-[auto_4rem] gap-x-8 gap-y-2 py-2 sm:grid-cols-[10rem_auto]">
                 {post.thumbnail ? (
                   <img
                     src={post.thumbnail}
-                    className="border-sub aspect-[4/3] w-full shrink-0 rounded-2xl border object-cover"
+                    className="order-2 aspect-[1/1] w-full shrink-0 rounded-full border border-gray-200 object-cover sm:order-1 sm:aspect-[4/3] sm:rounded-2xl dark:border-gray-600"
                   />
                 ) : (
-                  <div className="border-sub aspect-[4/3] w-full shrink-0 overflow-hidden rounded-2xl border object-cover">
-                    <div className="bg-thumbnail h-full w-full rounded-3xl opacity-[0.8] blur-[80px]" />
+                  <div className="order-2 aspect-[1/1] w-full shrink-0 overflow-hidden rounded-full border border-gray-200 object-cover sm:order-1 sm:aspect-[4/3] sm:rounded-2xl dark:border-gray-600">
+                    <div className="bg-thumbnail h-full w-full opacity-[0.8] blur-[80px]" />
                   </div>
                 )}
-                <div className="flex flex-col py-2">
-                  <h2 className="text-responsive-h3">{post.title}</h2>
-                  <p className="text-responsive-hp">{post.subTitle}</p>
+                <div className="order-1 flex gap-2 sm:order-2">
+                  <h2 className="text-responsive-h3 sm:py-2">{post.emoji}</h2>
+                  <div className="flex flex-col sm:py-2">
+                    <h2 className="text-responsive-h3">{post.title}</h2>
+                    <p className="text-responsive-p font-normal text-gray-300">
+                      {post.subTitle}
+                    </p>
+
+                    <TagList tagList={post.tags} />
+                  </div>
                 </div>
               </article>
             </Link>
