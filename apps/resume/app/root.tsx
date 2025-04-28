@@ -9,6 +9,8 @@ import {
 import "./tailwind.css";
 import "@rhei/ui/styles/utilities.css";
 
+export { default as meta } from "./_utils/meta";
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
