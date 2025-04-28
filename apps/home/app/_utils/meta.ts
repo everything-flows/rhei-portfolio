@@ -1,21 +1,23 @@
-const SITE_NAME = "FE Rhei";
-const TITLE = "프론트엔드 개발자의 기술 블로그";
-const AUTHOR = "Dahye Kang";
-const DESCRIPTION =
-  "개발하면서 배운 것들을 정리합니다 | 프로젝트 회고와 트러블 슈팅 | JS/TS, React, Git";
-const DEFAULT_IMAGE =
-  "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/postImages//thumbnail.webp";
-const URL = "https://rhei.me";
+import {
+  SITE_TITLE,
+  SITE_NAME,
+  AUTHOR,
+  SITE_DESCRIPTION,
+  SITE_THUMBNAIL,
+  SITE_URL,
+  GITHUB_URL,
+} from "@rhei/meta";
 
 export function meta() {
-  const title = `${TITLE} | ${SITE_NAME}`;
+  const title = `${SITE_TITLE} | ${SITE_NAME}`;
+
   return [
     {
       title,
     },
     {
       name: "description",
-      content: DESCRIPTION,
+      content: SITE_DESCRIPTION,
     },
     {
       name: "author",
@@ -27,11 +29,11 @@ export function meta() {
     },
     {
       property: "og:description",
-      content: DESCRIPTION,
+      content: SITE_DESCRIPTION,
     },
     {
       property: "og:image",
-      content: DEFAULT_IMAGE,
+      content: SITE_THUMBNAIL,
     },
     {
       property: "og:type",
@@ -55,23 +57,24 @@ export function meta() {
     },
     {
       name: "twitter:description",
-      content: DESCRIPTION,
+      content: SITE_DESCRIPTION,
     },
     {
       name: "twitter:image",
-      content: DEFAULT_IMAGE,
+      content: SITE_THUMBNAIL,
     },
     {
       rel: "canonical",
-      href: URL,
+      href: SITE_URL,
     },
     {
-      "script:ld+json": {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: title,
-        url: URL,
-      },
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: SITE_THUMBNAIL,
+      description: SITE_DESCRIPTION,
+      sameAs: [GITHUB_URL],
     },
   ];
 }
