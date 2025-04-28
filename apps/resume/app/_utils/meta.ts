@@ -1,5 +1,4 @@
 import {
-  SITE_TITLE,
   SITE_NAME,
   AUTHOR,
   SITE_DESCRIPTION,
@@ -8,8 +7,10 @@ import {
   GITHUB_URL,
 } from "@rhei/meta";
 
-export function meta() {
-  const title = `${SITE_TITLE} | ${SITE_NAME}`;
+export default function meta() {
+  const title = `강다혜 이력서 | ${SITE_NAME}`;
+  const description = `프론트엔드 개발자 강다혜 이력서 | ${SITE_DESCRIPTION}`;
+  const url = `${SITE_URL}/resume`;
 
   return [
     {
@@ -17,7 +18,7 @@ export function meta() {
     },
     {
       name: "description",
-      content: SITE_DESCRIPTION,
+      content: description,
     },
     {
       name: "author",
@@ -29,7 +30,7 @@ export function meta() {
     },
     {
       property: "og:description",
-      content: SITE_DESCRIPTION,
+      content: description,
     },
     {
       property: "og:image",
@@ -57,7 +58,7 @@ export function meta() {
     },
     {
       name: "twitter:description",
-      content: SITE_DESCRIPTION,
+      content: description,
     },
     {
       name: "twitter:image",
@@ -65,17 +66,23 @@ export function meta() {
     },
     {
       rel: "canonical",
-      href: SITE_URL,
+      href: url,
     },
     {
       "script:ld+json": {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        name: SITE_NAME,
-        url: SITE_URL,
-        logo: SITE_THUMBNAIL,
-        description: SITE_DESCRIPTION,
+        "@type": "Person",
+        name: AUTHOR,
+        url: url,
+        image: SITE_THUMBNAIL,
+        description: description,
         sameAs: [GITHUB_URL],
+        jobTitle: "프론트엔드 개발자",
+        worksFor: {
+          "@type": "Organization",
+          name: SITE_NAME,
+          url: SITE_URL,
+        },
       },
     },
   ];

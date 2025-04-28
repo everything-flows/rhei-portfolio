@@ -7,6 +7,7 @@ import PostContent from "~/components/PostContent";
 import PostDirectory from "~/components/PostDirectory";
 
 export { default as loader } from "./_utils/loader";
+export { default as meta } from "./_utils/meta";
 
 export default function PostPage() {
   const { postData } = useLoaderData();
