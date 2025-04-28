@@ -12,10 +12,10 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
                 {post.thumbnail ? (
                   <img
                     src={post.thumbnail}
-                    className="border-sub aspect-[4/3] w-full shrink-0 rounded-2xl border object-cover"
+                    className="aspect-[4/3] w-full shrink-0 rounded-2xl border border-gray-200 object-cover dark:border-gray-600"
                   />
                 ) : (
-                  <div className="border-sub aspect-[4/3] w-full shrink-0 overflow-hidden rounded-2xl border object-cover">
+                  <div className="aspect-[4/3] w-full shrink-0 overflow-hidden rounded-2xl border border-gray-200 object-cover dark:border-gray-600">
                     <div className="bg-thumbnail h-full w-full rounded-3xl opacity-[0.8] blur-[80px]" />
                   </div>
                 )}
