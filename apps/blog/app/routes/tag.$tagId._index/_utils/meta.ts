@@ -2,7 +2,7 @@ import {
   SITE_NAME,
   AUTHOR,
   SITE_DESCRIPTION,
-  SITE_THUMBNAIL,
+  BLOG_THUMBNAIL,
   SITE_URL,
 } from "@rhei/meta";
 
@@ -20,7 +20,7 @@ export default function meta({
 
   const title = `${tagData.id} 관련 포스트 | ${SITE_NAME}`;
   const description = `${tagData.id} 관련 포스트 모음입니다. | ${SITE_DESCRIPTION}`;
-  const thumbnail = SITE_THUMBNAIL;
+  const thumbnail = BLOG_THUMBNAIL;
   const url = `${SITE_URL}/blog/tag/${tagData.id}`;
 
   return [
