@@ -27,13 +27,6 @@ const ACTIVITY_UNIV: Activity[] = [
     period: "2020.11 - 2023.08",
     list: [
       {
-        content: "Baekjoon & Solved.ac Platinum II",
-        link: {
-          title: "psst54 →",
-          href: "https://www.acmicpc.net/user/psst54",
-        },
-      },
-      {
         content:
           "2023 겨울 신촌지역 대학교 프로그래밍 동아리 연합 알고리즘 캠프 콘테스트 초급 부문 B번 문항 출제",
         link: {
