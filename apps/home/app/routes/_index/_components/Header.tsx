@@ -21,13 +21,13 @@ export default function Header() {
           <span className="text-display-empty">,</span>
         </h1>
 
-        <Link
-          to="https://rhei.me/resume"
+        <a
+          href="/resume"
           className="bg-brand text-reverse flex items-start gap-4 rounded-full px-6 py-4 text-[1.5rem] text-[clamp(2rem,6vw,4rem)] font-bold leading-none"
         >
           이력
           <ArrowIcon size="2rem" />
-        </Link>
+        </a>
       </div>
 
       <h2 className="text-display-sub">FRONT-END 개발자</h2>
