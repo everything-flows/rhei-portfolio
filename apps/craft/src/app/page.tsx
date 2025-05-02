@@ -14,7 +14,7 @@ export default async function Home() {
               className="border-sub rounded-md border p-4"
             >
               <img
-                src="/craft/fake3dPill.png"
+                src="https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-craft//fake3dPill.webp"
                 alt="fake3dPill thumbnail"
                 className="border-sub mb-4 h-40 w-60 rounded-md border object-cover"
               />

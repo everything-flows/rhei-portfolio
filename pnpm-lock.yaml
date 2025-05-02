@@ -141,6 +141,9 @@ importers:
 
   apps/craft:
     dependencies:
+      '@rhei/meta':
+        specifier: file:../../packages/meta
+        version: link:../../packages/meta
       '@rhei/react':
         specifier: file:../../packages/react
         version: file:packages/react(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
