@@ -1,4 +1,3 @@
-import { Link } from "@remix-run/react";
 import ArrowIcon from "~/assets/ArrowIcon";
 
 export default function Header() {
