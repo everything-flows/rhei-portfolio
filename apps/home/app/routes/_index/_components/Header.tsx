@@ -22,10 +22,10 @@ export default function Header() {
         </h1>
 
         <Link
-          to="#about"
+          to="/resume"
           className="bg-brand text-reverse flex items-start gap-4 rounded-full px-6 py-4 text-[1.5rem] text-[clamp(2rem,6vw,4rem)] font-bold leading-none"
         >
-          자세히
+          이력
           <ArrowIcon size="2rem" />
         </Link>
       </div>
