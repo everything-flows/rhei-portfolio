@@ -172,7 +172,11 @@ function renderNodes(node, index) {
 
         case "blockquote": {
           return (
-            <blockquote key={index} {...node.properties}>
+            <blockquote
+              key={index}
+              {...node.properties}
+              className="border-sub my-4 border-l-4 pl-4"
+            >
               {node.children.map((child, index: number) =>
                 renderNodes(child, index),
               )}
