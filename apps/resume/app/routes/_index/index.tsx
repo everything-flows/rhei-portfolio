@@ -7,6 +7,7 @@ import Activity from "./_components/Activity";
 import Award from "./_components/Award";
 import Work from "./_components/Work";
 import Info from "./_components/Info";
+import Language from "./_components/Language";
 
 export { default as loader } from "./_utils/loader";
 
@@ -27,6 +28,7 @@ export default function ResumePage() {
           <Award />
           <Education />
           <Activity />
+          <Language />
         </div>
       </main>
 
