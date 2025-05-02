@@ -9,6 +9,8 @@ import {
 import "./tailwind.css";
 import "@rhei/ui/styles/utilities.css";
 
+import Font from "./_components/Font";
+
 export { default as meta } from "./_utils/meta";
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -18,6 +20,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
+        <Font />
         <Links />
       </head>
       <body className="bg-normal text-normal">
