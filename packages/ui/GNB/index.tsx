@@ -1,20 +1,32 @@
+const MENU = [
+  { title: "Resume", link: "/resume" },
+  { title: "Blog", link: "/blog" },
+  // { title: "Craft", link: "/craft" },
+];
+
 export default function GNB({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
   return (
-    <nav className="flex items-center justify-between mx-auto max-w-6xl py-2">
-      <a href="/">
-        <p className="logo-label w-fit" />
+    <nav className="flex items-center justify-between mx-auto max-w-6xl py-4">
+      <a href="/" className="flex gap-2 items-center">
+        <img
+          src="https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-resume//profile.png"
+          alt="logo"
+          className="size-8 rounded-full"
+        />
+        <p className="logo-label w-fit font-extrabold text-[1.2rem]" />
       </a>
 
       <ul className="flex gap-2 items-center">
-        <li>
-          <a href="/resume">resume</a>
-        </li>
-        <li>
-          <a href="/blog">blog</a>
-        </li>
-        <li>
-          <a href="/craft">craft</a>
-        </li>
+        {MENU.map((item) => (
+          <li key={item.title}>
+            <a
+              href={item.link}
+              className="font-extrabold text-[1.2rem] hover:text-brand"
+            >
+              {item.title}
+            </a>
+          </li>
+        ))}
 
         {isLoggedIn && (
           <li>
