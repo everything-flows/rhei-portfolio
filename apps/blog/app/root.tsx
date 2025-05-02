@@ -14,6 +14,7 @@ import "./tailwind.css";
 import "./breadcrumb.css";
 import useCategoryStore from "./stores/category";
 import fetchCategoryData from "./_utils/fetchCategoryData";
+import Font from "./_components/Font";
 
 export { loader } from "./_utils/loader";
 export { meta } from "./_utils/meta";
@@ -47,6 +48,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
+        <Font />
         <Links />
       </head>
       <body className="bg-normal text-normal">
