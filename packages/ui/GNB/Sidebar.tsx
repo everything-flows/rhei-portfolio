@@ -25,31 +25,33 @@ export default function Sidebar() {
       {isOpen && (
         <>
           <div
-            className="fixed inset-0 bg-gray-900/40 z-[50]"
+            className="fixed flex flex-col inset-0 bg-gray-900/40 z-[50]"
             onClick={onClose}
           />
-          <div className="fixed top-0 right-0 z-[50] bg-normal h-dvh h-full w-[max(400px,80dvw)] max-w-[100dvw] shadow-[0px_0px_32px_0px_#3363FF1F]">
+          <div className="fixed top-0 right-0 flex flex-col z-[50] bg-normal h-dvh h-full w-[max(400px,80dvw)] max-w-[100dvw] shadow-[0px_0px_32px_0px_#3363FF1F]">
             <div className="w-full flex justify-end">
               <button className="p-4" onClick={onClose}>
                 <CloseIcon />
               </button>
             </div>
 
-            <ul className="flex flex-col">
-              {MENU.map((item) => (
-                <li key={item.title} className="w-full border-b border-sub">
-                  <a
-                    href={item.link}
-                    className="font-extrabold text-[1.2rem] hover:text-brand px-6 py-4 w-full inline-block"
-                  >
-                    {item.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="flex-1 flex flex-col">
+              <ul className="flex flex-col">
+                {MENU.map((item) => (
+                  <li key={item.title} className="w-full border-b border-sub">
+                    <a
+                      href={item.link}
+                      className="font-extrabold text-[1.2rem] hover:text-brand px-6 py-4 w-full inline-block"
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
 
-            <div className="m-4">
-              <ThemeButton />
+              <div className="flex-1 flex items-end p-4">
+                <ThemeButton />
+              </div>
             </div>
           </div>
         </>

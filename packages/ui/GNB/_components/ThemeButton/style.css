@@ -14,14 +14,14 @@
   display: block;
   cursor: pointer;
   transition: all 0.2s ease-out;
-  background-color: #1688ff; /* blue-400 */
-  border: 1px solid #1688ff; /* blue-400 */
+  background-color: #0263ff; /* blue-500 */
+  border: 1px solid #4aa4ff; /* blue-300 */
   overflow: hidden;
 }
 
 input:checked + .theme-toggle-container {
-  background-color: #471409; /* orange-900 */
-  border-color: #fc683b; /* orange-400 */
+  background-color: #f03420; /* orange-600 */
+  border-color: #801a08; /* orange-800 */
 }
 
 .theme-toggle-slider {
@@ -74,7 +74,7 @@ input:checked ~ .theme-toggle-container .theme-toggle-slider {
 }
 
 input:checked ~ .theme-toggle-container #slider {
-  background-color: #f94b28; /* orange-500 */
+  background-color: #ffffff; /* orange-500 */
 }
 
 input:checked ~ .theme-toggle-container #sunlight-wrapper {
@@ -95,7 +95,7 @@ input:checked ~ .theme-toggle-container #sunlight-wrapper {
 }
 
 input:checked ~ .theme-toggle-container #slider::before {
-  background-color: #471409; /* orange-900 */
+  background-color: #f03420; /* orange-600 */
   transform: scale(1);
 }
 
