@@ -26,7 +26,7 @@ export default function Sidebar() {
             className="fixed inset-0 bg-gray-900/40 z-[50]"
             onClick={onClose}
           />
-          <div className="fixed top-0 right-0 z-[50] bg-normal h-dvh h-full w-[80dvw] min-w-[400px] shadow-[0px_0px_32px_0px_#3363FF1F]">
+          <div className="fixed top-0 right-0 z-[50] bg-normal h-dvh h-full w-[max(400px,80dvw)] max-w-[100dvw] shadow-[0px_0px_32px_0px_#3363FF1F]">
             <div className="w-full flex justify-end">
               <button className="p-4" onClick={onClose}>
                 <CloseIcon />
