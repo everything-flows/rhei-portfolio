@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import "./style.css";
 import StarIcon from "../StarIcon";
 
-export default function ThemeToggle() {
+export default function ThemeButton() {
   const [isDark, setIsDark] = useState(false);
   const [hydrated, setHydrated] = useState(false);
 
