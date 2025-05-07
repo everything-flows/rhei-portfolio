@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import "./style.css";
+import StarIcon from "../StarIcon";
 
 export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
@@ -54,6 +55,21 @@ export default function ThemeToggle() {
             <div className="light-cloud" />
             <div className="light-cloud" />
             <div className="light-cloud" />
+          </div>
+        </div>
+
+        <div id="star-wrapper">
+          <div className="star">
+            <StarIcon size="0.6rem" />
+          </div>
+          <div className="star">
+            <StarIcon size="0.4rem" />
+          </div>
+          <div className="star">
+            <StarIcon size="0.5rem" />
+          </div>
+          <div className="star">
+            <StarIcon size="0.35rem" />
           </div>
         </div>
 
