@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MENU } from "./menu";
 import CloseIcon from "./_assets/CloseIcon";
 import HamburgerIcon from "./_assets/HamburgerIcon";
+import ThemeButton from "./ThemeButton";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,6 +46,10 @@ export default function Sidebar() {
                 </li>
               ))}
             </ul>
+
+            <div className="m-4">
+              <ThemeButton />
+            </div>
           </div>
         </>
       )}
