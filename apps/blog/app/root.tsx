@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
   useLoaderData,
   useParams,
+  useRouteLoaderData,
 } from "@remix-run/react";
 import { createBrowserClient } from "@supabase/ssr";
 
@@ -14,12 +15,13 @@ import "./tailwind.css";
 import "./breadcrumb.css";
 import useCategoryStore from "./stores/category";
 import fetchCategoryData from "./_utils/fetchCategoryData";
+import Font from "./_components/Font";
 
 export { loader } from "./_utils/loader";
 export { meta } from "./_utils/meta";
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { supabaseCredential } = useLoaderData();
+  const { supabaseCredential, themeVar } = useRouteLoaderData("root");
   const params = useParams();
   const { setCategory } = useCategoryStore();
 
@@ -42,11 +44,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
   }, [params.subBlogId, supabaseCredential, setCategory]);
 
   return (
-    <html lang="en">
+    <html lang="ko" className={themeVar || "light"}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
+        <Font />
         <Links />
       </head>
       <body className="bg-normal text-normal">
