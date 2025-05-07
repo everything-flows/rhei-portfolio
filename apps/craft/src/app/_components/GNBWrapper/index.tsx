@@ -1,6 +1,5 @@
-import { GNB } from "@rhei/ui";
-
 import { createClient } from "@/utils/supabase-server";
+import GNBClientWrapper from "./index.client";
 
 export default async function GNBWrapper() {
   try {
@@ -10,16 +9,8 @@ export default async function GNBWrapper() {
       data: { session },
     } = await supabase.auth.getSession();
 
-    return (
-      <header className="content-x">
-        <GNB isLoggedIn={!!session?.user} />
-      </header>
-    );
+    return <GNBClientWrapper isLoggedIn={!!session?.user} />;
   } catch {
-    return (
-      <header className="content-x">
-        <GNB />
-      </header>
-    );
+    return <GNBClientWrapper />;
   }
 }
