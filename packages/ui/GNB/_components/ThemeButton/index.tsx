@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import "./style.css";
 import StarIcon from "../StarIcon";
 
@@ -8,24 +7,36 @@ export default function ThemeButton() {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    const theme =
-      document.cookie.match(/theme=(dark|light)/)?.[1] ??
-      (window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light");
+    const updateFromClass = () => {
+      const hasDarkClass = document.documentElement.classList.contains("dark");
+      setIsDark(hasDarkClass);
+    };
 
-    setIsDark(theme === "dark");
-    document.documentElement.classList.toggle("dark", theme === "dark");
+    updateFromClass();
+
+    const observer = new MutationObserver(() => {
+      updateFromClass();
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
     setHydrated(true);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked;
-    setIsDark(checked);
     document.documentElement.classList.toggle("dark", checked);
     document.cookie = `theme=${
       checked ? "dark" : "light"
     }; path=/; max-age=31536000`;
+    localStorage.setItem("theme", checked ? "dark" : "light");
   };
 
   if (!hydrated) {

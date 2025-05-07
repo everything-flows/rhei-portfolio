@@ -16,7 +16,8 @@ export default function Sidebar() {
   }
 
   return (
-    <div className="sm:hidden relative">
+    <div className="sm:hidden relative flex gap-4">
+      <ThemeButton />
       <button onClick={onOpen}>
         <HamburgerIcon />
       </button>
