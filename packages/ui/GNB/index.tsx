@@ -1,12 +1,9 @@
-const MENU = [
-  { title: "Resume", link: "/resume" },
-  { title: "Blog", link: "/blog" },
-  // { title: "Craft", link: "/craft" },
-];
+import { MENU } from "./menu";
+import Sidebar from "./Sidebar";
 
 export default function GNB({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
   return (
-    <nav className="flex items-center justify-between mx-auto max-w-6xl py-4">
+    <nav className="flex items-center justify-between mx-auto max-w-6xl py-4 relative">
       <a href="/" className="flex gap-2 items-center">
         <img
           src="https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-resume//profile.png"
@@ -16,7 +13,7 @@ export default function GNB({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
         <p className="logo-label w-fit font-extrabold text-[1.2rem]" />
       </a>
 
-      <ul className="flex gap-2 items-center">
+      <ul className="flex gap-2 items-center sm:flex hidden">
         {MENU.map((item) => (
           <li key={item.title}>
             <a
@@ -34,6 +31,8 @@ export default function GNB({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
           </li>
         )}
       </ul>
+
+      <Sidebar />
     </nav>
   );
 }
