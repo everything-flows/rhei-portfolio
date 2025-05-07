@@ -240,15 +240,15 @@ input:not(:checked) ~ .theme-toggle-container #star-wrapper {
 }
 
 .star:nth-child(2) {
-  top: 0.2rem;
-  left: 1rem;
+  top: 0.3rem;
+  left: 0.8rem;
   fill: #ffba85; /* orange-200 */
   stroke: #ffba85; /* orange-200 */
   animation-delay: 0.3s;
 }
 
 .star:nth-child(3) {
-  bottom: 0.4rem;
+  bottom: 0.6rem;
   left: 0.5rem;
   fill: #ffe3c7; /* orange-100 */
   stroke: #ffe3c7; /* orange-100 */
@@ -256,7 +256,7 @@ input:not(:checked) ~ .theme-toggle-container #star-wrapper {
 }
 
 .star:nth-child(4) {
-  bottom: 0.2rem;
+  bottom: 0.3rem;
   left: 1.3rem;
   fill: #ffba85; /* orange-200 */
   stroke: #ffba85; /* orange-200 */
