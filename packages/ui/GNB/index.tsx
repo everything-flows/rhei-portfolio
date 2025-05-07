@@ -1,3 +1,4 @@
+import ThemeButton from "./_components/ThemeButton";
 import { MENU } from "./menu";
 import Sidebar from "./Sidebar";
 
@@ -14,6 +15,9 @@ export default function GNB({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
       </a>
 
       <ul className="flex gap-2 items-center sm:flex hidden">
+        <div className="mr-4">
+          <ThemeButton />
+        </div>
         {MENU.map((item) => (
           <li key={item.title}>
             <a
@@ -24,7 +28,6 @@ export default function GNB({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
             </a>
           </li>
         ))}
-
         {isLoggedIn && (
           <li>
             <a href="/admin">admin</a>
