@@ -13,22 +13,22 @@ export default function HamburgerIcon() {
         d="M2 12.32H22"
         stroke="currentColor"
         stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M2 18.32H22"
         stroke="currentColor"
         stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M2 6.32001H22"
         stroke="currentColor"
         stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
