@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import "./style.css";
+
 export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
   const [hydrated, setHydrated] = useState(false);
@@ -30,36 +32,39 @@ export default function ThemeToggle() {
   }
 
   return (
-    <label className="relative">
+    <label className="theme-toggle">
       <input
         id="theme-toggle"
         type="checkbox"
         onChange={handleChange}
-        className="hidden peer"
         checked={isDark}
       />
 
-      <span className={container} />
-      <span className={slider} />
+      <span className="theme-toggle-container">
+        <div id="cloud">
+          <div id="dark-cloud-wrapper">
+            <div className="dark-cloud" />
+            <div className="dark-cloud" />
+            <div className="dark-cloud" />
+            <div className="dark-cloud" />
+          </div>
+
+          <div id="light-cloud-wrapper">
+            <div className="light-cloud" />
+            <div className="light-cloud" />
+            <div className="light-cloud" />
+            <div className="light-cloud" />
+          </div>
+        </div>
+
+        <span className="theme-toggle-slider">
+          <div id="sunlight-wrapper">
+            <div className="sunlight" />
+            <div className="sunlight" />
+          </div>
+          <div id="slider" />
+        </span>
+      </span>
     </label>
   );
 }
-
-const container = `
-w-16 h-8 rounded-full block cursor-pointer
-transition-all duration-200 ease-out
-bg-blue-100 peer-checked:bg-orange-900
-border border-blue-400 peer-checked:border-orange-400
-`;
-
-const slider = `
-block pointer-events-none rounded-full size-6
-absolute top-1 left-1
-bg-blue-500 peer-checked:bg-orange-500
-transition-all duration-200 ease-out peer-checked:translate-x-8 
-
-before:absolute before:-left-[10%] before:top-[2%]
-before:size-4 before:rounded-full
-before:bg-blue-100 before:peer-checked:bg-orange-900
-before:scale-0 before:peer-checked:scale-100 
-`;
