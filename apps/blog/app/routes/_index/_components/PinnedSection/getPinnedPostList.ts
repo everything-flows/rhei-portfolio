@@ -25,8 +25,8 @@ export default async function getPinnedPostList({
           supabaseClient,
           postId: id,
           isDetail: false,
-        })
-    )
+        }),
+    ),
   );
 
   return await addTagListToPostList({
