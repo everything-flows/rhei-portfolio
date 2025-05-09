@@ -1,7 +1,8 @@
+import { Link, useLoaderData } from "@remix-run/react";
 import { Footer, GNB } from "@rhei/ui";
 
 import PinnedSection from "./_components/PinnedSection";
-import { Link, useLoaderData } from "@remix-run/react";
+import RecentSection from "./_components/RecentSection";
 
 export { default as loader } from "./_utils/loader";
 
@@ -11,7 +12,7 @@ export default function Index() {
     return null;
   }
 
-  const { pinnedPostList } = data;
+  const { pinnedPostList, recentPostList } = data;
 
   return (
     <>
@@ -35,6 +36,7 @@ export default function Index() {
         </section>
 
         <PinnedSection postList={pinnedPostList} />
+        <RecentSection postList={recentPostList} />
       </main>
 
       <Footer />
