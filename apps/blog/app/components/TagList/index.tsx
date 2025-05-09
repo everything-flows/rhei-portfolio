@@ -11,7 +11,7 @@ function TagItem({ item, bold = false }: { item: Tag; bold?: boolean }) {
   return (
     <button
       onClick={goToTagPage}
-      className={`text-brand border-brand ${bold ? "text-responsive-p border-[1.5px]" : "border text-[1rem]"} overflow-hidden text-ellipsis whitespace-nowrap break-keep rounded-full px-2`}
+      className={`text-brand border-brand hover:bg-brand hover:text-reverse ${bold ? "text-responsive-p border-[1.5px]" : "border text-[1rem]"} overflow-hidden text-ellipsis whitespace-nowrap break-keep rounded-full px-2`}
     >
       <p
         className={`${item.isSpoiler ? "blur-[0.25rem] hover:blur-none" : ""}`}

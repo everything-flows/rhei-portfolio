@@ -25,9 +25,9 @@
 
   .animate-pulse {
     animation: pulse 2s infinite;
+  }
 
-    @media (prefers-color-scheme: dark) {
-      animation: pulse-dark 2s infinite;
-    }
+  .dark .animate-pulse {
+    animation: pulse-dark 2s infinite;
   }
 }

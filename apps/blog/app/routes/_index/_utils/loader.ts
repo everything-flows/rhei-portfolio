@@ -6,6 +6,7 @@ import {
 } from "@supabase/ssr";
 
 import getPinnedPostList from "../_components/PinnedSection/getPinnedPostList";
+import getRecentPostList from "../_components/RecentSection/getRecentPostList";
 
 export default async function loader({ context, request }: LoaderFunctionArgs) {
   const headers = new Headers();
@@ -26,14 +27,15 @@ export default async function loader({ context, request }: LoaderFunctionArgs) {
         cookiesToSet.forEach(({ name, value, options }) =>
           headers.append(
             "Set-Cookie",
-            serializeCookieHeader(name, value, options)
-          )
+            serializeCookieHeader(name, value, options),
+          ),
         );
       },
     },
   });
 
   const pinnedPostList = await getPinnedPostList({ supabaseClient });
+  const recentPostList = await getRecentPostList({ supabaseClient });
 
-  return { pinnedPostList };
+  return { pinnedPostList, recentPostList };
 }
