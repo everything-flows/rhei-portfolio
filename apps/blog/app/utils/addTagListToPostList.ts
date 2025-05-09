@@ -27,6 +27,6 @@ export default async function addTagListToPostList({
   postList: Document[];
 }) {
   return await Promise.all(
-    postList.map((post) => addTagListToPost({ supabaseClient, post }))
+    postList.map((post) => addTagListToPost({ supabaseClient, post })),
   );
 }

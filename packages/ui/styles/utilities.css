@@ -78,11 +78,12 @@
 
     -webkit-text-stroke: 1px black;
 
-    @media (prefers-color-scheme: dark) {
-      -webkit-text-stroke: 1px white;
-    }
     line-height: 1.2;
   }
+  .dark .text-display-empty {
+    -webkit-text-stroke: 1px white;
+  }
+
   .text-display-sub {
     @apply text-blue-500 dark:text-orange-500;
 
