@@ -47,10 +47,8 @@
     border: 1px solid #e5e7eb;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .mySwiper .swiper-slide {
-      border-color: #27272a;
-    }
+  .dark .mySwiper .swiper-slide {
+    border-color: #27272a;
   }
 
   .swiper-3d .swiper-slide-shadow {
@@ -94,23 +92,21 @@
     border-radius: 100rem;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .blob-outer-container {
-      opacity: 0.5;
-    }
+  .dark .blob-outer-container {
+    opacity: 0.5;
+  }
 
-    .blob {
-      background: conic-gradient(
-        from 0deg,
-        #0000,
-        #271b48,
-        #ff91af,
-        #271b48,
-        #ffe556,
-        #00bcf0,
-        #0000
-      );
-    }
+  .dark .blob {
+    background: conic-gradient(
+      from 0deg,
+      #0000,
+      #271b48,
+      #ff91af,
+      #271b48,
+      #ffe556,
+      #00bcf0,
+      #0000
+    );
   }
 
   @keyframes spinBlob {
