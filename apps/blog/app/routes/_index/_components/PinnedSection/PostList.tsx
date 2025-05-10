@@ -35,7 +35,7 @@ export default function PostList({ postList }: { postList: Document[] }) {
       </Link>
 
       {leftPostList.length > 0 && (
-        <ul className="mt-4 flex gap-4 overflow-auto">
+        <ul className="custom-scrollbar mt-4 flex gap-4 overflow-auto">
           {leftPostList.map((post: Document) => (
             <li key={post.id}>
               <Link
