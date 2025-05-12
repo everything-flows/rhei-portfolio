@@ -137,6 +137,7 @@ function renderNodes(node, index) {
               className="border-sub mx-auto my-4 w-full rounded-md border sm:w-[80dvw] md:w-[75dvw] lg:w-[60%]"
               alt={node.properties.alt}
               src={node.properties.src}
+              loading="lazy"
             />
           );
         }

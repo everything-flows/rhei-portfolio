@@ -18,6 +18,7 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
                   <img
                     src={post.thumbnail}
                     className="order-2 aspect-[1/1] w-full shrink-0 rounded-full border border-gray-200 object-cover dark:border-gray-600 sm:order-1 sm:aspect-[4/3] sm:rounded-2xl"
+                    loading="lazy"
                   />
                 ) : (
                   <div className="order-2 aspect-[1/1] w-full shrink-0 overflow-hidden rounded-full border border-gray-200 object-cover dark:border-gray-600 sm:order-1 sm:aspect-[4/3] sm:rounded-2xl">
