@@ -44,7 +44,7 @@ export default function PostList({ postList }: { postList: Document[] }) {
             fetchPriority="high"
             width="1200"
             height="675"
-            loading="lazy"
+            loading="eager"
             decoding="async"
           />
           <div>
