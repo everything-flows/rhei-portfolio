@@ -5,6 +5,16 @@ import PinnedSection from "./_components/PinnedSection";
 import RecentSection from "./_components/RecentSection";
 
 export { default as loader } from "./_utils/loader";
+export function meta({ data }) {
+  return [
+    {
+      rel: "preload",
+      as: "image",
+      href: data.pinnedPostList[0].thumbnail,
+      type: "image/webp",
+    },
+  ];
+}
 
 export default function Index() {
   const data = useLoaderData();
