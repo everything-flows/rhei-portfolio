@@ -52,14 +52,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Font />
         <Links />
         <link
-          rel="preload"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css"
+          rel="preconnect"
+          href="https://cdn.jsdelivr.net"
+          crossOrigin="anonymous"
         />
         <link
           rel="preload"
+          as="style"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css"
         />
-        <link rel="preconnect" href={supabaseCredential.url} />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css"
+        />
+
+        <link
+          rel="preconnect"
+          href="https://tnzycdohhtvupgagmwfx.supabase.co"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="bg-normal text-normal">
         <div className="fixed inset-0 z-[-1] opacity-[0.2] blur-[min(100px,10dvw)]">
