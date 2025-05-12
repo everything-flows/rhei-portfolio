@@ -65,7 +65,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css"
         />
-
         <link
           rel="preconnect"
           href="https://tnzycdohhtvupgagmwfx.supabase.co"

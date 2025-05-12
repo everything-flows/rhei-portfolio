@@ -23,6 +23,9 @@ export default function PostList({ postList }: { postList: Document[] }) {
             alt={`${firstPost.title}`}
             className="aspect-[16/9] w-full shrink-0 rounded-3xl border border-gray-200 object-cover dark:border-gray-600 sm:aspect-[4/3]"
             loading="eager"
+            fetchPriority="high"
+            width="1200"
+            height="675"
           />
           <div>
             <h3 className="text-responsive-h2 font-900">{firstPost.title}</h3>
