@@ -7,6 +7,7 @@ import {
   SITE_URL,
   GITHUB_URL,
 } from "@rhei/meta";
+import convertUrl from "~/utils/convertUrl";
 
 export default function meta({ data }) {
   const title = `${SITE_TITLE} | ${SITE_NAME}`;
@@ -15,7 +16,7 @@ export default function meta({ data }) {
     {
       rel: "preload",
       as: "image",
-      href: data.pinnedPostList[0].thumbnail,
+      href: convertUrl(data.pinnedPostList[0].thumbnail),
       type: "image/webp",
     },
     {
