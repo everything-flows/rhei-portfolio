@@ -3,6 +3,25 @@ import { Link } from "@remix-run/react";
 import { Document } from "~/types/post";
 import TagList from "~/components/TagList";
 
+// [todo] fix this
+function convertUrl(supabaseUrl?: string) {
+  if (!supabaseUrl) {
+    return "";
+  }
+
+  const supabasePrefix =
+    "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/postImages/";
+  const rheiPrefix = "https://rhei.me/images/";
+
+  if (supabaseUrl.startsWith(supabasePrefix)) {
+    const relativePath = supabaseUrl.slice(supabasePrefix.length);
+
+    return `${rheiPrefix}${relativePath}`;
+  }
+
+  return supabaseUrl;
+}
+
 export default function PostList({ postList }: { postList: Document[] }) {
   if (!postList || postList.length === 0) {
     return null;
@@ -19,7 +38,7 @@ export default function PostList({ postList }: { postList: Document[] }) {
       >
         <article className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-[1fr_1fr] md:grid-cols-[2fr_3fr] lg:grid-cols-[1fr_2fr]">
           <img
-            src={firstPost.thumbnail}
+            src={convertUrl(firstPost.thumbnail)}
             alt={`${firstPost.title}`}
             className="aspect-[16/9] w-full shrink-0 rounded-3xl border border-gray-200 object-cover dark:border-gray-600 sm:aspect-[4/3]"
             fetchPriority="high"
