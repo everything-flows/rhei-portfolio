@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
 
 import type { Document } from "~/types/post";
+import convertUrl from "~/utils/convertUrl";
 import TagList from "../TagList";
 
 export default function PostDirectory({ postList }: { postList: Document[] }) {
@@ -16,7 +17,7 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
               <article className="grid grid-cols-[auto_4rem] gap-x-8 gap-y-2 py-4 sm:grid-cols-[10rem_auto]">
                 {post.thumbnail ? (
                   <img
-                    src={post.thumbnail}
+                    src={convertUrl(post.thumbnail)}
                     className="order-2 aspect-[1/1] w-full shrink-0 rounded-full border border-gray-200 object-cover dark:border-gray-600 sm:order-1 sm:aspect-[4/3] sm:rounded-2xl"
                     loading="lazy"
                   />

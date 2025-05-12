@@ -2,25 +2,7 @@ import { Link } from "@remix-run/react";
 
 import { Document } from "~/types/post";
 import TagList from "~/components/TagList";
-
-// [todo] fix this
-function convertUrl(supabaseUrl?: string) {
-  if (!supabaseUrl) {
-    return "";
-  }
-
-  const supabasePrefix =
-    "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/postImages/";
-  const rheiPrefix = "https://rhei.me/images/";
-
-  if (supabaseUrl.startsWith(supabasePrefix)) {
-    const relativePath = supabaseUrl.slice(supabasePrefix.length);
-
-    return `${rheiPrefix}${relativePath}`;
-  }
-
-  return supabaseUrl;
-}
+import convertUrl from "~/utils/convertUrl";
 
 export default function PostList({ postList }: { postList: Document[] }) {
   if (!postList || postList.length === 0) {
@@ -69,7 +51,7 @@ export default function PostList({ postList }: { postList: Document[] }) {
                 <article className="grid w-[min(80dvw,280px)] grid-rows-[auto,auto] gap-3">
                   {post.thumbnail ? (
                     <img
-                      src={post.thumbnail}
+                      src={convertUrl(post.thumbnail)}
                       alt={`${post.title}`}
                       className="aspect-[16/9] w-full shrink-0 rounded-3xl border border-gray-200 object-cover dark:border-gray-600"
                       loading="lazy"

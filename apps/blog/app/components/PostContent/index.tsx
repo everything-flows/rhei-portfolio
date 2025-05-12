@@ -2,6 +2,8 @@ import { Link } from "@remix-run/react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
+import convertUrl from "~/utils/convertUrl";
+
 function getId(child) {
   return solve(child)
     .replace(/\s+/g, "-")
@@ -136,7 +138,7 @@ function renderNodes(node, index) {
               key={index}
               className="border-sub mx-auto my-4 w-full rounded-md border sm:w-[80dvw] md:w-[75dvw] lg:w-[60%]"
               alt={node.properties.alt}
-              src={node.properties.src}
+              src={convertUrl(node.properties.src)}
               loading="lazy"
             />
           );
