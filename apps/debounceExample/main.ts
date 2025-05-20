@@ -1,35 +1,42 @@
 import "./style.css";
+import { startTimer } from "./timer";
 
-const tickTime = 400; // ms
 const tickCount = 50;
 
 document.addEventListener("DOMContentLoaded", function () {
   initRawEventContainer();
   initDebouncedEventContainer();
+
+  const inputElement = document.getElementById("event-input");
+  inputElement?.addEventListener("input", () => {
+    startTimer();
+  });
 });
 
 function initRawEventContainer() {
-  const rawEventContainer = document.getElementById("raw-event-container");
+  const rawEventContainerElement = document.getElementById(
+    "raw-event-container"
+  );
   for (let i = 0; i < tickCount; i++) {
-    if (!rawEventContainer) {
+    if (!rawEventContainerElement) {
       return;
     }
     const element = document.createElement("div");
     element.setAttribute("class", "tick-element");
-    rawEventContainer.appendChild(element);
+    rawEventContainerElement.appendChild(element);
   }
 }
 
 function initDebouncedEventContainer() {
-  const debouncedEventContainer = document.getElementById(
+  const debouncedEventContainerElement = document.getElementById(
     "debounced-event-container"
   );
   for (let i = 0; i < tickCount; i++) {
-    if (!debouncedEventContainer) {
+    if (!debouncedEventContainerElement) {
       return;
     }
     const element = document.createElement("div");
     element.setAttribute("class", "tick-element");
-    debouncedEventContainer.appendChild(element);
+    debouncedEventContainerElement.appendChild(element);
   }
 }
