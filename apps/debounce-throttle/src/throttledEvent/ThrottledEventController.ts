@@ -5,14 +5,14 @@ import { ThrottledEventView } from "./ThrottledEventView";
 import { debounceTime } from "../constants";
 
 export class ThrottledEventController {
-  private debouncedFunction: () => void;
+  private throttledFunction: () => void;
 
   constructor(
     private model: ThrottledEventModel,
     private view: ThrottledEventView,
     options?: { leading?: boolean; trailing?: boolean; maxWait?: number }
   ) {
-    this.debouncedFunction = _.debounce(
+    this.throttledFunction = _.throttle(
       () => {
         this.view.colorActiveTick(this.model.currentTickIndex);
       },
@@ -40,7 +40,7 @@ export class ThrottledEventController {
       this.model.startTimer((tickIndex: number) =>
         this.view.colorIdleTick(tickIndex)
       );
-      this.debouncedFunction();
+      this.throttledFunction();
     });
   }
 
