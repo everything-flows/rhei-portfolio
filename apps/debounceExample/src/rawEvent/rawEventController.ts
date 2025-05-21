@@ -15,7 +15,7 @@ export class rawEventController {
     }
 
     inputElement.addEventListener("input", () => {
-      // color tick items
+      this.model.startTimer();
     });
   }
 }
