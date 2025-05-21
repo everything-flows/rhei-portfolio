@@ -1,7 +1,11 @@
+import "./style.css";
+
 import { RawEventModel } from "./rawEvent/RawEventModel";
 import { RawEventView } from "./rawEvent/RawEventView";
 import { RawEventController } from "./rawEvent/RawEventController";
-import "./style.css";
+import { DebouncedEventModel } from "./debouncedEvent/DebouncedEventModel";
+import { DebouncedEventView } from "./debouncedEvent/DebouncedEventView";
+import { DebouncedEventController } from "./debouncedEvent/DebouncedEventController";
 
 document.addEventListener("DOMContentLoaded", function () {
   const rawEventModel = new RawEventModel();
@@ -11,4 +15,14 @@ document.addEventListener("DOMContentLoaded", function () {
     rawEventView
   );
   rawEventController.init();
+
+  const debouncedEventModel = new DebouncedEventModel();
+  const debouncedEventView = new DebouncedEventView(
+    "debounced-event-container"
+  );
+  const debouncedEventController = new DebouncedEventController(
+    debouncedEventModel,
+    debouncedEventView
+  );
+  debouncedEventController.init();
 });
