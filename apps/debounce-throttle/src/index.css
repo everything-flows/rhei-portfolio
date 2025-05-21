@@ -8,6 +8,11 @@ h1 {
   font-weight: bold;
 }
 
+section {
+  border: 2px solid black;
+  margin-bottom: 2rem;
+}
+
 .container {
   padding: 1rem;
 }
