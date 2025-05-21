@@ -14,7 +14,9 @@ export class RawEventController {
   }
 
   private addInputHandler() {
+    console.log("[input] start add handler");
     const input = document.getElementById("event-input");
+    console.log("[input]", input);
     if (!input) {
       return;
     }
