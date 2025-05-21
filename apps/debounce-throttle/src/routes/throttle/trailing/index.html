@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Throttle Example</title>
+  </head>
+
+  <body class="container">
+    <p class="option-description">
+      <span>❌ Leading</span>
+      <br />
+      <span>⭕️ Trailing</span>
+    </p>
+
+    <div class="event-wrapper">
+      <h2>Raw Events</h2>
+      <div id="raw-event-container" class="event-container"></div>
+    </div>
+
+    <div class="event-wrapper">
+      <h2>Throttled Events</h2>
+      <div id="throttled-event-container" class="event-container"></div>
+    </div>
+
+    <input id="event-input" placeholder="say anything" />
+    <button id="reset-button">Reset</button>
+  </body>
+</html>

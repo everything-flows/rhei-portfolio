@@ -10,10 +10,10 @@ module.exports = {
       "./src/routes/debounce/leading-trailing/index.ts",
 
     // throttle
-    // "throttle/leading": "./src/routes/throttle/leading/index.ts",
-    // "throttle/trailing": "./src/routes/throttle/trailing/index.ts",
-    // "throttle/leading-trailing":
-    //   "./src/routes/throttle/leading-trailing/index.ts",
+    "throttle/leading": "./src/routes/throttle/leading/index.ts",
+    "throttle/trailing": "./src/routes/throttle/trailing/index.ts",
+    "throttle/leading-trailing":
+      "./src/routes/throttle/leading-trailing/index.ts",
   },
   output: {
     filename: "[name].bundle.js",
@@ -74,24 +74,30 @@ module.exports = {
     }),
 
     // throttle
-    // new HtmlWebpackPlugin({
-    //   template: "./src/routes/throttle/leading/index.html",
-    //   filename: "throttle/leading/index.html",
-    //   chunks: ["throttle/leading"],
-    //   inject: true,
-    // }),
-    // new HtmlWebpackPlugin({
-    //   template: "./src/routes/throttle/trailing/index.html",
-    //   filename: "throttle/trailing/index.html",
-    //   chunks: ["throttle/trailing"],
-    //   inject: true,
-    // }),
-    // new HtmlWebpackPlugin({
-    //   template: "./src/routes/throttle/leading-trailing/index.html",
-    //   filename: "throttle/leading-trailing/index.html",
-    //   chunks: ["throttle/leading-trailing"],
-    //   inject: true,
-    // }),
+    new HtmlWebpackPlugin({
+      template: "./src/routes/throttle/index.html",
+      filename: "throttle/index.html",
+      chunks: ["throttle"],
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/routes/throttle/leading/index.html",
+      filename: "throttle/leading/index.html",
+      chunks: ["throttle/leading"],
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/routes/throttle/trailing/index.html",
+      filename: "throttle/trailing/index.html",
+      chunks: ["throttle/trailing"],
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/routes/throttle/leading-trailing/index.html",
+      filename: "throttle/leading-trailing/index.html",
+      chunks: ["throttle/leading-trailing"],
+      inject: true,
+    }),
   ],
   devServer: {
     static: {
