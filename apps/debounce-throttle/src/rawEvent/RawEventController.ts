@@ -14,9 +14,8 @@ export class RawEventController {
   }
 
   private addInputHandler() {
-    console.log("[input] start add handler");
     const input = document.getElementById("event-input");
-    console.log("[input]", input);
+
     if (!input) {
       return;
     }
@@ -30,9 +29,8 @@ export class RawEventController {
   }
 
   private addResetHandler() {
-    console.log("[button] start add handler");
     const button = document.getElementById("reset-button");
-    console.log("[button]", button);
+
     if (!button) {
       return;
     }
