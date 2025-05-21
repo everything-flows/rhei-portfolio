@@ -1,12 +1,12 @@
-import "./reset.css";
-import "./style.css";
+import "@/reset.css";
+import "@/style.css";
 
-import { RawEventModel } from "./rawEvent/RawEventModel";
-import { RawEventView } from "./rawEvent/RawEventView";
-import { RawEventController } from "./rawEvent/RawEventController";
-import { DebouncedEventModel } from "./debouncedEvent/DebouncedEventModel";
-import { DebouncedEventView } from "./debouncedEvent/DebouncedEventView";
-import { DebouncedEventController } from "./debouncedEvent/DebouncedEventController";
+import { RawEventModel } from "@/rawEvent/RawEventModel";
+import { RawEventView } from "@/rawEvent/RawEventView";
+import { RawEventController } from "@/rawEvent/RawEventController";
+import { DebouncedEventModel } from "@/debouncedEvent/DebouncedEventModel";
+import { DebouncedEventView } from "@/debouncedEvent/DebouncedEventView";
+import { DebouncedEventController } from "@/debouncedEvent/DebouncedEventController";
 
 document.addEventListener("DOMContentLoaded", function () {
   const rawEventModel = new RawEventModel();
