@@ -50,7 +50,7 @@ module.exports = {
     // debounce
     new HtmlWebpackPlugin({
       template: "./src/routes/debounce/index.html",
-      filename: "debounce/index.html",
+      filename: "debounce/home.html",
       chunks: ["debounce"],
       inject: true,
     }),
@@ -76,7 +76,7 @@ module.exports = {
     // throttle
     new HtmlWebpackPlugin({
       template: "./src/routes/throttle/index.html",
-      filename: "throttle/index.html",
+      filename: "throttle/home.html",
       chunks: ["throttle"],
       inject: true,
     }),
