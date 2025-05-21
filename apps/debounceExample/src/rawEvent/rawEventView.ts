@@ -1,6 +1,6 @@
 import { tickCount } from "../constants";
 
-export class rawEventView {
+export class RawEventView {
   private container: HTMLElement;
 
   constructor(containerId: string) {

@@ -1,11 +1,14 @@
-import { rawEventModel } from "./rawEvent/rawEventModel";
-import { rawEventView } from "./rawEvent/rawEventView";
-import { rawEventController } from "./rawEvent/rawEventController";
+import { RawEventModel } from "./rawEvent/RawEventModel";
+import { RawEventView } from "./rawEvent/RawEventView";
+import { RawEventController } from "./rawEvent/RawEventController";
 import "./style.css";
 
 document.addEventListener("DOMContentLoaded", function () {
-  const model = new rawEventModel();
-  const view = new rawEventView("raw-event-container");
-  const controller = new rawEventController(model, view);
-  controller.init();
+  const rawEventModel = new RawEventModel();
+  const rawEventView = new RawEventView("raw-event-container");
+  const rawEventController = new RawEventController(
+    rawEventModel,
+    rawEventView
+  );
+  rawEventController.init();
 });

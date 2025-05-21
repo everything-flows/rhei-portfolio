@@ -1,6 +1,6 @@
 import { tickCount, tickTime } from "../constants";
 
-export class rawEventModel {
+export class RawEventModel {
   private eventStarted = false;
   public currentTickIndex = 0;
 

@@ -1,8 +1,8 @@
-import { rawEventModel } from "./rawEventModel";
-import { rawEventView } from "./rawEventView";
+import { RawEventModel } from "./RawEventModel";
+import { RawEventView } from "./RawEventView";
 
-export class rawEventController {
-  constructor(private model: rawEventModel, private view: rawEventView) {}
+export class RawEventController {
+  constructor(private model: RawEventModel, private view: RawEventView) {}
 
   public init() {
     // init view
