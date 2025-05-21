@@ -1,4 +1,4 @@
 import "./reset.css";
-import "./style.css";
+import "./index.css";
 
 document.addEventListener("DOMContentLoaded", function () {});
