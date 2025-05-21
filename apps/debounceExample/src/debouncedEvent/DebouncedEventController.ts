@@ -9,11 +9,16 @@ export class DebouncedEventController {
 
   constructor(
     private model: DebouncedEventModel,
-    private view: DebouncedEventView
+    private view: DebouncedEventView,
+    options?: { leading?: boolean; trailing?: boolean; maxWait?: number }
   ) {
-    this.debouncedFunction = _.debounce(() => {
-      this.view.colorActiveTick(this.model.currentTickIndex);
-    }, debounceTime);
+    this.debouncedFunction = _.debounce(
+      () => {
+        this.view.colorActiveTick(this.model.currentTickIndex);
+      },
+      debounceTime,
+      options
+    );
   }
 
   public init() {

@@ -23,7 +23,11 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   const debouncedEventController = new DebouncedEventController(
     debouncedEventModel,
-    debouncedEventView
+    debouncedEventView,
+    {
+      leading: true,
+      trailing: true,
+    }
   );
   debouncedEventController.init();
 });
