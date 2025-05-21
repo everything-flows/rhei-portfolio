@@ -18,7 +18,6 @@ export class DebouncedEventModel {
         return;
       }
 
-      console.log("[currentTickIndex]", this.currentTickIndex);
       colorTick(this.currentTickIndex);
       this.currentTickIndex++;
     }, tickTime);

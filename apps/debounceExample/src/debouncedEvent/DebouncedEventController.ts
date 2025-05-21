@@ -1,11 +1,20 @@
+import * as _ from "lodash";
+
 import { DebouncedEventModel } from "./DebouncedEventModel";
 import { DebouncedEventView } from "./DebouncedEventView";
+import { debounceTime } from "../constants";
 
 export class DebouncedEventController {
+  private debouncedFunction: () => void;
+
   constructor(
     private model: DebouncedEventModel,
     private view: DebouncedEventView
-  ) {}
+  ) {
+    this.debouncedFunction = _.debounce(() => {
+      this.view.colorActiveTick(this.model.currentTickIndex);
+    }, debounceTime);
+  }
 
   public init() {
     // init view
@@ -21,7 +30,8 @@ export class DebouncedEventController {
       this.model.startTimer((tickIndex: number) =>
         this.view.colorIdleTick(tickIndex)
       );
-      this.view.colorActiveTick(this.model.currentTickIndex);
+
+      this.debouncedFunction();
     });
   }
 }

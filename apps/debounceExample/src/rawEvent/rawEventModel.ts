@@ -18,7 +18,6 @@ export class RawEventModel {
         return;
       }
 
-      console.log("[currentTickIndex]", this.currentTickIndex);
       colorTick(this.currentTickIndex);
       this.currentTickIndex++;
     }, tickTime);
