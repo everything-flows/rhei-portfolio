@@ -1,8 +1,23 @@
+h1 {
+  font-size: 1.6rem;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+section {
+  padding: 1rem 0;
+}
+
 .container {
-  width: 90dvw 90vw;
-  padding: 8px;
-  border: 1px solid gray;
-  border-radius: 8px;
+  width: 90dvw;
+  margin: auto;
+  padding: 1rem;
 }
 
 .event-container {
@@ -19,4 +34,14 @@
 
 .tick-item:last-child {
   border: none;
+}
+
+.option-description {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+.event-wrapper {
+  margin: 1rem 0;
 }
