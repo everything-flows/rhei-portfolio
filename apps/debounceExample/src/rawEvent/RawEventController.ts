@@ -28,6 +28,7 @@ export class RawEventController {
   }
 
   private addResetHandler() {
+    console.log("[button] start add handler");
     const button = document.getElementById("reset-button");
     console.log("[button]", button);
     if (!button) {
