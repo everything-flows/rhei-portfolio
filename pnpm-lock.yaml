@@ -224,7 +224,7 @@ importers:
         specifier: ^41.5.0
         version: 41.5.0(rollup@4.39.0)
 
-  apps/debounceExample:
+  apps/debounce-throttle:
     dependencies:
       lodash:
         specifier: ^4.17.21
