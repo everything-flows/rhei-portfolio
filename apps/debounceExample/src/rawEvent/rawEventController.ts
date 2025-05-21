@@ -15,7 +15,10 @@ export class rawEventController {
     }
 
     inputElement.addEventListener("input", () => {
-      this.model.startTimer();
+      this.model.startTimer((tickIndex: number) =>
+        this.view.colorIdleTick(tickIndex)
+      );
+      this.view.colorActiveTick(this.model.currentTickIndex);
     });
   }
 }

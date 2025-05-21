@@ -20,4 +20,28 @@ export class rawEventView {
       this.container.appendChild(tickItem);
     }
   }
+
+  public colorIdleTick(tickIndex: number) {
+    const tick = this.container.children[tickIndex] as
+      | HTMLDivElement
+      | undefined;
+
+    if (!tick || tick.style.backgroundColor) {
+      return;
+    }
+
+    tick.style.backgroundColor = "#ccc";
+  }
+
+  public colorActiveTick(tickIndex: number) {
+    const tick = this.container.children[tickIndex] as
+      | HTMLDivElement
+      | undefined;
+
+    if (!tick) {
+      return;
+    }
+
+    tick.style.backgroundColor = "#f00";
+  }
 }

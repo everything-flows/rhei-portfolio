@@ -2,9 +2,9 @@ import { tickCount, tickTime } from "../constants";
 
 export class rawEventModel {
   private eventStarted = false;
-  private currentTickIndex = 0;
+  public currentTickIndex = 0;
 
-  public startTimer() {
+  public startTimer(colorTick: (tickIndex: number) => void) {
     if (this.eventStarted) {
       return;
     }
@@ -19,6 +19,7 @@ export class rawEventModel {
       }
 
       console.log("[currentTickIndex]", this.currentTickIndex);
+      colorTick(this.currentTickIndex);
       this.currentTickIndex++;
     }, tickTime);
   }
