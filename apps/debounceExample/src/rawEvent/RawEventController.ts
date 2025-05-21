@@ -29,6 +29,7 @@ export class RawEventController {
 
   private addResetHandler() {
     const button = document.getElementById("reset-button");
+    console.log("[button]", button);
     if (!button) {
       return;
     }
