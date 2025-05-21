@@ -9,7 +9,7 @@ export default function GNBClientWrapper({
 }) {
   return (
     <header className="content-x">
-      <GNB isLoggedIn={isLoggedIn} />
+      <GNB isLoggedIn={isLoggedIn} route="/craft" />
     </header>
   );
 }
