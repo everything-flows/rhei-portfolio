@@ -18,7 +18,7 @@ export default function ResumePage() {
   return (
     <>
       <header className="content-x">
-        <GNB isLoggedIn={!!user} />
+        <GNB isLoggedIn={!!user} route="/resume" />
       </header>
 
       <main className="content-x text-p">
