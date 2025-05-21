@@ -2,10 +2,16 @@ import ThemeButton from "./_components/ThemeButton";
 import { MENU } from "./menu";
 import Sidebar from "./Sidebar";
 
-export default function GNB({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
+export default function GNB({
+  route = "/",
+  isLoggedIn = false,
+}: {
+  route?: string;
+  isLoggedIn?: boolean;
+}) {
   return (
     <nav className="flex items-center justify-between mx-auto max-w-6xl py-4 relative">
-      <a href="/" className="flex gap-2 items-center">
+      <a href={route} className="flex gap-2 items-center">
         <img
           src="https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-resume//profile.png"
           alt="logo"
