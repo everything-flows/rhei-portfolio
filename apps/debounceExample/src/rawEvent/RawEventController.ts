@@ -9,16 +9,33 @@ export class RawEventController {
     this.view.init();
 
     // add event handler
-    const inputElement = document.getElementById("event-input");
-    if (!inputElement) {
+    this.addInputHandler();
+    this.addResetHandler();
+  }
+
+  private addInputHandler() {
+    const input = document.getElementById("event-input");
+    if (!input) {
       return;
     }
 
-    inputElement.addEventListener("input", () => {
+    input.addEventListener("input", () => {
       this.model.startTimer((tickIndex: number) =>
         this.view.colorIdleTick(tickIndex)
       );
       this.view.colorActiveTick(this.model.currentTickIndex);
+    });
+  }
+
+  private addResetHandler() {
+    const button = document.getElementById("reset-button");
+    if (!button) {
+      return;
+    }
+
+    button.addEventListener("click", () => {
+      this.view.init();
+      this.model.resetTimer();
     });
   }
 }
