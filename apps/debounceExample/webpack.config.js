@@ -2,10 +2,16 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/main.ts",
+  entry: {
+    index: "./src/index.ts",
+    leading: "./src/leading.ts",
+    "leading-trailing": "./src/leading-trailing.ts",
+    trailing: "./src/trailing.ts",
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
+    clean: true,
   },
   module: {
     rules: [
@@ -27,6 +33,25 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./index.html",
       filename: "index.html",
+      chunks: ["index"],
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: "./leading.html",
+      filename: "leading.html",
+      chunks: ["leading"],
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: "./leading-trailing.html",
+      filename: "leading-trailing.html",
+      chunks: ["leading-trailing"],
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: "./trailing.html",
+      filename: "trailing.html",
+      chunks: ["trailing"],
       inject: true,
     }),
   ],
@@ -37,7 +62,7 @@ module.exports = {
     port: 3000,
     open: true,
     hot: true,
-    historyApiFallback: true,
+    historyApiFallback: false,
     client: {
       overlay: true,
     },
