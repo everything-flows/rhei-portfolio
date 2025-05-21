@@ -3,13 +3,17 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
+    index: "./src/routes/index.ts",
+
     // debounce
+    debounce: "./src/routes/debounce/index.ts",
     "debounce/leading": "./src/routes/debounce/leading/index.ts",
     "debounce/trailing": "./src/routes/debounce/trailing/index.ts",
     "debounce/leading-trailing":
       "./src/routes/debounce/leading-trailing/index.ts",
 
     // throttle
+    throttle: "./src/routes/throttle/index.ts",
     "throttle/leading": "./src/routes/throttle/leading/index.ts",
     "throttle/trailing": "./src/routes/throttle/trailing/index.ts",
     "throttle/leading-trailing":

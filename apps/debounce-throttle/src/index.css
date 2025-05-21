@@ -9,7 +9,11 @@ h1 {
 }
 
 .container {
-  width: 90dvw;
-  margin: auto;
   padding: 1rem;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
