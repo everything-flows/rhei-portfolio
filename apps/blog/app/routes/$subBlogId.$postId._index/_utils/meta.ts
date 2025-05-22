@@ -47,7 +47,7 @@ export default function meta({
     },
     {
       property: "og:type",
-      content: "website",
+      content: "article",
     },
     {
       property: "og:site_name",
@@ -74,6 +74,7 @@ export default function meta({
       content: thumbnail,
     },
     {
+      tagName: "link",
       rel: "canonical",
       href: url,
     },
@@ -82,17 +83,20 @@ export default function meta({
         "@context": "https://schema.org",
         "@type": "Article",
         headline: postInfo.title,
-        description: description,
+        description,
         image: [thumbnail],
+        inLanguage: "ko",
         datePublished: postInfo.createdAt,
         dateModified: postInfo.lastEditedAt || postInfo.createdAt,
         author: {
           "@type": "Person",
           name: AUTHOR,
+          url: SITE_URL,
         },
         publisher: {
           "@type": "Organization",
           name: SITE_NAME,
+          url: SITE_URL,
           logo: {
             "@type": "ImageObject",
             url: BLOG_THUMBNAIL,
