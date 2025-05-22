@@ -7,7 +7,10 @@ import {
   SITE_URL,
   GITHUB_URL,
 } from "@rhei/meta";
+
 import convertUrl from "~/utils/convertUrl";
+
+const blogUrl = `${SITE_URL}/blog`;
 
 export default function meta({ data }) {
   const title = `${SITE_TITLE} | ${SITE_NAME}`;
@@ -52,7 +55,7 @@ export default function meta({ data }) {
     },
     {
       property: "og:url",
-      content: URL,
+      content: blogUrl,
     },
     {
       name: "twitter:card",
@@ -71,18 +74,36 @@ export default function meta({ data }) {
       content: BLOG_THUMBNAIL,
     },
     {
+      tagName: "link",
       rel: "canonical",
-      href: SITE_URL,
+      href: blogUrl,
     },
     {
       "script:ld+json": {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": "WebSite",
         name: SITE_NAME,
-        url: SITE_URL,
-        logo: BLOG_THUMBNAIL,
+        url: blogUrl,
+        logo: {
+          "@type": "ImageObject",
+          url: BLOG_THUMBNAIL,
+        },
         description: SITE_DESCRIPTION,
-        sameAs: [GITHUB_URL],
+        inLanguage: "ko",
+        publisher: {
+          "@type": "Organization",
+          name: AUTHOR,
+          url: SITE_URL,
+          logo: {
+            "@type": "ImageObject",
+            url: BLOG_THUMBNAIL,
+          },
+          sameAs: [GITHUB_URL],
+        },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": blogUrl,
+        },
       },
     },
   ];
