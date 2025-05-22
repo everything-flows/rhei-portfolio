@@ -8,6 +8,8 @@ import {
   GITHUB_URL,
 } from "@rhei/meta";
 
+const blogUrl = `${SITE_URL}/blog`;
+
 export function meta() {
   const title = `${SITE_TITLE} | ${SITE_NAME}`;
 
@@ -65,17 +67,31 @@ export function meta() {
     },
     {
       rel: "canonical",
-      href: SITE_URL,
+      href: blogUrl,
     },
     {
       "script:ld+json": {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": "WebSite",
         name: SITE_NAME,
-        url: SITE_URL,
+        url: blogUrl,
         logo: BLOG_THUMBNAIL,
         description: SITE_DESCRIPTION,
-        sameAs: [GITHUB_URL],
+        inLanguage: "ko",
+        publisher: {
+          "@type": "Organization",
+          name: AUTHOR,
+          url: SITE_URL,
+          logo: {
+            "@type": "ImageObject",
+            url: BLOG_THUMBNAIL,
+          },
+          sameAs: [GITHUB_URL],
+        },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": blogUrl,
+        },
       },
     },
   ];
