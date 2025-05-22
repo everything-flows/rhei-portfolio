@@ -76,6 +76,7 @@ export default function meta({
       content: thumbnail,
     },
     {
+      tagName: "link",
       rel: "canonical",
       href: url,
     },
@@ -83,6 +84,9 @@ export default function meta({
       "script:ld+json": {
         "@context": "https://schema.org",
         "@type": "ItemList",
+        name: `$Posts of {tagData.id} tag`,
+        itemListOrder: "http://schema.org/ItemListOrderDescending",
+        numberOfItems: postList.length,
         itemListElement: postList.map((post: Document, index: number) => ({
           "@type": "ListItem",
           position: index + 1,

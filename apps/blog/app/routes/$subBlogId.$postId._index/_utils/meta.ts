@@ -81,7 +81,7 @@ export default function meta({
     {
       "script:ld+json": {
         "@context": "https://schema.org",
-        "@type": "Article",
+        "@type": "BlogPosting",
         headline: postInfo.title,
         description,
         image: [thumbnail],
