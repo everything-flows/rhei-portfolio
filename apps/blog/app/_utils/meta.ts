@@ -43,11 +43,11 @@ export function meta() {
     },
     {
       property: "og:site_name",
-      content: title,
+      content: SITE_NAME,
     },
     {
       property: "og:url",
-      content: URL,
+      content: blogUrl,
     },
     {
       name: "twitter:card",
@@ -66,6 +66,7 @@ export function meta() {
       content: BLOG_THUMBNAIL,
     },
     {
+      tagName: "link",
       rel: "canonical",
       href: blogUrl,
     },
@@ -75,7 +76,10 @@ export function meta() {
         "@type": "WebSite",
         name: SITE_NAME,
         url: blogUrl,
-        logo: BLOG_THUMBNAIL,
+        logo: {
+          "@type": "ImageObject",
+          url: BLOG_THUMBNAIL,
+        },
         description: SITE_DESCRIPTION,
         inLanguage: "ko",
         publisher: {
