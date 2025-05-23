@@ -344,6 +344,16 @@ function renderNodes(node, index) {
           return <br />;
         }
 
+        case "iframe": {
+          console.log(node);
+          return (
+            <iframe
+              {...node?.properties}
+              className="border-sub mx-auto my-4 w-full rounded-md border sm:w-[80dvw] md:w-[75dvw] lg:w-[60%]"
+            />
+          );
+        }
+
         default: {
           const className = node?.properties?.className?.join(" ");
           return (
