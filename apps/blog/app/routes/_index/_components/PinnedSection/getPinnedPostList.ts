@@ -11,11 +11,10 @@ export default async function getPinnedPostList({
 }) {
   const PINNED_POST_LIST = [
     "search-filter-with-url",
+    "debounce-and-throttle",
     "connect-types-and-constants",
     "requestanimationframe-guide",
-    "cspg-design-system-text",
     "commit-message",
-    "js-coding-test-1-input",
   ];
 
   const data = await Promise.all(
