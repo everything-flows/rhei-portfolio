@@ -14,6 +14,10 @@ export default function meta({
   data: { postData: { postData: Document } };
 }) {
   const { postData } = data;
+  if (!postData) {
+    return null;
+  }
+
   const { postData: postInfo } = postData;
 
   const title = `${postInfo.title} | ${SITE_NAME}`;

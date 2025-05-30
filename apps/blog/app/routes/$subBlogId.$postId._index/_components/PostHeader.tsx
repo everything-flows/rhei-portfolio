@@ -8,6 +8,7 @@ import useCategoryStore from "~/stores/category";
 
 export default function PostHeader({ data }: { data: { postData: Document } }) {
   const { postData } = data;
+
   const { title, subTitle, id, tags } = postData;
 
   const { categoryList } = useCategoryStore();
