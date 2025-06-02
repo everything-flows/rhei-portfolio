@@ -53,12 +53,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="bg-normal text-normal">
-        <div className="fixed inset-0 z-[-1] opacity-[0.2] blur-[min(100px,10dvw)]">
-          <div className="absolute -right-8 -top-4 h-[50dvh] w-[80dvw] rounded-[100%] bg-[#ffeca8] dark:bg-blue-600">
-            <div className="bg-normal h-[30dvh] w-[50dvw] rounded-[100%]" />
+        <div className="fixed inset-0 z-[-1] opacity-[0.15] blur-[min(100px,10dvw)]">
+          <div className="absolute -right-8 -top-4 h-[70dvh] w-[80dvw] rounded-[100%] bg-blue-200 dark:bg-blue-600">
+            <div className="bg-normal absolute top-[30dvh] h-[40dvh] w-[50dvw] rounded-[100%]" />
           </div>
-          <div className="absolute top-[30dvh] h-[80dvh] w-[70dvw] rounded-[100%] bg-[#fffdcf] dark:bg-blue-700">
-            <div className="bg-normal absolute bottom-0 right-0 h-[50dvh] w-[50dvw] rounded-[100%]" />
+          <div className="absolute bottom-0 h-[50dvh] w-[70dvw] rounded-[100%] bg-orange-300 dark:bg-orange-600">
+            <div className="bg-normal absolute bottom-0 right-0 h-[30dvh] w-[50dvw] rounded-[100%]" />
           </div>
         </div>
         {children}
