@@ -345,7 +345,6 @@ function renderNodes(node, index) {
         }
 
         case "iframe": {
-          console.log(node);
           return (
             <iframe
               {...node?.properties}
