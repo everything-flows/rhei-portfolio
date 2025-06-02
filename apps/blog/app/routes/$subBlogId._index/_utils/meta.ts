@@ -8,15 +8,22 @@ import {
 
 import { Document } from "~/types/post";
 
-export default function meta({ postData }: { postData: Document }) {
+export default function meta({
+  data,
+}: {
+  data: { postData: { postData: Document } };
+}) {
+  const { postData } = data;
   if (!postData) {
     return null;
   }
 
-  const title = `${postData.title} | ${SITE_NAME}`;
-  const description = `${postData.subTitle} | ${SITE_DESCRIPTION}`;
-  const thumbnail = postData.thumbnail || BLOG_THUMBNAIL;
-  const url = `${SITE_URL}/blog/${postData.subBlog}/${postData.id}`;
+  const { postData: postInfo } = postData;
+
+  const title = `${postInfo.title} | ${SITE_NAME}`;
+  const description = `${postInfo.subTitle} | ${SITE_DESCRIPTION}`;
+  const thumbnail = postInfo.thumbnail || BLOG_THUMBNAIL;
+  const url = `${SITE_URL}/blog/${postInfo.subBlog}/${postInfo.id}`;
 
   return [
     {
@@ -79,12 +86,12 @@ export default function meta({ postData }: { postData: Document }) {
       "script:ld+json": {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        headline: postData.title,
+        headline: postInfo.title,
         description,
         image: [thumbnail],
         inLanguage: "ko",
-        datePublished: postData.createdAt,
-        dateModified: postData.lastEditedAt || postData.createdAt,
+        datePublished: postInfo.createdAt,
+        dateModified: postInfo.lastEditedAt || postInfo.createdAt,
         author: {
           "@type": "Person",
           name: AUTHOR,

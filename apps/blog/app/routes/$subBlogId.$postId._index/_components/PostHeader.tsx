@@ -6,10 +6,8 @@ import TagList from "~/components/TagList";
 import { getBreadcrumbData } from "~/utils/breadcrumb";
 import useCategoryStore from "~/stores/category";
 
-export default function PostHeader({ data }: { data: { postData: Document } }) {
-  const { postData } = data;
-
-  const { title, subTitle, id, tags } = postData;
+export default function PostHeader({ data }: { data: Document }) {
+  const { title, subTitle, id, tags } = data;
 
   const { categoryList } = useCategoryStore();
 
@@ -22,11 +20,13 @@ export default function PostHeader({ data }: { data: { postData: Document } }) {
       <Breadcrumb breadcrumbData={breadcrumbData} />
 
       <h1 className="text-responsive-h1 mt-2 break-keep">{title}</h1>
-      <h2 className="text-responsive-p break-keep text-gray-400 dark:text-gray-300">
-        {subTitle}
-      </h2>
+      {subTitle && (
+        <h2 className="text-responsive-p break-keep text-gray-400 dark:text-gray-300">
+          {subTitle}
+        </h2>
+      )}
 
-      <TagList tagList={tags} />
+      {tags && <TagList tagList={tags} />}
     </section>
   );
 }
