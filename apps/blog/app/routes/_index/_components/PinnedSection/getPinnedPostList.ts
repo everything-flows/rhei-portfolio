@@ -10,8 +10,8 @@ export default async function getPinnedPostList({
   supabaseClient: SupabaseClient<Database, "public">;
 }) {
   const PINNED_POST_LIST = [
-    "search-filter-with-url",
     "debounce-and-throttle",
+    "search-filter-with-url",
     "connect-types-and-constants",
     "requestanimationframe-guide",
     "commit-message",
