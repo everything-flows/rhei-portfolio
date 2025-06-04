@@ -9,6 +9,10 @@ export { default as loader } from "./_utils/loader";
 export default function PostPage() {
   const { blogInfo, postData } = useLoaderData();
 
+  if (!blogInfo || !postData) {
+    return null;
+  }
+
   return (
     <>
       <header className="content-x">
