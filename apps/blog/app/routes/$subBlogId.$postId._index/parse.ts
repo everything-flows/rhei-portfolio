@@ -5,17 +5,14 @@ import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import remarkToc from "remark-toc";
+import rehypeRaw from "rehype-raw";
 import { VFile } from "vfile";
 
 export default async function parse(content: string) {
-  const processor = await unified().use([
-    remarkParse,
-    remarkMath,
-    remarkGfm,
-    remarkToc,
-    remarkRehype,
-    rehypeKatex,
-  ]);
+  const processor = await unified()
+    .use([remarkParse, remarkMath, remarkGfm, remarkToc, rehypeKatex])
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw);
 
   const file = new VFile();
   file.value = content;

@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://rhei.me/sitemap.xml
+Sitemap: https://rhei.me/blog/sitemap.xml
