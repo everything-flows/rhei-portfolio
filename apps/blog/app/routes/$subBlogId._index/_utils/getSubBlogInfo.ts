@@ -17,7 +17,7 @@ export async function getSubBlogInfo({
     .single();
 
   if (databaseError) {
-    throw new Error();
+    return null;
   }
 
   const data = snakeToCamel(databaseData);
