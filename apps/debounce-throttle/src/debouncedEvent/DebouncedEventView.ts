@@ -1,4 +1,4 @@
-import { tickCount } from "../constants";
+import { idleColor, tickCount } from "@/constants";
 
 export class DebouncedEventView {
   private container: HTMLElement;
@@ -30,10 +30,10 @@ export class DebouncedEventView {
       return;
     }
 
-    tick.style.backgroundColor = "#ccc";
+    tick.style.backgroundColor = idleColor;
   }
 
-  public colorActiveTick(tickIndex: number) {
+  public colorActiveTick(tickIndex: number, color: string) {
     const tick = this.container.children[tickIndex] as
       | HTMLDivElement
       | undefined;
@@ -42,6 +42,6 @@ export class DebouncedEventView {
       return;
     }
 
-    tick.style.backgroundColor = "#f00";
+    tick.style.backgroundColor = color;
   }
 }
