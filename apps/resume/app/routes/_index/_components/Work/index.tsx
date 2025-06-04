@@ -99,7 +99,7 @@ export default function Work() {
               </div>
 
               <p className="mt-2">{work.description}</p>
-              <ul className="flex flex-wrap gap-x-2 gap-y-1">
+              <ul className="mt-1 flex flex-wrap gap-x-2 gap-y-1">
                 {work.stack?.map((stack) => (
                   <li
                     key={stack}
