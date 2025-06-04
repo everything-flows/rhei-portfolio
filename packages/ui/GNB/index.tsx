@@ -28,7 +28,9 @@ export default function GNB({
           <li key={item.title}>
             <a
               href={item.link}
-              className="font-extrabold text-[1.2rem] hover:text-brand"
+              className={`font-extrabold text-[1.2rem] hover:text-brand px-1 ${
+                item.isCurrentTab() ? "text-brand" : ""
+              }`}
             >
               {item.title}
             </a>

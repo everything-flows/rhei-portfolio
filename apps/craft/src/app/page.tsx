@@ -1,6 +1,13 @@
 import { Footer } from "@rhei/ui";
 import Link from "next/link";
 
+interface Card {
+  title: string;
+  description: string;
+  thumbnail: string;
+  link: string;
+}
+
 const ITEM_LIST = [
   {
     title: "Debounce 예시",
@@ -28,32 +35,38 @@ const ITEM_LIST = [
   },
 ];
 
+function CardItem({ data }: { data: Card }) {
+  const { title, description, thumbnail, link } = data;
+
+  return (
+    <Link
+      key={title}
+      href={link}
+      className="rounded-3xl bg-[#eaeaea] p-2 hover:text-blue-500 dark:bg-[#303030] dark:hover:text-orange-500"
+    >
+      <article className="flex flex-col">
+        <img
+          src={thumbnail}
+          alt={title}
+          className="mb-2 aspect-[16/9] rounded-2xl object-cover"
+        />
+        <div className="p-2">
+          <h3 className="text-[1.4rem] font-bold">{title}</h3>
+          <p className="text-gray-400 dark:text-gray-300">{description}</p>
+        </div>
+      </article>
+    </Link>
+  );
+}
+
 export default async function Home() {
   return (
     <>
       <main className="content-x">
         <section className="mx-auto w-full max-w-6xl">
-          <h1>나의 작은 쓰레기장</h1>
-
-          <div className="mt-8 grid grid-cols-[1fr] gap-x-4 gap-y-5 sm:grid-cols-[1fr_1fr] lg:grid-cols-[1fr_1fr_1fr]">
+          <div className="mt-8 grid grid-cols-[1fr] gap-x-6 gap-y-12 sm:grid-cols-[1fr_1fr] sm:gap-y-8 lg:grid-cols-[1fr_1fr_1fr]">
             {ITEM_LIST.map((item) => (
-              <Link
-                key={item.title}
-                href={item.link}
-                className="rounded-3xl bg-[#eaeaea] p-2 hover:text-blue-500 dark:bg-[#222222]"
-              >
-                <article className="flex flex-col">
-                  <img
-                    src={item.thumbnail}
-                    alt={item.title}
-                    className="mb-2 aspect-[16/9] rounded-2xl object-cover"
-                  />
-                  <div className="p-2">
-                    <h3 className="text-[1.4rem] font-bold">{item.title}</h3>
-                    <p>{item.description}</p>
-                  </div>
-                </article>
-              </Link>
+              <CardItem key={item.title} data={item} />
             ))}
           </div>
         </section>

@@ -41,7 +41,9 @@ export default function Sidebar() {
                   <li key={item.title} className="w-full border-b border-sub">
                     <a
                       href={item.link}
-                      className="font-extrabold text-[1.2rem] hover:text-brand px-6 py-4 w-full inline-block"
+                      className={`font-extrabold text-[1.2rem] hover:text-brand px-6 py-4 w-full inline-block ${
+                        item.isCurrentTab() ? "text-brand" : ""
+                      }`}
                     >
                       {item.title}
                     </a>
