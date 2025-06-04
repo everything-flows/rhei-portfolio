@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Link } from "@remix-run/react";
 import { StickyHeading } from "@rhei/react";
 
@@ -6,7 +7,7 @@ interface Activity {
   description: string;
   period: string;
   list: {
-    content: string;
+    content: string | ReactNode;
     link?: {
       title: string;
       href: string;
@@ -27,12 +28,19 @@ const ACTIVITY_UNIV: Activity[] = [
     period: "2020.11 - 2023.08",
     list: [
       {
-        content:
-          "2023 겨울 신촌지역 대학교 프로그래밍 동아리 연합 알고리즘 캠프 콘테스트 초급 부문 B번 문항 출제",
-        link: {
-          title: "문제 링크 →",
-          href: "https://www.acmicpc.net/problem/27495",
-        },
+        content: (
+          <>
+            2023 겨울 신촌지역 대학교 프로그래밍 동아리 연합 알고리즘 캠프
+            콘테스트 초급 부문{" "}
+            <a
+              href="https://www.acmicpc.net/problem/27495"
+              className="text-brand underline"
+            >
+              B번 문항
+            </a>{" "}
+            출제
+          </>
+        ),
       },
     ],
   },
@@ -91,8 +99,8 @@ export default function Activity() {
 
                 {activity?.list && (
                   <ul className="ps-6">
-                    {activity.list.map((desc) => (
-                      <li key={desc.content}>
+                    {activity.list.map((desc, index) => (
+                      <li key={index}>
                         <p>
                           {desc.content}{" "}
                           {desc.link && (
@@ -136,8 +144,8 @@ export default function Activity() {
 
                 {activity?.list && (
                   <ul className="ps-6">
-                    {activity.list.map((desc) => (
-                      <li key={desc.content}>
+                    {activity.list.map((desc, index) => (
+                      <li key={index}>
                         <p>
                           {desc.content}{" "}
                           {desc.link && (
