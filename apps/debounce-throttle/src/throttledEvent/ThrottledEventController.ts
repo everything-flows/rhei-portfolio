@@ -1,11 +1,15 @@
 import * as _ from "lodash";
 
+import { debounceTime, tickColorList } from "@/constants";
+
 import { ThrottledEventModel } from "./ThrottledEventModel";
 import { ThrottledEventView } from "./ThrottledEventView";
-import { debounceTime } from "../constants";
 
 export class ThrottledEventController {
   private throttledFunction: () => void;
+  private changeColor: () => void;
+
+  private colorIndex = 0;
 
   constructor(
     private model: ThrottledEventModel,
@@ -14,10 +18,20 @@ export class ThrottledEventController {
   ) {
     this.throttledFunction = _.throttle(
       () => {
-        this.view.colorActiveTick(this.model.currentTickIndex);
+        this.view.colorActiveTick(
+          this.model.currentTickIndex,
+          tickColorList[this.colorIndex % tickColorList.length]
+        );
       },
       debounceTime,
       options
+    );
+    this.changeColor = _.debounce(
+      () => {
+        this.colorIndex++;
+      },
+      debounceTime,
+      { leading: false, trailing: true }
     );
   }
 
@@ -41,6 +55,7 @@ export class ThrottledEventController {
         this.view.colorIdleTick(tickIndex)
       );
       this.throttledFunction();
+      this.changeColor();
     });
   }
 

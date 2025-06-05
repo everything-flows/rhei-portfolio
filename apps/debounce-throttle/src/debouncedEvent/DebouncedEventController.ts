@@ -1,11 +1,15 @@
 import * as _ from "lodash";
 
+import { debounceTime, tickColorList } from "@/constants";
+
 import { DebouncedEventModel } from "./DebouncedEventModel";
 import { DebouncedEventView } from "./DebouncedEventView";
-import { debounceTime } from "../constants";
 
 export class DebouncedEventController {
   private debouncedFunction: () => void;
+  private changeColor: () => void;
+
+  private colorIndex = 0;
 
   constructor(
     private model: DebouncedEventModel,
@@ -14,10 +18,20 @@ export class DebouncedEventController {
   ) {
     this.debouncedFunction = _.debounce(
       () => {
-        this.view.colorActiveTick(this.model.currentTickIndex);
+        this.view.colorActiveTick(
+          this.model.currentTickIndex,
+          tickColorList[this.colorIndex % tickColorList.length]
+        );
       },
       debounceTime,
       options
+    );
+    this.changeColor = _.debounce(
+      () => {
+        this.colorIndex++;
+      },
+      debounceTime,
+      { leading: false, trailing: true }
     );
   }
 
@@ -41,6 +55,7 @@ export class DebouncedEventController {
         this.view.colorIdleTick(tickIndex)
       );
       this.debouncedFunction();
+      this.changeColor();
     });
   }
 
