@@ -1,8 +1,23 @@
+import * as _ from "lodash";
+
+import { debounceTime, tickColorList } from "@/constants";
 import { RawEventModel } from "./RawEventModel";
 import { RawEventView } from "./RawEventView";
 
 export class RawEventController {
-  constructor(private model: RawEventModel, private view: RawEventView) {}
+  private changeColor: () => void;
+
+  private colorIndex = 0;
+
+  constructor(private model: RawEventModel, private view: RawEventView) {
+    this.changeColor = _.debounce(
+      () => {
+        this.colorIndex++;
+      },
+      debounceTime,
+      { leading: false, trailing: true }
+    );
+  }
 
   public init() {
     // init view
@@ -24,7 +39,11 @@ export class RawEventController {
       this.model.startTimer((tickIndex: number) =>
         this.view.colorIdleTick(tickIndex)
       );
-      this.view.colorActiveTick(this.model.currentTickIndex);
+      this.view.colorActiveTick(
+        this.model.currentTickIndex,
+        tickColorList[this.colorIndex % tickColorList.length]
+      );
+      this.changeColor();
     });
   }
 

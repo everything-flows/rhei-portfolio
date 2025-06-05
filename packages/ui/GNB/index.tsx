@@ -29,7 +29,7 @@ export default function GNB({
             <a
               href={item.link}
               className={`font-extrabold text-[1.2rem] hover:text-brand px-1 ${
-                item.isCurrentTab() ? "text-brand" : ""
+                item.link === route ? "text-brand" : ""
               }`}
             >
               {item.title}
@@ -43,7 +43,7 @@ export default function GNB({
         )}
       </ul>
 
-      <Sidebar />
+      <Sidebar route={route} />
     </nav>
   );
 }
