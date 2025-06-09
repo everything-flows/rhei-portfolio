@@ -4,17 +4,19 @@ import React, { ReactElement, ReactNode, useEffect, useRef } from "react";
 
 const TIME = 400;
 const HEIGHT = 5; // -{HEIGHT}px ~ {HEIGHT}px
+const PHASE_DELAY = 60; // 각 글자 간 지연 시간 (ms)
 
-function WavyItem({ item }: { item: string }) {
+function WavyItem({ item, index = 0 }: { item: string; index: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const animationFrameRef = useRef<number>(null);
 
   useEffect(() => {
+    const phaseOffset = index * PHASE_DELAY;
     let start = performance.now();
 
     const animate = (time: number) => {
       const elapsed = time - start;
-      const y = Math.sin(elapsed / TIME) * HEIGHT;
+      const y = Math.sin((elapsed + phaseOffset) / TIME) * HEIGHT;
 
       if (ref.current) {
         ref.current.style.transform = `translateY(${y}px)`;
@@ -32,12 +34,7 @@ function WavyItem({ item }: { item: string }) {
   }, []);
 
   return (
-    <span
-      ref={ref}
-      aria-hidden="true"
-      className="inline-block"
-      style={{ transform: "translateY(5px)" }}
-    >
+    <span ref={ref} aria-hidden="true" className="inline-block">
       {item}
     </span>
   );
@@ -48,7 +45,7 @@ function Render({ node }: { node: ReactNode }) {
     return (
       <span aria-label={node.toString()} className="whitespace-pre-wrap">
         {[...node.toString()].map((char, index) => (
-          <WavyItem key={index} item={char} />
+          <WavyItem key={index} item={char} index={index} />
         ))}
       </span>
     );
