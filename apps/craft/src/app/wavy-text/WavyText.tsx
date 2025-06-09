@@ -1,25 +1,28 @@
-import React from "react";
+import React, { ReactElement, ReactNode } from "react";
 
-export default function WavyText({ children }) {
-  console.log(children);
+function Render({ node }: { node: ReactNode }) {
+  if (typeof node === "string" || typeof node === "number") {
+    return <>{node}</>;
+  }
 
-  if (Array.isArray(children)) {
-    return children?.map((child, index) =>
-      typeof child === "string" ? (
-        <React.Fragment key={index}>{child}</React.Fragment>
-      ) : (
-        <child.type key={index} className={child.props.className}>
-          <WavyText>{child.props.children}</WavyText>
-        </child.type>
-      ),
+  if (React.isValidElement(node)) {
+    const element = node as ReactElement<any>;
+    const { type, props } = element;
+
+    return React.createElement(
+      type,
+      { className: props.className },
+      <WavyText>{props.children}</WavyText>,
     );
   }
 
-  return typeof children === "string" ? (
-    children
-  ) : (
-    <children.type className={children.props.className}>
-      <WavyText>{children.props.children}</WavyText>
-    </children.type>
-  );
+  return null;
+}
+
+export default function WavyText({ children }: { children: ReactNode }) {
+  if (Array.isArray(children)) {
+    return children?.map((child, index) => <Render key={index} node={child} />);
+  }
+
+  return <Render node={children} />;
 }
