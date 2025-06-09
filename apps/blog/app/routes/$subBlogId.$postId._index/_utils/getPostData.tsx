@@ -19,21 +19,21 @@ export default async function getPostData({
   subBlogId: string;
   postId: string;
 }) {
-  const postData = await getPostById({ supabaseClient, subBlogId, postId });
+  const postInfo = await getPostById({ supabaseClient, subBlogId, postId });
 
-  if (!postData) {
+  if (!postInfo) {
     return null;
   }
 
-  if (isNormalPost(postData)) {
+  if (isNormalPost(postInfo)) {
     return {
-      postData,
-      parsedContent: await parse("# Table Of Contents\n" + postData.content),
+      postInfo,
+      postContent: await parse("# Table Of Contents\n" + postInfo.content),
     };
   }
 
   return {
-    postData,
+    postInfo,
     childPostList: await getChildPostList({
       supabaseClient,
       subBlogId,

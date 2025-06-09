@@ -8,6 +8,7 @@ import Award from "./_components/Award";
 import Work from "./_components/Work";
 import Info from "./_components/Info";
 import Language from "./_components/Language";
+import Project from "./_components/Project";
 
 export { default as loader } from "./_utils/loader";
 
@@ -25,6 +26,7 @@ export default function ResumePage() {
           <Info />
           <Summary />
           <Work />
+          <Project />
           <Award />
           <Education />
           <Activity />

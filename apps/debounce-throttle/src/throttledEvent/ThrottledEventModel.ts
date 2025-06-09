@@ -1,4 +1,4 @@
-import { tickCount, tickTime } from "../constants";
+import { tickCount, tickTime } from "@/constants";
 
 export class ThrottledEventModel {
   private eventStarted = false;

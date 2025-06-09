@@ -16,6 +16,9 @@ export default function PostPage() {
     return null;
   }
 
+  const { postInfo, postContent, childPostList } = postData;
+  const { type } = postInfo;
+
   return (
     <>
       <header className="content-x">
@@ -23,14 +26,12 @@ export default function PostPage() {
       </header>
 
       <main className="content-x">
-        <PostHeader data={postData} />
+        <PostHeader data={postInfo} />
 
-        {postData.postData?.type === DocumentType.Post && (
-          <PostContent content={postData.parsedContent} />
-        )}
+        {type === DocumentType.Post && <PostContent content={postContent} />}
 
-        {postData.postData?.type === DocumentType.Directory && (
-          <PostDirectory postList={postData.childPostList!} />
+        {type === DocumentType.Directory && (
+          <PostDirectory postList={childPostList!} />
         )}
       </main>
 

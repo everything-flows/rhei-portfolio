@@ -99,4 +99,31 @@
       #0b2878 90%
     );
   }
+
+  .custom-scrollbar {
+    scrollbar-width: auto; /* Firefox */
+    scrollbar-color: #d4d4d4 transparent; /* thumb / track */
+
+    /* Chrome, Safari */
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #d4d4d4;
+      border-radius: 9999px;
+      border: 2px solid transparent;
+    }
+  }
+
+  .dark .custom-scrollbar {
+    scrollbar-color: #404040 transparent; /* thumb / track */
+    &::-webkit-scrollbar-thumb {
+      background-color: #404040;
+    }
+  }
 }

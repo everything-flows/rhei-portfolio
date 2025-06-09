@@ -7,7 +7,7 @@ export default function ArrowIcon({ size = "1rem" }: { size?: string }) {
       height={size}
       viewBox="0 0 24 24"
       fill="none"
-      className="stroke-current"
+      className="strokeCurrent"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
