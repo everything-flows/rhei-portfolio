@@ -56,7 +56,10 @@ function render({
     let currentCharIndex = 0;
     return {
       retNode: (
-        <span aria-label={node.toString()} className="whitespace-pre-wrap">
+        <span
+          aria-label={node.toString()}
+          className="inline-block break-keep whitespace-pre-wrap"
+        >
           {[...node.toString()].map((char, index) => (
             <WavyItem
               key={index}

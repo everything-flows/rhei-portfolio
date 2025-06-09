@@ -10,25 +10,24 @@ export default function Page() {
         </h1>
 
         <section className="mx-auto w-full max-w-6xl">
-          <p>
-            This is <span className="text-blue-500">blue</span> and{" "}
-            <strong>strong</strong> and <WavyText>waaaaaaaaavy</WavyText> text
+          <p className="text-[1.5rem]">
+            <WavyText>Waaaaavy</WavyText> text
           </p>
 
-          <p>
+          <p className="text-[1.5rem]">
             This is{" "}
             <WavyText>
-              <span className="text-blue-500">blue</span> and{" "}
-              <strong>strong</strong> and waaaaaaaaavy
+              <span className="text-blue-500">Blue</span> and{" "}
+              <strong>Strong</strong> and Waaaaavy
             </WavyText>{" "}
             text
           </p>
 
-          <p>
+          <p className="text-[1.5rem]">
             This is{" "}
             <WavyText>
               <span className="text-blue-500">
-                <strong>blue and strong and waaaaaaaaavy </strong>
+                <strong>Blue and Strong and Waaaaavy </strong>
               </span>
             </WavyText>{" "}
             text
