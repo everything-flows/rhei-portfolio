@@ -1,13 +1,21 @@
 import React, { ReactElement, ReactNode } from "react";
 
 function WavyItem({ item }: { item: string }) {
-  return <span aria-hidden="true">{item}</span>;
+  return (
+    <span
+      aria-hidden="true"
+      className="inline-block"
+      style={{ transform: "translateY(5px)" }}
+    >
+      {item}
+    </span>
+  );
 }
 
 function Render({ node }: { node: ReactNode }) {
   if (typeof node === "string" || typeof node === "number") {
     return (
-      <span aria-label={node.toString()}>
+      <span aria-label={node.toString()} className="whitespace-pre-wrap">
         {[...node.toString()].map((char, index) => (
           <WavyItem key={index} item={char} />
         ))}
