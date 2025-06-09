@@ -12,14 +12,14 @@ export default function Page() {
         <section className="mx-auto w-full max-w-6xl">
           <p>
             This is <span className="text-blue-500">blue</span> and{" "}
-            <strong>strong</strong> and <WavyText>wavvvvvvvvvy</WavyText> text
+            <strong>strong</strong> and <WavyText>waaaaaaaaavy</WavyText> text
           </p>
 
           <p>
             This is{" "}
             <WavyText>
               <span className="text-blue-500">blue</span> and{" "}
-              <strong>strong</strong> and wavvvvvvvvvy
+              <strong>strong</strong> and waaaaaaaaavy
             </WavyText>{" "}
             text
           </p>
@@ -28,7 +28,7 @@ export default function Page() {
             This is{" "}
             <WavyText>
               <span className="text-blue-500">
-                <strong>blue and strong and wavvvvvvvvvy </strong>
+                <strong>blue and strong and waaaaaaaaavy </strong>
               </span>
             </WavyText>{" "}
             text

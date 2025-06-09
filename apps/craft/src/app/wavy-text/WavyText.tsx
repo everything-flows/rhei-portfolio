@@ -2,9 +2,9 @@
 
 import React, { ReactElement, ReactNode, useEffect, useRef } from "react";
 
-const TIME = 400;
+const TIME = 300;
 const HEIGHT = 5; // -{HEIGHT}px ~ {HEIGHT}px
-const PHASE_DELAY = 60; // 각 글자 간 지연 시간 (ms)
+const PHASE_DELAY = 70; // 각 글자 간 지연 시간 (ms)
 
 function WavyItem({ item, index = 0 }: { item: string; index: number }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -34,41 +34,86 @@ function WavyItem({ item, index = 0 }: { item: string; index: number }) {
   }, []);
 
   return (
-    <span ref={ref} aria-hidden="true" className="inline-block">
+    <span
+      ref={ref}
+      aria-hidden="true"
+      className="inline-block"
+      data-test={index}
+    >
       {item}
     </span>
   );
 }
 
-function Render({ node }: { node: ReactNode }) {
+function render({
+  node,
+  charIndex = 0,
+}: {
+  node: ReactNode;
+  charIndex?: number;
+}): { retNode: ReactNode; textLength: number } {
   if (typeof node === "string" || typeof node === "number") {
-    return (
-      <span aria-label={node.toString()} className="whitespace-pre-wrap">
-        {[...node.toString()].map((char, index) => (
-          <WavyItem key={index} item={char} index={index} />
-        ))}
-      </span>
-    );
+    let currentCharIndex = 0;
+    return {
+      retNode: (
+        <span aria-label={node.toString()} className="whitespace-pre-wrap">
+          {[...node.toString()].map((char, index) => (
+            <WavyItem
+              key={index}
+              item={char}
+              index={charIndex + currentCharIndex++}
+            />
+          ))}
+        </span>
+      ),
+      textLength: node.toString().length,
+    };
   }
 
   if (React.isValidElement(node)) {
     const element = node as ReactElement<any>;
     const { type, props } = element;
+    const { retNode, textLength } = render({ node: props.children, charIndex });
 
-    return React.createElement(
-      type,
-      { className: props.className },
-      <WavyText>{props.children}</WavyText>,
-    );
+    return {
+      retNode: React.createElement(
+        type,
+        { className: props.className },
+        retNode,
+      ),
+      textLength: textLength,
+    };
   }
 
-  return null;
+  if (Array.isArray(node)) {
+    let currentTextLength = 0;
+
+    return {
+      retNode: (
+        <>
+          {node?.map((child) => {
+            const { retNode, textLength } = render({
+              node: child,
+              charIndex: charIndex + currentTextLength,
+            });
+            currentTextLength += textLength;
+            return retNode;
+          })}
+        </>
+      ),
+      textLength: currentTextLength,
+    };
+  }
+
+  throw new Error();
 }
 
 export default function WavyText({ children }: { children: ReactNode }) {
-  if (Array.isArray(children)) {
-    return children?.map((child, index) => <Render key={index} node={child} />);
+  const { retNode } = render({ node: children });
+
+  if (!retNode) {
+    return null;
   }
 
-  return <Render node={children} />;
+  return <>{retNode}</>;
 }
