@@ -45,7 +45,7 @@ function WavyItem({ item, index = 0 }: { item: string; index: number }) {
   );
 }
 
-function render({
+function constructWavyTree({
   node,
   charIndex = 0,
 }: {
@@ -77,7 +77,10 @@ function render({
   if (React.isValidElement(node)) {
     const element = node as ReactElement<any>;
     const { type, props } = element;
-    const { retNode, textLength } = render({ node: props.children, charIndex });
+    const { retNode, textLength } = constructWavyTree({
+      node: props.children,
+      charIndex,
+    });
 
     return {
       retNode: React.createElement(type, { ...props }, retNode),
@@ -92,7 +95,7 @@ function render({
       retNode: (
         <>
           {node?.map((child) => {
-            const { retNode, textLength } = render({
+            const { retNode, textLength } = constructWavyTree({
               node: child,
               charIndex: charIndex + currentTextLength,
             });
@@ -113,7 +116,7 @@ function render({
 }
 
 export default function WavyText({ children }: { children: ReactNode }) {
-  const { retNode } = render({ node: children });
+  const { retNode } = constructWavyTree({ node: children });
 
   if (!retNode) {
     return null;
