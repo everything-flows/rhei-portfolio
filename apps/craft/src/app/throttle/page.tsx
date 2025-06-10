@@ -4,7 +4,7 @@ const EXAMPLE_LIST = [
   {
     title: "1. Leading Edge와 Trailing Edge에서 실행하기",
     description:
-      "스로틀(Throttle)된 함수는 정해진 시간 간격마다 실행됩니다.\nLodash나 es-toolkit을 이용해 스로틀된 함수는 기본적으로 Leading Edge와 Trailing Edge에서 모두 실행됩니다.",
+      "스로틀(Throttle)된 함수는 정해진 시간 간격마다 실행됩니다.\nLodash나 es-toolkit을 이용해 스로틀링된 함수는 기본적으로 Leading Edge와 Trailing Edge에서 모두 실행됩니다.",
     src: "https://debounce.rhei.me/throttle/leading-trailing",
     img: "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-craft/throttle/throttle-leading-trailing.webp",
   },
