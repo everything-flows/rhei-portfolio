@@ -20,7 +20,7 @@ export default async function DebouncePage() {
         </p>
 
         <article className="mx-auto mt-4 flex w-full max-w-6xl flex-wrap gap-x-4 gap-y-5">
-          <section className="bg-gray-white border-reverse flex w-full flex-col gap-4 rounded-xl border">
+          <section className="bg-gray-white border-sub flex w-full flex-col gap-4 rounded-xl border">
             <iframe
               src="https://debounce.rhei.me/debounce/trailing"
               allowFullScreen
@@ -29,7 +29,7 @@ export default async function DebouncePage() {
             ></iframe>
           </section>
 
-          <section className="bg-gray-white border-reverse flex w-full flex-col gap-4 rounded-xl border">
+          <section className="bg-gray-white border-sub flex w-full flex-col gap-4 rounded-xl border">
             <iframe
               src="https://debounce.rhei.me/debounce/leading"
               allowFullScreen
@@ -38,7 +38,7 @@ export default async function DebouncePage() {
             ></iframe>
           </section>
 
-          <section className="bg-gray-white border-reverse flex w-full flex-col gap-4 rounded-xl border">
+          <section className="bg-gray-white border-sub flex w-full flex-col gap-4 rounded-xl border">
             <iframe
               src="https://debounce.rhei.me/debounce/leading-trailing"
               allowFullScreen
