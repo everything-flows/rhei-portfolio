@@ -11,16 +11,10 @@ export default async function fake3dPillPage() {
         </h1>
 
         <section className="mx-auto mt-4 flex w-full max-w-6xl flex-wrap gap-x-4 gap-y-5">
-          <article className="flex flex-col gap-4 rounded-md bg-gray-400/30 px-8 py-4">
+          <article className="flex flex-col gap-4 rounded-md bg-gray-300/40 px-8 py-4">
             <div className="flex flex-wrap justify-center gap-8">
               <Pill />
               <Pill fill={false} />
-            </div>
-          </article>
-
-          <article className="flex flex-col gap-4 rounded-md bg-gray-400/30 px-8 py-4">
-            <div className="flex flex-wrap justify-center gap-8">
-              <Pill />
             </div>
           </article>
         </section>
