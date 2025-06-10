@@ -1,26 +1,15 @@
-"use client";
-
 import { useEffect, useRef } from "react";
+import { usePillContext } from "./PillContext";
 
 type PillElementProps = {
-  width: string;
-  height: string;
-  speed: number;
-  fill: boolean;
   position: "top" | "bottom";
   type: "cap" | "body" | "divider";
 };
 
-export default function PillElement({
-  width,
-  height,
-  speed,
-  fill,
-  position,
-  type,
-}: PillElementProps) {
+export default function PillElement({ position, type }: PillElementProps) {
   const ref = useRef<HTMLDivElement>(null);
   const startTimeRef = useRef<number | null>(null);
+  const { width, height, speed, fill } = usePillContext();
 
   const isTop = position === "top";
 
@@ -72,7 +61,7 @@ export default function PillElement({
       style={{
         top: height,
         width,
-        height: type !== "body" ? width : undefined,
+        height: width,
       }}
     />
   );

@@ -1,4 +1,7 @@
+"use client";
+
 import PillElement from "./PillElement";
+import { PillContext } from "./PillContext";
 
 export default function Pill({
   width = "4rem",
@@ -11,64 +14,26 @@ export default function Pill({
   speed?: number;
   fill?: boolean;
 }) {
+  const contextValue = { width, height, speed, fill };
+
   return (
-    <div
-      className="relative"
-      style={{ width, height: `calc(${height} * 2 + ${width})` }}
-    >
-      {/* caps */}
-      <PillElement
-        type="cap"
-        position="top"
-        width={width}
-        height={height}
-        speed={speed}
-        fill={fill}
-      />
-      <PillElement
-        type="cap"
-        position="bottom"
-        width={width}
-        height={height}
-        speed={speed}
-        fill={fill}
-      />
+    <PillContext.Provider value={contextValue}>
+      <div
+        className="relative"
+        style={{ width, height: `calc(${height} * 2 + ${width})` }}
+      >
+        {/* caps */}
+        <PillElement type="cap" position="top" />
+        <PillElement type="cap" position="bottom" />
 
-      {/* bodies */}
-      <PillElement
-        type="body"
-        position="top"
-        width={width}
-        height={height}
-        speed={speed}
-        fill={fill}
-      />
-      <PillElement
-        type="body"
-        position="bottom"
-        width={width}
-        height={height}
-        speed={speed}
-        fill={fill}
-      />
+        {/* bodies */}
+        <PillElement type="body" position="top" />
+        <PillElement type="body" position="bottom" />
 
-      {/* dividers */}
-      <PillElement
-        type="divider"
-        position="top"
-        width={width}
-        height={height}
-        speed={speed}
-        fill={fill}
-      />
-      <PillElement
-        type="divider"
-        position="bottom"
-        width={width}
-        height={height}
-        speed={speed}
-        fill={fill}
-      />
-    </div>
+        {/* dividers */}
+        <PillElement type="divider" position="top" />
+        <PillElement type="divider" position="bottom" />
+      </div>
+    </PillContext.Provider>
   );
 }
