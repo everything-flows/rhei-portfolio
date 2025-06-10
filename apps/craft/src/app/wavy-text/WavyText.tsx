@@ -57,6 +57,7 @@ function render({
     return {
       retNode: (
         <span
+          key={charIndex}
           aria-label={node.toString()}
           className="inline-block break-keep whitespace-pre-wrap"
         >
@@ -81,7 +82,7 @@ function render({
     return {
       retNode: React.createElement(
         type,
-        { className: props.className },
+        { key: charIndex, className: props.className },
         retNode,
       ),
       textLength: textLength,
