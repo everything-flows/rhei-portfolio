@@ -2,9 +2,9 @@
 
 import React, { ReactElement, ReactNode, useEffect, useRef } from "react";
 
-const TIME = 300;
+const TIME = 400;
 const HEIGHT = 5; // -{HEIGHT}px ~ {HEIGHT}px
-const PHASE_DELAY = 70; // 각 글자 간 지연 시간 (ms)
+const PHASE_DELAY = 100; // 각 글자 간 지연 시간 (ms)
 
 function WavyItem({ item, index = 0 }: { item: string; index: number }) {
   const ref = useRef<HTMLSpanElement>(null);

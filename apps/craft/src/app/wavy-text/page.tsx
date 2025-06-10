@@ -1,5 +1,18 @@
 import { Footer } from "@rhei/ui";
-import WavyText from "./WavyText";
+
+import { type Example, EXAMPLE_LIST } from "./constants";
+
+function Card({ data }: { data: Example }) {
+  const { title, component } = data;
+  return (
+    <article className="p-2">
+      <h2 className="text-[1.25rem] font-bold">{title}</h2>
+      <div className="border-sub w-fit rounded-xl border p-2">
+        <p>{component}</p>
+      </div>
+    </article>
+  );
+}
 
 export default function Page() {
   return (
@@ -9,29 +22,10 @@ export default function Page() {
           Wavy text
         </h1>
 
-        <section className="mx-auto w-full max-w-6xl">
-          <p className="text-[1.5rem]">
-            <WavyText>Waaaaavy</WavyText> text
-          </p>
-
-          <p className="text-[1.5rem]">
-            This is{" "}
-            <WavyText>
-              <span className="text-blue-500">Blue</span> and{" "}
-              <strong>Strong</strong> and Waaaaavy
-            </WavyText>{" "}
-            text
-          </p>
-
-          <p className="text-[1.5rem]">
-            This is{" "}
-            <WavyText>
-              <span className="text-blue-500">
-                <strong>Blue and Strong and Waaaaavy </strong>
-              </span>
-            </WavyText>{" "}
-            text
-          </p>
+        <section className="mx-auto flex w-full max-w-6xl flex-col gap-4">
+          {EXAMPLE_LIST.map((data) => (
+            <Card key={data.title} data={data} />
+          ))}
         </section>
       </main>
 
