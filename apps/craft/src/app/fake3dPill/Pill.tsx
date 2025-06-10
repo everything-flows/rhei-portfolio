@@ -14,24 +14,16 @@ export default function Pill({
   fill?: boolean;
 }) {
   const startTimeRef = useRef<number | null>(null);
-  const topCircleRef = useRef<HTMLDivElement>(null);
-  const bottomCircleRef = useRef<HTMLDivElement>(null);
-  const topSquareRef = useRef<HTMLDivElement>(null);
-  const bottomSquareRef = useRef<HTMLDivElement>(null);
-  const topCenterRef = useRef<HTMLDivElement>(null);
-  const bottomCenterRef = useRef<HTMLDivElement>(null);
+  const topCapRef = useRef<HTMLDivElement>(null);
+  const bottomCapRef = useRef<HTMLDivElement>(null);
+  const topBodyRef = useRef<HTMLDivElement>(null);
+  const bottomBodyRef = useRef<HTMLDivElement>(null);
+  const topDividerRef = useRef<HTMLDivElement>(null);
+  const bottomDividerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function rotate(timestamp: number) {
-      if (
-        !startTimeRef.current ||
-        !topCircleRef.current ||
-        !bottomCircleRef.current ||
-        !topSquareRef.current ||
-        !bottomSquareRef.current ||
-        !topCenterRef.current ||
-        !bottomCenterRef.current
-      ) {
+      if (!startTimeRef.current) {
         return;
       }
 
@@ -41,31 +33,46 @@ export default function Pill({
       const absSin = Math.abs(sin);
       const cos = Math.cos(value);
 
-      topCircleRef.current.style.top = `calc(${sin} * ${height} + ${height})`;
-      bottomCircleRef.current.style.top = `calc(-1 * ${sin} * ${height} + ${height})`;
-      topSquareRef.current.style.height = `calc(${absSin} * ${height})`;
-      bottomSquareRef.current.style.height = `calc(${absSin} * ${height})`;
-
-      if (sin < 0) {
-        topSquareRef.current.style.top = `calc(${sin} * ${height} + ${width} / 2 + ${height})`;
-        bottomSquareRef.current.style.top = `calc(${width} / 2 + ${height})`;
-      } else {
-        topSquareRef.current.style.top = `calc(${width} / 2 + ${height})`;
-        bottomSquareRef.current.style.top = `calc(-1 * ${sin} * ${height} + ${width} / 2 + ${height})`;
-      }
-
-      topCenterRef.current.style.transform = `scaleY(${1 - absSin})`;
-      bottomCenterRef.current.style.transform = `scaleY(${1 - absSin})`;
-
       const getTopZIndex = () => (cos > 0 ? "0" : "1");
       const getBottomZIndex = () => (cos > 0 ? "1" : "0");
 
-      topCircleRef.current.style.zIndex = getTopZIndex();
-      topSquareRef.current.style.zIndex = getTopZIndex();
-      topCenterRef.current.style.zIndex = getTopZIndex();
-      bottomCircleRef.current.style.zIndex = getBottomZIndex();
-      bottomSquareRef.current.style.zIndex = getBottomZIndex();
-      bottomCenterRef.current.style.zIndex = getBottomZIndex();
+      if (topCapRef.current) {
+        topCapRef.current.style.top = `calc(${sin} * ${height} + ${height})`;
+        topCapRef.current.style.zIndex = getTopZIndex();
+      }
+
+      if (bottomCapRef.current) {
+        bottomCapRef.current.style.top = `calc(-1 * ${sin} * ${height} + ${height})`;
+        bottomCapRef.current.style.zIndex = getBottomZIndex();
+      }
+
+      if (topBodyRef.current) {
+        topBodyRef.current.style.height = `calc(${absSin} * ${height})`;
+        topBodyRef.current.style.top =
+          sin < 0
+            ? `calc(${sin} * ${height} + ${width} / 2 + ${height})`
+            : `calc(${width} / 2 + ${height})`;
+        topBodyRef.current.style.zIndex = getTopZIndex();
+      }
+
+      if (bottomBodyRef.current) {
+        bottomBodyRef.current.style.height = `calc(${absSin} * ${height})`;
+        bottomBodyRef.current.style.top =
+          sin < 0
+            ? `calc(${width} / 2 + ${height})`
+            : `calc(-1 * ${sin} * ${height} + ${width} / 2 + ${height})`;
+        bottomBodyRef.current.style.zIndex = getBottomZIndex();
+      }
+
+      if (topDividerRef.current) {
+        topDividerRef.current.style.transform = `scaleY(${1 - absSin})`;
+        topDividerRef.current.style.zIndex = getTopZIndex();
+      }
+
+      if (bottomDividerRef.current) {
+        bottomDividerRef.current.style.transform = `scaleY(${1 - absSin})`;
+        bottomDividerRef.current.style.zIndex = getBottomZIndex();
+      }
 
       requestAnimationFrame((t) => rotate(t));
     }
@@ -83,9 +90,9 @@ export default function Pill({
       className="relative"
       style={{ width, height: `calc(${height} * 2 + ${width})` }}
     >
-      {/* circle */}
+      {/* cap */}
       <div
-        ref={topCircleRef}
+        ref={topCapRef}
         className={`border-brand ${fill ? "bg-brand" : ""} absolute rounded-full border-2`}
         style={{
           top: height,
@@ -94,7 +101,7 @@ export default function Pill({
         }}
       />
       <div
-        ref={bottomCircleRef}
+        ref={bottomCapRef}
         className={`border-gray-white ${fill ? "bg-gray-white" : ""} absolute rounded-full border-2`}
         style={{
           top: height,
@@ -103,9 +110,9 @@ export default function Pill({
         }}
       />
 
-      {/* square */}
+      {/* body */}
       <div
-        ref={topSquareRef}
+        ref={topBodyRef}
         className={`border-brand ${fill ? "bg-brand" : ""} absolute border-2`}
         style={{
           width: width,
@@ -113,7 +120,7 @@ export default function Pill({
         }}
       />
       <div
-        ref={bottomSquareRef}
+        ref={bottomBodyRef}
         className={`border-gray-white ${fill ? "bg-gray-white" : ""} absolute border-2`}
         style={{
           width: width,
@@ -121,9 +128,9 @@ export default function Pill({
         }}
       />
 
-      {/* center circle */}
+      {/* divider */}
       <div
-        ref={topCenterRef}
+        ref={topDividerRef}
         className={`border-brand ${fill ? "bg-brand" : ""} absolute rounded-full border-2`}
         style={{
           top: height,
@@ -132,7 +139,7 @@ export default function Pill({
         }}
       />
       <div
-        ref={bottomCenterRef}
+        ref={bottomDividerRef}
         className={`border-gray-white ${fill ? "bg-gray-white" : ""} absolute rounded-full border-2`}
         style={{
           top: height,
