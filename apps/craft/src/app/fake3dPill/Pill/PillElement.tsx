@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+
 import { usePillContext } from "./PillContext";
 
 type PillElementProps = {
