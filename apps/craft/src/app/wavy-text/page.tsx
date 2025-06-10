@@ -18,6 +18,7 @@ function Card({ data }: { data: Example }) {
       </div>
 
       <p className="mt-4">예시 코드</p>
+      {/* @ts-ignore */}
       <SyntaxHighlighter language={"jsx"} style={nord} className="rounded-md">
         {code}
       </SyntaxHighlighter>
