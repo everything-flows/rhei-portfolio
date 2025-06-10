@@ -1,15 +1,22 @@
 import { Footer } from "@rhei/ui";
 
 import { type Example, EXAMPLE_LIST } from "./constants";
+import SyntaxHighlighter from "react-syntax-highlighter";
+
+import { nord } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 function Card({ data }: { data: Example }) {
-  const { title, component } = data;
+  const { title, component, code } = data;
   return (
     <article className="p-2">
       <h2 className="text-[1.25rem] font-bold">{title}</h2>
       <div className="border-sub w-fit rounded-xl border p-2">
         <>{component}</>
       </div>
+
+      <SyntaxHighlighter language={"jsx"} style={nord}>
+        {code}
+      </SyntaxHighlighter>
     </article>
   );
 }
