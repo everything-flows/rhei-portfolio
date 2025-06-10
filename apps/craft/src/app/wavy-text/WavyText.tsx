@@ -80,11 +80,7 @@ function render({
     const { retNode, textLength } = render({ node: props.children, charIndex });
 
     return {
-      retNode: React.createElement(
-        type,
-        { key: charIndex, className: props.className },
-        retNode,
-      ),
+      retNode: React.createElement(type, { ...props }, retNode),
       textLength: textLength,
     };
   }
@@ -101,7 +97,11 @@ function render({
               charIndex: charIndex + currentTextLength,
             });
             currentTextLength += textLength;
-            return retNode;
+            return (
+              <React.Fragment key={charIndex + currentTextLength}>
+                {retNode}
+              </React.Fragment>
+            );
           })}
         </>
       ),
