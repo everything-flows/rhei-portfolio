@@ -8,7 +8,7 @@ function Card({ data }: { data: Example }) {
     <article className="p-2">
       <h2 className="text-[1.25rem] font-bold">{title}</h2>
       <div className="border-sub w-fit rounded-xl border p-2">
-        <p>{component}</p>
+        <>{component}</>
       </div>
     </article>
   );
