@@ -18,9 +18,9 @@ const PROJECT = [
     ],
     content: [
       {
-        title: "모노레포 도입",
+        title: "모노레포 기반 구조 설계",
         list: [
-          "Remix와 Next.js로 구축된 앱들을 하나의 도메인(rhei.me) 아래에서 통합 운영",
+          "Remix와 Next.js로 개발된 앱들을 pnpm 기반의 모노레포로 통합하여 하나의 도메인(rhei.me) 아래에서 운영",
           "공통 컴포넌트(GNB, Footer 등)는 `packages/ui`로 분리해 재사용성을 높이고 유지보수를 단순화",
         ],
       },
