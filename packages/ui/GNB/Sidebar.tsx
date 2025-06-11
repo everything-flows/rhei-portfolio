@@ -4,7 +4,7 @@ import CloseIcon from "./_assets/CloseIcon";
 import HamburgerIcon from "./_assets/HamburgerIcon";
 import ThemeButton from "./_components/ThemeButton";
 
-export default function Sidebar() {
+export default function Sidebar({ route }: { route: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   function onOpen() {
@@ -41,7 +41,9 @@ export default function Sidebar() {
                   <li key={item.title} className="w-full border-b border-sub">
                     <a
                       href={item.link}
-                      className="font-extrabold text-[1.2rem] hover:text-brand px-6 py-4 w-full inline-block"
+                      className={`font-extrabold text-[1.2rem] hover:text-brand px-6 py-4 w-full inline-block ${
+                        item.link === route ? "text-brand" : ""
+                      }`}
                     >
                       {item.title}
                     </a>

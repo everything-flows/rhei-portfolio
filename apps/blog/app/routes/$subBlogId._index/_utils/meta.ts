@@ -11,17 +11,19 @@ import { Document } from "~/types/post";
 export default function meta({
   data,
 }: {
-  data: {
-    tagData: { content: string[]; id: string };
-    postList: Document[];
-  };
+  data: { postData: { postData: Document } };
 }) {
-  const { tagData, postList } = data;
+  const { postData } = data;
+  if (!postData) {
+    return null;
+  }
 
-  const title = `${tagData.id} 관련 포스트 | ${SITE_NAME}`;
-  const description = `${tagData.id} 관련 포스트 모음입니다. | ${SITE_DESCRIPTION}`;
-  const thumbnail = BLOG_THUMBNAIL;
-  const url = `${SITE_URL}/blog/tag/${tagData.id}`;
+  const { postData: postInfo } = postData;
+
+  const title = `${postInfo.title} | ${SITE_NAME}`;
+  const description = `${postInfo.subTitle} | ${SITE_DESCRIPTION}`;
+  const thumbnail = postInfo.thumbnail || BLOG_THUMBNAIL;
+  const url = `${SITE_URL}/blog/${postInfo.subBlog}/${postInfo.id}`;
 
   return [
     {
@@ -49,7 +51,7 @@ export default function meta({
     },
     {
       property: "og:type",
-      content: "website",
+      content: "article",
     },
     {
       property: "og:site_name",
@@ -83,16 +85,31 @@ export default function meta({
     {
       "script:ld+json": {
         "@context": "https://schema.org",
-        "@type": "ItemList",
-        name: `$Posts of {tagData.id} tag`,
-        itemListOrder: "http://schema.org/ItemListOrderDescending",
-        numberOfItems: postList.length,
-        itemListElement: postList.map((post: Document, index: number) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          url: `${SITE_URL}/blog/${post.subBlog}/${post.id}`,
-          name: post.title,
-        })),
+        "@type": "BlogPosting",
+        headline: postInfo.title,
+        description,
+        image: [thumbnail],
+        inLanguage: "ko",
+        datePublished: postInfo.createdAt,
+        dateModified: postInfo.lastEditedAt || postInfo.createdAt,
+        author: {
+          "@type": "Person",
+          name: AUTHOR,
+          url: SITE_URL,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: SITE_NAME,
+          url: SITE_URL,
+          logo: {
+            "@type": "ImageObject",
+            url: BLOG_THUMBNAIL,
+          },
+        },
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": url,
+        },
       },
     },
   ];

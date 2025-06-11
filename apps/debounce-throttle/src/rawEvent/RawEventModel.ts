@@ -1,4 +1,4 @@
-import { tickCount, tickTime } from "../constants";
+import { tickCount, tickTime } from "@/constants";
 
 export class RawEventModel {
   private eventStarted = false;

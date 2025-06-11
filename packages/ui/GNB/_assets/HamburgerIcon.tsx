@@ -12,21 +12,21 @@ export default function HamburgerIcon() {
       <path
         d="M2 12.32H22"
         stroke="currentColor"
-        stroke-width="2"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M2 18.32H22"
         stroke="currentColor"
-        stroke-width="2"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M2 6.32001H22"
         stroke="currentColor"
-        stroke-width="2"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
