@@ -1,38 +1,33 @@
 import {
+  SITE_TITLE,
   SITE_NAME,
   AUTHOR,
   SITE_DESCRIPTION,
   BLOG_THUMBNAIL,
   SITE_URL,
+  GITHUB_URL,
 } from "@rhei/meta";
 
-import { Document } from "~/types/post";
+import convertUrl from "~/utils/convertUrl";
 
-export default function meta({
-  data,
-}: {
-  data: { postData: { postInfo: Document } };
-}) {
-  const { postData } = data;
+const blogUrl = `${SITE_URL}/blog`;
 
-  if (!postData) {
-    return null;
-  }
-
-  const { postInfo } = postData;
-
-  const title = `${postInfo.title} | ${SITE_NAME}`;
-  const description = `${postInfo.subTitle} | ${SITE_DESCRIPTION}`;
-  const thumbnail = postInfo.thumbnail || BLOG_THUMBNAIL;
-  const url = `${SITE_URL}/blog/${postInfo.subBlog}/${postInfo.id}`;
+export default function meta({ data }) {
+  const title = `${SITE_TITLE} | ${SITE_NAME}`;
 
   return [
+    {
+      rel: "preload",
+      as: "image",
+      href: convertUrl(data.pinnedPostList[0].thumbnail),
+      type: "image/webp",
+    },
     {
       title,
     },
     {
       name: "description",
-      content: description,
+      content: SITE_DESCRIPTION,
     },
     {
       name: "author",
@@ -44,15 +39,15 @@ export default function meta({
     },
     {
       property: "og:description",
-      content: description,
+      content: SITE_DESCRIPTION,
     },
     {
       property: "og:image",
-      content: thumbnail,
+      content: BLOG_THUMBNAIL,
     },
     {
       property: "og:type",
-      content: "article",
+      content: "website",
     },
     {
       property: "og:site_name",
@@ -60,7 +55,7 @@ export default function meta({
     },
     {
       property: "og:url",
-      content: url,
+      content: blogUrl,
     },
     {
       name: "twitter:card",
@@ -72,44 +67,42 @@ export default function meta({
     },
     {
       name: "twitter:description",
-      content: description,
+      content: SITE_DESCRIPTION,
     },
     {
       name: "twitter:image",
-      content: thumbnail,
+      content: BLOG_THUMBNAIL,
     },
     {
       tagName: "link",
       rel: "canonical",
-      href: url,
+      href: blogUrl,
     },
     {
       "script:ld+json": {
         "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        headline: postInfo.title,
-        description,
-        image: [thumbnail],
-        inLanguage: "ko",
-        datePublished: postData.createdAt,
-        dateModified: postInfo.lastEditedAt || postInfo.createdAt,
-        author: {
-          "@type": "Person",
-          name: AUTHOR,
-          url: SITE_URL,
+        "@type": "WebSite",
+        name: SITE_NAME,
+        url: blogUrl,
+        logo: {
+          "@type": "ImageObject",
+          url: BLOG_THUMBNAIL,
         },
+        description: SITE_DESCRIPTION,
+        inLanguage: "ko",
         publisher: {
           "@type": "Organization",
-          name: SITE_NAME,
+          name: AUTHOR,
           url: SITE_URL,
           logo: {
             "@type": "ImageObject",
             url: BLOG_THUMBNAIL,
           },
+          sameAs: [GITHUB_URL],
         },
         mainEntityOfPage: {
           "@type": "WebPage",
-          "@id": url,
+          "@id": blogUrl,
         },
       },
     },

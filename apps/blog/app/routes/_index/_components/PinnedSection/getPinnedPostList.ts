@@ -10,12 +10,11 @@ export default async function getPinnedPostList({
   supabaseClient: SupabaseClient<Database, "public">;
 }) {
   const PINNED_POST_LIST = [
+    "debounce-and-throttle",
     "search-filter-with-url",
     "connect-types-and-constants",
     "requestanimationframe-guide",
-    "cspg-design-system-text",
     "commit-message",
-    "js-coding-test-1-input",
   ];
 
   const data = await Promise.all(

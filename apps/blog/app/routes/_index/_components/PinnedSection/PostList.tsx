@@ -2,6 +2,7 @@ import { Link } from "@remix-run/react";
 
 import { Document } from "~/types/post";
 import TagList from "~/components/TagList";
+import convertUrl from "~/utils/convertUrl";
 
 export default function PostList({ postList }: { postList: Document[] }) {
   if (!postList || postList.length === 0) {
@@ -19,9 +20,14 @@ export default function PostList({ postList }: { postList: Document[] }) {
       >
         <article className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-[1fr_1fr] md:grid-cols-[2fr_3fr] lg:grid-cols-[1fr_2fr]">
           <img
-            src={firstPost.thumbnail}
+            src={convertUrl(firstPost.thumbnail)}
             alt={`${firstPost.title}`}
             className="aspect-[16/9] w-full shrink-0 rounded-3xl border border-gray-200 object-cover dark:border-gray-600 sm:aspect-[4/3]"
+            fetchPriority="high"
+            width="1200"
+            height="675"
+            loading="eager"
+            decoding="async"
           />
           <div>
             <h3 className="text-responsive-h2 font-900">{firstPost.title}</h3>
@@ -35,7 +41,7 @@ export default function PostList({ postList }: { postList: Document[] }) {
       </Link>
 
       {leftPostList.length > 0 && (
-        <ul className="mt-4 flex gap-4 overflow-auto">
+        <ul className="custom-scrollbar mt-4 flex gap-4 overflow-auto">
           {leftPostList.map((post: Document) => (
             <li key={post.id}>
               <Link
@@ -45,9 +51,10 @@ export default function PostList({ postList }: { postList: Document[] }) {
                 <article className="grid w-[min(80dvw,280px)] grid-rows-[auto,auto] gap-3">
                   {post.thumbnail ? (
                     <img
-                      src={post.thumbnail}
+                      src={convertUrl(post.thumbnail)}
                       alt={`${post.title}`}
                       className="aspect-[16/9] w-full shrink-0 rounded-3xl border border-gray-200 object-cover dark:border-gray-600"
+                      loading="lazy"
                     />
                   ) : (
                     <div className="aspect-[16/9] w-full shrink-0 overflow-hidden rounded-3xl border border-gray-200 object-cover dark:border-gray-600">
