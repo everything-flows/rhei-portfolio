@@ -1,6 +1,6 @@
 export default function Info() {
   return (
-    <section>
+    <section className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
       <div className="flex items-center gap-6">
         <img
           className="size-20 rounded-full md:size-32"
@@ -14,6 +14,37 @@ export default function Info() {
           </p>
         </div>
       </div>
+
+      <table className="h-fit">
+        <tbody>
+          <tr>
+            <td>GitHub</td>
+            <td>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/everything-flows"
+                className="text-blue-500 underline dark:text-orange-500"
+              >
+                everything-flows
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>E-mail</td>
+            <td>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="psst5491@naver.com"
+                className="text-blue-500 underline dark:text-orange-500"
+              >
+                psst5491@naver.com
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   );
 }
