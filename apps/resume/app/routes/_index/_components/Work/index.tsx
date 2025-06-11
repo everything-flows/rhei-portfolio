@@ -7,23 +7,19 @@ const WORK = [
     location: "경기도 성남시",
     position: "FE 개발자 (인턴) | FE 플랫폼팀",
     description: "TypeScript를 활용한 인턴십 과제 수행: 블록 코딩 서비스 구현",
-    stack: ["TypeScript"],
+    stack: ["TypeScript", "Jest"],
     content: [
       {
-        title: "비동기 처리를 통한 블록 실행 개선",
+        title: "Event Loop 기반 인터랙션 개선",
         list: [
-          "Event Loop 개념을 활용해 무한 루프와 같은 비동기 작업에서 발생하는 블로킹 문제 해결",
+          "사용자 경험 개선을 위해 블록 실행 시 UI 멈춤 현상을 분석하고, Event Loop 개념을 바탕으로 UI 업데이트 끊김을 최소화",
         ],
       },
       {
-        title: "테스트코드 작성",
+        title: "Jest 기반 블록 테스트 자동화",
         list: [
-          "Jest 라이브러리로 parameterized 테스트를 작성함. 약 20종의 블록 실행 로직을 드래그&드롭 없이 검증",
+          "UI상에서 실제 드래그 없이도 블록 실행 로직을 검증할 수 있도록 Jest 기반 parameterized 테스트를 작성하여 약 20종의 블록 테스트를 커버",
         ],
-      },
-      {
-        title: "이벤트 위임을 활용한 메모리 누수 해결",
-        list: ["메모리 사용 최적화를 위해 최상위 요소에서 이벤트 핸들링"],
       },
     ],
   },
@@ -37,10 +33,10 @@ const WORK = [
     stack: ["TypeScript", "React.js", "Supabase"],
     content: [
       {
-        title: "모노레포 도입",
+        title: "Yarn 기반 모노레포 전환으로 배포 효율화",
         list: [
           "Git Submodules로 관리되던 웹, 앱 및 패키지 레포를 Yarn Workspaces를 이용해 모노레포로 통합",
-          "배포 과정을 간소화하고, 웹과 앱의 버전 및 의존성을 통일하여 관리 효율성을 향상",
+          "배포 과정을 간소화하고, 웹과 앱의 버전 및 의존성을 통일하여 관리 효율성 향상",
         ],
       },
     ],
@@ -54,22 +50,23 @@ const WORK = [
     stack: ["TypeScript", "Next.js", "React Native"],
     content: [
       {
-        title: "한글 검색 성능 향상",
+        title: "한글 검색 UX 개선을 위한 알고리즘 적용",
         list: [
-          "증상 검색시, 한글 검색 성능을 개선하기 위해 N-gram 및 레벤슈타인 거리 알고리즘을 활용",
-          "Hangul.js 라이브러리를 사용하여 한글 처리의 정확성을 높이고, 사용자 경험을 향상",
+          "한국어 증상 검색 시 사용자의 입력 의도와 일치하지 않는 결과가 노출되는 문제를 개선",
+          "초성 검색, 철자 오탈자 등을 포괄하기 위해 자모 분리, N-gram 등 입력어 처리",
         ],
       },
       {
-        title: "AB 테스트",
+        title: "A/B 테스트 기반 전환율 개선",
         list: [
-          "Google Analytics를 이용해 증상 검색에서 실제 문항 풀이로의 전환율을 높이기 위한 AB테스트 실시",
+          "Google Analytics 기반 A/B 테스트를 설계, 증상 검색에서 실제 문항 풀이로의 전환율을 높이는 검색 페이지로 개선",
         ],
       },
       {
-        title: "상태관리",
+        title: "Redux persist로 진단 문항 상태 유지",
         list: [
-          "Redux persist를 이용한 상태 관리로 문항 중간 저장 및 복구 기능을 제공하여 사용자 경험 향상에 기여",
+          "문항 풀이 도중 페이지 이탈 시, 상태가 초기화되는 문제 해결을 위한 상태 저장 구조 설계",
+          "Redux persist를 이용해 문항 진행 상태 저장 및 복구 기능 제공",
         ],
       },
     ],
