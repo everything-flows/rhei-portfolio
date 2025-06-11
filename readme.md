@@ -5,7 +5,7 @@
 
 ## 📌 소개
 
-[rhei.me](rhei.me/resume)는 Remix, Next.js 등 다양한 기술을 활용하여 구성된  
+[rhei.me](https://rhei.me/resume)는 Remix, Next.js 등 다양한 기술을 활용하여 구성된  
 **모노레포 기반의 통합 포트폴리오**입니다.
 
 전체 페이지는 반응형 디자인이 적용되었고, 쿠기 기반 다크 모드를 지원합니다.
