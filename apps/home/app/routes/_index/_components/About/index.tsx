@@ -19,11 +19,12 @@ export default function About() {
         </h3>
       </StickyHeading>
 
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-        voluptatibus, quos, voluptatum, quisquam voluptatibus, quos, voluptatum
-        quisquam voluptatibus, quos, voluptatum quisquam voluptatibus, quos,
-        voluptatum
+      <p className="mt-4">
+        Panta Rhei(everything flows)는 철학을 전공하면서 가장 좋아하게 된
+        문구입니다.
+        <br />
+        모든 것이 흐르고 변하기 때문에 항상 현재에 집중하고, 바뀌는 것들에
+        유연하게 대처하려 합니다.
       </p>
     </section>
   );
