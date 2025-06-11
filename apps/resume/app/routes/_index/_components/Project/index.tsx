@@ -2,7 +2,7 @@ import { StickyHeading } from "@rhei/react";
 
 const PROJECT = [
   {
-    title: "개인 포트폴리오",
+    title: "개인 포트폴리오 사이트",
     period: "",
     location: "2025.04 - 진행중",
     position: "개인 프로젝트 / FE 개발자",

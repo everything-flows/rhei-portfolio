@@ -6,7 +6,7 @@ const WORK = [
     period: "2024.01 - 2024.02 (2개월)",
     location: "경기도 성남시",
     position: "FE 개발자 (인턴) | FE 플랫폼팀",
-    description: "TypeScript를 활용한 인턴십 과제 수행: 블록 코딩 서비스 구현",
+    description: "인턴십 과제 수행: Vanilla JS 환경에서 블록 코딩 서비스 구현",
     stack: ["TypeScript", "Jest"],
     content: [
       {
@@ -53,7 +53,7 @@ const WORK = [
         title: "한글 검색 UX 개선을 위한 알고리즘 적용",
         list: [
           "한국어 증상 검색 시 사용자의 입력 의도와 일치하지 않는 결과가 노출되는 문제를 개선",
-          "초성 검색, 철자 오탈자 등을 포괄하기 위해 자모 분리, N-gram 등 입력어 처리",
+          "초성 검색, 오탈자 등을 포괄하기 위해 자모 분리, N-gram 등 입력어 처리",
         ],
       },
       {
