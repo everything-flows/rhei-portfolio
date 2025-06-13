@@ -25,29 +25,11 @@ export default function Index() {
         </header>
         <main className="content-x">
           <Header />
-
           <Banner />
-
           <Notification />
-
           {/* <Toc /> */}
-
           <About />
-
           <Tools />
-
-          {/* <section>
-            <ul className="flex">
-              <li className="flex flex-col items-center gap-2">
-                <div className="size-8 bg-black" />
-                <p>GitHub</p>
-              </li>
-              <li className="flex flex-col items-center gap-2">
-                <div className="size-8 bg-black" />
-                <p>Resume</p>
-              </li>
-            </ul>
-          </section> */}
           <Blog />
         </main>
 
