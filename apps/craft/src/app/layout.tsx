@@ -1,16 +1,20 @@
 import "./globals.css";
+import { cookies } from "next/headers";
 import GNBWrapper from "./_components/GNBWrapper";
 import GoogleAnalytics from "./_components/GoogleAnalytics";
 
 export { metadata } from "./_utils/meta";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const theme = cookieStore.get("theme")?.value || "light";
+
   return (
-    <html lang="ko">
+    <html lang="ko" className={theme === "dark" ? "dark" : ""}>
       <head>
         <link
           rel="stylesheet"
