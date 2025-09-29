@@ -8,8 +8,8 @@ import {
   GITHUB_URL,
 } from "@rhei/meta";
 
-const title = `Rhei의 작은 쓰레기장 | ${SITE_NAME}`;
-const description = `작은 작업물을 올립니다. | ${SITE_DESCRIPTION}`;
+const title = `실험실 | ${SITE_NAME}`;
+const description = `소소하게 좋아하는 것들을 만듭니다. | ${SITE_DESCRIPTION}`;
 const url = `${SITE_URL}/craft`;
 
 export const metadata: Metadata = {
