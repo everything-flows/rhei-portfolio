@@ -1,19 +1,27 @@
-import { Link } from "@remix-run/react";
-
-import { Document } from "~/types/post";
+import { Link, useRouteLoaderData } from "@remix-run/react";
+import { createBrowserClient } from "@supabase/ssr";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import TagList from "~/components/TagList";
+import { Document } from "~/types/post";
 import convertUrl from "~/utils/convertUrl";
+import { pinnedPostQueryOptions } from "../_utils/getPinnedPostList";
 
-export default function PostList({ postList }: { postList: Document[] }) {
-  if (!postList || postList.length === 0) {
-    return null;
-  }
+export default function PinnedSection() {
+  const { supabaseCredential } = useRouteLoaderData("root");
+  const supabase = createBrowserClient(
+    supabaseCredential.url,
+    supabaseCredential.key,
+  );
 
-  const firstPost = postList[0];
-  const leftPostList = postList.slice(1);
+  const { data: pinnedPostList } = useSuspenseQuery(
+    pinnedPostQueryOptions({ supabaseClient: supabase }),
+  );
+
+  const firstPost = pinnedPostList[0];
+  const leftPostList = pinnedPostList.slice(1);
 
   return (
-    <>
+    <section className="mx-auto flex w-full max-w-6xl flex-col">
       <Link
         to={`/${firstPost.subBlog}/${firstPost.id}`}
         className="hover:text-brand"
@@ -75,6 +83,6 @@ export default function PostList({ postList }: { postList: Document[] }) {
           ))}
         </ul>
       )}
-    </>
+    </section>
   );
 }

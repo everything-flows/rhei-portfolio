@@ -6,8 +6,8 @@ import {
 } from "@supabase/ssr";
 
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { pinnedPostQueryOptions } from "../_components/PinnedSection/getPinnedPostList";
-import { recentPostQueryOptions } from "../_components/RecentSection/getRecentPostList";
+import { pinnedPostQueryOptions } from "./getPinnedPostList";
+import { recentPostQueryOptions } from "./getRecentPostList";
 
 export default async function loader({ context, request }: LoaderFunctionArgs) {
   const headers = new Headers();
