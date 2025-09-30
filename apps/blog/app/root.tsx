@@ -17,6 +17,7 @@ import fetchCategoryData from "./_utils/fetchCategoryData";
 import "./breadcrumb.css";
 import useCategoryStore from "./stores/category";
 import "./tailwind.css";
+import "../../../packages/ui/styles/utilities.css"; // FIXME
 
 export { loader } from "./_utils/loader";
 export { meta } from "./_utils/meta";
