@@ -4,6 +4,7 @@ import { Footer, GNB } from "@rhei/ui";
 import { HydrationBoundary } from "@tanstack/react-query";
 import PinnedSection from "./_components/PinnedSection";
 import RecentSection from "./_components/RecentSection";
+import AsyncErrorBoundary from "~/_components/AsyncErrorBoundary";
 
 export { default as loader } from "./_utils/loader";
 export { default as meta } from "./_utils/meta";
@@ -16,8 +17,12 @@ function Index() {
       </header>
 
       <main className="content-x flex flex-col">
-        <PinnedSection />
-        <RecentSection />
+        <AsyncErrorBoundary>
+          <PinnedSection />
+        </AsyncErrorBoundary>
+        <AsyncErrorBoundary>
+          <RecentSection />
+        </AsyncErrorBoundary>
       </main>
 
       <Footer />
