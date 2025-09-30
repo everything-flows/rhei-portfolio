@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import { motion } from "motion/react";
 
 import type { Document } from "~/types/post";
 import convertUrl from "~/utils/convertUrl";
@@ -14,7 +15,10 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
               to={`/${post.subBlog}/${post.id}`}
               className="hover:text-brand"
             >
-              <article className="grid grid-cols-[auto_4rem] gap-x-8 gap-y-2 py-4 sm:grid-cols-[10rem_auto]">
+              <motion.article
+                whileTap={{ scale: 0.97 }}
+                className="grid grid-cols-[auto_4rem] gap-x-8 gap-y-2 py-4 sm:grid-cols-[10rem_auto]"
+              >
                 {post.thumbnail ? (
                   <ImageThumbnail post={post} />
                 ) : (
@@ -30,7 +34,7 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
                     <TagList tagList={post.tags} />
                   </div>
                 </div>
-              </article>
+              </motion.article>
             </Link>
           </li>
         ))}

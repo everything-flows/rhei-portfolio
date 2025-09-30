@@ -1,6 +1,8 @@
 import { Link, useRouteLoaderData } from "@remix-run/react";
 import { createBrowserClient } from "@supabase/ssr";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import { motion } from "motion/react";
+
 import TagList from "~/components/TagList";
 import { Document } from "~/types/post";
 import convertUrl from "~/utils/convertUrl";
@@ -28,7 +30,10 @@ export default function PinnedSection() {
 function FirstPost({ post }: { post: Document }) {
   return (
     <Link to={`/${post.subBlog}/${post.id}`} className="hover:text-brand">
-      <article className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-[1fr_1fr] md:grid-cols-[2fr_3fr] lg:grid-cols-[1fr_2fr]">
+      <motion.article
+        whileTap={{ scale: 0.97 }}
+        className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-[1fr_1fr] md:grid-cols-[2fr_3fr] lg:grid-cols-[1fr_2fr]"
+      >
         <img
           src={convertUrl(post.thumbnail)}
           alt={`${post.title}`}
@@ -46,7 +51,7 @@ function FirstPost({ post }: { post: Document }) {
           </p>
           <TagList tagList={post.tags} bold />
         </div>
-      </article>
+      </motion.article>
     </Link>
   );
 }
@@ -57,7 +62,10 @@ function LeftPostList({ postList }: { postList: Document[] }) {
       {postList.map((post) => (
         <li key={post.id}>
           <Link to={`/${post.subBlog}/${post.id}`} className="hover:text-brand">
-            <article className="grid w-[min(80dvw,280px)] grid-rows-[auto,auto] gap-3">
+            <motion.article
+              whileTap={{ scale: 0.97 }}
+              className="grid w-[min(80dvw,280px)] grid-rows-[auto,auto] gap-3"
+            >
               {post.thumbnail ? (
                 <ImageThumbnail post={post} />
               ) : (
@@ -70,7 +78,7 @@ function LeftPostList({ postList }: { postList: Document[] }) {
                   {post.subTitle}
                 </p>
               </div>
-            </article>
+            </motion.article>
           </Link>
         </li>
       ))}
