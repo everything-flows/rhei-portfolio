@@ -1,21 +1,22 @@
-import { useEffect } from "react";
 import {
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
   useParams,
   useRouteLoaderData,
 } from "@remix-run/react";
 import { createBrowserClient } from "@supabase/ssr";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { useEffect, useState } from "react";
 
-import "./tailwind.css";
+import Font from "./_components/Font";
+import fetchCategoryData from "./_utils/fetchCategoryData";
 import "./breadcrumb.css";
 import useCategoryStore from "./stores/category";
-import fetchCategoryData from "./_utils/fetchCategoryData";
-import Font from "./_components/Font";
+import "./tailwind.css";
 
 export { loader } from "./_utils/loader";
 export { meta } from "./_utils/meta";
@@ -70,5 +71,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 60 * 1000,
+          },
+        },
+      }),
+  );
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Outlet />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
 }

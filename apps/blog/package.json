@@ -21,6 +21,8 @@
     "@rhei/react": "file:../../packages/react",
     "@rhei/ui": "file:../../packages/ui",
     "@supabase/ssr": "^0.6.1",
+    "@tanstack/react-query": "^5.90.2",
+    "@tanstack/react-query-devtools": "^5.90.2",
     "isbot": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
