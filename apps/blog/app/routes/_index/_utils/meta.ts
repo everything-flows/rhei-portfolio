@@ -13,12 +13,12 @@ import convertUrl from "~/utils/convertUrl";
 const blogUrl = `${SITE_URL}/blog`;
 
 export default function meta({ data }) {
-  const title = `${SITE_TITLE} | ${SITE_NAME}`;
-
   const queries = data.dehydratedState.queries;
   const pinnedPostList = queries.find((query) =>
     query.queryKey.includes("pinnedPostList"),
   )?.state.data;
+
+  const title = `${SITE_TITLE} | ${SITE_NAME}`;
 
   return [
     {

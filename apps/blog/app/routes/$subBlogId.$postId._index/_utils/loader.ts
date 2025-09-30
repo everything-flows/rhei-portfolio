@@ -1,11 +1,12 @@
-import { type LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { json, type LoaderFunctionArgs } from "@remix-run/cloudflare";
 import {
   createServerClient,
   parseCookieHeader,
   serializeCookieHeader,
 } from "@supabase/ssr";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
 
-import getPostData from "./getPostData";
+import { postDetailQueryOptions } from "./getPostData";
 
 export default async function loader({
   context,
@@ -39,7 +40,10 @@ export default async function loader({
     },
   });
 
-  const postData = await getPostData({ supabaseClient, subBlogId, postId });
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery(
+    postDetailQueryOptions(supabaseClient, subBlogId, postId),
+  );
 
-  return { postData };
+  return json({ dehydratedState: dehydrate(queryClient) });
 }
