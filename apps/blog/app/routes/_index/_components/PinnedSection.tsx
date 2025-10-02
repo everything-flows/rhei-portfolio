@@ -100,7 +100,17 @@ function ImageThumbnail({ post }: { post: Document }) {
 function GradientThumbnail() {
   return (
     <div className="aspect-[16/9] w-full shrink-0 overflow-hidden rounded-3xl border border-gray-200 object-cover dark:border-gray-600">
-      <div className="bg-thumbnail h-full w-full rounded-3xl opacity-[0.8] blur-[80px]" />
+      <Gradient />
+    </div>
+  );
+}
+
+export function Gradient() {
+  return (
+    <div className="relative h-full w-full blur-xl">
+      <div className="absolute -bottom-[50%] h-[120%] w-[120%] skew-x-[-30deg] rounded-[100%] bg-orange-300 dark:bg-blue-800" />
+      <div className="absolute -bottom-[20%] left-[20%] h-[80%] w-[80%] skew-x-[-20deg] rounded-[100%] bg-orange-100 dark:bg-blue-300" />
+      <div className="absolute -bottom-[60%] h-full w-full skew-x-[-30deg] rounded-[100%] bg-blue-100 dark:bg-orange-900" />
     </div>
   );
 }

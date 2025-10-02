@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import type { Document } from "~/types/post";
 import convertUrl from "~/utils/convertUrl";
 import TagList from "../TagList";
+import { Gradient } from "~/routes/_index/_components/PinnedSection";
 
 export default function PostDirectory({ postList }: { postList: Document[] }) {
   return (
@@ -57,7 +58,7 @@ function ImageThumbnail({ post }: { post: Document }) {
 function GradientThumbnail() {
   return (
     <div className="order-2 aspect-[1/1] w-full shrink-0 overflow-hidden rounded-full border border-gray-200 object-cover dark:border-gray-600 sm:order-1 sm:aspect-[4/3] sm:rounded-2xl">
-      <div className="bg-thumbnail h-full w-full opacity-[0.8] blur-[80px]" />
+      <Gradient />
     </div>
   );
 }
