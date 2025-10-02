@@ -55,19 +55,24 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="bg-normal text-normal">
-        <div className="fixed inset-0 z-[-1] opacity-[0.15] blur-[min(100px,10dvw)]">
-          <div className="absolute -right-8 -top-4 h-[70dvh] w-[80dvw] rounded-[100%] bg-blue-200 dark:bg-blue-600">
-            <div className="bg-normal absolute top-[30dvh] h-[40dvh] w-[50dvw] rounded-[100%]" />
-          </div>
-          <div className="absolute bottom-0 h-[50dvh] w-[70dvw] rounded-[100%] bg-orange-300 dark:bg-orange-600">
-            <div className="bg-normal absolute bottom-0 right-0 h-[30dvh] w-[50dvw] rounded-[100%]" />
-          </div>
-        </div>
+        <BackgroundGradient />
         {children}
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
+  );
+}
+
+function BackgroundGradient() {
+  return (
+    <div className="fixed inset-0 z-[-1] opacity-[0.3] blur-[min(30px,10dvw)]">
+      <div className="absolute right-[-8dvw] top-[-21dvh] h-[50dvh] w-[120dvw] skew-x-[50deg] rounded-[100%] bg-blue-500 dark:bg-orange-500" />
+      <div className="absolute right-[-8dvw] top-[-21dvh] h-[48dvh] w-[118dvw] skew-x-[50deg] rounded-[100%] bg-orange-300 dark:bg-blue-300" />
+      <div className="absolute right-[-8dvw] top-[-21dvh] h-[46dvh] w-[116dvw] skew-x-[50deg] rounded-[100%] bg-orange-100 dark:bg-blue-700" />
+      <div className="absolute right-[-8dvw] top-[-21dvh] h-[38dvh] w-[108dvw] skew-x-[50deg] rounded-[100%] bg-blue-400 dark:bg-orange-500" />
+      <div className="bg-normal absolute right-[-10dvw] top-[-22dvh] h-[38dvh] w-[108dvw] skew-x-[50deg] rounded-[100%]" />
+    </div>
   );
 }
 
