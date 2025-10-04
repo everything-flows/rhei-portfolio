@@ -1,4 +1,6 @@
+import { Link } from "@remix-run/react";
 import ArrowIcon from "~/assets/ArrowIcon";
+import { motion } from "motion/react";
 
 export default function Header() {
   return (
@@ -9,7 +11,7 @@ export default function Header() {
         </div>
       </div> */}
 
-      <div className="flex flex-wrap-reverse items-center justify-between gap-4 overflow-hidden">
+      <div className="flex flex-wrap-reverse items-center justify-between gap-4 overflow-visible">
         <h1>
           <ruby className="text-display">
             강다혜
@@ -20,13 +22,16 @@ export default function Header() {
           <span className="text-display-empty">,</span>
         </h1>
 
-        <a
-          href="/resume"
-          className="bg-brand text-reverse flex items-start gap-4 rounded-full px-6 py-4 text-[1.5rem] text-[clamp(2rem,6vw,4rem)] font-bold leading-none"
-        >
-          이력
-          <ArrowIcon size="2rem" />
-        </a>
+        <Link to="/resume">
+          <motion.div
+            className="bg-brand text-reverse flex items-start gap-2 rounded-full px-4 py-3 text-[clamp(2.25rem,6vw,3.5rem)] font-bold leading-none md:gap-4 md:px-6 md:py-4"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            이력
+            <ArrowIcon size="2rem" />
+          </motion.div>
+        </Link>
       </div>
 
       <h2 className="text-display-sub">FRONT-END 개발자</h2>
