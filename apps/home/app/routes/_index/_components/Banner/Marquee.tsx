@@ -4,7 +4,7 @@ import { ReactNode, useEffect, useRef } from "react";
 
 const Marquee = ({
   children,
-  speed = 1,
+  speed = 0.5,
   reverse = false,
   style,
 }: {
