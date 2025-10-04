@@ -22,7 +22,8 @@ export default function Header() {
           <span className="text-display-empty">,</span>
         </h1>
 
-        <Link to="/resume">
+        {/* NOTE: 앱간 라우팅을 위해 Link 대신 a 태그 사용 */}
+        <a href="/resume">
           <motion.div
             className="bg-brand text-reverse flex items-start gap-2 rounded-full px-4 py-3 text-[clamp(2.25rem,6vw,3.5rem)] font-bold leading-none md:gap-4 md:px-6 md:py-4"
             whileHover={{ scale: 1.05 }}
@@ -31,7 +32,7 @@ export default function Header() {
             이력
             <ArrowIcon size="2rem" />
           </motion.div>
-        </Link>
+        </a>
       </div>
 
       <h2 className="text-display-sub">FRONT-END 개발자</h2>
