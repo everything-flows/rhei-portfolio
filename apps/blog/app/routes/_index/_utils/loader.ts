@@ -1,12 +1,13 @@
-import { type LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { json, type LoaderFunctionArgs } from "@remix-run/cloudflare";
 import {
   createServerClient,
   parseCookieHeader,
   serializeCookieHeader,
 } from "@supabase/ssr";
 
-import getPinnedPostList from "../_components/PinnedSection/getPinnedPostList";
-import getRecentPostList from "../_components/RecentSection/getRecentPostList";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
+import { pinnedPostQueryOptions } from "./getPinnedPostList";
+import { recentPostQueryOptions } from "./getRecentPostList";
 
 export default async function loader({ context, request }: LoaderFunctionArgs) {
   const headers = new Headers();
@@ -34,8 +35,9 @@ export default async function loader({ context, request }: LoaderFunctionArgs) {
     },
   });
 
-  const pinnedPostList = await getPinnedPostList({ supabaseClient });
-  const recentPostList = await getRecentPostList({ supabaseClient });
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery(pinnedPostQueryOptions(supabaseClient));
+  await queryClient.prefetchQuery(recentPostQueryOptions(supabaseClient));
 
-  return { pinnedPostList, recentPostList };
+  return json({ dehydratedState: dehydrate(queryClient) });
 }
