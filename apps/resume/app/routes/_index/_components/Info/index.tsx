@@ -5,7 +5,7 @@ export default function Info() {
         <img
           className="size-[clamp(5rem,8vw,8rem)] rounded-full"
           src={PROFILE_IMAGE}
-          alt="profile"
+          alt="Rhei's profile"
         />
         <div>
           <h1 className="text-h2">강다혜</h1>
@@ -15,19 +15,33 @@ export default function Info() {
         </div>
       </div>
 
-      <table className="h-fit">
+      <table className="h-fit" role="table" aria-label="연락처 정보">
+        <thead>
+          <tr>
+            <th scope="col" className="sr-only">
+              항목
+            </th>
+            <th scope="col" className="sr-only">
+              주소
+            </th>
+          </tr>
+        </thead>
         <tbody>
           {CONTACT_INFO.map((contact) => (
             <tr key={contact.label}>
-              <td>{contact.label}</td>
+              <th scope="row" className="text-left font-semibold">
+                {contact.label}
+              </th>
               <td className="pl-2">
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
                   href={contact.linkHref}
                   className="text-blue-500 underline dark:text-orange-500"
+                  aria-label={`${contact.label} - 새 창에서 열림`}
                 >
                   {contact.linkLabel}
+                  <span className="sr-only"> (새 창에서 열림)</span>
                 </a>
               </td>
             </tr>
