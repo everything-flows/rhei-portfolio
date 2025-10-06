@@ -10,11 +10,11 @@ const PROJECT = [
     stack: ["TypeScript", "Remix", "Next.js", "Tailwind", "Supabase"],
     link: [
       {
-        title: "GitHub →",
+        title: "GitHub",
         href: "https://github.com/everything-flows/rhei-portfolio",
       },
-      { title: "블로그 →", href: "https://rhei.me/blog" },
-      { title: "실험실 →", href: "https://rhei.me/craft" },
+      { title: "블로그", href: "https://rhei.me/blog" },
+      { title: "실험실", href: "https://rhei.me/craft" },
     ],
     content: [
       {
@@ -50,7 +50,7 @@ const PROJECT = [
     position: "팀 프로젝트 / FE 개발자",
     description: "암호화폐 관련 주요 이벤트 큐레이션",
     stack: ["TypeScript", "Next.js", "Tailwind"],
-    link: [{ title: "coinscope.gg →", href: "https://coinscope.gg" }],
+    link: [{ title: "coinscope.gg", href: "https://coinscope.gg" }],
     content: [
       {
         title: "검색 필터링 상태 관리 개선",
@@ -127,7 +127,9 @@ export default function Project() {
                     key={link.title}
                     className="text-brand font-semibold underline"
                   >
-                    <a href={link.href}>{link.title}</a>
+                    <a href={link.href} className="after:content-['_↗']">
+                      {link.title}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -143,13 +145,16 @@ export default function Project() {
                 ))}
               </ul>
 
-              <ul className="mt-4">
+              <ul className="mt-4 text-gray-900 dark:text-gray-100">
                 {project.content?.map((desc) => (
-                  <li key={desc.title} className="ms-6 list-disc">
+                  <li key={desc.title}>
                     <p className="font-extrabold">{desc.title}</p>
                     <ul>
                       {desc.list.map((item, index) => (
-                        <li key={index} className="ms-6 list-[circle]">
+                        <li
+                          key={index}
+                          className="ms-6 list-[circle] text-gray-800 dark:text-gray-200"
+                        >
                           {item}
                         </li>
                       ))}
