@@ -10,7 +10,7 @@ export default function Banner() {
       </Marquee>
       <Marquee style="-content-x overflow-x-clip" reverse>
         <p className="whitespace-nowrap px-4 py-2 text-[clamp(1rem,4vw,2rem)] font-extrabold text-blue-500 dark:text-orange-500">
-          안 되는 것 빼고 다 합니다
+          모든 것은 흐른다
         </p>
       </Marquee>
     </section>

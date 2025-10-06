@@ -6,18 +6,10 @@ import {
   SITE_URL,
 } from "@rhei/meta";
 
-import { Document } from "~/types/post";
-
-export default function meta({
-  data,
-}: {
-  data: { postData: { postInfo: Document } };
-}) {
-  const { postData } = data;
-
-  if (!postData) {
-    return null;
-  }
+export default function meta({ data }) {
+  const query = data.dehydratedState.queries;
+  const postData = query.find((query) => query.queryKey.includes("postDetail"))
+    ?.state.data;
 
   const { postInfo } = postData;
 

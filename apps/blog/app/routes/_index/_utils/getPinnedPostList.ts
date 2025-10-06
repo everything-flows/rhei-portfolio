@@ -1,10 +1,19 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { queryOptions } from "@tanstack/react-query";
 
 import { Database } from "~/types/supabase";
 import addTagListToPostList from "~/utils/addTagListToPostList";
 import { getPostById } from "~/utils/getPostById";
 
-export default async function getPinnedPostList({
+export const pinnedPostQueryOptions = (
+  supabaseClient: SupabaseClient<Database, "public">,
+) =>
+  queryOptions({
+    queryKey: ["pinnedPostList"],
+    queryFn: () => getPinnedPostList({ supabaseClient }),
+  });
+
+async function getPinnedPostList({
   supabaseClient,
 }: {
   supabaseClient: SupabaseClient<Database, "public">;

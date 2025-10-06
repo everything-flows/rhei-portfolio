@@ -1,6 +1,79 @@
 import { Link } from "@remix-run/react";
 import { StickyHeading } from "@rhei/react";
 
+export default function Summary() {
+  return (
+    <section>
+      <StickyHeading>
+        <h2 className="text-h2 bg-normal border-sub mb-2 border-b">요약</h2>
+      </StickyHeading>
+
+      <article>
+        <h3 className="text-h5 bg-normal">
+          개발자와 사용자에게 좋은 경험을 줄 수 있는 방법을 찾고 있습니다.
+        </h3>
+
+        <ul className="mt-2 list-disc ps-6">
+          <li>
+            디자인 시스템처럼, 반복되는 요소를 규칙화하고, 시스템을 잘 사용할 수
+            있도록 문서화하는 작업에 열중합니다.
+          </li>
+          <li>
+            인터랙션 팀에서 사용자와의 인터랙션에 사용되는 컴포넌트들을
+            유지보수하고 있습니다.
+          </li>
+        </ul>
+      </article>
+
+      <article className="mt-8">
+        <h3 className="text-h5 bg-normal">사용하는 기술</h3>
+        <table
+          className="border-separate border-spacing-y-1"
+          role="table"
+          aria-label="사용 기술 목록"
+        >
+          <thead>
+            <tr>
+              <th scope="col" className="sr-only">
+                카테고리
+              </th>
+              <th scope="col" className="sr-only">
+                기술 목록
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {STACK.map((stack) => (
+              <tr key={stack.title}>
+                <th
+                  scope="row"
+                  className="whitespace-nowrap pr-2 text-left align-top font-semibold"
+                >
+                  {stack.title}
+                </th>
+                <td className="align-top">
+                  <div className="flex flex-wrap gap-1">
+                    {stack.list.map((item) => (
+                      <Link
+                        key={item.title}
+                        to={item.link}
+                        className="rounded-md bg-gray-100 px-2 dark:bg-gray-700"
+                        aria-label={`${item.title} 기술 문서 - 새 창에서 열림`}
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </article>
+    </section>
+  );
+}
+
 const STACK = [
   {
     title: "핵심 스택",
@@ -32,77 +105,3 @@ const STACK = [
     ],
   },
 ];
-export default function Summary() {
-  return (
-    <section>
-      <StickyHeading>
-        <h2 className="text-h2 bg-normal border-sub mb-2 border-b">요약</h2>
-      </StickyHeading>
-
-      <article className="">
-        <h3 className="text-h5 bg-normal">
-          스타트업 인턴, 창업 동아리 활동을 통해 빠르고 정확하게 MVP를 개발한
-          경험이 있습니다.
-        </h3>
-
-        <ul className="mt-2 list-disc ps-6">
-          <li>
-            <Link
-              to="https://coinscope.gg"
-              className="text-brand whitespace-pre underline"
-            >
-              CoinScope 웹
-            </Link>{" "}
-            및 어드민 페이지 제작
-          </li>
-          <li>서강대학교 창업경진대회 우수상 수상</li>
-        </ul>
-      </article>
-
-      <article className="mt-4">
-        <h3 className="text-h5 bg-normal">
-          CS 지식을 활용하여 문제를 해결하는 것을 좋아합니다.
-        </h3>
-
-        <ul className="mt-2 list-disc ps-6">
-          <li>
-            자료구조, 알고리즘을 구현하는 것에 흥미를 가지고 알고리즘 대회 참여,
-            문제 출제 등의 활동을 하였습니다.
-          </li>
-          <li>
-            <Link
-              to="https://www.acmicpc.net/user/psst54"
-              className="text-brand whitespace-pre underline"
-            >
-              Baekjoon & Solved.ac Platinum II{" "}
-            </Link>
-          </li>
-        </ul>
-      </article>
-
-      <article className="mt-8">
-        <StickyHeading>
-          <h3 className="text-h3 bg-normal mb-2">사용하는 기술</h3>
-        </StickyHeading>
-
-        <ul className="flex flex-col gap-2">
-          {STACK.map((stack) => (
-            <li key={stack.title} className="grid grid-cols-[6rem_auto]">
-              <p>{stack.title}</p>
-              <p className="flex flex-wrap gap-x-2 gap-y-1">
-                {stack.list.map((item) => (
-                  <Link
-                    to={item.link}
-                    className="rounded-md bg-gray-100 px-2 dark:bg-gray-600"
-                  >
-                    {item.title}
-                  </Link>
-                ))}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </article>
-    </section>
-  );
-}

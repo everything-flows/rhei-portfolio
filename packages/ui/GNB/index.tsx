@@ -12,11 +12,7 @@ export default function GNB({
   return (
     <nav className="flex items-center justify-between mx-auto max-w-6xl py-4 relative">
       <a href={route} className="flex gap-2 items-center">
-        <img
-          src="https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-resume//profile.png"
-          alt="logo"
-          className="size-8 rounded-full"
-        />
+        <img src={LOGO_IMAGE_URL} alt="logo" className="size-8 rounded-full" />
         <p className="logo-label w-fit font-extrabold text-[1.2rem]" />
       </a>
 
@@ -47,3 +43,6 @@ export default function GNB({
     </nav>
   );
 }
+
+const LOGO_IMAGE_URL =
+  "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/main/logo.webp";
