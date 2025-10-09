@@ -1,11 +1,9 @@
-import { StickyHeading } from "@rhei/react";
+import SectionTitle from "../SectionTitle";
 
 export default function Work() {
   return (
     <section>
-      <StickyHeading>
-        <h2 className="text-h2 bg-normal border-sub mb-2 border-b">업무</h2>
-      </StickyHeading>
+      <SectionTitle content="Work Experience" />
 
       <ol className="flex flex-col gap-8">
         {WORK.map((work) => (

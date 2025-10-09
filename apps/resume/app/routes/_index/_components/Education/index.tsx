@@ -1,31 +1,9 @@
-import { StickyHeading } from "@rhei/react";
-
-const EDUCATION = [
-  {
-    title: "서강대학교",
-    major: "철학과 / 컴퓨터공학과",
-    period: "2019.03 - 2023.08",
-    location: "서울시 마포구",
-    description: [
-      { content: "우등(Cum Laude) 졸업" },
-      { content: "CGPA 3.94 / 4.5" },
-      { content: "전공 GPA 3.73 / 4.5" },
-    ],
-  },
-  {
-    title: "김해외국어고등학교",
-    major: "영어일본어과",
-    period: "2016.03 - 2019.02",
-    location: "경상남도",
-  },
-];
+import SectionTitle from "../SectionTitle";
 
 export default function Education() {
   return (
     <section>
-      <StickyHeading>
-        <h2 className="text-h2 bg-normal border-sub mb-2 border-b">교육</h2>
-      </StickyHeading>
+      <SectionTitle content="Education" />
 
       <ol className="flex flex-col gap-2">
         {EDUCATION.map((education) => (
@@ -57,3 +35,23 @@ export default function Education() {
     </section>
   );
 }
+
+const EDUCATION = [
+  {
+    title: "서강대학교",
+    major: "철학과 / 컴퓨터공학과",
+    period: "2019.03 - 2023.08",
+    location: "서울시 마포구",
+    description: [
+      { content: "우등(Cum Laude) 졸업" },
+      { content: "CGPA 3.94 / 4.5" },
+      { content: "전공 GPA 3.73 / 4.5" },
+    ],
+  },
+  {
+    title: "김해외국어고등학교",
+    major: "영어일본어과",
+    period: "2016.03 - 2019.02",
+    location: "경상남도",
+  },
+];

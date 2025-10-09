@@ -1,12 +1,10 @@
 import { Link } from "@remix-run/react";
-import { StickyHeading } from "@rhei/react";
+import SectionTitle from "../SectionTitle";
 
 export default function Summary() {
   return (
     <section>
-      <StickyHeading>
-        <h2 className="text-h2 bg-normal border-sub mb-2 border-b">요약</h2>
-      </StickyHeading>
+      <SectionTitle content="Summary" />
 
       <article>
         <h3 className="text-h5 bg-normal">

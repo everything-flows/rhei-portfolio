@@ -1,81 +1,12 @@
 import { ReactNode } from "react";
 import { Link } from "@remix-run/react";
 import { StickyHeading } from "@rhei/react";
-
-interface Activity {
-  title: string;
-  description: string;
-  period: string;
-  list: {
-    content: string | ReactNode;
-    link?: {
-      title: string;
-      href: string;
-    };
-  }[];
-}
-
-const ACTIVITY_UNIV: Activity[] = [
-  {
-    title: "SGCC",
-    description: "서강대학교 중앙 컴퓨터 동아리",
-    period: "2019.03 - 2023.08",
-    list: [{ content: "부회장 (2020.03 - 2022.02)" }],
-  },
-  {
-    title: "Sogang ICPC Team",
-    description: "서강대학교 컴퓨터공학과 알고리즘 문제해결 학회",
-    period: "2020.11 - 2023.08",
-    list: [
-      {
-        content: (
-          <>
-            2023 겨울 신촌지역 대학교 프로그래밍 동아리 연합 알고리즘 캠프
-            콘테스트 초급 부문{" "}
-            <a
-              href="https://www.acmicpc.net/problem/27495"
-              className="text-brand underline"
-            >
-              B번 문항
-            </a>{" "}
-            출제
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    title: "학부 수업 멘토",
-    description: "",
-    period: "",
-    list: [
-      {
-        content:
-          "서강대학교 봄학기 컴퓨팅사고력 강좌 조교 (2021.03. - 2021.06.)",
-      },
-      {
-        content:
-          "서강대학교 예비대학생을 위한 파이썬 강좌 멘토(2021.01. - 2021.02.)",
-      },
-    ],
-  },
-];
-
-const ACTIVITY_EXTRA: Activity[] = [
-  {
-    title: "세오스(CEOS)",
-    description: "신촌 연합 IT 창업 동아리",
-    period: "2024.09 - 2025.01",
-    list: [{ content: "20기 데모데이 최우수상 (Team 포토그라운드)" }],
-  },
-];
+import SectionTitle from "../SectionTitle";
 
 export default function Activity() {
   return (
     <section>
-      <StickyHeading>
-        <h2 className="text-h2 bg-normal border-sub mb-2 border-b">활동</h2>
-      </StickyHeading>
+      <SectionTitle content="Activity" />
 
       <section>
         <StickyHeading>
@@ -169,3 +100,71 @@ export default function Activity() {
     </section>
   );
 }
+
+interface Activity {
+  title: string;
+  description: string;
+  period: string;
+  list: {
+    content: string | ReactNode;
+    link?: {
+      title: string;
+      href: string;
+    };
+  }[];
+}
+
+const ACTIVITY_UNIV: Activity[] = [
+  {
+    title: "SGCC",
+    description: "서강대학교 중앙 컴퓨터 동아리",
+    period: "2019.03 - 2023.08",
+    list: [{ content: "부회장 (2020.03 - 2022.02)" }],
+  },
+  {
+    title: "Sogang ICPC Team",
+    description: "서강대학교 컴퓨터공학과 알고리즘 문제해결 학회",
+    period: "2020.11 - 2023.08",
+    list: [
+      {
+        content: (
+          <>
+            2023 겨울 신촌지역 대학교 프로그래밍 동아리 연합 알고리즘 캠프
+            콘테스트 초급 부문{" "}
+            <a
+              href="https://www.acmicpc.net/problem/27495"
+              className="text-brand underline"
+            >
+              B번 문항
+            </a>{" "}
+            출제
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    title: "학부 수업 멘토",
+    description: "",
+    period: "",
+    list: [
+      {
+        content:
+          "서강대학교 봄학기 컴퓨팅사고력 강좌 조교 (2021.03. - 2021.06.)",
+      },
+      {
+        content:
+          "서강대학교 예비대학생을 위한 파이썬 강좌 멘토(2021.01. - 2021.02.)",
+      },
+    ],
+  },
+];
+
+const ACTIVITY_EXTRA: Activity[] = [
+  {
+    title: "세오스(CEOS)",
+    description: "신촌 연합 IT 창업 동아리",
+    period: "2024.09 - 2025.01",
+    list: [{ content: "20기 데모데이 최우수상 (Team 포토그라운드)" }],
+  },
+];

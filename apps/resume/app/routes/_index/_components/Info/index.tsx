@@ -1,9 +1,9 @@
 export default function Info() {
   return (
-    <section className="flex flex-wrap items-start justify-between gap-x-8 gap-y-4">
-      <div className="flex items-center gap-6">
+    <section className="flex flex-wrap items-start justify-between gap-x-8 gap-y-3">
+      <div className="flex items-center gap-5">
         <img
-          className="size-[clamp(5rem,8vw,8rem)] rounded-full"
+          className="size-[clamp(5rem,8vw,6.5rem)] rounded-full"
           src={PROFILE_IMAGE}
           alt="Rhei's profile"
         />

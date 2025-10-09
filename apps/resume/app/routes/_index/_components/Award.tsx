@@ -1,36 +1,9 @@
-import { StickyHeading } from "@rhei/react";
-
-const AWARD = [
-  {
-    date: "2022.04",
-    content: "2022년 제 13회 서강대학교 스타트업 오디션(창업경진대회)",
-    place: "우수상",
-  },
-  {
-    date: "2021.02",
-    content:
-      "신촌지역 대학생 프로그래밍 대회 동아리 연합 겨울 대회 (SUAPC 2021 WINTER)",
-    place: "6th place (동상)",
-  },
-  {
-    date: "2020.11",
-    content:
-      "서강대학교 프로그래밍 경진 대회 (Sogang Programming Contest) Master division",
-    place: "5th place (동상)",
-  },
-  {
-    date: "2019.08",
-    content: "국제인문학부 성적 상위 1% 최우수학생",
-    place: "성적우수상",
-  },
-];
+import SectionTitle from "./SectionTitle";
 
 export default function Award() {
   return (
     <section>
-      <StickyHeading>
-        <h2 className="text-h2 bg-normal border-sub mb-2 border-b">수상</h2>
-      </StickyHeading>
+      <SectionTitle content="Award" />
 
       <div className="overflow-auto">
         <table className="table-auto border-separate border-spacing-x-4 border-spacing-y-2 text-pretty break-keep">
@@ -57,3 +30,28 @@ export default function Award() {
     </section>
   );
 }
+
+const AWARD = [
+  {
+    date: "2022.04",
+    content: "2022년 제 13회 서강대학교 스타트업 오디션(창업경진대회)",
+    place: "우수상",
+  },
+  {
+    date: "2021.02",
+    content:
+      "신촌지역 대학생 프로그래밍 대회 동아리 연합 겨울 대회 (SUAPC 2021 WINTER)",
+    place: "6th place (동상)",
+  },
+  {
+    date: "2020.11",
+    content:
+      "서강대학교 프로그래밍 경진 대회 (Sogang Programming Contest) Master division",
+    place: "5th place (동상)",
+  },
+  {
+    date: "2019.08",
+    content: "국제인문학부 성적 상위 1% 최우수학생",
+    place: "성적우수상",
+  },
+];

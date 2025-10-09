@@ -22,7 +22,7 @@ export default function ResumePage() {
       </header>
 
       <main className="content-x text-p">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6">
           <Info />
           <Summary />
           <Work />

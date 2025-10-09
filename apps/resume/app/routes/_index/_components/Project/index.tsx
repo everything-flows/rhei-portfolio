@@ -1,4 +1,74 @@
-import { StickyHeading } from "@rhei/react";
+import SectionTitle from "../SectionTitle";
+
+export default function Project() {
+  return (
+    <section>
+      <SectionTitle content="Project" />
+
+      <ol className="flex flex-col gap-8">
+        {PROJECT.map((project) => (
+          <li key={project.title}>
+            <article>
+              <div className="flex flex-col justify-between gap-x-4 sm:flex-row">
+                <p className="flex gap-x-4 sm:flex-col">
+                  <span className="mr-2 font-extrabold">{project.title}</span>
+                  <span className="text-sub">{project.position}</span>
+                </p>
+                <p className="flex gap-x-4 sm:flex-col sm:text-right">
+                  <span className="text-sub">{project.location}</span>
+                </p>
+              </div>
+
+              <p className="mt-2">{project.description}</p>
+
+              <ul className="flex flex-wrap gap-x-2 gap-y-1">
+                {project.link?.map((link) => (
+                  <li
+                    key={link.title}
+                    className="text-brand font-semibold underline"
+                  >
+                    <a href={link.href} className="after:content-['_↗']">
+                      {link.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
+              <ul className="mt-1 flex flex-wrap gap-x-2 gap-y-1">
+                {project.stack?.map((stack) => (
+                  <li
+                    key={stack}
+                    className="rounded-md bg-gray-100 px-2 dark:bg-gray-600"
+                  >
+                    {stack}
+                  </li>
+                ))}
+              </ul>
+
+              <ul className="mt-4 text-gray-900 dark:text-gray-100">
+                {project.content?.map((desc) => (
+                  <li key={desc.title}>
+                    <p className="font-extrabold">{desc.title}</p>
+                    <ul>
+                      {desc.list.map((item, index) => (
+                        <li
+                          key={index}
+                          className="ms-6 list-[circle] text-gray-800 dark:text-gray-200"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
 
 const PROJECT = [
   {
@@ -97,75 +167,3 @@ const PROJECT = [
     ],
   },
 ];
-
-export default function Project() {
-  return (
-    <section>
-      <StickyHeading>
-        <h2 className="text-h2 bg-normal border-sub mb-2 border-b">프로젝트</h2>
-      </StickyHeading>
-
-      <ol className="flex flex-col gap-8">
-        {PROJECT.map((project) => (
-          <li key={project.title}>
-            <article>
-              <div className="flex flex-col justify-between gap-x-4 sm:flex-row">
-                <p className="flex gap-x-4 sm:flex-col">
-                  <span className="mr-2 font-extrabold">{project.title}</span>
-                  <span className="text-sub">{project.position}</span>
-                </p>
-                <p className="flex gap-x-4 sm:flex-col sm:text-right">
-                  <span className="text-sub">{project.location}</span>
-                </p>
-              </div>
-
-              <p className="mt-2">{project.description}</p>
-
-              <ul className="flex flex-wrap gap-x-2 gap-y-1">
-                {project.link?.map((link) => (
-                  <li
-                    key={link.title}
-                    className="text-brand font-semibold underline"
-                  >
-                    <a href={link.href} className="after:content-['_↗']">
-                      {link.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-
-              <ul className="mt-1 flex flex-wrap gap-x-2 gap-y-1">
-                {project.stack?.map((stack) => (
-                  <li
-                    key={stack}
-                    className="rounded-md bg-gray-100 px-2 dark:bg-gray-600"
-                  >
-                    {stack}
-                  </li>
-                ))}
-              </ul>
-
-              <ul className="mt-4 text-gray-900 dark:text-gray-100">
-                {project.content?.map((desc) => (
-                  <li key={desc.title}>
-                    <p className="font-extrabold">{desc.title}</p>
-                    <ul>
-                      {desc.list.map((item, index) => (
-                        <li
-                          key={index}
-                          className="ms-6 list-[circle] text-gray-800 dark:text-gray-200"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          </li>
-        ))}
-      </ol>
-    </section>
-  );
-}
