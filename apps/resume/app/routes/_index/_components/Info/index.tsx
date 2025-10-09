@@ -37,7 +37,7 @@ export default function Info() {
                   target="_blank"
                   rel="noopener noreferrer"
                   href={contact.linkHref}
-                  className="text-blue-500 underline dark:text-orange-500"
+                  className="text-brand underline after:content-['_↗']"
                   aria-label={`${contact.label} - 새 창에서 열림`}
                 >
                   {contact.linkLabel}

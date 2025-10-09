@@ -100,7 +100,7 @@ const PROJECT = [
           <>
             <a
               href="https://rhei.me/blog/cse/making-blog-with-remix-6-optimization-1"
-              className="text-brand underline"
+              className="text-brand underline after:content-['_↗']"
             >
               최적화 과정
             </a>
@@ -127,10 +127,10 @@ const PROJECT = [
         list: [
           "필터링 데이터를 지역 상태에서 URL을 이용한 전역 상태로 전환 후 UX 및 유지보수성 개선",
           <a
-            className="text-brand underline"
+            className="text-brand underline after:content-['_↗']"
             href="https://rhei.me/blog/cse/search-filter-with-url"
           >
-            상세 구현 내용 포스트 →
+            상세 구현 내용 포스트
           </a>,
         ],
       },
@@ -147,7 +147,7 @@ const PROJECT = [
           <>
             단계적인 배포 및 QA를 위한{" "}
             <a
-              className="text-brand underline"
+              className="text-brand underline after:content-['_↗']"
               href="https://rhei.me/blog/cse/2-branching-strategy"
             >
               Git branch 전략 및 배포 파이프라인 구축
@@ -155,7 +155,7 @@ const PROJECT = [
           </>,
           <>
             <a
-              className="text-brand underline"
+              className="text-brand underline after:content-['_↗']"
               href="https://rhei.me/blog/cse/cspg-design-system-text"
             >
               디자인 시스템 구현
