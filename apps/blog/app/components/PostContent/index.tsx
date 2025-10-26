@@ -240,7 +240,7 @@ function renderNodes(node, index) {
             return (
               <code
                 key={index}
-                className="rounded-md bg-gray-200/60 px-1 dark:bg-gray-400/60"
+                className="rounded-md bg-gray-100 px-1 dark:bg-gray-800"
                 {...node.properties}
               >
                 {node.children.map((child, index: number) =>
