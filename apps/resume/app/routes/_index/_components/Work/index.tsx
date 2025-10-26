@@ -18,8 +18,8 @@ export default function Work() {
                     alt={work.title}
                   />
                   <div>
-                    <h3 className="font-extrabold">{work.title}</h3>
-                    <p className="text-gray-300 dark:text-gray-400">
+                    <h3 className="font-bold">{work.title}</h3>
+                    <p className="text-gray-400 dark:text-gray-300">
                       {work.position}
                     </p>
                   </div>
@@ -30,7 +30,7 @@ export default function Work() {
                 </p>
               </section>
 
-              <p className="font-extrabold">{work.description}</p>
+              <p className="font-bold">{work.description}</p>
 
               <ul className="my-1 flex flex-wrap gap-x-2 gap-y-1">
                 {work.stack?.map((stack) => (
@@ -46,12 +46,12 @@ export default function Work() {
               <ul className="text-gray-900 dark:text-gray-100">
                 {work.content?.map((desc) => (
                   <li key={desc.title}>
-                    <p className="font-extrabold">{desc.title}</p>
+                    <p className="font-bold">{desc.title}</p>
                     <ul>
                       {desc.list.map((item) => (
                         <li
                           key={item}
-                          className="ms-6 list-[circle] text-gray-800 dark:text-gray-200"
+                          className="ms-6 list-[circle] text-gray-800 dark:text-gray-100"
                         >
                           {item}
                         </li>
