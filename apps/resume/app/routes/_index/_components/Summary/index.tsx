@@ -55,6 +55,8 @@ export default function Summary() {
                       <Link
                         key={item.title}
                         to={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="rounded-md bg-gray-100 px-2 dark:bg-gray-700"
                         aria-label={`${item.title} 기술 문서 - 새 창에서 열림`}
                       >
@@ -91,7 +93,7 @@ const STACK = [
     list: [
       { title: "Tanstack Query", link: "https://tanstack.com/query/latest" },
       { title: "Zustand", link: "https://zustand-demo.pmnd.rs/" },
-      { title: "Redux", link: "https://redux.js.org/" },
+      // { title: "Redux", link: "https://redux.js.org/" },
     ],
   },
   {
