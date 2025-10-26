@@ -5,7 +5,7 @@ export default function Project() {
     <section>
       <SectionTitle content="Project" />
 
-      <ol className="flex flex-col gap-8">
+      <ol className="text-p flex flex-col gap-8">
         {PROJECT.map((project) => (
           <li key={project.title}>
             <article>

@@ -5,7 +5,7 @@ export default function Work() {
     <section>
       <SectionTitle content="Work Experience" />
 
-      <ol className="flex flex-col gap-8">
+      <ol className="text-p flex flex-col gap-8">
         {WORK.map((work) => (
           <li key={work.title}>
             <article>
