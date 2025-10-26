@@ -30,18 +30,18 @@ export default function Work() {
                 </p>
               </section>
 
-              <p className="my-2 font-extrabold">{work.description}</p>
+              <p className="font-extrabold">{work.description}</p>
 
-              {/* <ul className="mt-1 flex flex-wrap gap-x-2 gap-y-1">
+              <ul className="my-1 flex flex-wrap gap-x-2 gap-y-1">
                 {work.stack?.map((stack) => (
                   <li
                     key={stack}
-                    className="rounded-md bg-gray-100 px-2 dark:bg-gray-600"
+                    className="rounded-md bg-gray-100 px-2 text-gray-800 dark:bg-gray-800 dark:text-gray-100"
                   >
                     {stack}
                   </li>
                 ))}
-              </ul> */}
+              </ul>
 
               <ul className="text-gray-900 dark:text-gray-100">
                 {work.content?.map((desc) => (
