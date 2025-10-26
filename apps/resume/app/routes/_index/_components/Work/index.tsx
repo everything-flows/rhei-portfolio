@@ -1,3 +1,4 @@
+import { differenceInDays, format } from "date-fns";
 import SectionTitle from "../SectionTitle";
 
 export default function Work() {
@@ -24,8 +25,8 @@ export default function Work() {
                   </div>
                 </section>
 
-                <p className="whitespace-nowrap text-gray-300 dark:text-gray-400">
-                  {work.period}
+                <p className="whitespace-nowrap text-[1rem] text-gray-300 dark:text-gray-400">
+                  {getPeriod(work.period)}
                 </p>
               </section>
 
@@ -67,11 +68,22 @@ export default function Work() {
   );
 }
 
+function getPeriod(period: { start: string; end?: string }) {
+  const { start, end } = period;
+
+  const startDate = new Date(start);
+  const endDate = end ? new Date(end) : new Date();
+
+  return `${format(startDate, "yyyy.MM")} - ${end ? format(endDate, "yyyy.MM") : "재직중"} (${Math.floor(differenceInDays(end ? endDate : new Date(), startDate) / 30)}개월)`;
+}
+
 const WORK = [
   {
     title: "비바리퍼블리카",
     logo: "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-resume/toss.webp",
-    period: "2025.06 - 재직중 (3개월)",
+    period: {
+      start: "2025-06-30",
+    },
     location: "서울시 강남구",
     position: "Frontend Developer Assistant | 인터랙션팀",
     description:
@@ -97,7 +109,10 @@ const WORK = [
   {
     title: "카카오",
     logo: "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-resume/kakao.svg",
-    period: "2024.01 - 2024.02 (2개월)",
+    period: {
+      start: "2024-01-03",
+      end: "2024-02-29",
+    },
     location: "경기도 성남시",
     position: "Frontend Developer (인턴) | FE 플랫폼팀",
     description: "인턴십 과제 수행: Vanilla JS 환경에서 블록 코딩 서비스 구현",
@@ -120,7 +135,10 @@ const WORK = [
   {
     title: "호랑에듀",
     logo: "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-resume/horang.webp",
-    period: "2023.09 - 2023.11 (3개월)",
+    period: {
+      start: "2023-09-01",
+      end: "2023-11-27",
+    },
     location: "원격근무",
     position: "Frontend Developer (인턴) | 개발팀",
     description:
@@ -138,7 +156,10 @@ const WORK = [
   {
     title: "원펫",
     logo: "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-resume/onepet.webp",
-    period: "2022.02 - 2022.08 (6개월)",
+    period: {
+      start: "2022-02-21",
+      end: "2022-08-31",
+    },
     location: "서울시 강남구",
     position: "Frontend Developer (인턴) | 개발팀",
     description: "반려동물 건강 상태 진단 및 수의사와의 실시간 채팅 서비스",
