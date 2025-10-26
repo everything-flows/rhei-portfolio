@@ -12,7 +12,10 @@
     "baseUrl": ".",
     "paths": {
       "@rhei/ui": ["."]
-    }
+    },
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
   "include": ["./**/*.ts", "./**/*.tsx"],
   "exclude": ["node_modules", "dist"]
