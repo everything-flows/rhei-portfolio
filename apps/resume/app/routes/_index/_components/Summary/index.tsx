@@ -57,7 +57,7 @@ export default function Summary() {
                         to={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="rounded-md bg-gray-100 px-2 dark:bg-gray-700"
+                        className="rounded-md bg-gray-100 px-2 dark:bg-gray-800"
                         aria-label={`${item.title} 기술 문서 - 새 창에서 열림`}
                       >
                         {item.title}

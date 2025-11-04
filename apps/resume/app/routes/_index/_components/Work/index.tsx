@@ -18,8 +18,8 @@ export default function Work() {
                     alt={work.title}
                   />
                   <div>
-                    <h3 className="font-extrabold">{work.title}</h3>
-                    <p className="text-gray-300 dark:text-gray-400">
+                    <h3 className="font-bold">{work.title}</h3>
+                    <p className="text-gray-400 dark:text-gray-300">
                       {work.position}
                     </p>
                   </div>
@@ -30,7 +30,7 @@ export default function Work() {
                 </p>
               </section>
 
-              <p className="font-extrabold">{work.description}</p>
+              <p className="font-bold">{work.description}</p>
 
               <ul className="my-1 flex flex-wrap gap-x-2 gap-y-1">
                 {work.stack?.map((stack) => (
@@ -45,13 +45,13 @@ export default function Work() {
 
               <ul className="text-gray-900 dark:text-gray-100">
                 {work.content?.map((desc) => (
-                  <li key={desc.title}>
-                    <p className="font-extrabold">{desc.title}</p>
+                  <li key={desc.title} className="mb-2">
+                    <p className="font-bold">{desc.title}</p>
                     <ul>
                       {desc.list.map((item) => (
                         <li
                           key={item}
-                          className="ms-6 list-[circle] text-gray-800 dark:text-gray-200"
+                          className="ms-6 list-[circle] text-gray-800 dark:text-gray-100"
                         >
                           {item}
                         </li>
@@ -93,15 +93,15 @@ const WORK = [
       {
         title: "API 마이그레이션 자동화",
         list: [
-          "인터랙션 패키지 API 버전업에 대응하기 위해, jscodeshift 라이브러리를 이용한 마이그레이션 스크립트를 제공했습니다. 명령어를 통해 각 서비스 레포에서 쉽고 빠르게 최신 API로 마이그레이션할 수 있습니다.",
-          "자체 디자인 툴 Deus의 코드 생성 기능을 최신화하여, 최신 API를 서비스에 빠르게 적용할 수 있습니다.",
+          "인터랙션 패키지 API 버전업 시, 각 서비스 레포지토리에서 반복되는 수작업을 줄이기 위해 jscodeshift 기반 자동화 스크립트를 설계했습니다.",
+          "사내 디자인 툴 데우스의 디자인 기반 코드 생성 기능을 최신 API 스펙과 동기화하여, 최신 API를 서비스에 빠르게 적용할 수 있도록 개선했습니다.",
         ],
       },
       {
         title: "인터랙션 패키지 유지보수 및 문서화",
         list: [
-          "인터랙션 패키지 이슈에 대한 1차 대응 담당으로, 오류가 있는 컴포넌트를 디버깅해 수정했습니다.",
-          "인터랙션 컴포넌트 API를 문서화하고, 알기 쉬운 예제를 만들어 인터랙션 컴포넌트의 개발 접근성을 높이기 위해 노력합니다.",
+          "인터랙션 패키지의 1차 대응 담당으로서, 이슈 분석과 컴포넌트 디버깅을 수행했습니다.",
+          "인터랙션 컴포넌트 API를 문서화하고, 알기 쉬운 예제를 만들어 인터랙션 컴포넌트의 개발 접근성을 높였습니다.",
         ],
       },
     ],
@@ -121,13 +121,13 @@ const WORK = [
       {
         title: "Event Loop 기반 인터랙션 개선",
         list: [
-          "무한 루프 블록 프로그램을 실행하는 경우에 UI가 멈추는 현상을 분석하고, Event Loop 개념을 바탕으로 사용성을 개선한 경험이 있습니다.",
+          "무한 루프 블록을 실행할 때 UI가 멈추는 현상을 분석하고, Event Loop 개념을 바탕으로 사용성을 개선한 경험이 있습니다. 긴 실행 블록도 인터랙션 지연 없이 작동하도록 최적화했습니다.",
         ],
       },
       {
         title: "Jest 기반 블록 테스트 자동화",
         list: [
-          "UI상에서 실제 드래그 없이도 블록 실행 로직을 검증할 수 있도록 Jest 기반 parameterized 테스트를 작성하여 약 20종의 블록을 테스트했습니다.",
+          "UI상에서 드래그 앤 드롭 없이도 블록 실행 로직을 검증할 수 있도록 Jest 기반 parameterized 테스트를 작성하여 약 20종의 블록을 테스트했습니다.",
         ],
       },
     ],
@@ -148,7 +148,7 @@ const WORK = [
       {
         title: "Yarn 기반 모노레포 전환으로 배포 효율화",
         list: [
-          "Git Submodules로 관리되던 웹, 앱 및 패키지 레포를 Yarn Workspaces를 이용해 모노레포로 통합했습니다. 결과적으로 배포 과정을 간소화하고, 웹과 앱의 버전 및 의존성을 통일하여 관리 효율성이 향상되었습니다.",
+          "Git Submodules로 분리되어서 관리되던 웹, 앱 및 패키지를 Yarn Workspaces 기반의 모노레포로 통합했습니다. 결과적으로 배포 과정을 간소화하고, 웹과 앱의 버전 및 의존성을 통일하여 관리 효율성이 향상되었습니다.",
         ],
       },
     ],
