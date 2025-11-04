@@ -2,23 +2,9 @@
   "name": "@rhei/ui",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist",
-    "styles"
-  ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./styles/utilities.css": "./styles/utilities.css"
-  },
+  "main": "index.ts",
+  "types": "index.ts",
   "scripts": {
-    "build": "tsc && npm run copy:css",
-    "copy:css": "mkdir -p dist/GNB/_components/ThemeButton && cp -r GNB/_components/ThemeButton/style.css dist/GNB/_components/ThemeButton/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
