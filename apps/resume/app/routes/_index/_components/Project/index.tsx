@@ -1,3 +1,4 @@
+import { differenceInDays, format } from "date-fns";
 import SectionTitle from "../SectionTitle";
 
 export default function Project() {
@@ -9,17 +10,26 @@ export default function Project() {
         {PROJECT.map((project) => (
           <li key={project.title}>
             <article>
-              <div className="flex flex-col justify-between gap-x-4 sm:flex-row">
-                <p className="flex gap-x-4 sm:flex-col">
-                  <span className="mr-2 font-extrabold">{project.title}</span>
-                  <span className="text-sub">{project.position}</span>
-                </p>
-                <p className="flex gap-x-4 sm:flex-col sm:text-right">
-                  <span className="text-sub">{project.location}</span>
-                </p>
-              </div>
+              <section className="flex flex-col lg:flex-row lg:items-end lg:justify-between">
+                <section className="flex items-center gap-3">
+                  <div>
+                    <h3 className="font-bold">
+                      {project.title}
+                      <span className="font-medium">
+                        {" "}
+                        | {project.description}
+                      </span>
+                    </h3>
+                    <p className="text-gray-400 dark:text-gray-300">
+                      {project.position}
+                    </p>
+                  </div>
+                </section>
 
-              <p className="mt-2">{project.description}</p>
+                <p className="whitespace-nowrap text-[1rem] text-gray-300 dark:text-gray-400">
+                  {getPeriod(project.period)}
+                </p>
+              </section>
 
               <ul className="flex flex-wrap gap-x-2 gap-y-1">
                 {project.link?.map((link) => (
@@ -53,7 +63,7 @@ export default function Project() {
                       {desc.list.map((item, index) => (
                         <li
                           key={index}
-                          className="ms-6 list-[circle] text-gray-800 dark:text-gray-200"
+                          className="mb-2 ms-6 list-[circle] text-gray-800 dark:text-gray-200"
                         >
                           {item}
                         </li>
@@ -73,8 +83,9 @@ export default function Project() {
 const PROJECT = [
   {
     title: "개인 포트폴리오 사이트",
-    period: "",
-    location: "2025.04 - 진행중",
+    period: {
+      start: "2025-04-01",
+    },
     position: "개인 프로젝트 / FE 개발자",
     description: "이력서, 블로그, 포트폴리오 통합 사이트",
     stack: ["TypeScript", "Remix", "Next.js", "Tailwind", "Supabase"],
@@ -88,35 +99,26 @@ const PROJECT = [
     ],
     content: [
       {
-        title: "모노레포 기반 구조 설계",
+        title: "블로그 성능 및 검색 엔진 최적화",
         list: [
-          "Remix와 Next.js로 개발된 앱들을 pnpm 기반의 모노레포로 통합하여 하나의 도메인(rhei.me) 아래에서 운영",
-          "공통 컴포넌트(GNB, Footer 등)는 `packages/ui`로 분리해 재사용성을 높이고 유지보수를 단순화",
+          "초기 페이지 로딩 속도를 개선하기 위해, 중요도가 낮은 UI 요소는 CSR을 적용했습니다. 추가적으로 이미지 및 폰트에 lazy loading을 적용하고, 캐싱을 통해서 렌더링 속도를 개선한 결과, 메인 페이지 Lighthouse 점수가 55점에서 95점으로 크게 개선되었습니다.",
+          "meta데이터 및 ldJson, 사이트맵 정보를 설정하여 이전 9개월 대비 일평균 클릭수 72.25%, 노출수 85.9% 성장을 이루어냈습니다.",
         ],
       },
       {
-        title: "블로그 성능 및 검색 엔진 최적화",
+        title: "모노레포 기반 구조 설계",
         list: [
-          <>
-            <a
-              href="https://rhei.me/blog/cse/making-blog-with-remix-6-optimization-1"
-              className="text-brand underline after:content-['_↗']"
-            >
-              최적화 과정
-            </a>
-            을 거쳐 메인 페이지 Lighthouse 측정 결과 55점에서 95점으로 향상
-          </>,
-          "부가적인 UI 요소(breadcrumb)와 비중이 적은 동적 콘텐츠(tag)는 CSR을 적용해 초기 페이지 로딩 속도를 개선",
-          "이미지 및 폰트에 lazy loading 적용 및 캐싱을 통한 초기 페이지 로딩 속도 개선",
-          "이전 9개월 대비 클릭수 72.25%, 노출수 85.9% 성장",
+          "다양한 기술 스택을 사용하기 위해서 pnpm 기반의 모노레포 구조를 만들었습니다. Remix와 Next.js로 개발된 앱들을 하나의 도메인(rhei.me) 아래에서 운영할 수 있습니다.",
+          "공통 컴포넌트(GNB, Footer 등)는 패키지로 분리해 각 도메인에서 재사용이 가능합니다.",
         ],
       },
     ],
   },
   {
     title: "Coinscope.gg",
-    period: "",
-    location: "2024.11 - 진행중",
+    period: {
+      start: "2024-11-01",
+    },
     position: "팀 프로젝트 / FE 개발자",
     description: "암호화폐 관련 주요 이벤트 큐레이션",
     stack: ["TypeScript", "Next.js", "Tailwind"],
@@ -125,7 +127,7 @@ const PROJECT = [
       {
         title: "검색 필터링 상태 관리 개선",
         list: [
-          "필터링 데이터를 지역 상태에서 URL을 이용한 전역 상태로 전환 후 UX 및 유지보수성 개선",
+          "UX 및 유지보수성 개선을 위해, 지역 상태로 관리되던 필터링 데이터를 URL을 이용한 전역 상태로 전환하였습니다.",
           <a
             className="text-brand underline after:content-['_↗']"
             href="https://rhei.me/blog/cse/search-filter-with-url"
@@ -137,8 +139,12 @@ const PROJECT = [
       {
         title: "검색 엔진 최적화",
         list: [
-          "SSR 적용 및 이미지 Lazy Loading, api 분리 등을 통해 렌더링 속도 향상",
-          <strong className="font-bold">일 평균 노출수 870% 성장</strong>,
+          "SSR 적용 및 이미지 Lazy Loading, api 분리 등을 통해 렌더링 속도 향상시켰습니다.",
+          <>
+            그 결과로{" "}
+            <strong className="font-bold">일 평균 노출수 870% 성장</strong>
+            이라는 성과를 얻었습니다.
+          </>,
         ],
       },
       {
@@ -150,7 +156,7 @@ const PROJECT = [
               className="text-brand underline after:content-['_↗']"
               href="https://rhei.me/blog/cse/2-branching-strategy"
             >
-              Git branch 전략 및 배포 파이프라인 구축
+              Git branch 전략 및 배포 파이프라인을 구축했습니다.
             </a>
           </>,
           <>
@@ -159,11 +165,20 @@ const PROJECT = [
               href="https://rhei.me/blog/cse/cspg-design-system-text"
             >
               디자인 시스템 구현
-            </a>{" "}
-            및 Storybook 세팅
+            </a>
+            에 참여하고, Storybook을 세팅해 개발 편의성을 높였습니다.
           </>,
         ],
       },
     ],
   },
 ];
+
+export function getPeriod(period: { start: string; end?: string }) {
+  const { start, end } = period;
+
+  const startDate = new Date(start);
+  const endDate = end ? new Date(end) : new Date();
+
+  return `${format(startDate, "yyyy.MM")} - ${end ? format(endDate, "yyyy.MM") : "진행중"} (${Math.floor(differenceInDays(end ? endDate : new Date(), startDate) / 30)}개월)`;
+}

@@ -51,7 +51,7 @@ export default function Work() {
                       {desc.list.map((item) => (
                         <li
                           key={item}
-                          className="ms-6 list-[circle] text-gray-800 dark:text-gray-100"
+                          className="mb-2 ms-6 list-[circle] text-gray-800 dark:text-gray-100"
                         >
                           {item}
                         </li>
@@ -68,7 +68,7 @@ export default function Work() {
   );
 }
 
-function getPeriod(period: { start: string; end?: string }) {
+export function getPeriod(period: { start: string; end?: string }) {
   const { start, end } = period;
 
   const startDate = new Date(start);
@@ -93,15 +93,15 @@ const WORK = [
       {
         title: "API 마이그레이션 자동화",
         list: [
-          "인터랙션 패키지 API 버전업 시, 각 서비스 레포지토리에서 반복되는 수작업을 줄이기 위해 jscodeshift 기반 자동화 스크립트를 설계했습니다.",
-          "사내 디자인 툴 데우스의 디자인 기반 코드 생성 기능을 최신 API 스펙과 동기화하여, 최신 API를 서비스에 빠르게 적용할 수 있도록 개선했습니다.",
+          "인터랙션 패키지에 API 변경점이 생길 때, 패키지를 사용하는 각 서비스에서 수동으로 마이그레이션을 해야 하는 문제를 해결했습니다. jscodeshift 라이브러리 기반 마이그레이션 스크립트를 작성해, 서비스에서는 명령어를 통해 몇 분 내로 대량의 코드를 자동으로 마이그레이션할 수 있는 기능을 제공했습니다.",
+          "사내 디자인 툴 데우스의 디자인 기반 코드 생성 기능을 업데이트하여, 최신 인터랙션 패키지를 서비스에 빠르게 적용할 수 있도록 개선했습니다.",
         ],
       },
       {
         title: "인터랙션 패키지 유지보수 및 문서화",
         list: [
-          "인터랙션 패키지의 1차 대응 담당으로서, 이슈 분석과 컴포넌트 디버깅을 수행했습니다.",
-          "인터랙션 컴포넌트 API를 문서화하고, 알기 쉬운 예제를 만들어 인터랙션 컴포넌트의 개발 접근성을 높였습니다.",
+          "이슈 제보 채널을 맡아보며, 인터랙션 패키지에서 발생하는 이슈를 분석하고 문제를 해결했습니다.",
+          "인터랙션 컴포넌트의 개발 접근성을 높이기 위해 인터랙션 컴포넌트 API를 문서화하고, 예제 코드를 제공했습니다. 작성된 문서는 사내 AI봇에 학습시켜 문서를 열지 않아도 슬랙에서 채팅으로 접근이 가능합니다.",
         ],
       },
     ],
