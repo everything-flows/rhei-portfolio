@@ -118,6 +118,7 @@ const PROJECT = [
     title: "Coinscope.gg",
     period: {
       start: "2024-11-01",
+      end: "2025-06-29",
     },
     position: "팀 프로젝트 / FE 개발자",
     description: "암호화폐 관련 주요 이벤트 큐레이션",
