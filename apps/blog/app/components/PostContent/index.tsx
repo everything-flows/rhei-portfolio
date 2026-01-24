@@ -124,7 +124,7 @@ function renderNodes(node, index) {
 
         case "p": {
           return (
-            <p key={index} className="text-responsive-p" {...node.properties}>
+            <p key={index} className="text-responsive-p py-2" {...node.properties}>
               {node.children.map((child, index: number) =>
                 renderNodes(child, index),
               )}
