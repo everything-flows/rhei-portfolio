@@ -172,7 +172,7 @@ function renderNodes(node, index) {
               target="_blank"
               rel="noopener noreferrer"
               href={href}
-              className="text-responsive-p text-blue-600 underline dark:text-orange-400"
+              className="text-responsive-p text-blue-600 underline dark:text-orange-500"
             >
               {node.children.map((child, index: number) =>
                 renderNodes(child, index),
