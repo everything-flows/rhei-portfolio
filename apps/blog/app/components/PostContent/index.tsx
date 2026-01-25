@@ -155,6 +155,7 @@ function renderNodes(node, index) {
           if (href[0] === "#")
             return (
               <Link
+                key={index}
                 to={href}
                 className="text-responsive-p text-blue-600 underline dark:text-orange-400"
               >
@@ -166,6 +167,7 @@ function renderNodes(node, index) {
 
           return (
             <a
+              key={index}
               target="_blank"
               rel="noopener noreferrer"
               href={href}
@@ -346,7 +348,7 @@ function renderNodes(node, index) {
         }
 
         case "br": {
-          return <br />;
+          return <br key={index} />;
         }
 
         case "Highlight":
@@ -366,6 +368,7 @@ function renderNodes(node, index) {
         case "iframe": {
           return (
             <iframe
+              key={index}
               {...node?.properties}
               className="border-sub mx-auto my-4 w-full rounded-md border sm:w-[80dvw] md:w-[75dvw] lg:w-[60%]"
             />
@@ -374,12 +377,13 @@ function renderNodes(node, index) {
 
         default: {
           const className = node?.properties?.className?.join(" ");
+          const TagName = node?.tagName || "div";
           return (
-            <node.tagName key={index} className={className}>
+            <TagName key={index} className={className}>
               {node.children?.map((child, index: number) =>
                 renderNodes(child, index),
               )}
-            </node.tagName>
+            </TagName>
           );
         }
       }
