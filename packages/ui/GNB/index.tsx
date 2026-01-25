@@ -16,7 +16,7 @@ export default function GNB({
         <p className="logo-label w-fit font-extrabold text-[1.2rem]" />
       </a>
 
-      <ul className="flex gap-2 items-center sm:flex hidden">
+      <ul className="hidden sm:flex gap-2 items-center">
         <div className="mr-4">
           <ThemeButton />
         </div>

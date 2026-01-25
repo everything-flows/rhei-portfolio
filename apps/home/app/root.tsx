@@ -16,10 +16,11 @@ export { loader } from "./_utils/loader";
 export { meta } from "./_utils/meta";
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { themeVar } = useRouteLoaderData("root");
+  const rootData = useRouteLoaderData("root");
+  const themeVar = rootData?.themeVar || "light";
 
   return (
-    <html lang="ko" className={themeVar || "light"}>
+    <html lang="ko" className={themeVar}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
