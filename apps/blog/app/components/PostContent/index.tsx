@@ -3,6 +3,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 import convertUrl from "~/utils/convertUrl";
+import Highlight from "~/components/Highlight";
 
 function getId(child) {
   return solve(child)
@@ -124,7 +125,11 @@ function renderNodes(node, index) {
 
         case "p": {
           return (
-            <p key={index} className="text-responsive-p py-2" {...node.properties}>
+            <p
+              key={index}
+              className="text-responsive-p py-2"
+              {...node.properties}
+            >
               {node.children.map((child, index: number) =>
                 renderNodes(child, index),
               )}
@@ -342,6 +347,20 @@ function renderNodes(node, index) {
 
         case "br": {
           return <br />;
+        }
+
+        case "Highlight":
+        case "highlight": {
+          return (
+            <Highlight
+              key={index}
+              className={node.properties?.className?.join(" ")}
+            >
+              {node.children.map((child, index: number) =>
+                renderNodes(child, index),
+              )}
+            </Highlight>
+          );
         }
 
         case "iframe": {

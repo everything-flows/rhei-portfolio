@@ -124,4 +124,15 @@
       background-color: #404040;
     }
   }
+
+  .highlight {
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    background: var(--highlight-light);
+    color: inherit;
+  }
+
+  .dark .highlight {
+    background: var(--highlight-dark);
+  }
 }
