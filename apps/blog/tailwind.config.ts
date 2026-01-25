@@ -5,7 +5,8 @@ export default {
   presets: [preset],
   content: [
     "./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}",
-    "../../packages/ui/**/*.{ts,tsx,css}",
+    "../../packages/ui/**/*.{ts,tsx}",
+    "../../packages/ui/**/*.css",
   ],
   theme: {},
   plugins: [],
