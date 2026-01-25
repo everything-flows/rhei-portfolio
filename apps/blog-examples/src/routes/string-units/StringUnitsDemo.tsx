@@ -24,33 +24,25 @@ export default function StringUnitsDemo() {
 
   return (
     <div className="min-h-screen p-4 bg-normal text-normal">
-      <div className="mx-auto max-w-6xl">
-        <p className="text-sm mb-6">
-          같은 문자열도 단위에 따라 다르게 해석돼요.
-          <br />
-          바이트, 코드 포인트, 코드 유닛, 그래핌 클러스터로 분해해서
-          확인해보세요.
-        </p>
-        <div className="space-y-6">
-          <div>
-            <label htmlFor="string-input" className="mb-2 text-sm font-medium">
-              변환할 문자열
-            </label>
-            <input
-              id="string-input"
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className="w-full rounded-md border border-gray-200 px-3 bg-inherit py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-800 dark:focus:ring-orange-400"
-              placeholder="문자열을 입력하세요"
-            />
-          </div>
+      <div className="space-y-6">
+        <div>
+          <label htmlFor="string-input" className="mb-2 text-sm font-medium">
+            변환할 문자열
+          </label>
+          <input
+            id="string-input"
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="w-full rounded-md border border-gray-200 px-3 bg-inherit py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-800 dark:focus:ring-orange-400"
+            placeholder="문자열을 입력하세요"
+          />
+        </div>
 
-          <div className="flex flex-col gap-2">
-            {analyses.map((analysis) => (
-              <UnitCard key={analysis.name} analysis={analysis} />
-            ))}
-          </div>
+        <div className="flex flex-col gap-2">
+          {analyses.map((analysis) => (
+            <UnitCard key={analysis.name} analysis={analysis} />
+          ))}
         </div>
       </div>
     </div>
