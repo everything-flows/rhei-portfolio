@@ -4,6 +4,7 @@ import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 import convertUrl from "~/utils/convertUrl";
 import Highlight from "~/components/Highlight";
+import ThemedIframe from "./ThemedIframe";
 
 function getId(child) {
   return solve(child)
@@ -127,7 +128,7 @@ function renderNodes(node, index) {
           return (
             <p
               key={index}
-              className="text-responsive-p py-2"
+              className="text-responsive-p py-3"
               {...node.properties}
             >
               {node.children.map((child, index: number) =>
@@ -157,7 +158,7 @@ function renderNodes(node, index) {
               <Link
                 key={index}
                 to={href}
-                className="text-responsive-p text-blue-600 underline dark:text-orange-400"
+                className="text-responsive-p text-blue-600 underline dark:text-orange-500"
               >
                 {node.children.map((child, index: number) =>
                   renderNodes(child, index),
@@ -196,7 +197,7 @@ function renderNodes(node, index) {
 
         case "li": {
           return (
-            <li key={index} className="" {...node.properties}>
+            <li key={index} {...node.properties}>
               {node.children.map((child, index: number) =>
                 renderNodes(child, index),
               )}
@@ -206,11 +207,7 @@ function renderNodes(node, index) {
 
         case "ul": {
           return (
-            <ul
-              key={index}
-              className="list-disc py-2 ps-6"
-              {...node.properties}
-            >
+            <ul key={index} className="list-disc ps-6" {...node.properties}>
               {node.children.map((child, index: number) =>
                 renderNodes(child, index),
               )}
@@ -220,11 +217,7 @@ function renderNodes(node, index) {
 
         case "ol": {
           return (
-            <ol
-              key={index}
-              className="list-decimal py-2 ps-6"
-              {...node.properties}
-            >
+            <ol key={index} className="list-decimal ps-6" {...node.properties}>
               {node.children.map((child, index: number) =>
                 renderNodes(child, index),
               )}
@@ -367,10 +360,11 @@ function renderNodes(node, index) {
 
         case "iframe": {
           return (
-            <iframe
+            <ThemedIframe
               key={index}
+              src={node?.properties?.src}
+              className="border-sub mx-auto my-4 w-full rounded-md border"
               {...node?.properties}
-              className="border-sub mx-auto my-4 w-full rounded-md border sm:w-[80dvw] md:w-[75dvw] lg:w-[60%]"
             />
           );
         }

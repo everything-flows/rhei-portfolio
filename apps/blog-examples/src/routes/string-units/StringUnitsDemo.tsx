@@ -23,12 +23,12 @@ export default function StringUnitsDemo() {
   }, [input]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 p-4">
+    <div className="min-h-screen p-4 bg-normal text-normal">
       <div className="mx-auto max-w-6xl">
-        <h1 className="text-2xl font-bold mb-3 text-gray-900 dark:text-gray-100">
+        <h1 className="text-2xl font-bold mb-3 text-normal">
           문자열 단위 비교
         </h1>
-        <p className="text-sm mb-6 text-gray-600 dark:text-gray-400">
+        <p className="text-sm mb-6">
           같은 문자열도 단위에 따라 다르게 해석돼요. 바이트, 코드 포인트, 코드
           유닛, 그래핌 클러스터로 분해해서 확인해보세요.
         </p>
@@ -45,7 +45,7 @@ export default function StringUnitsDemo() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:ring-blue-400"
+              className="w-full rounded-md border border-gray-300 bg-gray-white px-4 py-2 text-gray-black focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-white dark:focus:ring-blue-400"
               placeholder="문자열을 입력하세요"
             />
             <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
@@ -66,8 +66,8 @@ export default function StringUnitsDemo() {
 
 function UnitCard({ analysis }: { analysis: UnitAnalysis }) {
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <h3 className="mb-2 text-base font-semibold text-gray-900 dark:text-gray-100">
+    <div className="rounded-lg border border-gray-200 bg-gray-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <h3 className="mb-2 text-base font-semibold text-gray-black dark:text-gray-white">
         {analysis.name}
       </h3>
       <div className="mb-4 text-3xl font-bold text-blue-600 dark:text-blue-400">
@@ -83,7 +83,7 @@ function UnitCard({ analysis }: { analysis: UnitAnalysis }) {
               key={index}
               className="rounded border border-gray-200 bg-gray-50 px-2 py-1.5 dark:border-gray-600 dark:bg-gray-700"
             >
-              <div className="font-mono text-sm text-gray-900 dark:text-gray-100">
+              <div className="font-mono text-sm text-gray-black dark:text-gray-white">
                 {item.value}
               </div>
               {item.hex && (
