@@ -25,35 +25,28 @@ export default function StringUnitsDemo() {
   return (
     <div className="min-h-screen p-4 bg-normal text-normal">
       <div className="mx-auto max-w-6xl">
-        <h1 className="text-2xl font-bold mb-3 text-normal">
-          문자열 단위 비교
-        </h1>
         <p className="text-sm mb-6">
-          같은 문자열도 단위에 따라 다르게 해석돼요. 바이트, 코드 포인트, 코드
-          유닛, 그래핌 클러스터로 분해해서 확인해보세요.
+          같은 문자열도 단위에 따라 다르게 해석돼요.
+          <br />
+          바이트, 코드 포인트, 코드 유닛, 그래핌 클러스터로 분해해서
+          확인해보세요.
         </p>
         <div className="space-y-6">
           <div>
-            <label
-              htmlFor="string-input"
-              className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
-              문자열 입력
+            <label htmlFor="string-input" className="mb-2 text-sm font-medium">
+              변환할 문자열
             </label>
             <input
               id="string-input"
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="w-full rounded-md border border-gray-300 bg-gray-white px-4 py-2 text-gray-black focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-white dark:focus:ring-blue-400"
+              className="w-full rounded-md border border-gray-200 px-3 bg-inherit py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-800 dark:focus:ring-orange-400"
               placeholder="문자열을 입력하세요"
             />
-            <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-              기본값: "안녕👨‍👩‍👧"
-            </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="flex flex-col gap-2">
             {analyses.map((analysis) => (
               <UnitCard key={analysis.name} analysis={analysis} />
             ))}
@@ -64,42 +57,61 @@ export default function StringUnitsDemo() {
   );
 }
 
-function UnitCard({ analysis }: { analysis: UnitAnalysis }) {
+function ChevronIcon({ isExpanded }: { isExpanded: boolean }) {
   return (
-    <div className="rounded-lg border border-gray-200 bg-gray-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <h3 className="mb-2 text-base font-semibold text-gray-black dark:text-gray-white">
-        {analysis.name}
-      </h3>
-      <div className="mb-4 text-3xl font-bold text-blue-600 dark:text-blue-400">
-        {analysis.count}개
-      </div>
-      <div className="space-y-2">
-        <div className="mb-2 text-xs font-medium text-gray-600 dark:text-gray-400">
-          분해 결과:
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {analysis.items.map((item, index) => (
-            <div
-              key={index}
-              className="rounded border border-gray-200 bg-gray-50 px-2 py-1.5 dark:border-gray-600 dark:bg-gray-700"
-            >
-              <div className="font-mono text-sm text-gray-black dark:text-gray-white">
-                {item.value}
+    <svg
+      width="1rem"
+      height="1rem"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`transition-transform duration-200 ${
+        isExpanded ? "rotate-180" : ""
+      }`}
+    >
+      <path
+        d="M6 9L12 15L18 9"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function UnitCard({ analysis }: { analysis: UnitAnalysis }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div className="rounded-lg border border-gray-200 p-3 shadow-sm dark:border-gray-800">
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="flex w-full items-center justify-between text-left"
+      >
+        <p className="font-semibold">
+          {analysis.count} {analysis.name}
+        </p>
+        <ChevronIcon isExpanded={isExpanded} />
+      </button>
+      {isExpanded && (
+        <div className="mt-4">
+          <div className="flex flex-wrap gap-1">
+            {analysis.items.map((item, index) => (
+              <div
+                key={index}
+                className="rounded border border-gray-200 bg-gray-50 px-2 py-1 dark:border-gray-800 dark:bg-gray-900"
+              >
+                <div className="font-mono text-sm">{item.value}</div>
+                {item.hex && <div className="mt-0.5 text-xs">{item.hex}</div>}
+                {item.label && (
+                  <div className="mt-0.5 text-xs">{item.label}</div>
+                )}
               </div>
-              {item.hex && (
-                <div className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
-                  {item.hex}
-                </div>
-              )}
-              {item.label && (
-                <div className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">
-                  {item.label}
-                </div>
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -137,7 +149,6 @@ function analyzeCodePoints(str: string): UnitAnalysis {
     return {
       value: char,
       label: `U+${cp.toString(16).toUpperCase().padStart(4, "0")}`,
-      hex: `U+${cp.toString(16).toUpperCase().padStart(4, "0")}`,
     };
   });
 
@@ -159,7 +170,6 @@ function analyzeCodeUnits(str: string): UnitAnalysis {
     return {
       value: char,
       label: `0x${cu.toString(16).toUpperCase().padStart(4, "0")}`,
-      hex: `0x${cu.toString(16).toUpperCase().padStart(4, "0")}`,
     };
   });
 
@@ -175,7 +185,7 @@ function analyzeGraphemeClusters(str: string): UnitAnalysis {
   try {
     segmenter = new Intl.Segmenter("ko", { granularity: "grapheme" });
   } catch {
-    // Intl.Segmenter를 지원하지 않는 환경에서는 fallback
+    // Intl.Segmenter를 지원하지 않는 환경
   }
 
   const clusters: string[] = [];
