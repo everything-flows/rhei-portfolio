@@ -266,10 +266,7 @@ function renderNodes(node, index) {
 
         case "table": {
           return (
-            <div
-              key={index}
-              className="my-2 w-fit break-keep rounded-md border-2"
-            >
+            <div key={index} className="my-2 w-fit break-keep">
               <table
                 {...node.properties}
                 className="border-collapse border-none"
