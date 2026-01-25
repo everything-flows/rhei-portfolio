@@ -16,8 +16,8 @@ export default function Language() {
 
             <ul className="ps-6">
               <li>
-                OPIc IM1
-                <span className="text-sub ml-2">2025.01.21.</span>
+                TOEIC Speaking IH
+                <span className="text-sub ml-2">2025.08.02.</span>
               </li>
             </ul>
           </article>
