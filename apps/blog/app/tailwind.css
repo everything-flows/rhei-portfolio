@@ -42,7 +42,7 @@
 
   .text-responsive-h1 {
     font-size: clamp(1.75rem, 4.5vw, 2.25rem);
-    line-height: 1.5;
+    line-height: 1.6;
     font-weight: 700;
     text-wrap: pretty;
     word-break: keep-all;
@@ -50,7 +50,7 @@
 
   .text-responsive-h2 {
     font-size: clamp(1.5rem, 4vw, 1.75rem);
-    line-height: 1.5;
+    line-height: 1.6;
     font-weight: 700;
     text-wrap: pretty;
     word-break: keep-all;
@@ -58,7 +58,7 @@
 
   .text-responsive-h3 {
     font-size: clamp(1.25rem, 3.5vw, 1.5rem);
-    line-height: 1.4;
+    line-height: 1.5;
     font-weight: 700;
     text-wrap: pretty;
     word-break: keep-all;
@@ -66,7 +66,7 @@
 
   .text-responsive-p {
     font-size: clamp(1.1rem, 2.5vw, 1.2rem);
-    line-height: 1.4;
+    line-height: 1.5;
     text-wrap: pretty;
     word-break: keep-all;
   }
