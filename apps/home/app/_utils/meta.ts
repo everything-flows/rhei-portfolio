@@ -45,7 +45,7 @@ export function meta() {
     },
     {
       property: "og:url",
-      content: URL,
+      content: SITE_URL,
     },
     {
       name: "twitter:card",
