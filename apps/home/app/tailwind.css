@@ -1,4 +1,4 @@
-@import "../../../packages/ui/styles/utilities.css";
+@import "@rhei/ui/styles/utilities.css";
 
 @tailwind base;
 @tailwind components;
