@@ -11,12 +11,13 @@ import "./tailwind.css";
 import "@rhei/ui/styles/utilities.css";
 
 import Font from "./_components/Font";
+import GoogleAnalytics from "./_components/GoogleAnalytics";
 
 export { default as loader } from "./_utils/loader";
 export { default as meta } from "./_utils/meta";
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { themeVar } = useRouteLoaderData("root");
+  const { themeVar, gaId } = useRouteLoaderData("root");
 
   return (
     <html lang="ko" className={themeVar || "light"}>
@@ -26,6 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Font />
         <Links />
+        <GoogleAnalytics gaId={gaId} />
       </head>
       <body className="bg-normal text-normal">
         {children}

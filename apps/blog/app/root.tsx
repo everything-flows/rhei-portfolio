@@ -18,12 +18,13 @@ import "./breadcrumb.css";
 import useCategoryStore from "./stores/category";
 import "./tailwind.css";
 import "../../../packages/ui/styles/utilities.css"; // FIXME
+import GoogleAnalytics from "./_components/GoogleAnalytics";
 
 export { loader } from "./_utils/loader";
 export { meta } from "./_utils/meta";
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { supabaseCredential, themeVar } = useRouteLoaderData("root");
+  const { supabaseCredential, themeVar, gaId } = useRouteLoaderData("root");
   const params = useParams();
   const { setCategory } = useCategoryStore();
 
@@ -53,6 +54,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Font />
         <Links />
+        <GoogleAnalytics gaId={gaId} />
       </head>
       <body className="bg-normal text-normal">
         <BackgroundGradient />

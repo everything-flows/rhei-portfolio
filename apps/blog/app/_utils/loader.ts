@@ -9,8 +9,12 @@ export const loader = async ({ context, request }: LoaderFunctionArgs) => {
   const cookie = request.headers.get("Cookie") ?? "";
   const theme = cookie.includes("theme=dark") ? "dark" : "light";
 
+  const isDev = context.cloudflare.env.NODE_ENV === "development";
+  const gaId = isDev ? undefined : context.cloudflare.env.GA_ID;
+
   return {
     supabaseCredential,
     themeVar: theme,
+    gaId,
   };
 };

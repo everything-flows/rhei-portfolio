@@ -11,6 +11,7 @@ import {
 import Font from "./_components/Font";
 import "./tailwind.css";
 import ThemeColor from "./_components/ThemeColor";
+import GoogleAnalytics from "./_components/GoogleAnalytics";
 
 export { loader } from "./_utils/loader";
 export { meta } from "./_utils/meta";
@@ -18,6 +19,7 @@ export { meta } from "./_utils/meta";
 export function Layout({ children }: { children: React.ReactNode }) {
   const rootData = useRouteLoaderData("root");
   const themeVar = rootData?.themeVar || "light";
+  const gaId = (rootData as { gaId?: string })?.gaId;
 
   return (
     <html lang="ko" className={themeVar}>
@@ -28,6 +30,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Font />
         <Links />
         <ThemeColor />
+        <GoogleAnalytics gaId={gaId} />
       </head>
       <body className="bg-normal text-normal">
         {children}
