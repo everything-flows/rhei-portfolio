@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
     "string-units": "./src/routes/string-units/index.tsx",
+    "utf8-encoding": "./src/routes/utf8-encoding/index.tsx",
   },
   output: {
     filename: "[name].bundle.js",
@@ -34,6 +35,12 @@ module.exports = {
       template: "./src/routes/string-units/index.html",
       filename: "string-units/index.html",
       chunks: ["string-units"],
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/routes/utf8-encoding/index.html",
+      filename: "utf8-encoding/index.html",
+      chunks: ["utf8-encoding"],
       inject: true,
     }),
   ],

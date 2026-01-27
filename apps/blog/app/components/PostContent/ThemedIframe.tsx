@@ -67,6 +67,8 @@ export default function ThemedIframe({
     };
   }, [src]);
 
+  console.log(props);
+
   return (
     <iframe
       ref={iframeRef}
