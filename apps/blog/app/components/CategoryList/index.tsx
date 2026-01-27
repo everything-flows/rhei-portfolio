@@ -1,0 +1,82 @@
+import { useEffect } from "react";
+import { useParams, useRouteLoaderData } from "@remix-run/react";
+import { createBrowserClient } from "@supabase/ssr";
+import { useQuery } from "@tanstack/react-query";
+import { AnimatePresence, motion } from "motion/react";
+
+import type { Category } from "~/types/post";
+import useCategoryStore from "~/stores/category";
+import fetchCategoryData from "~/_utils/fetchCategoryData";
+
+import CategoryItem from "./CategoryItem";
+import CategoryListSkeleton from "./Skeleton";
+
+export default function CategoryList() {
+  const params = useParams();
+  const { supabaseCredential } = useRouteLoaderData("root");
+  const { categoryList: storedCategoryList, setCategory } = useCategoryStore();
+  
+  const subBlogId = params.subBlogId || "cse";
+
+  const supabase = createBrowserClient(
+    supabaseCredential.url,
+    supabaseCredential.key,
+  );
+
+  const { data: fetchedCategoryList = [], isLoading } = useQuery({
+    queryKey: ["categories", subBlogId],
+    queryFn: () => fetchCategoryData({ supabaseClient: supabase, subBlogId }),
+    staleTime: 5 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
+  });
+
+  useEffect(() => {
+    if (fetchedCategoryList.length > 0) {
+      setCategory(fetchedCategoryList);
+    }
+  }, [fetchedCategoryList, setCategory]);
+
+  if (isLoading || storedCategoryList.length === 0) {
+    return <CategoryListSkeleton />;
+  }
+
+  return (
+    <div>
+      {storedCategoryList.map((datum: Category) => {
+        return renderTreeItem(datum, 0, params.postId || "");
+      })}
+    </div>
+  );
+}
+
+const renderTreeItem = (item: Category, depth: number, postId: string) => {
+  const { id, emoji, title, subBlog, isOpen, children } = item;
+
+  return (
+    <div key={id}>
+      <CategoryItem
+        id={id}
+        emoji={emoji}
+        title={title}
+        href={`/${subBlog}/${id}`}
+        indent={depth}
+        isOpen={isOpen}
+        isSelected={postId === id}
+        hasChildren={children.length !== 0}
+      />
+      <AnimatePresence initial={false}>
+        {isOpen && children && children.length > 0 && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            style={{ overflow: "hidden" }}
+          >
+            {children.map((child) => renderTreeItem(child, depth + 1, postId))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};

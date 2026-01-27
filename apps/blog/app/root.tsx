@@ -4,47 +4,24 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useParams,
   useRouteLoaderData,
 } from "@remix-run/react";
-import { createBrowserClient } from "@supabase/ssr";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Font from "./_components/Font";
-import fetchCategoryData from "./_utils/fetchCategoryData";
 import "./breadcrumb.css";
-import useCategoryStore from "./stores/category";
 import "./tailwind.css";
 import "../../../packages/ui/styles/utilities.css"; // FIXME
 import GoogleAnalytics from "./_components/GoogleAnalytics";
+import CategorySidebar from "./components/CategorySidebar";
 
 export { loader } from "./_utils/loader";
 export { meta } from "./_utils/meta";
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { supabaseCredential, themeVar, gaId } = useRouteLoaderData("root");
-  const params = useParams();
-  const { setCategory } = useCategoryStore();
-
-  useEffect(() => {
-    if (!supabaseCredential || !setCategory) {
-      return;
-    }
-
-    const subBlogId = params.subBlogId || "cse";
-
-    async function fetchData() {
-      const supabaseClient = createBrowserClient(
-        supabaseCredential.url,
-        supabaseCredential.key,
-      );
-      setCategory(await fetchCategoryData({ supabaseClient, subBlogId }));
-    }
-
-    fetchData();
-  }, [params.subBlogId, supabaseCredential, setCategory]);
+  const { themeVar, gaId } = useRouteLoaderData("root");
 
   return (
     <html lang="ko" className={themeVar || "light"}>
@@ -93,7 +70,8 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
-      <ReactQueryDevtools initialIsOpen={false} />
+      <CategorySidebar />
+      <ReactQueryDevtools initialIsOpen={false} buttonPosition="top-left" />
     </QueryClientProvider>
   );
 }
