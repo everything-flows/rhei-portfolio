@@ -136,12 +136,7 @@ export default function SyncExecutionDemo() {
           })}
         </TaskBlocks>
 
-        <ControlButtons
-          isRunning={isRunning}
-          onRun={runTasks}
-          onReset={reset}
-          color="blue"
-        />
+        <ControlButtons isRunning={isRunning} onRun={runTasks} color="blue" />
       </div>
     </div>
   );

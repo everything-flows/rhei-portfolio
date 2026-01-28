@@ -143,12 +143,7 @@ export default function AsyncExecutionDemo() {
           ))}
         </TaskBlocks>
 
-        <ControlButtons
-          isRunning={isRunning}
-          onRun={runTasks}
-          onReset={reset}
-          color="green"
-        />
+        <ControlButtons isRunning={isRunning} onRun={runTasks} color="green" />
       </div>
     </div>
   );

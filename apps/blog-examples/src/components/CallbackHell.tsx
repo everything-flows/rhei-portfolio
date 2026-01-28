@@ -59,7 +59,6 @@ export function TaskBlocks({ children }: TaskBlocksProps) {
 interface ControlButtonsProps {
   isRunning: boolean;
   onRun: () => void;
-  onReset: () => void;
   runLabel?: string;
   runningLabel?: string;
   color?: "blue" | "green";
@@ -68,7 +67,6 @@ interface ControlButtonsProps {
 export function ControlButtons({
   isRunning,
   onRun,
-  onReset,
   runLabel = "실행하기",
   runningLabel = "실행 중...",
   color = "blue",
@@ -79,20 +77,13 @@ export function ControlButtons({
       : "bg-green-500 hover:bg-green-600";
 
   return (
-    <div className="flex gap-2 justify-center">
+    <div className="flex justify-center">
       <button
         onClick={onRun}
         disabled={isRunning}
         className={`px-6 py-2 rounded-lg ${colorClass} text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors`}
       >
         {isRunning ? runningLabel : runLabel}
-      </button>
-      <button
-        onClick={onReset}
-        disabled={isRunning}
-        className="px-6 py-2 rounded-lg border border-gray-300 dark:border-gray-700 font-medium hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-      >
-        초기화
       </button>
     </div>
   );
