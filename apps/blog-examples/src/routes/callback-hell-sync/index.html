@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>동기 방식 실행 시각화</title>
+
+    <script>
+      (function () {
+        const isIframe = window.parent !== window;
+
+        if (isIframe) {
+          const messageHandler = function (event) {
+            if (event.data?.type === "THEME_UPDATE") {
+              const theme = event.data.theme;
+              if (theme === "dark" || theme === "light") {
+                document.documentElement.classList.toggle(
+                  "dark",
+                  theme === "dark",
+                );
+              }
+            }
+          };
+
+          window.addEventListener("message", messageHandler, false);
+
+          try {
+            window.parent.postMessage({ type: "REQUEST_THEME" }, "*");
+          } catch (e) {}
+        } else {
+          function getTheme() {
+            const stored = localStorage.getItem("theme");
+            if (stored === "dark" || stored === "light") {
+              return stored;
+            }
+
+            const cookies = document.cookie.split(";");
+            for (let cookie of cookies) {
+              const [name, value] = cookie.trim().split("=");
+              if (name === "theme" && (value === "dark" || value === "light")) {
+                return value;
+              }
+            }
+
+            if (
+              window.matchMedia &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches
+            ) {
+              return "dark";
+            }
+
+            return "light";
+          }
+
+          const theme = getTheme();
+          if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+          }
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-normal text-normal">
+    <div id="root"></div>
+  </body>
+</html>

@@ -5,6 +5,8 @@ module.exports = {
   entry: {
     "string-units": "./src/routes/string-units/index.tsx",
     "utf8-encoding": "./src/routes/utf8-encoding/index.tsx",
+    "callback-hell-sync": "./src/routes/callback-hell-sync/index.tsx",
+    "callback-hell-async": "./src/routes/callback-hell-async/index.tsx",
   },
   output: {
     filename: "[name].bundle.js",
@@ -41,6 +43,18 @@ module.exports = {
       template: "./src/routes/utf8-encoding/index.html",
       filename: "utf8-encoding/index.html",
       chunks: ["utf8-encoding"],
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/routes/callback-hell-sync/index.html",
+      filename: "callback-hell-sync/index.html",
+      chunks: ["callback-hell-sync"],
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/routes/callback-hell-async/index.html",
+      filename: "callback-hell-async/index.html",
+      chunks: ["callback-hell-async"],
       inject: true,
     }),
   ],
