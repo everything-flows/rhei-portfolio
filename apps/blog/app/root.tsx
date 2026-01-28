@@ -11,7 +11,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useState } from "react";
 
 import Font from "./_components/Font";
-import "./breadcrumb.css";
 import "./tailwind.css";
 import "../../../packages/ui/styles/utilities.css"; // FIXME
 import GoogleAnalytics from "./_components/GoogleAnalytics";
