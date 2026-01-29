@@ -1,40 +1,18 @@
-import { useEffect } from "react";
-import { useParams, useRouteLoaderData } from "@remix-run/react";
-import { createBrowserClient } from "@supabase/ssr";
-import { useQuery } from "@tanstack/react-query";
+import { useParams } from "@remix-run/react";
 import { AnimatePresence, motion } from "motion/react";
 
 import type { Category } from "~/types/post";
 import useCategoryStore from "~/stores/category";
-import fetchCategoryData from "~/_utils/fetchCategoryData";
+import useFetchCategory from "~/hooks/useFetchCategory";
 
 import CategoryItem from "./CategoryItem";
 import CategoryListSkeleton from "./Skeleton";
 
 export default function CategoryList() {
   const params = useParams();
-  const { supabaseCredential } = useRouteLoaderData("root");
-  const { categoryList: storedCategoryList, setCategory } = useCategoryStore();
-  
-  const subBlogId = params.subBlogId || "cse";
+  const { categoryList: storedCategoryList } = useCategoryStore();
 
-  const supabase = createBrowserClient(
-    supabaseCredential.url,
-    supabaseCredential.key,
-  );
-
-  const { data: fetchedCategoryList = [], isLoading } = useQuery({
-    queryKey: ["categories", subBlogId],
-    queryFn: () => fetchCategoryData({ supabaseClient: supabase, subBlogId }),
-    staleTime: 5 * 60 * 1000,
-    gcTime: 10 * 60 * 1000,
-  });
-
-  useEffect(() => {
-    if (fetchedCategoryList.length > 0) {
-      setCategory(fetchedCategoryList);
-    }
-  }, [fetchedCategoryList, setCategory]);
+  const { isLoading } = useFetchCategory();
 
   if (isLoading || storedCategoryList.length === 0) {
     return <CategoryListSkeleton />;

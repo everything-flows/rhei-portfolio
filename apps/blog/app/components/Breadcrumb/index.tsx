@@ -1,14 +1,22 @@
+import { useMemo } from "react";
 import { Link } from "@remix-run/react";
 
 import type { Category } from "~/types/post";
+import useCategoryStore from "~/stores/category";
+import useFetchCategory from "~/hooks/useFetchCategory";
+import { getBreadcrumbData } from "~/utils/breadcrumb";
 
 import BreadcrumbSkeleton from "./Skeleton";
 
-export default function Breadcrumb({
-  breadcrumbData,
-}: {
-  breadcrumbData?: Category[];
-}) {
+export default function Breadcrumb({ postId }: { postId: string }) {
+  const { categoryList } = useCategoryStore();
+
+  useFetchCategory();
+
+  const breadcrumbData = useMemo(() => {
+    return getBreadcrumbData({ categoryList, id: postId });
+  }, [postId, categoryList]);
+
   if (!breadcrumbData) {
     return null;
   }
