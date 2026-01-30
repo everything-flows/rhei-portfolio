@@ -8,7 +8,7 @@ import { Gradient } from "~/routes/_index/_components/PinnedSection";
 
 export default function PostDirectory({ postList }: { postList: Document[] }) {
   return (
-    <section className="mx-auto max-w-6xl">
+    <section className="mx-auto w-full max-w-6xl">
       <ol className="flex flex-col">
         {postList.map((post) => (
           <li key={post.id}>
