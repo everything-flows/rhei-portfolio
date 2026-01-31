@@ -1,6 +1,6 @@
 import { Footer, GNB } from "@rhei/ui";
 
-import { useLoaderData, useParams, useRouteLoaderData } from "@remix-run/react";
+import { useLoaderData, useLocation, useParams, useRouteLoaderData } from "@remix-run/react";
 import { createBrowserClient } from "@supabase/ssr";
 import { HydrationBoundary, useSuspenseQuery } from "@tanstack/react-query";
 import PostContent from "~/components/PostContent";
@@ -14,6 +14,8 @@ export { default as meta } from "./_utils/meta";
 
 function PostPage() {
   const { subBlogId, postId } = useParams();
+  const location = useLocation();
+  const state = location.state as { fromDirectory?: boolean; fromPinned?: boolean } | null;
 
   const { supabaseCredential } = useRouteLoaderData("root");
   const supabaseClient = createBrowserClient(
@@ -35,7 +37,12 @@ function PostPage() {
       </header>
 
       <main className="content-x">
-        <PostHeader key={postInfo.id} data={postInfo} />
+        <PostHeader
+          key={postInfo.id}
+          data={postInfo}
+          fromDirectory={state?.fromDirectory}
+          fromPinned={state?.fromPinned}
+        />
 
         {(() => {
           switch (type) {

@@ -28,11 +28,13 @@ export default function PinnedSection() {
 
 function FirstPost({ post }: { post: Document }) {
   return (
-    <Link to={`/${post.subBlog}/${post.id}`} className="hover:text-brand">
-      <motion.article
-        whileTap={{ scale: 0.96 }}
-        className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-[1fr_1fr] md:grid-cols-[2fr_3fr] lg:grid-cols-[1fr_2fr]"
-      >
+    <Link
+      to={`/${post.subBlog}/${post.id}`}
+      className="hover:text-brand"
+      viewTransition
+      state={{ fromPinned: true }}
+    >
+      <article className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-[1fr_1fr] md:grid-cols-[2fr_3fr] lg:grid-cols-[1fr_2fr]">
         <img
           src={convertUrl(post.thumbnail)}
           alt={`${post.title}`}
@@ -44,12 +46,20 @@ function FirstPost({ post }: { post: Document }) {
           decoding="async"
         />
         <div>
-          <h3 className="text-responsive-h2 font-900">{post.title}</h3>
-          <p className="text-responsive-p text-gray-400 dark:text-gray-300">
+          <h3
+            className="text-responsive-h2 font-900"
+            style={{ viewTransitionName: `pinned-post-title-${post.id}` }}
+          >
+            {post.title}
+          </h3>
+          <p
+            className="text-responsive-p text-gray-400 dark:text-gray-300"
+            style={{ viewTransitionName: `pinned-post-subtitle-${post.id}` }}
+          >
             {post.subTitle}
           </p>
         </div>
-      </motion.article>
+      </article>
     </Link>
   );
 }
@@ -59,11 +69,13 @@ function OtherPostList({ postList }: { postList: Document[] }) {
     <ul className="custom-scrollbar mt-4 flex gap-4 overflow-auto">
       {postList.map((post) => (
         <li key={post.id}>
-          <Link to={`/${post.subBlog}/${post.id}`} className="hover:text-brand">
-            <motion.article
-              whileTap={{ scale: 0.96 }}
-              className="grid w-[min(80dvw,280px)] grid-rows-[auto,auto] gap-3"
-            >
+          <Link
+            to={`/${post.subBlog}/${post.id}`}
+            className="hover:text-brand"
+            viewTransition
+            state={{ fromPinned: true }}
+          >
+            <article className="grid w-[min(80dvw,280px)] grid-rows-[auto,auto] gap-3">
               {post.thumbnail ? (
                 <ImageThumbnail post={post} />
               ) : (
@@ -71,12 +83,20 @@ function OtherPostList({ postList }: { postList: Document[] }) {
               )}
 
               <div className="overflow-auto">
-                <h3 className="text-responsive-h3 font-900">{post.title}</h3>
-                <p className="text-p text-gray-400 dark:text-gray-300">
+                <h3
+                  className="text-responsive-h3 font-900"
+                  style={{ viewTransitionName: `pinned-post-title-${post.id}` }}
+                >
+                  {post.title}
+                </h3>
+                <p
+                  className="text-p text-gray-400 dark:text-gray-300"
+                  style={{ viewTransitionName: `pinned-post-subtitle-${post.id}` }}
+                >
                   {post.subTitle}
                 </p>
               </div>
-            </motion.article>
+            </article>
           </Link>
         </li>
       ))}

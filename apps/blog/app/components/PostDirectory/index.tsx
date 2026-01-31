@@ -36,6 +36,7 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
                   to={`/${post.subBlog}/${post.id}`}
                   className="hover:text-brand"
                   viewTransition
+                  state={{ fromDirectory: true }}
                 >
                   <div className="flex flex-col">
                     <h2
