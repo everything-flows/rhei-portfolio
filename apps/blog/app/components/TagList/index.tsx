@@ -1,38 +1,32 @@
-import type { MouseEvent } from "react";
-
+import { Link } from "@remix-run/react";
 import type { Tag } from "~/types/post";
+import { motion } from "motion/react";
 
-function TagItem({ item, bold = false }: { item: Tag; bold?: boolean }) {
-  function goToTagPage(event: MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
-    window.location.href = `/blog/tag/${item.id}`;
-  }
-
+function TagItem({ item }: { item: Tag }) {
   return (
-    <button
-      onClick={goToTagPage}
-      className={`text-brand border-brand hover:bg-brand hover:text-reverse ${bold ? "text-responsive-p border-[1.5px]" : "border text-[1rem]"} overflow-hidden text-ellipsis whitespace-nowrap break-keep rounded-full px-2`}
-    >
-      <p
-        className={`${item.isSpoiler ? "blur-[0.25rem] hover:blur-none" : ""}`}
-      >
-        {item.title}
-      </p>
-    </button>
+    <li>
+      <Link to={`/tag/${item.id}`}>
+        <motion.div
+          whileTap={{ scale: 0.96 }}
+          whileHover={{ scale: 1.04 }}
+          className="text-brand border-brand hover:bg-brand hover:text-reverse overflow-hidden text-ellipsis whitespace-nowrap break-keep rounded-full border-[1.5px] px-2"
+        >
+          <p
+            className={`${item.isSpoiler ? "blur-[0.25rem] hover:blur-none" : ""}`}
+          >
+            {item.title}
+          </p>
+        </motion.div>
+      </Link>
+    </li>
   );
 }
 
-export default function TagList({
-  tagList,
-  bold = false,
-}: {
-  tagList: Tag[];
-  bold?: boolean;
-}) {
+export default function TagList({ tagList }: { tagList: Tag[] }) {
   return (
     <ul className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
       {tagList.map((tag) => (
-        <TagItem key={tag.title} item={tag} bold={bold} />
+        <TagItem key={tag.title} item={tag} />
       ))}
     </ul>
   );

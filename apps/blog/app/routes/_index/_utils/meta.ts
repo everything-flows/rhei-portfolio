@@ -13,23 +13,22 @@ import convertUrl from "~/utils/convertUrl";
 const blogUrl = `${SITE_URL}/blog`;
 
 export default function meta({ data }) {
-  const queries = data.dehydratedState.queries;
+  const queries = data?.dehydratedState?.queries ?? [];
   const pinnedPostList = queries.find((query) =>
     query.queryKey.includes("pinnedPostList"),
-  )?.state.data;
+  )?.state?.data;
+  const lcpImageUrl =
+    pinnedPostList?.[0]?.thumbnail != null
+      ? convertUrl(pinnedPostList[0].thumbnail)
+      : null;
 
   const title = `${SITE_TITLE} | ${SITE_NAME}`;
 
   return [
-    {
-      rel: "preload",
-      as: "image",
-      href: convertUrl(pinnedPostList[0].thumbnail),
-      type: "image/webp",
-    },
-    {
-      title,
-    },
+    ...(lcpImageUrl
+      ? [{ rel: "preload", as: "image", href: lcpImageUrl }]
+      : []),
+    { title },
     {
       name: "description",
       content: SITE_DESCRIPTION,

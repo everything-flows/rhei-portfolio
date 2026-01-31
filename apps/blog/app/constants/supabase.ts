@@ -9,6 +9,7 @@ export const POST_SUMMARY_ATTR_LIST = [
   "sub_title",
   "thumbnail",
   "sub_blog",
+  "created_at",
 ];
 
 export const POST_SUMMARY_ATTR = POST_SUMMARY_ATTR_LIST.join(", ");

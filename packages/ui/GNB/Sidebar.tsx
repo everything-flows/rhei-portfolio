@@ -11,7 +11,7 @@ export default function Sidebar({ route }: { route: string }) {
   return (
     <div className="sm:hidden relative flex gap-4">
       <ThemeButton />
-      <button onClick={() => setIsOpen(true)}>
+      <button aria-label="Toggle sidebar" onClick={() => setIsOpen(true)}>
         <HamburgerIcon />
       </button>
 

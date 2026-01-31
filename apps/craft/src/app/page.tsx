@@ -1,6 +1,24 @@
 import { Footer } from "@rhei/ui";
 import Link from "next/link";
 
+export default async function Home() {
+  return (
+    <>
+      <main className="content-x">
+        <section className="mx-auto w-full max-w-6xl">
+          <div className="mt-8 grid grid-cols-[1fr] gap-x-4 gap-y-4 sm:grid-cols-[1fr_1fr] sm:gap-y-4 lg:grid-cols-[1fr_1fr_1fr]">
+            {ITEM_LIST.toReversed().map((item) => (
+              <CardItem key={item.title} data={item} />
+            ))}
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </>
+  );
+}
+
 interface Card {
   title: string;
   description: string;
@@ -57,13 +75,13 @@ function CardItem({ data }: { data: Card }) {
     <Link
       key={title}
       href={link}
-      className="rounded-3xl bg-[#eaeaea] p-2 hover:text-blue-500 dark:bg-[#303030] dark:hover:text-orange-500"
+      className="text-reverse bg-reverse rounded-3xl p-2 hover:text-blue-500 dark:hover:text-orange-500"
     >
       <article className="flex flex-col">
         <img
           src={thumbnail}
           alt={title}
-          className="mb-2 aspect-[16/9] rounded-2xl object-cover"
+          className="border-normal mb-2 aspect-[16/9] rounded-2xl border-2 object-cover"
         />
         <div className="p-2">
           <h3 className="text-[1.4rem] font-bold">{title}</h3>
@@ -71,24 +89,6 @@ function CardItem({ data }: { data: Card }) {
         </div>
       </article>
     </Link>
-  );
-}
-
-export default async function Home() {
-  return (
-    <>
-      <main className="content-x">
-        <section className="mx-auto w-full max-w-6xl">
-          <div className="mt-8 grid grid-cols-[1fr] gap-x-6 gap-y-12 sm:grid-cols-[1fr_1fr] sm:gap-y-8 lg:grid-cols-[1fr_1fr_1fr]">
-            {ITEM_LIST.toReversed().map((item) => (
-              <CardItem key={item.title} data={item} />
-            ))}
-          </div>
-        </section>
-      </main>
-
-      <Footer />
-    </>
   );
 }
 

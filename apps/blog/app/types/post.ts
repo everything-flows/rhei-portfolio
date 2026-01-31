@@ -17,7 +17,7 @@ export interface Document {
   parentId: string;
   type: DocumentType;
   subBlog: string;
-  createdAt?: string;
+  createdAt: string;
   lastEditedAt?: string;
   tags: Tag[];
   thumbnail?: string;
