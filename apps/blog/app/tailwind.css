@@ -133,12 +133,21 @@
 }
 
 /* View Transition Speed */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 0.1s;
+@supports (view-transition-name: none) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.1s;
+  }
+
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.1s;
+  }
 }
 
-::view-transition-old(*),
-::view-transition-new(*) {
-  animation-duration: 0.1s;
+/* Firefox fallback - disable view transitions */
+@supports not (view-transition-name: none) {
+  * {
+    view-transition-name: none !important;
+  }
 }
