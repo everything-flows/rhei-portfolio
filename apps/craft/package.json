@@ -13,7 +13,7 @@
     "@rhei/react": "file:../../packages/react",
     "@rhei/ui": "file:../../packages/ui",
     "@supabase/ssr": "^0.6.1",
-    "next": "15.3.0",
+    "next": "16.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-syntax-highlighter": "^15.5.0"
