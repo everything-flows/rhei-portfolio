@@ -13,25 +13,25 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
       <ol className="flex flex-col gap-4">
         {postList.map((post) => (
           <li key={post.id}>
-            <article className="grid grid-cols-[5rem_auto] gap-4">
+            <article className="flex gap-4">
               <Link to={`/${post.subBlog}/${post.id}`}>
                 <motion.div
                   whileTap={{ scale: 0.96 }}
                   whileHover={{ scale: 1.04 }}
-                  className="relative h-fit"
+                  className="relative size-20"
                 >
                   {post.thumbnail ? (
                     <ImageThumbnail post={post} />
                   ) : (
                     <GradientThumbnail />
                   )}
-                  <div className="bg-brand border-normal absolute bottom-[-4px] right-[-4px] flex h-8 w-8 items-center justify-center rounded-full border-2">
+                  <div className="bg-brand border-normal absolute bottom-[-4px] right-[-4px] flex size-8 items-center justify-center rounded-full border-2">
                     {post.emoji}
                   </div>
                 </motion.div>
               </Link>
 
-              <div>
+              <div className="flex-1">
                 <Link
                   to={`/${post.subBlog}/${post.id}`}
                   className="hover:text-brand"
@@ -75,8 +75,8 @@ function ImageThumbnail({ post }: { post: Document }) {
 
 function GradientThumbnail() {
   return (
-    <div className="border-brand aspect-[1/1] w-full shrink-0 overflow-hidden rounded-full border-2 object-cover">
-      <Gradient />
+    <div className="border-brand aspect-[1/1] overflow-hidden rounded-full border-2">
+      <Gradient size="small" />
     </div>
   );
 }

@@ -103,9 +103,11 @@ function GradientThumbnail() {
   );
 }
 
-export function Gradient() {
+export function Gradient({ size = "large" }: { size?: "small" | "large" }) {
   return (
-    <div className="relative h-full w-full blur-xl">
+    <div
+      className={`relative h-full w-full ${size === "small" ? "blur-[6px]" : "blur-lg"}`}
+    >
       <div className="absolute -bottom-[50%] h-[120%] w-[120%] skew-x-[-30deg] rounded-[100%] bg-orange-300 dark:bg-blue-800" />
       <div className="absolute -bottom-[20%] left-[20%] h-[80%] w-[80%] skew-x-[-20deg] rounded-[100%] bg-orange-100 dark:bg-blue-400" />
       <div className="absolute -bottom-[60%] h-full w-full skew-x-[-30deg] rounded-[100%] bg-blue-100 dark:bg-orange-900" />
