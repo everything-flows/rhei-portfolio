@@ -35,21 +35,27 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
                 <Link
                   to={`/${post.subBlog}/${post.id}`}
                   className="hover:text-brand"
+                  viewTransition
                 >
-                  <motion.div
-                    whileTap={{ scale: 0.96 }}
-                    className="flex flex-col"
-                  >
-                    <h2 className="text-responsive-h2 font-bold">
+                  <div className="flex flex-col">
+                    <h2
+                      className="text-responsive-h2 font-bold"
+                      style={{ viewTransitionName: `post-title-${post.id}` }}
+                    >
                       {post.title}
                     </h2>
-                    <p className="text-responsive-p text-gray-500 dark:text-gray-300">
+                    <p
+                      className="text-responsive-p text-gray-500 dark:text-gray-300"
+                      style={{ viewTransitionName: `post-subtitle-${post.id}` }}
+                    >
                       {post.subTitle}
                     </p>
-                  </motion.div>
+                  </div>
                 </Link>
 
-                <TagList tagList={post.tags} />
+                <div style={{ viewTransitionName: `post-tags-${post.id}` }}>
+                  <TagList tagList={post.tags} />
+                </div>
                 <p className="text-right text-gray-400 dark:text-gray-400">
                   {format(post.createdAt, "yyyy.MM.dd.")}
                 </p>
