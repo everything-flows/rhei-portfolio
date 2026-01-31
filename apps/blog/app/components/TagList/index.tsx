@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 import type { Tag } from "~/types/post";
 import { motion } from "motion/react";
 
-function TagItem({ item, bold = false }: { item: Tag; bold?: boolean }) {
+function TagItem({ item }: { item: Tag }) {
   return (
     <Link to={`/tag/${item.id}`}>
       <motion.button
@@ -20,17 +20,11 @@ function TagItem({ item, bold = false }: { item: Tag; bold?: boolean }) {
   );
 }
 
-export default function TagList({
-  tagList,
-  bold = false,
-}: {
-  tagList: Tag[];
-  bold?: boolean;
-}) {
+export default function TagList({ tagList }: { tagList: Tag[] }) {
   return (
     <ul className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
       {tagList.map((tag) => (
-        <TagItem key={tag.title} item={tag} bold={bold} />
+        <TagItem key={tag.title} item={tag} />
       ))}
     </ul>
   );
