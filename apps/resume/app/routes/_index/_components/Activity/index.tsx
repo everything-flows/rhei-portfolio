@@ -5,7 +5,7 @@ import SectionTitle from "../SectionTitle";
 
 export default function Activity() {
   return (
-    <section>
+    <section className="print-break-before">
       <SectionTitle content="Activity" />
 
       <section>

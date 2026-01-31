@@ -64,4 +64,19 @@
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+
+  .print-break-before {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  .print-break-after {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .print-break-inside-avoid {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
 }
