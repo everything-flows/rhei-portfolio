@@ -3,13 +3,13 @@ import SectionTitle from "../SectionTitle";
 
 export default function Project() {
   return (
-    <section>
+    <section className="print-break-before">
       <SectionTitle content="Project" />
 
       <ol className="text-p flex flex-col gap-8">
         {PROJECT.map((project) => (
           <li key={project.title}>
-            <article>
+            <article className="print-break-inside-avoid">
               <section className="flex flex-col lg:flex-row lg:items-end lg:justify-between">
                 <section className="flex items-center gap-3">
                   <div>
@@ -130,6 +130,7 @@ const PROJECT = [
         list: [
           "UX 및 유지보수성 개선을 위해, 지역 상태로 관리되던 필터링 데이터를 URL을 이용한 전역 상태로 전환하였습니다.",
           <a
+            key="search-filter-with-url"
             className="text-brand underline after:content-['_↗']"
             href="https://rhei.me/blog/cse/search-filter-with-url"
           >
@@ -181,5 +182,5 @@ export function getPeriod(period: { start: string; end?: string }) {
   const startDate = new Date(start);
   const endDate = end ? new Date(end) : new Date();
 
-  return `${format(startDate, "yyyy.MM")} - ${end ? format(endDate, "yyyy.MM") : "진행중"} (${Math.floor(differenceInDays(end ? endDate : new Date(), startDate) / 30)}개월)`;
+  return `${format(startDate, "yyyy.MM")} - ${end ? format(endDate, "yyyy.MM") : "진행중"} (${Math.round(differenceInDays(end ? endDate : new Date(), startDate) / 30)}개월)`;
 }

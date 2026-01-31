@@ -9,7 +9,7 @@ export default function Work() {
       <ol className="text-p flex flex-col gap-8">
         {WORK.map((work) => (
           <li key={work.title}>
-            <article>
+            <article className="print-break-inside-avoid">
               <section className="flex flex-col lg:flex-row lg:items-end lg:justify-between">
                 <section className="flex items-center gap-3">
                   <img
@@ -74,7 +74,7 @@ export function getPeriod(period: { start: string; end?: string }) {
   const startDate = new Date(start);
   const endDate = end ? new Date(end) : new Date();
 
-  return `${format(startDate, "yyyy.MM")} - ${end ? format(endDate, "yyyy.MM") : "재직중"} (${Math.floor(differenceInDays(end ? endDate : new Date(), startDate) / 30)}개월)`;
+  return `${format(startDate, "yyyy.MM")} - ${end ? format(endDate, "yyyy.MM") : "재직중"} (${Math.round(differenceInDays(end ? endDate : new Date(), startDate) / 30)}개월)`;
 }
 
 const WORK = [
