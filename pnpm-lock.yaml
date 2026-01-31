@@ -355,13 +355,13 @@ importers:
         specifier: ^2.16.4
         version: 2.16.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
       '@rhei/meta':
-        specifier: file:../../packages/meta
+        specifier: workspace:*
         version: link:../../packages/meta
       '@rhei/react':
-        specifier: file:../../packages/react
+        specifier: workspace:*
         version: link:../../packages/react
       '@rhei/ui':
-        specifier: file:../../packages/ui
+        specifier: workspace:*
         version: link:../../packages/ui
       '@supabase/ssr':
         specifier: ^0.6.1
@@ -464,13 +464,13 @@ importers:
         specifier: ^2.15.3
         version: 2.16.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
       '@rhei/meta':
-        specifier: file:../../packages/meta
+        specifier: workspace:*
         version: link:../../packages/meta
       '@rhei/react':
-        specifier: file:../../packages/react
+        specifier: workspace:*
         version: link:../../packages/react
       '@rhei/ui':
-        specifier: file:../../packages/ui
+        specifier: workspace:*
         version: link:../../packages/ui
       '@supabase/ssr':
         specifier: ^0.6.1

@@ -1,30 +1,17 @@
 import type { Config } from "tailwindcss";
 import preset from "@rhei/ui/tailwind-preset";
-import { resolve, dirname } from "path";
-import { fileURLToPath } from "url";
+import { createRequire } from "module";
+import { dirname } from "path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-function resolveAliasPath(path: string): string {
-  if (path.startsWith("@rhei/ui")) {
-    const basePath = resolve(__dirname, "../../packages/ui");
-    const restOfPath = path.replace("@rhei/ui", "");
-    return basePath + restOfPath;
-  }
-  return path;
-}
-
-function expandContentPaths(paths: string[]): string[] {
-  return paths.map((path) => resolveAliasPath(path));
-}
+const resolve = createRequire(import.meta.url).resolve;
+const rheiUiPath = dirname(resolve("@rhei/ui/package.json"));
 
 export default {
   presets: [preset],
-  content: expandContentPaths([
+  content: [
     "./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}",
-    "@rhei/ui/**/*.{ts,tsx,css}",
-  ]),
+    `${rheiUiPath}/**/*.{ts,tsx,css}`,
+  ],
   theme: {
     extend: {},
   },
