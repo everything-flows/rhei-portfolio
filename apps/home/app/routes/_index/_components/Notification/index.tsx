@@ -11,12 +11,12 @@ const PROJECT_TREE = `.
     └── react
 `;
 
-const codeStyle = "rounded-md bg-gray-200 px-1 dark:bg-gray-500";
+const codeStyle = "rounded-md bg-gray-200 px-1 dark:bg-gray-700";
 const strongStyle = "text-brand font-extrabold";
 const rheiChatStyle =
   "text-[1.1rem] w-fit max-w-[80%] rounded-[2rem] rounded-tl-none bg-gray-300/20 p-4 text-pretty";
 const myChatStyle =
-  "text-reverse w-fit text-[1.1rem] font-bold ml-auto max-w-[80%] rounded-[2rem] rounded-tr-none bg-gradient-to-br from-blue-500 to-blue-400 p-4 dark:from-orange-400 dark:to-orange-500 text-pretty";
+  "text-reverse w-fit text-[1.1rem] font-bold ml-auto max-w-[80%] rounded-[2rem] rounded-tr-none bg-gradient-to-br from-blue-400 to-blue-500 p-4 dark:from-orange-500 dark:to-orange-600 text-pretty";
 
 function Thumbnail() {
   return (
