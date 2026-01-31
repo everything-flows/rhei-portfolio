@@ -37,6 +37,7 @@ export default function Sidebar({ route }: { route: string }) {
                   >
                     <motion.a
                       href={item.link}
+                      style={{ transformOrigin: "left center" }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className={`font-extrabold text-[1.2rem] hover:text-brand px-6 py-5 w-full inline-block ${
