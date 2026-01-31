@@ -55,10 +55,11 @@ function PostPage() {
 
 export default function PostDetailRoute() {
   const { dehydratedState } = useLoaderData();
+  const { postId } = useParams();
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <PostPage />
+      <PostPage key={postId} />
     </HydrationBoundary>
   );
 }

@@ -11,21 +11,21 @@ export default function PostHeader({ data }: { data: Document }) {
 
       <h1
         className="text-responsive-h1 mt-2 break-keep"
-        style={{ viewTransitionName: `post-title-${id}` }}
+        style={{ viewTransitionName: `list-post-title-${id}` }}
       >
         {title}
       </h1>
       {subTitle && (
         <h2
           className="text-responsive-p break-keep text-gray-400 dark:text-gray-300"
-          style={{ viewTransitionName: `post-subtitle-${id}` }}
+          style={{ viewTransitionName: `list-post-subtitle-${id}` }}
         >
           {subTitle}
         </h2>
       )}
 
       {tags && (
-        <div style={{ viewTransitionName: `post-tags-${id}` }}>
+        <div style={{ viewTransitionName: `list-post-tags-${id}` }}>
           <TagList tagList={tags} />
         </div>
       )}

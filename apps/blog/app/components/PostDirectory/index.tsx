@@ -40,20 +40,20 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
                   <div className="flex flex-col">
                     <h2
                       className="text-responsive-h2 font-bold"
-                      style={{ viewTransitionName: `post-title-${post.id}` }}
+                      style={{ viewTransitionName: `list-post-title-${post.id}` }}
                     >
                       {post.title}
                     </h2>
                     <p
                       className="text-responsive-p text-gray-500 dark:text-gray-300"
-                      style={{ viewTransitionName: `post-subtitle-${post.id}` }}
+                      style={{ viewTransitionName: `list-post-subtitle-${post.id}` }}
                     >
                       {post.subTitle}
                     </p>
                   </div>
                 </Link>
 
-                <div style={{ viewTransitionName: `post-tags-${post.id}` }}>
+                <div style={{ viewTransitionName: `list-post-tags-${post.id}` }}>
                   <TagList tagList={post.tags} />
                 </div>
                 <p className="text-right text-gray-400 dark:text-gray-400">
