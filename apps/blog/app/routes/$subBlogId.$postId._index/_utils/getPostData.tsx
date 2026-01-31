@@ -17,7 +17,7 @@ export const postDetailQueryOptions = (
   postId: string,
 ) =>
   queryOptions({
-    queryKey: ["postDetail"],
+    queryKey: ["postDetail", subBlogId, postId],
     queryFn: () => getPostData({ supabaseClient, subBlogId, postId }),
   });
 

@@ -35,7 +35,7 @@ function PostPage() {
       </header>
 
       <main className="content-x">
-        <PostHeader data={postInfo} />
+        <PostHeader key={postInfo.id} data={postInfo} />
 
         {(() => {
           switch (type) {

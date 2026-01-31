@@ -1,7 +1,6 @@
 import { Link } from "@remix-run/react";
 import { motion } from "motion/react";
 import { format } from "date-fns";
-import { useState, useEffect } from "react";
 
 import type { Document } from "~/types/post";
 import convertUrl from "~/utils/convertUrl";
@@ -9,15 +8,6 @@ import TagList from "../TagList";
 import { Gradient } from "~/routes/_index/_components/PinnedSection";
 
 export default function PostDirectory({ postList }: { postList: Document[] }) {
-  const [supportsViewTransition, setSupportsViewTransition] = useState(false);
-
-  useEffect(() => {
-    setSupportsViewTransition(
-      typeof document !== "undefined" &&
-        "startViewTransition" in document
-    );
-  }, []);
-
   return (
     <section className="mx-auto w-full max-w-6xl">
       <ol className="flex flex-col gap-4">
@@ -45,39 +35,25 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
                 <Link
                   to={`/${post.subBlog}/${post.id}`}
                   className="hover:text-brand"
-                  viewTransition={supportsViewTransition}
+                  viewTransition
                 >
                   <div className="flex flex-col">
                     <h2
                       className="text-responsive-h2 font-bold"
-                      style={
-                        supportsViewTransition
-                          ? { viewTransitionName: `post-title-${post.id}` }
-                          : undefined
-                      }
+                      style={{ viewTransitionName: `post-title-${post.id}` }}
                     >
                       {post.title}
                     </h2>
                     <p
                       className="text-responsive-p text-gray-500 dark:text-gray-300"
-                      style={
-                        supportsViewTransition
-                          ? { viewTransitionName: `post-subtitle-${post.id}` }
-                          : undefined
-                      }
+                      style={{ viewTransitionName: `post-subtitle-${post.id}` }}
                     >
                       {post.subTitle}
                     </p>
                   </div>
                 </Link>
 
-                <div
-                  style={
-                    supportsViewTransition
-                      ? { viewTransitionName: `post-tags-${post.id}` }
-                      : undefined
-                  }
-                >
+                <div style={{ viewTransitionName: `post-tags-${post.id}` }}>
                   <TagList tagList={post.tags} />
                 </div>
                 <p className="text-right text-gray-400 dark:text-gray-400">
