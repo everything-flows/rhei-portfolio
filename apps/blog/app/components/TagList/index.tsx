@@ -1,24 +1,22 @@
-import type { MouseEvent } from "react";
-
+import { Link } from "@remix-run/react";
 import type { Tag } from "~/types/post";
+import { motion } from "motion/react";
 
 function TagItem({ item, bold = false }: { item: Tag; bold?: boolean }) {
-  function goToTagPage(event: MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
-    window.location.href = `/blog/tag/${item.id}`;
-  }
-
   return (
-    <button
-      onClick={goToTagPage}
-      className={`text-brand border-brand hover:bg-brand hover:text-reverse ${bold ? "text-responsive-p border-[1.5px]" : "border text-[1rem]"} overflow-hidden text-ellipsis whitespace-nowrap break-keep rounded-full px-2`}
-    >
-      <p
-        className={`${item.isSpoiler ? "blur-[0.25rem] hover:blur-none" : ""}`}
+    <Link to={`/tag/${item.id}`}>
+      <motion.button
+        whileTap={{ scale: 0.96 }}
+        whileHover={{ scale: 1.04 }}
+        className="text-brand border-brand hover:bg-brand hover:text-reverse overflow-hidden text-ellipsis whitespace-nowrap break-keep rounded-full border-[1.5px] px-2"
       >
-        {item.title}
-      </p>
-    </button>
+        <p
+          className={`${item.isSpoiler ? "blur-[0.25rem] hover:blur-none" : ""}`}
+        >
+          {item.title}
+        </p>
+      </motion.button>
+    </Link>
   );
 }
 

@@ -14,7 +14,7 @@
     @apply bg-gray-white dark:bg-gray-black;
   }
   .bg-reverse {
-    @apply bg-gray-black dark:bg-gray-100;
+    @apply bg-gray-black dark:bg-gray-white;
   }
   .bg-brand {
     @apply bg-blue-500 dark:bg-orange-500;
