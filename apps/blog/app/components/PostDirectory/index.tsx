@@ -1,8 +1,8 @@
 import { Link } from "@remix-run/react";
 import { motion } from "motion/react";
-import { format } from "date-fns";
 
 import type { Document } from "~/types/post";
+import PostDate from "./PostDate";
 import convertUrl from "~/utils/convertUrl";
 import TagList from "../TagList";
 import { Gradient } from "~/routes/_index/_components/PinnedSection";
@@ -41,24 +41,30 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
                   <div className="flex flex-col">
                     <h2
                       className="text-responsive-h2 font-bold"
-                      style={{ viewTransitionName: `list-post-title-${post.id}` }}
+                      style={{
+                        viewTransitionName: `list-post-title-${post.id}`,
+                      }}
                     >
                       {post.title}
                     </h2>
                     <p
                       className="text-responsive-p text-gray-500 dark:text-gray-300"
-                      style={{ viewTransitionName: `list-post-subtitle-${post.id}` }}
+                      style={{
+                        viewTransitionName: `list-post-subtitle-${post.id}`,
+                      }}
                     >
                       {post.subTitle}
                     </p>
                   </div>
                 </Link>
 
-                <div style={{ viewTransitionName: `list-post-tags-${post.id}` }}>
+                <div
+                  style={{ viewTransitionName: `list-post-tags-${post.id}` }}
+                >
                   <TagList tagList={post.tags} />
                 </div>
                 <p className="text-right text-gray-400 dark:text-gray-400">
-                  {format(post.createdAt, "yyyy.MM.dd.")}
+                  <PostDate date={post.createdAt} />
                 </p>
               </div>
             </article>
