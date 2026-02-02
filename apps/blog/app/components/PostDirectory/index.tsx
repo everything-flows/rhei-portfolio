@@ -25,7 +25,7 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
                   ) : (
                     <GradientThumbnail />
                   )}
-                  <div className="bg-brand border-normal absolute bottom-[-4px] right-[-4px] flex size-8 items-center justify-center rounded-full border-2">
+                  <div className="bg-normal absolute bottom-[-4px] right-[-4px] flex size-8 items-center justify-center rounded-full border-2 border-blue-400 dark:border-orange-700">
                     {post.emoji}
                   </div>
                 </motion.div>
@@ -80,7 +80,7 @@ function ImageThumbnail({ post }: { post: Document }) {
     <img
       alt={post.title}
       src={convertUrl(post.thumbnail)}
-      className="border-brand aspect-[1/1] w-full shrink-0 overflow-hidden rounded-full border-2 object-cover"
+      className="aspect-[1/1] w-full shrink-0 overflow-hidden rounded-full border-2 border-blue-400 object-cover dark:border-orange-700"
       loading="lazy"
     />
   );
@@ -88,7 +88,7 @@ function ImageThumbnail({ post }: { post: Document }) {
 
 function GradientThumbnail() {
   return (
-    <div className="border-brand aspect-[1/1] overflow-hidden rounded-full border-2">
+    <div className="aspect-[1/1] overflow-hidden rounded-full border-2 border-blue-400 dark:border-orange-700">
       <Gradient size="small" />
     </div>
   );

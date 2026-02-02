@@ -1,7 +1,6 @@
 import { Link, useRouteLoaderData } from "@remix-run/react";
 import { createBrowserClient } from "@supabase/ssr";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { motion } from "motion/react";
 
 import { Document } from "~/types/post";
 import convertUrl from "~/utils/convertUrl";
@@ -38,7 +37,7 @@ function FirstPost({ post }: { post: Document }) {
         <img
           src={convertUrl(post.thumbnail)}
           alt={`${post.title}`}
-          className="aspect-[16/9] w-full shrink-0 rounded-3xl object-cover sm:aspect-[4/3]"
+          className="aspect-[16/9] w-full shrink-0 rounded-3xl border-2 border-blue-200 object-cover dark:border-orange-800 sm:aspect-[4/3]"
           fetchPriority="high"
           width="1200"
           height="675"
@@ -91,7 +90,9 @@ function OtherPostList({ postList }: { postList: Document[] }) {
                 </h3>
                 <p
                   className="text-p text-gray-400 dark:text-gray-300"
-                  style={{ viewTransitionName: `pinned-post-subtitle-${post.id}` }}
+                  style={{
+                    viewTransitionName: `pinned-post-subtitle-${post.id}`,
+                  }}
                 >
                   {post.subTitle}
                 </p>
@@ -109,7 +110,7 @@ function ImageThumbnail({ post }: { post: Document }) {
     <img
       src={convertUrl(post.thumbnail)}
       alt={`${post.title}`}
-      className="aspect-[16/9] w-full shrink-0 rounded-3xl object-cover"
+      className="aspect-[16/9] w-full shrink-0 rounded-3xl border-2 border-blue-200 object-cover dark:border-orange-800"
       loading="lazy"
     />
   );
@@ -117,7 +118,7 @@ function ImageThumbnail({ post }: { post: Document }) {
 
 function GradientThumbnail() {
   return (
-    <div className="aspect-[16/9] w-full shrink-0 overflow-hidden rounded-3xl object-cover">
+    <div className="aspect-[16/9] w-full shrink-0 overflow-hidden rounded-3xl border-2 border-blue-200 object-cover dark:border-orange-800">
       <Gradient />
     </div>
   );
