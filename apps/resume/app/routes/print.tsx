@@ -1,4 +1,5 @@
 import Activity from "./_index/_components/Activity";
+import Award from "./_index/_components/Award";
 import Education from "./_index/_components/Education";
 import Info from "./_index/_components/Info";
 import Language from "./_index/_components/Language";
@@ -15,9 +16,10 @@ export default function ResumePage() {
           <Summary />
           <Work />
           <Project />
-          <Education />
-          <Language />
-          <Activity />
+          {/* <Education /> */}
+          {/* <Language /> */}
+          <Award />
+          {/* <Activity /> */}
         </div>
       </main>
     </>

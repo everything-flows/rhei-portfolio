@@ -49,9 +49,4 @@ const AWARD = [
       "서강대학교 프로그래밍 경진 대회 (Sogang Programming Contest) Master division",
     place: "5th place (동상)",
   },
-  {
-    date: "2019.08",
-    content: "국제인문학부 성적 상위 1% 최우수학생",
-    place: "성적우수상",
-  },
 ];

@@ -61,8 +61,8 @@ const CONTACT_INFO = [
     linkLabel: "everything-flows",
   },
   {
-    label: "E-mail",
-    linkHref: "mailto:psst5491@naver.com",
-    linkLabel: "psst5491@naver.com",
+    label: "Blog",
+    linkHref: "https://rhei.me/blog",
+    linkLabel: "rhei.me/blog",
   },
 ];
