@@ -7,12 +7,16 @@ import {
 import { getTagDataById } from "./getTagDataById";
 import { getPostListByTagId } from "./getPostListByTagId";
 
+const PAGE_SIZE = 10;
+
 export default async function loader({
   context,
   request,
   params,
 }: LoaderFunctionArgs) {
   const headers = new Headers();
+  const url = new URL(request.url);
+  const page = Math.max(1, Number(url.searchParams.get("page")) || 1);
 
   const SUPABASE_URL = context.cloudflare.env.SUPABASE_URL;
   const SUPABASE_ANON_KEY = context.cloudflare.env.SUPABASE_ANON_KEY;
@@ -40,7 +44,14 @@ export default async function loader({
   });
 
   const tagData = await getTagDataById({ supabaseClient, tagId });
-  const postList = await getPostListByTagId({ supabaseClient, tagId });
+  const result = await getPostListByTagId({ supabaseClient, tagId, page, pageSize: PAGE_SIZE });
 
-  return { tagData, postList };
+  if (Array.isArray(result)) {
+    return { tagData, postList: result, currentPage: 1, totalPages: 1 };
+  }
+
+  const { postList, totalCount } = result;
+  const totalPages = Math.ceil(totalCount / PAGE_SIZE);
+
+  return { tagData, postList, currentPage: page, totalPages };
 }

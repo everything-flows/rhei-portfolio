@@ -7,7 +7,7 @@ import PostDirectory from "~/components/PostDirectory";
 export { default as loader } from "./_utils/loader";
 
 export default function PostPage() {
-  const { blogInfo, postData } = useLoaderData();
+  const { blogInfo, postData, currentPage, totalPages } = useLoaderData<typeof import("./_utils/loader").default>();
 
   if (!blogInfo || !postData) {
     return null;
@@ -22,7 +22,11 @@ export default function PostPage() {
       <main className="content-x">
         <PostHeader data={blogInfo} />
 
-        <PostDirectory postList={postData} />
+        <PostDirectory
+          postList={postData}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
       </main>
     </>
   );

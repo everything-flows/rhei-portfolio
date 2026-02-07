@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Link, useSearchParams } from "@remix-run/react";
 import { motion } from "motion/react";
 
 import type { Document } from "~/types/post";
@@ -7,7 +7,17 @@ import convertUrl from "~/utils/convertUrl";
 import TagList from "../TagList";
 import { Gradient } from "~/routes/_index/_components/PinnedSection";
 
-export default function PostDirectory({ postList }: { postList: Document[] }) {
+interface PostDirectoryProps {
+  postList: Document[];
+  currentPage?: number;
+  totalPages?: number;
+}
+
+export default function PostDirectory({
+  postList,
+  currentPage,
+  totalPages,
+}: PostDirectoryProps) {
   return (
     <section className="mx-auto w-full max-w-6xl">
       <ol className="flex flex-col gap-4">
@@ -71,8 +81,118 @@ export default function PostDirectory({ postList }: { postList: Document[] }) {
           </li>
         ))}
       </ol>
+
+      {currentPage !== undefined && totalPages !== undefined && totalPages > 1 && (
+        <Pagination currentPage={currentPage} totalPages={totalPages} />
+      )}
     </section>
   );
+}
+
+function Pagination({
+  currentPage,
+  totalPages,
+}: {
+  currentPage: number;
+  totalPages: number;
+}) {
+  const [searchParams] = useSearchParams();
+
+  const createPageUrl = (page: number) => {
+    const params = new URLSearchParams(searchParams);
+    if (page === 1) {
+      params.delete("page");
+    } else {
+      params.set("page", String(page));
+    }
+    const queryString = params.toString();
+    return queryString ? `?${queryString}` : "";
+  };
+
+  const pages = getPageNumbers(currentPage, totalPages);
+
+  return (
+    <nav className="mt-8 flex items-center justify-center gap-2">
+      <Link
+        to={createPageUrl(currentPage - 1)}
+        className={`rounded-lg px-3 py-2 ${
+          currentPage === 1
+            ? "pointer-events-none text-gray-300 dark:text-gray-600"
+            : "hover:bg-gray-100 dark:hover:bg-gray-800"
+        }`}
+        aria-disabled={currentPage === 1}
+      >
+        &lt;
+      </Link>
+
+      {pages.map((page, idx) =>
+        page === "..." ? (
+          <span key={`ellipsis-${idx}`} className="px-2 text-gray-400">
+            ...
+          </span>
+        ) : (
+          <Link
+            key={page}
+            to={createPageUrl(page)}
+            className={`rounded-lg px-3 py-2 ${
+              currentPage === page
+                ? "bg-blue-500 text-white dark:bg-orange-600"
+                : "hover:bg-gray-100 dark:hover:bg-gray-800"
+            }`}
+          >
+            {page}
+          </Link>
+        )
+      )}
+
+      <Link
+        to={createPageUrl(currentPage + 1)}
+        className={`rounded-lg px-3 py-2 ${
+          currentPage === totalPages
+            ? "pointer-events-none text-gray-300 dark:text-gray-600"
+            : "hover:bg-gray-100 dark:hover:bg-gray-800"
+        }`}
+        aria-disabled={currentPage === totalPages}
+      >
+        &gt;
+      </Link>
+    </nav>
+  );
+}
+
+function getPageNumbers(
+  currentPage: number,
+  totalPages: number
+): (number | "...")[] {
+  const pages: (number | "...")[] = [];
+  const showEllipsisThreshold = 7;
+
+  if (totalPages <= showEllipsisThreshold) {
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(i);
+    }
+  } else {
+    pages.push(1);
+
+    if (currentPage > 3) {
+      pages.push("...");
+    }
+
+    const start = Math.max(2, currentPage - 1);
+    const end = Math.min(totalPages - 1, currentPage + 1);
+
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+
+    if (currentPage < totalPages - 2) {
+      pages.push("...");
+    }
+
+    pages.push(totalPages);
+  }
+
+  return pages;
 }
 
 function ImageThumbnail({ post }: { post: Document }) {

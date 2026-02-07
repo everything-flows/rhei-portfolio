@@ -8,12 +8,16 @@ import {
 import getSubBlogPostList from "./getSubBlogPostList";
 import { getSubBlogInfo } from "./getSubBlogInfo";
 
+const PAGE_SIZE = 10;
+
 export default async function loader({
   context,
   request,
   params,
 }: LoaderFunctionArgs) {
   const headers = new Headers();
+  const url = new URL(request.url);
+  const page = Math.max(1, Number(url.searchParams.get("page")) || 1);
 
   const SUPABASE_URL = context.cloudflare.env.SUPABASE_URL;
   const SUPABASE_ANON_KEY = context.cloudflare.env.SUPABASE_ANON_KEY;
@@ -41,7 +45,14 @@ export default async function loader({
   });
 
   const blogInfo = await getSubBlogInfo({ supabaseClient, subBlogId });
-  const postData = await getSubBlogPostList({ supabaseClient, subBlogId });
+  const result = await getSubBlogPostList({ supabaseClient, subBlogId, page, pageSize: PAGE_SIZE });
 
-  return { blogInfo, postData };
+  if (Array.isArray(result)) {
+    return { blogInfo, postData: result, currentPage: 1, totalPages: 1 };
+  }
+
+  const { postList, totalCount } = result;
+  const totalPages = Math.ceil(totalCount / PAGE_SIZE);
+
+  return { blogInfo, postData: postList, currentPage: page, totalPages };
 }
