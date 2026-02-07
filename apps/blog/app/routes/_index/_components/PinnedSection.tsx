@@ -33,11 +33,11 @@ function FirstPost({ post }: { post: Document }) {
       viewTransition
       state={{ fromPinned: true }}
     >
-      <article className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-[1fr_1fr] md:grid-cols-[2fr_3fr] lg:grid-cols-[1fr_2fr]">
+      <article className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-[240px_auto] md:grid-cols-[260px_auto] lg:grid-cols-[300px_auto]">
         <img
           src={convertUrl(post.thumbnail)}
           alt={`${post.title}`}
-          className="aspect-[16/9] w-full shrink-0 rounded-3xl border-2 border-blue-200 object-cover dark:border-orange-800 sm:aspect-[4/3]"
+          className="aspect-[16/9] w-full shrink-0 rounded-3xl border-2 border-blue-200 object-cover dark:border-orange-800 sm:aspect-[4/3] md:aspect-[3/2] lg:aspect-[16/9]"
           fetchPriority="high"
           width="1200"
           height="675"
@@ -74,22 +74,22 @@ function OtherPostList({ postList }: { postList: Document[] }) {
             viewTransition
             state={{ fromPinned: true }}
           >
-            <article className="grid w-[min(80dvw,280px)] grid-rows-[auto,auto] gap-3">
+            <article className="grid w-[min(80dvw,240px)] grid-rows-[auto,auto] gap-3">
               {post.thumbnail ? (
                 <ImageThumbnail post={post} />
               ) : (
                 <GradientThumbnail />
               )}
 
-              <div className="overflow-auto">
+              <div>
                 <h3
-                  className="text-responsive-h3 font-900"
+                  className="text-responsive-h4 font-900 line-clamp-2 break-all"
                   style={{ viewTransitionName: `pinned-post-title-${post.id}` }}
                 >
                   {post.title}
                 </h3>
                 <p
-                  className="text-p text-gray-400 dark:text-gray-300"
+                  className="text-p line-clamp-2 break-all text-gray-400 dark:text-gray-300"
                   style={{
                     viewTransitionName: `pinned-post-subtitle-${post.id}`,
                   }}
