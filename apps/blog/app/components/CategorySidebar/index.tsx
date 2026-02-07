@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import CloseIcon from "~/assets/CloseIcon";
 import HamburgerIcon from "~/assets/HamburgerIcon";
 import CategoryList from "~/components/CategoryList";
+import { bounceTransition, tapAnimation } from "~/constants/motion";
 
 export default function CategorySidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,8 +36,8 @@ export default function CategorySidebar() {
       <motion.button
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        whileTap={tapAnimation.small}
+        transition={bounceTransition}
         className="bg-brand text-reverse fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full shadow-lg sm:right-6 md:right-12"
         aria-label="Toggle category menu"
       >

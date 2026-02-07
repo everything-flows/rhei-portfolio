@@ -30,8 +30,8 @@ export default function PostDirectory({
             <article className="flex gap-4">
               <Link to={`/${post.subBlog}/${post.id}`}>
                 <motion.div
-                  whileTap={{ scale: 0.96 }}
-                  whileHover={{ scale: 1.04 }}
+                  whileTap={tapAnimation.small}
+                  transition={bounceTransition}
                   className="relative size-20"
                 >
                   {post.thumbnail ? (
