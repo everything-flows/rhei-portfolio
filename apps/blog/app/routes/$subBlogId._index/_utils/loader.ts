@@ -5,8 +5,8 @@ import {
   serializeCookieHeader,
 } from "@supabase/ssr";
 
-import getSubBlogPostList from "./getSubBlogPostList";
 import { getSubBlogInfo } from "./getSubBlogInfo";
+import getSubBlogPostList from "./getSubBlogPostList";
 
 const PAGE_SIZE = 10;
 

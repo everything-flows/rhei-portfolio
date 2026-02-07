@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+
 import type { Category } from "~/types/post";
 
 function toggleCategory(id: string, currentCategory: Category[]): Category[] {

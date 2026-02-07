@@ -1,7 +1,9 @@
 import { Link } from "@remix-run/react";
-import type { Tag } from "~/types/post";
 import { motion } from "motion/react";
+
 import { bounceTransition, tapAnimation } from "~/constants/motion";
+
+import type { Tag } from "~/types/post";
 
 function TagItem({ item }: { item: Tag }) {
   return (

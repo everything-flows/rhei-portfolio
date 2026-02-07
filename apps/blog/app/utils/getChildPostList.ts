@@ -1,10 +1,12 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
 
-import { Database } from "~/types/supabase";
-import { Document } from "~/types/post";
 import { POST_SUMMARY_ATTR, POST_TABLE } from "~/constants/supabase";
+import { Document } from "~/types/post";
+import { Database } from "~/types/supabase";
+
 import addTagListToPostList from "./addTagListToPostList";
 import snakeToCamel from "./snakeToCamel";
+
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 export async function getChildPostList({
   supabaseClient,

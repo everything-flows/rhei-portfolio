@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { useState, useRef, useEffect } from "react";
+
 import CloseIcon from "~/assets/CloseIcon";
 import HamburgerIcon from "~/assets/HamburgerIcon";
 import CategoryList from "~/components/CategoryList";

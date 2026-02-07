@@ -4,8 +4,9 @@ import {
   parseCookieHeader,
   serializeCookieHeader,
 } from "@supabase/ssr";
-import { getTagDataById } from "./getTagDataById";
+
 import { getPostListByTagId } from "./getPostListByTagId";
+import { getTagDataById } from "./getTagDataById";
 
 const PAGE_SIZE = 10;
 

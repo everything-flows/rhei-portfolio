@@ -1,8 +1,9 @@
 import { useLoaderData } from "@remix-run/react";
-
 import { GNB } from "@rhei/ui";
-import PostHeader from "../$subBlogId.$postId._index/_components/PostHeader";
+
 import PostDirectory from "~/components/PostDirectory";
+
+import PostHeader from "../$subBlogId.$postId._index/_components/PostHeader";
 
 export { default as loader } from "./_utils/loader";
 

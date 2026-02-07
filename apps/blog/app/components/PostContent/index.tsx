@@ -2,8 +2,9 @@ import { Link } from "@remix-run/react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
-import convertUrl from "~/utils/convertUrl";
 import Highlight from "~/components/Highlight";
+import convertUrl from "~/utils/convertUrl";
+
 import ThemedIframe from "./ThemedIframe";
 
 function getId(child) {

@@ -1,6 +1,6 @@
-import { Document } from "~/types/post";
 import Breadcrumb from "~/components/Breadcrumb";
 import TagList from "~/components/TagList";
+import { Document } from "~/types/post";
 
 export default function PostHeader({
   data,

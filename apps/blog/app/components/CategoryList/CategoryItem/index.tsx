@@ -1,7 +1,7 @@
 import { Link } from "@remix-run/react";
 
-import useCategoryStore from "~/stores/category";
 import RightChevronIcon from "~/assets/RightChevronIcon";
+import useCategoryStore from "~/stores/category";
 
 export default function CategoryItem({
   id,

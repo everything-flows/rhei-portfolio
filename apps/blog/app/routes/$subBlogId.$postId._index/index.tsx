@@ -1,11 +1,12 @@
-import { Footer, GNB } from "@rhei/ui";
-
 import { useLoaderData, useLocation, useParams, useRouteLoaderData } from "@remix-run/react";
+import { Footer, GNB } from "@rhei/ui";
 import { createBrowserClient } from "@supabase/ssr";
 import { HydrationBoundary, useSuspenseQuery } from "@tanstack/react-query";
+
 import PostContent from "~/components/PostContent";
 import PostDirectory from "~/components/PostDirectory";
 import { DocumentType } from "~/types/post";
+
 import PostHeader from "./_components/PostHeader";
 import { postDetailQueryOptions } from "./_utils/getPostData";
 

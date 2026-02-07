@@ -4,8 +4,8 @@ import {
   parseCookieHeader,
   serializeCookieHeader,
 } from "@supabase/ssr";
-
 import { dehydrate, QueryClient } from "@tanstack/react-query";
+
 import { pinnedPostQueryOptions } from "./getPinnedPostList";
 import { recentPostQueryOptions } from "./getRecentPostList";
 

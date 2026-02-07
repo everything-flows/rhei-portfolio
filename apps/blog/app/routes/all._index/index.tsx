@@ -1,5 +1,6 @@
 import { useLoaderData } from "@remix-run/react";
 import { Footer, GNB } from "@rhei/ui";
+
 import PostDirectory from "~/components/PostDirectory";
 
 export { default as loader } from "./_utils/loader";

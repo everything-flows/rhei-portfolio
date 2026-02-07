@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { bounceTransition, tapAnimation } from "~/constants/motion";
 import { Document } from "~/types/post";
 import convertUrl from "~/utils/convertUrl";
+
 import { pinnedPostQueryOptions } from "../_utils/getPinnedPostList";
 
 export default function PinnedSection() {

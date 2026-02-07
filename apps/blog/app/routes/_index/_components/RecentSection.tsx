@@ -1,7 +1,9 @@
 import { Link, useRouteLoaderData } from "@remix-run/react";
 import { createBrowserClient } from "@supabase/ssr";
 import { useSuspenseQuery } from "@tanstack/react-query";
+
 import PostDirectory from "~/components/PostDirectory";
+
 import { recentPostQueryOptions } from "../_utils/getRecentPostList";
 
 export default function RecentSection() {
