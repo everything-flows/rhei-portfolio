@@ -7,7 +7,7 @@ export default async function Home() {
     <>
       <main className="content-x">
         <section className="mx-auto w-full max-w-6xl">
-          <div className="mt-8 grid grid-cols-[1fr] gap-x-4 gap-y-4 sm:grid-cols-[1fr_1fr] sm:gap-y-4 lg:grid-cols-[1fr_1fr_1fr]">
+          <div className="mt-8 grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-x-4 gap-y-4">
             {ITEM_LIST.toReversed().map((item) => (
               <CardItem key={item.title} data={item} />
             ))}
