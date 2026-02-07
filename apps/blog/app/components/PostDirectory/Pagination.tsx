@@ -1,12 +1,7 @@
 import { Link, useSearchParams } from "@remix-run/react";
 import { motion } from "motion/react";
 import RightChevronIcon from "~/assets/RightChevronIcon";
-
-const bounceTransition = {
-  type: "spring" as const,
-  stiffness: 500,
-  damping: 15,
-};
+import { bounceTransition, tapAnimation } from "~/constants/motion";
 
 export default function Pagination({
   currentPage,
@@ -33,7 +28,7 @@ export default function Pagination({
   return (
     <nav className="mt-8 flex items-center justify-center gap-2">
       <motion.div
-        whileTap={{ scaleX: 1.1, scaleY: 0.85 }}
+        whileTap={tapAnimation.small}
         transition={bounceTransition}
       >
         <Link
@@ -57,7 +52,7 @@ export default function Pagination({
         ) : (
           <motion.div
             key={page}
-            whileTap={{ scaleX: 1.1, scaleY: 0.85 }}
+            whileTap={tapAnimation.small}
             transition={bounceTransition}
           >
             <Link
@@ -75,7 +70,7 @@ export default function Pagination({
       )}
 
       <motion.div
-        whileTap={{ scaleX: 1.1, scaleY: 0.85 }}
+        whileTap={tapAnimation.small}
         transition={bounceTransition}
       >
         <Link

@@ -1,19 +1,14 @@
 import { Link } from "@remix-run/react";
 import type { Tag } from "~/types/post";
 import { motion } from "motion/react";
-
-const bounceTransition = {
-  type: "spring" as const,
-  stiffness: 500,
-  damping: 15,
-};
+import { bounceTransition, tapAnimation } from "~/constants/motion";
 
 function TagItem({ item }: { item: Tag }) {
   return (
     <li>
       <Link to={`/tag/${item.id}`}>
         <motion.div
-          whileTap={{ scaleX: 1.1, scaleY: 0.85 }}
+          whileTap={tapAnimation.small}
           whileHover={{ scale: 1.04 }}
           transition={bounceTransition}
           className="text-brand border-brand hover:bg-brand hover:text-reverse overflow-hidden text-ellipsis whitespace-nowrap break-keep rounded-full border-[1.5px] px-2"
