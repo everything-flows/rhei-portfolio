@@ -76,8 +76,8 @@ function FirstPost({ post }: { post: Document }) {
 function AllPostList({ postList }: { postList: Document[] }) {
   return (
     <ul className="custom-scrollbar mt-6 flex gap-4 overflow-auto">
-      {postList.map((post) => (
-        <PostCard key={post.id} post={post} />
+      {postList.map((post, index) => (
+        <PostCard key={post.id} post={post} eager={index === 0} />
       ))}
     </ul>
   );
@@ -93,7 +93,13 @@ function OtherPostList({ postList }: { postList: Document[] }) {
   );
 }
 
-function PostCard({ post }: { post: Document }) {
+function PostCard({
+  post,
+  eager = false,
+}: {
+  post: Document;
+  eager?: boolean;
+}) {
   return (
     <li>
       <motion.div whileTap={tapAnimation.medium} transition={bounceTransition}>
@@ -105,7 +111,7 @@ function PostCard({ post }: { post: Document }) {
         >
           <article className="grid w-[min(80dvw,240px)] grid-rows-[auto,auto] gap-3">
             {post.thumbnail ? (
-              <ImageThumbnail post={post} />
+              <ImageThumbnail post={post} eager={eager} />
             ) : (
               <GradientThumbnail />
             )}
@@ -135,13 +141,20 @@ function PostCard({ post }: { post: Document }) {
   );
 }
 
-function ImageThumbnail({ post }: { post: Document }) {
+function ImageThumbnail({
+  post,
+  eager = false,
+}: {
+  post: Document;
+  eager?: boolean;
+}) {
   return (
     <img
       src={convertUrl(post.thumbnail)}
       alt={`${post.title}`}
       className="aspect-[16/9] w-full shrink-0 rounded-3xl border-2 border-blue-200 object-cover dark:border-orange-800"
-      loading="lazy"
+      loading={eager ? "eager" : "lazy"}
+      {...(eager && { fetchPriority: "high" as const })}
     />
   );
 }
