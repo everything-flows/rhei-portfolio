@@ -22,10 +22,10 @@ export default function PinnedSection() {
 
   return (
     <section className="mx-auto flex w-full max-w-6xl flex-col">
-      <div className="sm:hidden">
+      <div className="lg:hidden">
         <AllPostList postList={pinnedPostList} />
       </div>
-      <div className="hidden sm:block">
+      <div className="hidden lg:block">
         <FirstPost post={pinnedPostList[0]} />
         <OtherPostList postList={pinnedPostList.slice(1)} />
       </div>
@@ -42,11 +42,11 @@ function FirstPost({ post }: { post: Document }) {
         viewTransition
         state={{ fromPinned: true }}
       >
-        <article className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-[240px_auto] md:grid-cols-[260px_auto] lg:grid-cols-[300px_auto]">
+        <article className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-[300px_auto]">
           <img
             src={convertUrl(post.thumbnail)}
             alt={`${post.title}`}
-            className="aspect-[16/9] w-full shrink-0 rounded-3xl border-2 border-blue-200 object-cover dark:border-orange-800 sm:aspect-[4/3] md:aspect-[3/2] lg:aspect-[16/9]"
+            className="aspect-[3/2] w-full shrink-0 rounded-2xl border border-blue-400 object-cover dark:border-orange-700"
             fetchPriority="high"
             width="1200"
             height="675"
@@ -152,7 +152,7 @@ function ImageThumbnail({
     <img
       src={convertUrl(post.thumbnail)}
       alt={`${post.title}`}
-      className="aspect-[16/9] w-full shrink-0 rounded-3xl border-2 border-blue-200 object-cover dark:border-orange-800"
+      className="aspect-[3/2] w-full shrink-0 rounded-2xl border border-blue-400 object-cover dark:border-orange-700"
       loading={eager ? "eager" : "lazy"}
       {...(eager && { fetchPriority: "high" as const })}
     />
@@ -161,7 +161,7 @@ function ImageThumbnail({
 
 function GradientThumbnail() {
   return (
-    <div className="aspect-[16/9] w-full shrink-0 overflow-hidden rounded-3xl border-2 border-blue-200 object-cover dark:border-orange-800">
+    <div className="aspect-[3/2] w-full shrink-0 overflow-hidden rounded-2xl border border-blue-400 object-cover dark:border-orange-700">
       <Gradient />
     </div>
   );
