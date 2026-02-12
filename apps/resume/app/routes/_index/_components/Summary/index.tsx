@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+
 import SectionTitle from "../SectionTitle";
 
 export default function Summary() {
@@ -8,7 +9,7 @@ export default function Summary() {
 
       <article>
         <h3 className="text-h5 bg-normal">
-          디자인 시스템과 인터랙션 라이브러리를 통해, 팀과 사용자의 경험을 함께
+          디자인 시스템과 인터랙션 라이브러리를 통해, 팀과 사용자의 경험을
           개선하고 있습니다.
         </h3>
 
