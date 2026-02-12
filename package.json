@@ -12,5 +12,10 @@
   "packageManager": "pnpm@10.8.0",
   "dependencies": {
     "css": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-unused-imports": "^4.4.1"
   }
 }

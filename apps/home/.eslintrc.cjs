@@ -53,7 +53,7 @@ module.exports = {
     // Typescript
     {
       files: ["**/*.{ts,tsx}"],
-      plugins: ["@typescript-eslint", "import"],
+      plugins: ["@typescript-eslint", "import", "unused-imports"],
       parser: "@typescript-eslint/parser",
       settings: {
         "import/internal-regex": "^~/",
@@ -71,6 +71,12 @@ module.exports = {
         "plugin:import/recommended",
         "plugin:import/typescript",
       ],
+      rules: {
+        ...require("../../eslint/shared-imports.cjs").rules,
+
+        // Prevent duplicate reports; `unused-imports/*` handles this (with autofix).
+        "@typescript-eslint/no-unused-vars": "off",
+      },
     },
 
     // Node
