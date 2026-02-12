@@ -22,8 +22,13 @@ export default function PinnedSection() {
 
   return (
     <section className="mx-auto flex w-full max-w-6xl flex-col">
-      <FirstPost post={pinnedPostList[0]} />
-      <OtherPostList postList={pinnedPostList.slice(1)} />
+      <div className="lg:hidden">
+        <AllPostList postList={pinnedPostList} />
+      </div>
+      <div className="hidden lg:block">
+        <FirstPost post={pinnedPostList[0]} />
+        <OtherPostList postList={pinnedPostList.slice(1)} />
+      </div>
     </section>
   );
 }
@@ -37,11 +42,11 @@ function FirstPost({ post }: { post: Document }) {
         viewTransition
         state={{ fromPinned: true }}
       >
-        <article className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-[240px_auto] md:grid-cols-[260px_auto] lg:grid-cols-[300px_auto]">
+        <article className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-[300px_auto]">
           <img
             src={convertUrl(post.thumbnail)}
             alt={`${post.title}`}
-            className="aspect-[16/9] w-full shrink-0 rounded-3xl border-2 border-blue-200 object-cover dark:border-orange-800 sm:aspect-[4/3] md:aspect-[3/2] lg:aspect-[16/9]"
+            className="aspect-[3/2] w-full shrink-0 rounded-2xl border border-blue-400 object-cover dark:border-orange-700"
             fetchPriority="high"
             width="1200"
             height="675"
@@ -68,69 +73,95 @@ function FirstPost({ post }: { post: Document }) {
   );
 }
 
-function OtherPostList({ postList }: { postList: Document[] }) {
+function AllPostList({ postList }: { postList: Document[] }) {
   return (
-    <ul className="custom-scrollbar mt-4 flex gap-4 overflow-auto">
-      {postList.map((post) => (
-        <li key={post.id}>
-          <motion.div
-            whileTap={tapAnimation.medium}
-            transition={bounceTransition}
-          >
-            <Link
-              to={`/${post.subBlog}/${post.id}`}
-              className="hover:text-brand"
-              viewTransition
-              state={{ fromPinned: true }}
-            >
-              <article className="grid w-[min(80dvw,240px)] grid-rows-[auto,auto] gap-3">
-                {post.thumbnail ? (
-                  <ImageThumbnail post={post} />
-                ) : (
-                  <GradientThumbnail />
-                )}
-
-                <div>
-                  <h3
-                    className="text-responsive-h4 font-900 line-clamp-2 break-all"
-                    style={{
-                      viewTransitionName: `pinned-post-title-${post.id}`,
-                    }}
-                  >
-                    {post.title}
-                  </h3>
-                  <p
-                    className="text-p line-clamp-2 break-all text-gray-400 dark:text-gray-300"
-                    style={{
-                      viewTransitionName: `pinned-post-subtitle-${post.id}`,
-                    }}
-                  >
-                    {post.subTitle}
-                  </p>
-                </div>
-              </article>
-            </Link>
-          </motion.div>
-        </li>
+    <ul className="custom-scrollbar mt-6 flex gap-4 overflow-auto">
+      {postList.map((post, index) => (
+        <PostCard key={post.id} post={post} eager={index === 0} />
       ))}
     </ul>
   );
 }
 
-function ImageThumbnail({ post }: { post: Document }) {
+function OtherPostList({ postList }: { postList: Document[] }) {
+  return (
+    <ul className="custom-scrollbar mt-4 flex gap-4 overflow-auto">
+      {postList.map((post) => (
+        <PostCard key={post.id} post={post} />
+      ))}
+    </ul>
+  );
+}
+
+function PostCard({
+  post,
+  eager = false,
+}: {
+  post: Document;
+  eager?: boolean;
+}) {
+  return (
+    <li>
+      <motion.div whileTap={tapAnimation.medium} transition={bounceTransition}>
+        <Link
+          to={`/${post.subBlog}/${post.id}`}
+          className="hover:text-brand"
+          viewTransition
+          state={{ fromPinned: true }}
+        >
+          <article className="grid w-[min(80dvw,240px)] grid-rows-[auto,auto] gap-3">
+            {post.thumbnail ? (
+              <ImageThumbnail post={post} eager={eager} />
+            ) : (
+              <GradientThumbnail />
+            )}
+
+            <div>
+              <h3
+                className="text-responsive-h4 font-900 line-clamp-2 break-all"
+                style={{
+                  viewTransitionName: `pinned-post-title-${post.id}`,
+                }}
+              >
+                {post.title}
+              </h3>
+              <p
+                className="text-p line-clamp-2 break-all text-gray-400 dark:text-gray-300"
+                style={{
+                  viewTransitionName: `pinned-post-subtitle-${post.id}`,
+                }}
+              >
+                {post.subTitle}
+              </p>
+            </div>
+          </article>
+        </Link>
+      </motion.div>
+    </li>
+  );
+}
+
+function ImageThumbnail({
+  post,
+  eager = false,
+}: {
+  post: Document;
+  eager?: boolean;
+}) {
   return (
     <img
       src={convertUrl(post.thumbnail)}
       alt={`${post.title}`}
-      className="aspect-[16/9] w-full shrink-0 rounded-3xl border-2 border-blue-200 object-cover dark:border-orange-800"
-      loading="lazy"
+      className="aspect-[3/2] w-full shrink-0 rounded-2xl border border-blue-400 object-cover dark:border-orange-700"
+      loading={eager ? "eager" : "lazy"}
+      {...(eager && { fetchPriority: "high" as const })}
     />
   );
 }
 
 function GradientThumbnail() {
   return (
-    <div className="aspect-[16/9] w-full shrink-0 overflow-hidden rounded-3xl border-2 border-blue-200 object-cover dark:border-orange-800">
+    <div className="aspect-[3/2] w-full shrink-0 overflow-hidden rounded-2xl border border-blue-400 object-cover dark:border-orange-700">
       <Gradient />
     </div>
   );
