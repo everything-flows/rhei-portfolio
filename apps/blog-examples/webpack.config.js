@@ -7,6 +7,7 @@ module.exports = {
     "utf8-encoding": "./src/routes/utf8-encoding/index.tsx",
     "callback-hell-sync": "./src/routes/callback-hell-sync/index.tsx",
     "callback-hell-async": "./src/routes/callback-hell-async/index.tsx",
+    "ipc-demo": "./src/routes/ipc-demo/index.tsx",
   },
   output: {
     filename: "[name].bundle.js",
@@ -55,6 +56,12 @@ module.exports = {
       template: "./src/routes/callback-hell-async/index.html",
       filename: "callback-hell-async/index.html",
       chunks: ["callback-hell-async"],
+      inject: true,
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/routes/ipc-demo/index.html",
+      filename: "ipc-demo/index.html",
+      chunks: ["ipc-demo"],
       inject: true,
     }),
   ],

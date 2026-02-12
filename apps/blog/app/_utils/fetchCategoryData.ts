@@ -1,9 +1,10 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
-
-import type { Document } from "~/types/post";
 import { POST_SUMMARY_ATTR, POST_TABLE } from "~/constants/supabase";
-import { buildTree } from "./buildTree";
+import type { Document } from "~/types/post";
 import snakeToCamel from "~/utils/snakeToCamel";
+
+import { buildTree } from "./buildTree";
+
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 export default async function fetchCategoryData({
   supabaseClient,

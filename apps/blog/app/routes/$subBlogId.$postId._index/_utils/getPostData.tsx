@@ -1,11 +1,13 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
 import { queryOptions } from "@tanstack/react-query";
 
 import { Document, DocumentType } from "~/types/post";
 import { Database } from "~/types/supabase";
 import { getChildPostList } from "~/utils/getChildPostList";
 import { getPostById } from "~/utils/getPostById";
+
 import parse from "../parse";
+
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 function isNormalPost(data: Document) {
   return data.type === DocumentType.Post;
@@ -17,7 +19,7 @@ export const postDetailQueryOptions = (
   postId: string,
 ) =>
   queryOptions({
-    queryKey: ["postDetail"],
+    queryKey: ["postDetail", subBlogId, postId],
     queryFn: () => getPostData({ supabaseClient, subBlogId, postId }),
   });
 

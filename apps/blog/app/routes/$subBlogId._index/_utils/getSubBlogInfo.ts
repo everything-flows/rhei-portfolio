@@ -1,7 +1,7 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
-
 import type { Database } from "~/types/supabase";
 import snakeToCamel from "~/utils/snakeToCamel";
+
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 export async function getSubBlogInfo({
   supabaseClient,

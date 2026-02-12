@@ -1,10 +1,10 @@
-import { useEffect } from "react";
 import { useParams, useRouteLoaderData } from "@remix-run/react";
 import { createBrowserClient } from "@supabase/ssr";
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 
-import useCategoryStore from "~/stores/category";
 import fetchCategoryData from "~/_utils/fetchCategoryData";
+import useCategoryStore from "~/stores/category";
 
 export default function useFetchCategory() {
   const params = useParams();

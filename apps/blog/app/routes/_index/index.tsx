@@ -1,8 +1,9 @@
 import { useLoaderData } from "@remix-run/react";
 import { Footer, GNB } from "@rhei/ui";
-
 import { HydrationBoundary } from "@tanstack/react-query";
+
 import AsyncErrorBoundary from "~/_components/AsyncErrorBoundary";
+
 import PinnedSection from "./_components/PinnedSection";
 import RecentSection from "./_components/RecentSection";
 

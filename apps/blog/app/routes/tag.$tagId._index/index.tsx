@@ -2,13 +2,15 @@ import { useLoaderData } from "@remix-run/react";
 import { Footer, GNB } from "@rhei/ui";
 
 import PostDirectory from "~/components/PostDirectory";
+
 import TagHeader from "./_components/TagHeader";
 
 export { default as loader } from "./_utils/loader";
 export { default as meta } from "./_utils/meta";
 
 export default function PostPage() {
-  const { tagData, postList } = useLoaderData();
+  const { tagData, postList, currentPage, totalPages } =
+    useLoaderData<typeof import("./_utils/loader").default>();
 
   if (!tagData) {
     return null;
@@ -23,7 +25,11 @@ export default function PostPage() {
       <main className="content-x">
         <TagHeader data={tagData} />
 
-        <PostDirectory postList={postList} />
+        <PostDirectory
+          postList={postList}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
       </main>
 
       <Footer />

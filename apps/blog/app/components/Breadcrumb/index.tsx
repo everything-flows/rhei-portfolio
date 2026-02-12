@@ -1,9 +1,9 @@
-import { useMemo } from "react";
 import { Link } from "@remix-run/react";
+import { useMemo } from "react";
 
-import type { Category } from "~/types/post";
-import useCategoryStore from "~/stores/category";
 import useFetchCategory from "~/hooks/useFetchCategory";
+import useCategoryStore from "~/stores/category";
+import type { Category } from "~/types/post";
 import { getBreadcrumbData } from "~/utils/breadcrumb";
 
 import BreadcrumbSkeleton from "./Skeleton";

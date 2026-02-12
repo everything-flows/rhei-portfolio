@@ -28,7 +28,9 @@ export default function ThemedIframe({
 
       try {
         iframe.contentWindow?.postMessage({ type: "THEME_UPDATE", theme }, "*");
-      } catch (e) {}
+      } catch (e) {
+        // 에러처리
+      }
     };
 
     const handleLoad = () => {

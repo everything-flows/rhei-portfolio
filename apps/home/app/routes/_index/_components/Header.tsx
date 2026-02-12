@@ -1,6 +1,6 @@
-import { Link } from "@remix-run/react";
-import ArrowIcon from "~/assets/ArrowIcon";
 import { motion } from "motion/react";
+
+import ArrowIcon from "~/assets/ArrowIcon";
 
 export default function Header() {
   return (

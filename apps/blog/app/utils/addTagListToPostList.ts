@@ -1,9 +1,9 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
-
 import type { Document } from "~/types/post";
 import type { Database } from "~/types/supabase";
 
 import getTagListOfPost from "./getTagListOfPost";
+
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 async function addTagListToPost({
   supabaseClient,

@@ -1,11 +1,11 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 
-import { Database } from "~/types/supabase";
 import {
   POST_DETAIL_ATTR,
   POST_SUMMARY_ATTR,
   POST_TABLE,
 } from "~/constants/supabase";
+import { Database } from "~/types/supabase";
 
 import getTagListFromPost from "./getTagListFromPost";
 

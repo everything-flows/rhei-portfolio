@@ -1,11 +1,17 @@
+import {
+  useLoaderData,
+  useLocation,
+  useParams,
+  useRouteLoaderData,
+} from "@remix-run/react";
 import { Footer, GNB } from "@rhei/ui";
-
-import { useLoaderData, useParams, useRouteLoaderData } from "@remix-run/react";
 import { createBrowserClient } from "@supabase/ssr";
 import { HydrationBoundary, useSuspenseQuery } from "@tanstack/react-query";
+
 import PostContent from "~/components/PostContent";
 import PostDirectory from "~/components/PostDirectory";
 import { DocumentType } from "~/types/post";
+
 import PostHeader from "./_components/PostHeader";
 import { postDetailQueryOptions } from "./_utils/getPostData";
 
@@ -14,6 +20,11 @@ export { default as meta } from "./_utils/meta";
 
 function PostPage() {
   const { subBlogId, postId } = useParams();
+  const location = useLocation();
+  const state = location.state as {
+    fromDirectory?: boolean;
+    fromPinned?: boolean;
+  } | null;
 
   const { supabaseCredential } = useRouteLoaderData("root");
   const supabaseClient = createBrowserClient(
@@ -35,7 +46,12 @@ function PostPage() {
       </header>
 
       <main className="content-x">
-        <PostHeader data={postInfo} />
+        <PostHeader
+          key={postInfo.id}
+          data={postInfo}
+          fromDirectory={state?.fromDirectory}
+          fromPinned={state?.fromPinned}
+        />
 
         {(() => {
           switch (type) {
@@ -55,10 +71,11 @@ function PostPage() {
 
 export default function PostDetailRoute() {
   const { dehydratedState } = useLoaderData();
+  const { postId } = useParams();
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <PostPage />
+      <PostPage key={postId} />
     </HydrationBoundary>
   );
 }

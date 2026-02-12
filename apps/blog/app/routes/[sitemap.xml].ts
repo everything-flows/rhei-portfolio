@@ -1,10 +1,10 @@
 import { LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { SITE_URL } from "@rhei/meta";
 import {
   createServerClient,
   parseCookieHeader,
   serializeCookieHeader,
 } from "@supabase/ssr";
-import { SITE_URL } from "@rhei/meta";
 
 import { getSitemapPostList } from "./getSitemapPostList";
 import { getSitemapTagList } from "./getSitemapTagList";

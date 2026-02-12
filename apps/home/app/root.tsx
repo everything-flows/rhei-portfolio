@@ -10,8 +10,8 @@ import {
 
 import Font from "./_components/Font";
 import "./tailwind.css";
-import ThemeColor from "./_components/ThemeColor";
 import GoogleAnalytics from "./_components/GoogleAnalytics";
+import ThemeColor from "./_components/ThemeColor";
 
 export { loader } from "./_utils/loader";
 export { meta } from "./_utils/meta";

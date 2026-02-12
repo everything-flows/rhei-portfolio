@@ -1,13 +1,13 @@
 import { useLoaderData } from "@remix-run/react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { GNB, Footer } from "@rhei/ui";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import Header from "./_components/Header";
+import About from "./_components/About";
 import Banner from "./_components/Banner";
+import Header from "./_components/Header";
 // import Tools from "./_components/Tools";
 // import Blog from "./_components/Blog";
 // import Toc from "./_components/Toc";
-import About from "./_components/About";
 import Notification from "./_components/Notification";
 
 export { default as loader } from "./_utils/loader";

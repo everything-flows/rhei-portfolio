@@ -33,7 +33,7 @@
 
 @layer utilities {
   .text-responsive-display {
-    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-size: clamp(2rem, 5vw, 2.4rem);
     line-height: 1.6;
     font-weight: 700;
     text-wrap: pretty;
@@ -41,22 +41,28 @@
   }
 
   .text-responsive-h1 {
-    font-size: clamp(1.75rem, 4.5vw, 2.25rem);
-    line-height: 1.6;
+    font-size: clamp(1.8rem, 4.5vw, 2.1rem);
+    line-height: 1.5;
     font-weight: 700;
     word-break: keep-all;
   }
 
   .text-responsive-h2 {
-    font-size: clamp(1.5rem, 4vw, 1.75rem);
-    line-height: 1.6;
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
+    line-height: 1.5;
     font-weight: 700;
     word-break: keep-all;
   }
 
   .text-responsive-h3 {
-    font-size: clamp(1.25rem, 3.5vw, 1.5rem);
-    line-height: 1.6;
+    font-size: clamp(1.35rem, 3.5vw, 1.6rem);
+    line-height: 1.5;
+    font-weight: 700;
+    word-break: keep-all;
+  }
+  .text-responsive-h4 {
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    line-height: 1.5;
     font-weight: 700;
     word-break: keep-all;
   }
@@ -129,5 +135,25 @@
 
   .dark .highlight {
     background: var(--highlight-dark);
+  }
+}
+
+/* View Transition Speed */
+@supports (view-transition-name: none) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.1s;
+  }
+
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.1s;
+  }
+}
+
+/* Firefox fallback - disable view transitions */
+@supports not (view-transition-name: none) {
+  * {
+    view-transition-name: none !important;
   }
 }

@@ -1,4 +1,3 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
 import { queryOptions } from "@tanstack/react-query";
 import { groupBy } from "es-toolkit";
 
@@ -11,6 +10,8 @@ import {
 import { DocumentType, type Document, type Tag } from "~/types/post";
 import type { Database } from "~/types/supabase";
 import snakeToCamel from "~/utils/snakeToCamel";
+
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 const SUB_BLOG_ID = "cse";
 
