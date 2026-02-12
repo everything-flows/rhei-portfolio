@@ -30,10 +30,7 @@ export default function PinnedSection() {
 
 function FirstPost({ post }: { post: Document }) {
   return (
-    <motion.div
-      whileTap={tapAnimation.large}
-      transition={bounceTransition}
-    >
+    <motion.div whileTap={tapAnimation.large} transition={bounceTransition}>
       <Link
         to={`/${post.subBlog}/${post.id}`}
         className="hover:text-brand"
@@ -96,7 +93,9 @@ function OtherPostList({ postList }: { postList: Document[] }) {
                 <div>
                   <h3
                     className="text-responsive-h4 font-900 line-clamp-2 break-all"
-                    style={{ viewTransitionName: `pinned-post-title-${post.id}` }}
+                    style={{
+                      viewTransitionName: `pinned-post-title-${post.id}`,
+                    }}
                   >
                     {post.title}
                   </h3>

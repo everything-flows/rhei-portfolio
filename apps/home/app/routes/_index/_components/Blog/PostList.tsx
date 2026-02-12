@@ -1,5 +1,5 @@
-import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import { DocumentSummary } from "~/types/post";
 

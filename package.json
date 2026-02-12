@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:fix": "pnpm --filter @rhei/blog exec eslint --fix . && pnpm --filter @rhei/home exec eslint --fix . && pnpm --filter @rhei/resume exec eslint --fix . && pnpm --filter @rhei/craft exec eslint --fix \"src/**/*.{ts,tsx}\"",
+    "format": "pnpm --filter @rhei/blog exec prettier --write . && pnpm --filter @rhei/home exec prettier --write . && pnpm --filter @rhei/resume exec prettier --write . && pnpm --filter @rhei/craft exec prettier --write ."
   },
   "keywords": [],
   "author": "",

@@ -1,11 +1,11 @@
 import { POST_SUMMARY_ATTR, POST_TABLE } from "~/constants/supabase";
+import type { Document } from "~/types/post";
+import type { Database } from "~/types/supabase";
 
 import addTagListToPostList from "./addTagListToPostList";
 import snakeToCamel from "./snakeToCamel";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Document } from "~/types/post";
-import type { Database } from "~/types/supabase";
 
 export async function getPostList({
   supabaseClient,

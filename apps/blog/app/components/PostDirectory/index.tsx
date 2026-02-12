@@ -3,13 +3,12 @@ import { motion } from "motion/react";
 
 import { bounceTransition, tapAnimation } from "~/constants/motion";
 import { Gradient } from "~/routes/_index/_components/PinnedSection";
+import type { Document } from "~/types/post";
 import convertUrl from "~/utils/convertUrl";
 
 import PostDate from "./PostDate";
 import TagList from "../TagList";
 import Pagination from "./Pagination";
-
-import type { Document } from "~/types/post";
 
 interface PostDirectoryProps {
   postList: Document[];

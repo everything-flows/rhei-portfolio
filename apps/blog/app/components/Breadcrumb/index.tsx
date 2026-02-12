@@ -3,11 +3,10 @@ import { useMemo } from "react";
 
 import useFetchCategory from "~/hooks/useFetchCategory";
 import useCategoryStore from "~/stores/category";
+import type { Category } from "~/types/post";
 import { getBreadcrumbData } from "~/utils/breadcrumb";
 
 import BreadcrumbSkeleton from "./Skeleton";
-
-import type { Category } from "~/types/post";
 
 export default function Breadcrumb({ postId }: { postId: string }) {
   const { categoryList } = useCategoryStore();

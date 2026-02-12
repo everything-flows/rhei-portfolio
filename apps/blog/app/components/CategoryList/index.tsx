@@ -3,11 +3,10 @@ import { AnimatePresence, motion } from "motion/react";
 
 import useFetchCategory from "~/hooks/useFetchCategory";
 import useCategoryStore from "~/stores/category";
+import type { Category } from "~/types/post";
 
 import CategoryItem from "./CategoryItem";
 import CategoryListSkeleton from "./Skeleton";
-
-import type { Category } from "~/types/post";
 
 export default function CategoryList() {
   const params = useParams();

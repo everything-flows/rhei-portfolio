@@ -9,7 +9,8 @@ export { default as loader } from "./_utils/loader";
 export { default as meta } from "./_utils/meta";
 
 export default function PostPage() {
-  const { tagData, postList, currentPage, totalPages } = useLoaderData<typeof import("./_utils/loader").default>();
+  const { tagData, postList, currentPage, totalPages } =
+    useLoaderData<typeof import("./_utils/loader").default>();
 
   if (!tagData) {
     return null;

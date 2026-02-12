@@ -54,7 +54,7 @@ export default function CategoryItem({
         <button
           aria-label="toggle menu"
           onClick={handleButtonClick}
-          className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border-none bg-transparent outline-none transition-all hover:bg-brand/30 ${
+          className={`hover:bg-brand/30 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border-none bg-transparent outline-none transition-all ${
             isOpen ? "rotate-90" : ""
           } ${!hasChildren ? "opacity-0" : ""}`}
         >

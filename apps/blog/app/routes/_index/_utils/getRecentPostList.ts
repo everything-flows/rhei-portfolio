@@ -1,13 +1,12 @@
-
 import { queryOptions } from "@tanstack/react-query";
 
 import { POST_SUMMARY_ATTR, POST_TABLE } from "~/constants/supabase";
 import { type Document, DocumentType } from "~/types/post";
+import type { Database } from "~/types/supabase";
 import addTagListToPostList from "~/utils/addTagListToPostList";
 import snakeToCamel from "~/utils/snakeToCamel";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Database } from "~/types/supabase";
 
 export const recentPostQueryOptions = (
   supabaseClient: SupabaseClient<Database, "public">,

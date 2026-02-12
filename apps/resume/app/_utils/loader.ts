@@ -1,9 +1,6 @@
 import { LoaderFunctionArgs } from "@remix-run/cloudflare";
 
-export default async function loader({
-  context,
-  request,
-}: LoaderFunctionArgs) {
+export default async function loader({ context, request }: LoaderFunctionArgs) {
   const cookie = request.headers.get("Cookie") ?? "";
   const theme = cookie.includes("theme=dark") ? "dark" : "light";
 

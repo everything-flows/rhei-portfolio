@@ -1,9 +1,9 @@
 import { POST_TAG_TABLE } from "~/constants/supabase";
+import type { Document } from "~/types/post";
+import type { Database } from "~/types/supabase";
 import { getPostById } from "~/utils/getPostById";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Document } from "~/types/post";
-import type { Database } from "~/types/supabase";
 
 export async function getPostListByTagId({
   supabaseClient,

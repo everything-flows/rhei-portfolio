@@ -1,7 +1,7 @@
 import { TAG_TABLE } from "~/constants/supabase";
+import type { Database } from "~/types/supabase";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Database } from "~/types/supabase";
 
 const SITEMAP_ATTR_LIST = ["id", "created_at"];
 

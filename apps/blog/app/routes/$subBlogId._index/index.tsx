@@ -8,7 +8,8 @@ import PostHeader from "../$subBlogId.$postId._index/_components/PostHeader";
 export { default as loader } from "./_utils/loader";
 
 export default function PostPage() {
-  const { blogInfo, postData, currentPage, totalPages } = useLoaderData<typeof import("./_utils/loader").default>();
+  const { blogInfo, postData, currentPage, totalPages } =
+    useLoaderData<typeof import("./_utils/loader").default>();
 
   if (!blogInfo || !postData) {
     return null;

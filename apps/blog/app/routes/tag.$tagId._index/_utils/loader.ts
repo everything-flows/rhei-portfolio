@@ -45,7 +45,12 @@ export default async function loader({
   });
 
   const tagData = await getTagDataById({ supabaseClient, tagId });
-  const result = await getPostListByTagId({ supabaseClient, tagId, page, pageSize: PAGE_SIZE });
+  const result = await getPostListByTagId({
+    supabaseClient,
+    tagId,
+    page,
+    pageSize: PAGE_SIZE,
+  });
 
   if (Array.isArray(result)) {
     return { tagData, postList: result, currentPage: 1, totalPages: 1 };

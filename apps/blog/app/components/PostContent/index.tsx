@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import { ReactElement } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
@@ -38,7 +39,7 @@ function solve(child) {
     .join("");
 }
 
-export default function PostContent({ content }) {
+export default function PostContent({ content }: { content: ReactElement }) {
   return (
     <section className="text-responsive-p mx-auto max-w-6xl break-keep">
       {renderNodes(content, 0)}

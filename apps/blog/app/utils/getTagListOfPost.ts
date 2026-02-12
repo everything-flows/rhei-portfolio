@@ -1,8 +1,8 @@
 import { POST_TAG_TABLE, TAG_JOIN_ATTR } from "~/constants/supabase";
-
-import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Tag } from "~/types/post";
 import type { Database } from "~/types/supabase";
+
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 interface RawTag {
   is_spoiler: boolean;

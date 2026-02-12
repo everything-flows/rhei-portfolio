@@ -7,10 +7,10 @@ export default function snakeToCamel<T>(obj: T): T {
 
   return Object.keys(obj).reduce((acc, key) => {
     const camelKey = key.replace(/_([a-zA-Z0-9])/g, (_, char) =>
-      char.toUpperCase()
+      char.toUpperCase(),
     );
     (acc as Record<string, T>)[camelKey] = snakeToCamel(
-      (obj as Record<string, T>)[key]
+      (obj as Record<string, T>)[key],
     );
     return acc;
   }, {} as T);

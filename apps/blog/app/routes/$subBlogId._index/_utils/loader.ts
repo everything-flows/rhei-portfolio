@@ -45,7 +45,12 @@ export default async function loader({
   });
 
   const blogInfo = await getSubBlogInfo({ supabaseClient, subBlogId });
-  const result = await getSubBlogPostList({ supabaseClient, subBlogId, page, pageSize: PAGE_SIZE });
+  const result = await getSubBlogPostList({
+    supabaseClient,
+    subBlogId,
+    page,
+    pageSize: PAGE_SIZE,
+  });
 
   if (Array.isArray(result)) {
     return { blogInfo, postData: result, currentPage: 1, totalPages: 1 };

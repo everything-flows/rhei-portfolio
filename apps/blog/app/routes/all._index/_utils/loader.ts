@@ -37,7 +37,11 @@ export default async function loader({ context, request }: LoaderFunctionArgs) {
     },
   });
 
-  const result = await getPostList({ supabaseClient, page, pageSize: PAGE_SIZE });
+  const result = await getPostList({
+    supabaseClient,
+    page,
+    pageSize: PAGE_SIZE,
+  });
 
   if (Array.isArray(result)) {
     return { postList: result, currentPage: 1, totalPages: 1 };

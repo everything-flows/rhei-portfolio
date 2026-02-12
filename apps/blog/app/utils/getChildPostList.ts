@@ -1,4 +1,3 @@
-
 import { POST_SUMMARY_ATTR, POST_TABLE } from "~/constants/supabase";
 import { Document } from "~/types/post";
 import { Database } from "~/types/supabase";
@@ -32,6 +31,6 @@ export async function getChildPostList({
     await addTagListToPostList({
       supabaseClient,
       postList: data,
-    })
+    }),
   );
 }

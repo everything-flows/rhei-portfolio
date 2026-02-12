@@ -4,8 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 
 import { getPostById } from "~/utils/getPostById";
 
-import PostList from "./PostList";
-
 export default function Blog() {
   const { supabaseCredential } = useOutletContext();
 

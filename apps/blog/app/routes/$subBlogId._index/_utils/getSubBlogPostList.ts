@@ -1,11 +1,10 @@
-
 import { POST_SUMMARY_ATTR, POST_TABLE } from "~/constants/supabase";
+import type { Document } from "~/types/post";
 import { Database } from "~/types/supabase";
 import addTagListToPostList from "~/utils/addTagListToPostList";
 import snakeToCamel from "~/utils/snakeToCamel";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Document } from "~/types/post";
 
 export default async function getSubBlogPostList({
   supabaseClient,
@@ -30,7 +29,11 @@ export default async function getSubBlogPostList({
       ? baseQuery.range((page - 1) * pageSize, page * pageSize - 1)
       : baseQuery;
 
-  const { data: postData, error: postError, count } = await query.returns<Document[]>();
+  const {
+    data: postData,
+    error: postError,
+    count,
+  } = await query.returns<Document[]>();
 
   if (postError || postData === null) {
     return page !== undefined ? { postList: [], totalCount: 0 } : [];
