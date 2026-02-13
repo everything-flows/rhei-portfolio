@@ -1,17 +1,10 @@
-import {
-  SITE_TITLE,
-  SITE_NAME,
-  AUTHOR,
-  SITE_DESCRIPTION,
-  BLOG_THUMBNAIL,
-  SITE_URL,
-  GITHUB_URL,
-} from "@rhei/meta";
+import { META } from "@rhei/meta";
 
-const blogUrl = `${SITE_URL}/blog`;
+const blogUrl = `${META.url.site}/blog`;
 
 export function meta() {
-  const title = `${SITE_TITLE} | ${SITE_NAME}`;
+  const title = `${META.blog.title} | ${META.siteName}`;
+  const description = META.blog.description;
 
   return [
     {
@@ -19,11 +12,11 @@ export function meta() {
     },
     {
       name: "description",
-      content: SITE_DESCRIPTION,
+      content: description,
     },
     {
       name: "author",
-      content: AUTHOR,
+      content: META.author,
     },
     {
       property: "og:title",
@@ -31,11 +24,11 @@ export function meta() {
     },
     {
       property: "og:description",
-      content: SITE_DESCRIPTION,
+      content: description,
     },
     {
       property: "og:image",
-      content: BLOG_THUMBNAIL,
+      content: META.blog.thumbnail,
     },
     {
       property: "og:type",
@@ -43,7 +36,7 @@ export function meta() {
     },
     {
       property: "og:site_name",
-      content: SITE_NAME,
+      content: META.siteName,
     },
     {
       property: "og:url",
@@ -59,11 +52,11 @@ export function meta() {
     },
     {
       name: "twitter:description",
-      content: SITE_DESCRIPTION,
+      content: description,
     },
     {
       name: "twitter:image",
-      content: BLOG_THUMBNAIL,
+      content: META.blog.thumbnail,
     },
     {
       tagName: "link",
@@ -74,23 +67,23 @@ export function meta() {
       "script:ld+json": {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        name: SITE_NAME,
+        name: META.siteName,
         url: blogUrl,
         logo: {
           "@type": "ImageObject",
-          url: BLOG_THUMBNAIL,
+          url: META.blog.thumbnail,
         },
-        description: SITE_DESCRIPTION,
+        description: description,
         inLanguage: "ko",
         publisher: {
-          "@type": "Organization",
-          name: AUTHOR,
-          url: SITE_URL,
-          logo: {
+          "@type": "Person",
+          name: META.author,
+          url: META.url.site,
+          image: {
             "@type": "ImageObject",
-            url: BLOG_THUMBNAIL,
+            url: META.blog.thumbnail,
           },
-          sameAs: [GITHUB_URL],
+          sameAs: [META.url.github],
         },
         mainEntityOfPage: {
           "@type": "WebPage",

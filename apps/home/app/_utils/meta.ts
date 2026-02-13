@@ -1,15 +1,8 @@
-import {
-  SITE_TITLE,
-  SITE_NAME,
-  AUTHOR,
-  SITE_DESCRIPTION,
-  SITE_THUMBNAIL,
-  SITE_URL,
-  GITHUB_URL,
-} from "@rhei/meta";
+import { META } from "@rhei/meta";
 
 export function meta() {
-  const title = `${SITE_TITLE} | ${SITE_NAME}`;
+  const title = `${META.home.title} | ${META.siteName}`;
+  const description = META.home.description;
 
   return [
     {
@@ -17,11 +10,11 @@ export function meta() {
     },
     {
       name: "description",
-      content: SITE_DESCRIPTION,
+      content: description,
     },
     {
       name: "author",
-      content: AUTHOR,
+      content: META.author,
     },
     {
       property: "og:title",
@@ -29,11 +22,11 @@ export function meta() {
     },
     {
       property: "og:description",
-      content: SITE_DESCRIPTION,
+      content: description,
     },
     {
       property: "og:image",
-      content: SITE_THUMBNAIL,
+      content: META.home.thumbnail,
     },
     {
       property: "og:type",
@@ -41,11 +34,11 @@ export function meta() {
     },
     {
       property: "og:site_name",
-      content: title,
+      content: META.siteName,
     },
     {
       property: "og:url",
-      content: SITE_URL,
+      content: META.url.site,
     },
     {
       name: "twitter:card",
@@ -57,25 +50,26 @@ export function meta() {
     },
     {
       name: "twitter:description",
-      content: SITE_DESCRIPTION,
+      content: description,
     },
     {
       name: "twitter:image",
-      content: SITE_THUMBNAIL,
+      content: META.home.thumbnail,
     },
     {
+      tagName: "link",
       rel: "canonical",
-      href: SITE_URL,
+      href: META.url.site,
     },
     {
       "script:ld+json": {
         "@context": "https://schema.org",
         "@type": "Organization",
-        name: SITE_NAME,
-        url: SITE_URL,
-        logo: SITE_THUMBNAIL,
-        description: SITE_DESCRIPTION,
-        sameAs: [GITHUB_URL],
+        name: META.siteName,
+        url: META.url.site,
+        logo: META.home.thumbnail,
+        description: description,
+        sameAs: [META.url.github],
       },
     },
   ];
