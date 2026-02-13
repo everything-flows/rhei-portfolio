@@ -19,6 +19,16 @@ export const META = {
     thumbnail:
       "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-home/thumbnail/blogThumbnail.webp",
   },
+  resume: {
+    title: "프론트엔드 개발자 이력서",
+    description:
+      "프론트엔드 개발자 강다혜 이력서입니다. 경력, 프로젝트, 기술 스택을 확인하세요.",
+  },
+  craft: {
+    title: "실험실",
+    description:
+      "소소하게 좋아하는 것들을 만듭니다. 사이드 프로젝트와 실험적인 작업들입니다.",
+  },
 };
 
 // deprecated

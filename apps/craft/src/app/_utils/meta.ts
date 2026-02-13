@@ -1,33 +1,26 @@
 import type { Metadata } from "next";
-import {
-  SITE_NAME,
-  AUTHOR,
-  SITE_DESCRIPTION,
-  SITE_THUMBNAIL,
-  SITE_URL,
-  GITHUB_URL,
-} from "@rhei/meta";
+import { META } from "@rhei/meta";
 
-const title = `실험실 | ${SITE_NAME}`;
-const description = `소소하게 좋아하는 것들을 만듭니다. | ${SITE_DESCRIPTION}`;
-const url = `${SITE_URL}/craft`;
+const title = `${META.craft.title} | ${META.siteName}`;
+const description = META.craft.description;
+const url = `${META.url.site}/craft`;
 
 export const metadata: Metadata = {
   title: {
     default: title,
-    template: `%s | ${SITE_NAME}`,
+    template: `%s | ${META.siteName}`,
   },
   description,
-  authors: [{ name: AUTHOR }],
+  authors: [{ name: META.author }],
   openGraph: {
     title,
     description,
     type: "website",
     url: url,
-    siteName: SITE_NAME,
+    siteName: META.siteName,
     images: [
       {
-        url: SITE_THUMBNAIL,
+        url: META.home.thumbnail,
         alt: `${title} 썸네일`,
       },
     ],
@@ -36,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: [SITE_THUMBNAIL],
+    images: [META.home.thumbnail],
   },
   icons: {
     icon: "/favicon.ico",
@@ -54,11 +47,11 @@ export const metadata: Metadata = {
       description,
       creator: {
         "@type": "Person",
-        name: AUTHOR,
-        url: SITE_URL,
-        sameAs: [GITHUB_URL],
+        name: META.author,
+        url: META.url.site,
+        sameAs: [META.url.github],
       },
-      image: SITE_THUMBNAIL,
+      image: META.home.thumbnail,
     }),
   },
 };

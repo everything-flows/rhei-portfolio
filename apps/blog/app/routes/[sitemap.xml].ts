@@ -1,5 +1,5 @@
 import { LoaderFunctionArgs } from "@remix-run/cloudflare";
-import { SITE_URL } from "@rhei/meta";
+import { META } from "@rhei/meta";
 import {
   createServerClient,
   parseCookieHeader,
@@ -16,6 +16,8 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
   if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
     throw new Error("Missing SUPABASE env variables");
   }
+
+  const headers = new Headers();
 
   const supabaseClient = createServerClient(SUPABASE_URL!, SUPABASE_ANON_KEY!, {
     cookies: {
@@ -39,7 +41,7 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
   const content = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>${SITE_URL}/blog/</loc>
+    <loc>${META.url.site}/blog/</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <priority>1.0</priority>
   </url>
@@ -47,7 +49,7 @@ ${posts
   .map(
     (post) => `
   <url>
-    <loc>${SITE_URL}/blog/${post.sub_blog}/${post.id}</loc>
+    <loc>${META.url.site}/blog/${post.sub_blog}/${post.id}</loc>
     <lastmod>${new Date(post.last_edited_at).toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
   </url>`,
@@ -57,7 +59,7 @@ ${posts
     .map(
       (tag) => `
   <url>
-    <loc>${SITE_URL}/blog/tag/${tag.id}</loc>
+    <loc>${META.url.site}/blog/tag/${tag.id}</loc>
     <lastmod>${new Date(tag.created_at).toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
   </url>`,

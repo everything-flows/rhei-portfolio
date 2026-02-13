@@ -1,16 +1,9 @@
-import {
-  SITE_NAME,
-  AUTHOR,
-  SITE_DESCRIPTION,
-  SITE_THUMBNAIL,
-  SITE_URL,
-  GITHUB_URL,
-} from "@rhei/meta";
+import { META } from "@rhei/meta";
 
 export default function meta() {
-  const title = `강다혜 이력서 | ${SITE_NAME}`;
-  const description = `프론트엔드 개발자 강다혜 이력서 | ${SITE_DESCRIPTION}`;
-  const url = `${SITE_URL}/resume`;
+  const title = `${META.resume.title} | ${META.siteName}`;
+  const description = META.resume.description;
+  const url = `${META.url.site}/resume`;
 
   return [
     {
@@ -22,7 +15,7 @@ export default function meta() {
     },
     {
       name: "author",
-      content: AUTHOR,
+      content: META.author,
     },
     {
       property: "og:title",
@@ -34,7 +27,7 @@ export default function meta() {
     },
     {
       property: "og:image",
-      content: SITE_THUMBNAIL,
+      content: META.home.thumbnail,
     },
     {
       property: "og:type",
@@ -42,11 +35,11 @@ export default function meta() {
     },
     {
       property: "og:site_name",
-      content: title,
+      content: META.siteName,
     },
     {
       property: "og:url",
-      content: URL,
+      content: url,
     },
     {
       name: "twitter:card",
@@ -62,9 +55,10 @@ export default function meta() {
     },
     {
       name: "twitter:image",
-      content: SITE_THUMBNAIL,
+      content: META.home.thumbnail,
     },
     {
+      tagName: "link",
       rel: "canonical",
       href: url,
     },
@@ -72,16 +66,16 @@ export default function meta() {
       "script:ld+json": {
         "@context": "https://schema.org",
         "@type": "Person",
-        name: AUTHOR,
+        name: META.author,
         url: url,
-        image: SITE_THUMBNAIL,
+        image: META.home.thumbnail,
         description: description,
-        sameAs: [GITHUB_URL],
+        sameAs: [META.url.github],
         jobTitle: "프론트엔드 개발자",
         worksFor: {
           "@type": "Organization",
-          name: SITE_NAME,
-          url: SITE_URL,
+          name: META.siteName,
+          url: META.url.site,
         },
       },
     },

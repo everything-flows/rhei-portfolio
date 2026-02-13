@@ -1,10 +1,4 @@
-import {
-  SITE_NAME,
-  AUTHOR,
-  SITE_DESCRIPTION,
-  BLOG_THUMBNAIL,
-  SITE_URL,
-} from "@rhei/meta";
+import { META } from "@rhei/meta";
 
 import { Document } from "~/types/post";
 
@@ -18,10 +12,10 @@ export default function meta({
 }) {
   const { tagData, postList } = data;
 
-  const title = `${tagData.id} 관련 포스트 | ${SITE_NAME}`;
-  const description = `${tagData.id} 관련 포스트 모음입니다. | ${SITE_DESCRIPTION}`;
-  const thumbnail = BLOG_THUMBNAIL;
-  const url = `${SITE_URL}/blog/tag/${tagData.id}`;
+  const title = `${tagData.id} 관련 포스트 | ${META.siteName}`;
+  const description = `${tagData.id} 관련 포스트 모음입니다. | ${META.blog.description}`;
+  const thumbnail = META.blog.thumbnail;
+  const url = `${META.url.site}/blog/tag/${tagData.id}`;
 
   return [
     {
@@ -33,7 +27,7 @@ export default function meta({
     },
     {
       name: "author",
-      content: AUTHOR,
+      content: META.author,
     },
     {
       property: "og:title",
@@ -53,7 +47,7 @@ export default function meta({
     },
     {
       property: "og:site_name",
-      content: title,
+      content: META.siteName,
     },
     {
       property: "og:url",
@@ -84,13 +78,13 @@ export default function meta({
       "script:ld+json": {
         "@context": "https://schema.org",
         "@type": "ItemList",
-        name: `$Posts of {tagData.id} tag`,
+        name: `Posts of ${tagData.id} tag`,
         itemListOrder: "http://schema.org/ItemListOrderDescending",
         numberOfItems: postList.length,
         itemListElement: postList.map((post: Document, index: number) => ({
           "@type": "ListItem",
           position: index + 1,
-          url: `${SITE_URL}/blog/${post.subBlog}/${post.id}`,
+          url: `${META.url.site}/blog/${post.subBlog}/${post.id}`,
           name: post.title,
         })),
       },

@@ -1,23 +1,23 @@
-import { SITE_URL } from "@rhei/meta";
+import { META } from "@rhei/meta";
 
 const date = new Date(2025, 3, 28).toISOString();
 
 const content = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>${SITE_URL}</loc>
+    <loc>${META.url.site}</loc>
     <lastmod>${date}</lastmod>
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>${SITE_URL}/resume</loc>
+    <loc>${META.url.site}/resume</loc>
     <lastmod>${date}</lastmod>
     <priority>1.0</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>${SITE_URL}/craft</loc>
+    <loc>${META.url.site}/craft</loc>
     <lastmod>${date}</lastmod>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>

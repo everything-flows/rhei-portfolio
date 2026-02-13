@@ -1,10 +1,4 @@
-import {
-  SITE_NAME,
-  AUTHOR,
-  SITE_DESCRIPTION,
-  BLOG_THUMBNAIL,
-  SITE_URL,
-} from "@rhei/meta";
+import { META } from "@rhei/meta";
 
 export default function meta({ data }) {
   const query = data.dehydratedState.queries;
@@ -13,10 +7,10 @@ export default function meta({ data }) {
 
   const { postInfo } = postData;
 
-  const title = `${postInfo.title} | ${SITE_NAME}`;
-  const description = `${postInfo.subTitle} | ${SITE_DESCRIPTION}`;
-  const thumbnail = postInfo.thumbnail || BLOG_THUMBNAIL;
-  const url = `${SITE_URL}/blog/${postInfo.subBlog}/${postInfo.id}`;
+  const title = `${postInfo.title} | ${META.siteName}`;
+  const description = `${postInfo.subTitle} | ${META.blog.description}`;
+  const thumbnail = postInfo.thumbnail || META.blog.thumbnail;
+  const url = `${META.url.site}/blog/${postInfo.subBlog}/${postInfo.id}`;
 
   return [
     {
@@ -28,7 +22,7 @@ export default function meta({ data }) {
     },
     {
       name: "author",
-      content: AUTHOR,
+      content: META.author,
     },
     {
       property: "og:title",
@@ -48,7 +42,7 @@ export default function meta({ data }) {
     },
     {
       property: "og:site_name",
-      content: title,
+      content: META.siteName,
     },
     {
       property: "og:url",
@@ -87,16 +81,16 @@ export default function meta({ data }) {
         dateModified: postInfo.lastEditedAt || postInfo.createdAt,
         author: {
           "@type": "Person",
-          name: AUTHOR,
-          url: SITE_URL,
+          name: META.author,
+          url: META.url.site,
         },
         publisher: {
-          "@type": "Organization",
-          name: SITE_NAME,
-          url: SITE_URL,
-          logo: {
+          "@type": "Person",
+          name: META.author,
+          url: META.url.site,
+          image: {
             "@type": "ImageObject",
-            url: BLOG_THUMBNAIL,
+            url: META.blog.thumbnail,
           },
         },
         mainEntityOfPage: {
