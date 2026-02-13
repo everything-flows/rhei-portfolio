@@ -1,16 +1,8 @@
-import {
-  SITE_TITLE,
-  SITE_NAME,
-  AUTHOR,
-  SITE_DESCRIPTION,
-  BLOG_THUMBNAIL,
-  SITE_URL,
-  GITHUB_URL,
-} from "@rhei/meta";
+import { META } from "@rhei/meta";
 
 import convertUrl from "~/utils/convertUrl";
 
-const blogUrl = `${SITE_URL}/blog`;
+const blogUrl = `${META.url.site}/blog`;
 
 export default function meta({ data }) {
   const queries = data?.dehydratedState?.queries ?? [];
@@ -22,7 +14,7 @@ export default function meta({ data }) {
       ? convertUrl(pinnedPostList[0].thumbnail)
       : null;
 
-  const title = `${SITE_TITLE} | ${SITE_NAME}`;
+  const title = `${META.blog.title} | ${META.siteName}`;
 
   return [
     ...(lcpImageUrl
@@ -31,11 +23,11 @@ export default function meta({ data }) {
     { title },
     {
       name: "description",
-      content: SITE_DESCRIPTION,
+      content: description,
     },
     {
       name: "author",
-      content: AUTHOR,
+      content: META.author,
     },
     {
       property: "og:title",
@@ -43,11 +35,11 @@ export default function meta({ data }) {
     },
     {
       property: "og:description",
-      content: SITE_DESCRIPTION,
+      content: META.blog.description,
     },
     {
       property: "og:image",
-      content: BLOG_THUMBNAIL,
+      content: META.blog.thumbnail,
     },
     {
       property: "og:type",
@@ -55,7 +47,7 @@ export default function meta({ data }) {
     },
     {
       property: "og:site_name",
-      content: title,
+      content: META.siteName,
     },
     {
       property: "og:url",
@@ -71,11 +63,11 @@ export default function meta({ data }) {
     },
     {
       name: "twitter:description",
-      content: SITE_DESCRIPTION,
+      content: META.blog.description,
     },
     {
       name: "twitter:image",
-      content: BLOG_THUMBNAIL,
+      content: META.blog.thumbnail,
     },
     {
       tagName: "link",
@@ -85,24 +77,24 @@ export default function meta({ data }) {
     {
       "script:ld+json": {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        name: SITE_NAME,
+        "@type": "Blog",
+        name: title,
         url: blogUrl,
-        logo: {
+        image: {
           "@type": "ImageObject",
-          url: BLOG_THUMBNAIL,
+          url: META.blog.thumbnail,
         },
-        description: SITE_DESCRIPTION,
+        description: META.blog.description,
         inLanguage: "ko",
-        publisher: {
-          "@type": "Organization",
-          name: AUTHOR,
-          url: SITE_URL,
-          logo: {
+        author: {
+          "@type": "Person",
+          name: META.author,
+          url: META.url.site,
+          image: {
             "@type": "ImageObject",
-            url: BLOG_THUMBNAIL,
+            url: META.blog.thumbnail,
           },
-          sameAs: [GITHUB_URL],
+          sameAs: [META.url.github],
         },
         mainEntityOfPage: {
           "@type": "WebPage",

@@ -30,20 +30,3 @@ export const META = {
       "소소하게 좋아하는 것들을 만듭니다. 사이드 프로젝트와 실험적인 작업들입니다.",
   },
 };
-
-// deprecated
-export const SITE_NAME = META.siteName;
-export const AUTHOR = META.author;
-export const SITE_URL = META.url.site;
-export const GITHUB_URL = META.url.github;
-
-export const HOME_TITLE = META.home.title;
-export const HOME_DESCRIPTION = META.home.description;
-export const SITE_THUMBNAIL = META.home.thumbnail;
-
-export const BLOG_TITLE = META.blog.title;
-export const BLOG_DESCRIPTION = META.blog.description;
-export const BLOG_THUMBNAIL = META.blog.thumbnail;
-
-export const SITE_TITLE = META.home.title;
-export const SITE_DESCRIPTION = META.home.description;
