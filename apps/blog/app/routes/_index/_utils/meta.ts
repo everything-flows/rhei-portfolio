@@ -15,6 +15,7 @@ export default function meta({ data }) {
       : null;
 
   const title = `${META.blog.title} | ${META.siteName}`;
+  const description = META.blog.description;
 
   return [
     ...(lcpImageUrl

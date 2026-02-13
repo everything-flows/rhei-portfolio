@@ -49,6 +49,26 @@ export default function meta({ data }) {
       content: url,
     },
     {
+      property: "article:published_time",
+      content:
+        typeof postData.createdAt === "string"
+          ? postData.createdAt
+          : new Date(postData.createdAt).toISOString(),
+    },
+    {
+      property: "article:modified_time",
+      content:
+        typeof postInfo.lastEditedAt === "string"
+          ? postInfo.lastEditedAt
+          : new Date(
+              postInfo.lastEditedAt || postInfo.createdAt,
+            ).toISOString(),
+    },
+    {
+      property: "article:author",
+      content: META.author,
+    },
+    {
       name: "twitter:card",
       content: "summary_large_image",
     },
