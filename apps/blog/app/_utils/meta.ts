@@ -4,15 +4,13 @@ const blogUrl = `${META.url.site}/blog`;
 
 export function meta() {
   const title = `${META.blog.title} | ${META.siteName}`;
-  const description = META.blog.description;
-
   return [
     {
       title,
     },
     {
       name: "description",
-      content: description,
+      content: META.blog.description,
     },
     {
       name: "author",
@@ -24,7 +22,7 @@ export function meta() {
     },
     {
       property: "og:description",
-      content: description,
+      content: META.blog.description,
     },
     {
       property: "og:image",
@@ -52,7 +50,7 @@ export function meta() {
     },
     {
       name: "twitter:description",
-      content: description,
+      content: META.blog.description,
     },
     {
       name: "twitter:image",
@@ -73,7 +71,7 @@ export function meta() {
           "@type": "ImageObject",
           url: META.blog.thumbnail,
         },
-        description: description,
+        description: META.blog.description,
         inLanguage: "ko",
         author: {
           "@type": "Person",
