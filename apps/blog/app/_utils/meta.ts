@@ -66,16 +66,16 @@ export function meta() {
     {
       "script:ld+json": {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        name: META.siteName,
+        "@type": "Blog",
+        name: title,
         url: blogUrl,
-        logo: {
+        image: {
           "@type": "ImageObject",
           url: META.blog.thumbnail,
         },
         description: description,
         inLanguage: "ko",
-        publisher: {
+        author: {
           "@type": "Person",
           name: META.author,
           url: META.url.site,
