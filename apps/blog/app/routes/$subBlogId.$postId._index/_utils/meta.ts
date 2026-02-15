@@ -1,11 +1,5 @@
 import { META } from "@rhei/meta";
 
-function toISOStringSafe(value: unknown): string | undefined {
-  if (value == null) return undefined;
-  const date = typeof value === "string" ? new Date(value) : new Date(value as number);
-  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
-}
-
 export default function meta({ data }) {
   const query = data.dehydratedState.queries;
   const postData = query.find((query) => query.queryKey.includes("postDetail"))
@@ -121,4 +115,13 @@ export default function meta({ data }) {
       },
     },
   ];
+}
+
+function toISOStringSafe(value: unknown): string | undefined {
+  if (value == null) {
+    return undefined;
+  }
+  const date =
+    typeof value === "string" ? new Date(value) : new Date(value as number);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
 }
