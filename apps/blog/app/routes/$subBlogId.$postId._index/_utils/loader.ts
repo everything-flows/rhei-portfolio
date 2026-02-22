@@ -23,6 +23,9 @@ export default async function loader({
   }
 
   const { subBlogId, postId } = params;
+  if (!subBlogId || !postId) {
+    throw new Response("Post not found", { status: 404 });
+  }
 
   const supabaseClient = createServerClient(SUPABASE_URL!, SUPABASE_ANON_KEY!, {
     cookies: {
@@ -41,9 +44,12 @@ export default async function loader({
   });
 
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(
+  const postData = await queryClient.fetchQuery(
     postDetailQueryOptions(supabaseClient, subBlogId, postId),
   );
+  if (!postData) {
+    throw new Response("Post not found", { status: 404 });
+  }
 
   return json({ dehydratedState: dehydrate(queryClient) });
 }

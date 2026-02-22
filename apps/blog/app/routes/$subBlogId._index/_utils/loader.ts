@@ -27,6 +27,9 @@ export default async function loader({
   }
 
   const { subBlogId } = params;
+  if (!subBlogId) {
+    throw new Response("Sub blog not found", { status: 404 });
+  }
 
   const supabaseClient = createServerClient(SUPABASE_URL!, SUPABASE_ANON_KEY!, {
     cookies: {
@@ -45,6 +48,10 @@ export default async function loader({
   });
 
   const blogInfo = await getSubBlogInfo({ supabaseClient, subBlogId });
+  if (!blogInfo) {
+    throw new Response("Sub blog not found", { status: 404 });
+  }
+
   const result = await getSubBlogPostList({
     supabaseClient,
     subBlogId,
