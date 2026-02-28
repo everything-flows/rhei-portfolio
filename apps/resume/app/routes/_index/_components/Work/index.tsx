@@ -1,4 +1,5 @@
 import { differenceInDays, format } from "date-fns";
+
 import SectionTitle from "../SectionTitle";
 
 export default function Work() {
@@ -83,6 +84,7 @@ const WORK = [
     logo: "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-resume/toss.webp",
     period: {
       start: "2025-06-30",
+      end: "2026-02-28",
     },
     location: "서울시 강남구",
     position: "Frontend Developer Assistant | 인터랙션팀",
