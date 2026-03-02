@@ -1,4 +1,5 @@
 import { differenceInDays, format } from "date-fns";
+
 import SectionTitle from "../SectionTitle";
 
 export default function Work() {
@@ -11,9 +12,9 @@ export default function Work() {
           <li key={work.title}>
             <article className="print-break-inside-avoid">
               <section className="flex flex-col lg:flex-row lg:items-end lg:justify-between">
-                <section className="flex items-center gap-3">
+                <section className="flex items-start gap-3">
                   <img
-                    className="aspect-square size-12 rounded-xl border border-gray-200 dark:border-gray-400"
+                    className="mt-[2px] aspect-square size-12 rounded-xl border border-gray-200 dark:border-gray-400"
                     src={work.logo}
                     alt={work.title}
                   />
@@ -48,9 +49,9 @@ export default function Work() {
                   <li key={desc.title} className="mb-2">
                     <p className="font-bold">{desc.title}</p>
                     <ul>
-                      {desc.list.map((item) => (
+                      {desc.list.map((item, index) => (
                         <li
-                          key={item}
+                          key={index}
                           className="mb-2 ms-6 list-[circle] text-gray-800 dark:text-gray-100"
                         >
                           {item}
@@ -83,9 +84,10 @@ const WORK = [
     logo: "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-resume/toss.webp",
     period: {
       start: "2025-06-30",
+      end: "2026-02-28",
     },
     location: "서울시 강남구",
-    position: "Frontend Developer Assistant | 인터랙션팀",
+    position: "Frontend Developer Assistant (단기계약직) | 인터랙션팀",
     description:
       "사용자 인터랙션에 사용되는 컴포넌트와 애니메이션 라이브러리를 유지보수하며, 디자인 툴과 서비스 코드 사이의 연결을 개선했습니다.",
     stack: ["TypeScript", "React.js"],
@@ -111,7 +113,18 @@ const WORK = [
         list: [
           "인터랙션 라이브러리의 핵심 개념과 사용 흐름을 중심으로 문서화를 진행해, 신규 사용자와 기존 사용자 모두가 빠르게 이해하고 활용할 수 있도록 했습니다.",
           "릴리즈 노트와 수동 마이그레이션 가이드를 작성해 API 변경 배경과 의도를 명확히 전달했습니다.",
-          "인터랙션 팀 내부 모션 가이드 제작 툴 ‘랠디터’의 검색 및 정렬 기능을 개선하여, 가이드 작성 효율을 높였습니다.",
+          <>
+            인터랙션 팀 내부 모션 가이드 제작 툴 &apos;랠디터&apos;(
+            <a
+              href="https://youtu.be/QoPSnAgerpQ?si=Pg50nNRzcyGtgVbH&t=1007"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand underline"
+            >
+              소개 영상
+            </a>
+            )의 검색 및 정렬 기능을 개선하여, 가이드 작성 효율을 높였습니다.
+          </>,
         ],
       },
     ],
