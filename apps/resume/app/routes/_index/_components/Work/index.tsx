@@ -49,9 +49,9 @@ export default function Work() {
                   <li key={desc.title} className="mb-2">
                     <p className="font-bold">{desc.title}</p>
                     <ul>
-                      {desc.list.map((item) => (
+                      {desc.list.map((item, index) => (
                         <li
-                          key={item}
+                          key={index}
                           className="mb-2 ms-6 list-[circle] text-gray-800 dark:text-gray-100"
                         >
                           {item}
@@ -113,7 +113,18 @@ const WORK = [
         list: [
           "인터랙션 라이브러리의 핵심 개념과 사용 흐름을 중심으로 문서화를 진행해, 신규 사용자와 기존 사용자 모두가 빠르게 이해하고 활용할 수 있도록 했습니다.",
           "릴리즈 노트와 수동 마이그레이션 가이드를 작성해 API 변경 배경과 의도를 명확히 전달했습니다.",
-          "인터랙션 팀 내부 모션 가이드 제작 툴 ‘랠디터’의 검색 및 정렬 기능을 개선하여, 가이드 작성 효율을 높였습니다.",
+          <>
+            인터랙션 팀 내부 모션 가이드 제작 툴 &apos;랠디터&apos;(
+            <a
+              href="https://youtu.be/QoPSnAgerpQ?si=Pg50nNRzcyGtgVbH&t=1007"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand underline"
+            >
+              소개 영상
+            </a>
+            )의 검색 및 정렬 기능을 개선하여, 가이드 작성 효율을 높였습니다.
+          </>,
         ],
       },
     ],

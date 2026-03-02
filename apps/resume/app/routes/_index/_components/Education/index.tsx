@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 import SectionTitle from "../SectionTitle";
 
 export default function Education() {
@@ -16,7 +18,7 @@ export default function Education() {
                 </p>
 
                 <p className="text-sub">
-                  <span className="mr-2">{education.period}</span>
+                  <span className="mr-2">{getPeriod(education.period)}</span>
                   {education.location}
                 </p>
               </div>
@@ -36,11 +38,21 @@ export default function Education() {
   );
 }
 
+function getPeriod(period: { start: string; end: string }) {
+  const startDate = new Date(period.start);
+  const endDate = new Date(period.end);
+
+  return `${format(startDate, "yyyy.MM")} - ${format(endDate, "yyyy.MM")}`;
+}
+
 const EDUCATION = [
   {
     title: "서강대학교",
     major: "철학과 / 컴퓨터공학과",
-    period: "2019.03 - 2023.08",
+    period: {
+      start: "2019-03-04",
+      end: "2023-08-20",
+    },
     location: "서울시 마포구",
     description: [
       { content: "우등(Cum Laude) 졸업" },
@@ -51,7 +63,10 @@ const EDUCATION = [
   {
     title: "김해외국어고등학교",
     major: "영어일본어과",
-    period: "2016.03 - 2019.02",
+    period: {
+      start: "2016-03-02",
+      end: "2019-02-15",
+    },
     location: "경상남도",
   },
 ];

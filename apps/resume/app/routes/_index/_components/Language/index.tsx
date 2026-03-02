@@ -1,11 +1,9 @@
-import { StickyHeading } from "@rhei/react";
+import SectionTitle from "../SectionTitle";
 
 export default function Language() {
   return (
     <section>
-      <StickyHeading>
-        <h2 className="text-h2 bg-normal border-sub mb-2 border-b">어학</h2>
-      </StickyHeading>
+      <SectionTitle content="Language" />
 
       <ol className="flex flex-col gap-2">
         <li>
