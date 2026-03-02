@@ -4,7 +4,7 @@ import ArrowIcon from "~/assets/ArrowIcon";
 
 export default function Header() {
   return (
-    <section className="relative mx-auto flex w-full max-w-6xl flex-col py-[8dvh]">
+    <section className="relative mx-auto flex w-full max-w-6xl flex-col py-10 md:py-16 lg:py-20">
       {/* <div className="blob-outer-container">
         <div className="blob-inner-container">
           <div className="blob" />
