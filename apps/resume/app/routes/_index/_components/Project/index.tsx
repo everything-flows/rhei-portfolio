@@ -1,4 +1,5 @@
 import { differenceInDays, format } from "date-fns";
+
 import SectionTitle from "../SectionTitle";
 
 export default function Project() {
@@ -102,7 +103,7 @@ const PROJECT = [
         title: "블로그 성능 및 검색 엔진 최적화",
         list: [
           "초기 페이지 로딩 속도를 개선하기 위해, 중요도가 낮은 UI 요소는 CSR을 적용했습니다. 추가적으로 이미지 및 폰트에 lazy loading을 적용하고, 캐싱을 통해서 렌더링 속도를 개선한 결과, 메인 페이지 Lighthouse 점수가 55점에서 95점으로 크게 개선되었습니다.",
-          "meta데이터 및 ldJson, 사이트맵 정보를 설정하여 이전 9개월 대비 일평균 클릭수 72.25%, 노출수 85.9% 성장을 이루어냈습니다.",
+          "meta데이터 및 ldJson, 사이트맵 정보를 설정하여 일평균 노출 수가 66.12에서 84.46으로 27.7% 증가했습니다.",
         ],
       },
       {
@@ -142,11 +143,7 @@ const PROJECT = [
         title: "검색 엔진 최적화",
         list: [
           "SSR 적용 및 이미지 Lazy Loading, api 분리 등을 통해 렌더링 속도 향상시켰습니다.",
-          <>
-            그 결과로{" "}
-            <strong className="font-bold">일 평균 노출수 870% 성장</strong>
-            이라는 성과를 얻었습니다.
-          </>,
+          "그 결과로 일평균 노출 수를 7.77에서 77.39(+896%)로 증가시켰습니다.",
         ],
       },
       {
