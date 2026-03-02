@@ -1,0 +1,39 @@
+@import "@rhei/ui/styles/utilities.css";
+
+@config "../../../tailwind.config.ts";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes pipeline-step-active {
+  0% {
+    box-shadow: 0 0 0 2px rgb(46 146 244);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgb(46 146 244);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgb(46 146 244);
+  }
+}
+
+.dark .pipeline-step--active {
+  animation-name: pipeline-step-active-dark;
+}
+
+@keyframes pipeline-step-active-dark {
+  0% {
+    box-shadow: 0 0 0 2px rgb(255 122 63);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgb(255 122 63);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgb(255 122 63);
+  }
+}
+
+.pipeline-step--active {
+  animation: pipeline-step-active 0.6s ease-out;
+}

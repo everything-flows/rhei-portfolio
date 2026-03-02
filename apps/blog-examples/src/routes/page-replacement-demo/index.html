@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>페이지 교체 알고리즘 FIFO vs LRU</title>
+    <script>
+      (function () {
+        const isIframe = window.parent !== window;
+        if (isIframe) {
+          window.addEventListener(
+            "message",
+            function (event) {
+              if (event.data?.type === "THEME_UPDATE") {
+                const theme = event.data.theme;
+                if (theme === "dark" || theme === "light") {
+                  document.documentElement.classList.toggle(
+                    "dark",
+                    theme === "dark",
+                  );
+                }
+              }
+            },
+            false,
+          );
+          try {
+            window.parent.postMessage({ type: "REQUEST_THEME" }, "*");
+          } catch (e) {}
+        } else {
+          const stored = localStorage.getItem("theme");
+          const cookie = document.cookie.split(";").find(function (c) {
+            return c.trim().startsWith("theme=");
+          });
+          const v = cookie ? cookie.split("=")[1] : null;
+          const theme =
+            stored === "dark" || stored === "light"
+              ? stored
+              : v === "dark" || v === "light"
+                ? v
+                : window.matchMedia?.("(prefers-color-scheme: dark)").matches
+                  ? "dark"
+                  : "light";
+          if (theme === "dark") document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-normal text-normal">
+    <div id="root"></div>
+  </body>
+</html>

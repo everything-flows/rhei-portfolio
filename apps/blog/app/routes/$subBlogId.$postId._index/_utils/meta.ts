@@ -7,6 +7,11 @@ export default function meta({ data }) {
 
   const { postInfo } = postData;
 
+  const publishedTime = toISOStringSafe(postData.createdAt);
+  const modifiedTime = toISOStringSafe(
+    postInfo.lastEditedAt ?? postInfo.createdAt,
+  );
+
   const title = `${postInfo.title} | ${META.siteName}`;
   const description = `${postInfo.subTitle} | ${META.blog.description}`;
   const thumbnail = postInfo.thumbnail || META.blog.thumbnail;
@@ -48,22 +53,12 @@ export default function meta({ data }) {
       property: "og:url",
       content: url,
     },
-    {
-      property: "article:published_time",
-      content:
-        typeof postData.createdAt === "string"
-          ? postData.createdAt
-          : new Date(postData.createdAt).toISOString(),
-    },
-    {
-      property: "article:modified_time",
-      content:
-        typeof postInfo.lastEditedAt === "string"
-          ? postInfo.lastEditedAt
-          : new Date(
-              postInfo.lastEditedAt || postInfo.createdAt,
-            ).toISOString(),
-    },
+    ...(publishedTime
+      ? [{ property: "article:published_time", content: publishedTime }]
+      : []),
+    ...(modifiedTime
+      ? [{ property: "article:modified_time", content: modifiedTime }]
+      : []),
     {
       property: "article:author",
       content: META.author,
@@ -97,8 +92,8 @@ export default function meta({ data }) {
         description,
         image: [thumbnail],
         inLanguage: "ko",
-        datePublished: postData.createdAt,
-        dateModified: postInfo.lastEditedAt || postInfo.createdAt,
+        ...(publishedTime && { datePublished: publishedTime }),
+        ...(modifiedTime && { dateModified: modifiedTime }),
         author: {
           "@type": "Person",
           name: META.author,
@@ -120,4 +115,13 @@ export default function meta({ data }) {
       },
     },
   ];
+}
+
+function toISOStringSafe(value: unknown): string | undefined {
+  if (value == null) {
+    return undefined;
+  }
+  const date =
+    typeof value === "string" ? new Date(value) : new Date(value as number);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
 }

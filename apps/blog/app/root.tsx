@@ -1,9 +1,11 @@
 import {
+  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteError,
   useRouteLoaderData,
 } from "@remix-run/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -15,6 +17,7 @@ import "./tailwind.css";
 import "../../../packages/ui/styles/utilities.css"; // FIXME
 import GoogleAnalytics from "./_components/GoogleAnalytics";
 import CategorySidebar from "./components/CategorySidebar";
+import NotFoundPage from "./components/NotFoundPage";
 
 export { loader } from "./_utils/loader";
 export { meta } from "./_utils/meta";
@@ -74,4 +77,15 @@ export default function App() {
       <ReactQueryDevtools initialIsOpen={false} buttonPosition="top-left" />
     </QueryClientProvider>
   );
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  const isNotFound = isRouteErrorResponse(error) && error.status === 404;
+
+  if (isNotFound) {
+    return <NotFoundPage />;
+  }
+
+  throw error;
 }
