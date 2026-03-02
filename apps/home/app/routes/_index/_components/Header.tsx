@@ -37,18 +37,10 @@ export default function Header() {
 
       <h2 className="text-display-sub">FRONT-END 개발자</h2>
 
-      <ul className="mt-6 flex list-disc flex-col gap-2 text-pretty ps-6 text-[clamp(1.2rem,3vw,1.5rem)] leading-[1.2]">
-        <li>
-          인턴, 창업 동아리 활동을 통해{" "}
-          <strong className="font-extrabold">빠르고 정확하게 MVP를 개발</strong>
-          한 경험이 있습니다
-        </li>
-        <li>
-          CS 지식을 활용하여{" "}
-          <strong className="font-extrabold">문제를 해결</strong>하는 것을
-          좋아합니다.
-        </li>
-      </ul>
+      <p className="mt-6 flex flex-col gap-2 text-pretty text-[clamp(1.2rem,3vw,1.5rem)] leading-[1.2]">
+        반복되는 UI와 인터랙션을 규칙화해 일관된 사용자 경험을 만들고, 개발자가
+        실수 없이 사용할 수 있도록 구조와 문서로 풀어내는 데 관심이 많습니다.
+      </p>
     </section>
   );
 }
