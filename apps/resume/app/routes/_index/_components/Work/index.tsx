@@ -87,7 +87,7 @@ const WORK = [
       end: "2026-02-28",
     },
     location: "서울시 강남구",
-    position: "Frontend Developer Assistant | 인터랙션팀",
+    position: "Frontend Developer Assistant (단기계약직) | 인터랙션팀",
     description:
       "사용자 인터랙션에 사용되는 컴포넌트와 애니메이션 라이브러리를 유지보수하며, 디자인 툴과 서비스 코드 사이의 연결을 개선했습니다.",
     stack: ["TypeScript", "React.js"],
