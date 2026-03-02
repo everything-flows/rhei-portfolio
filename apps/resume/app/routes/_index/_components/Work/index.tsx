@@ -12,9 +12,9 @@ export default function Work() {
           <li key={work.title}>
             <article className="print-break-inside-avoid">
               <section className="flex flex-col lg:flex-row lg:items-end lg:justify-between">
-                <section className="flex items-center gap-3">
+                <section className="flex items-start gap-3">
                   <img
-                    className="aspect-square size-12 rounded-xl border border-gray-200 dark:border-gray-400"
+                    className="mt-[2px] aspect-square size-12 rounded-xl border border-gray-200 dark:border-gray-400"
                     src={work.logo}
                     alt={work.title}
                   />
