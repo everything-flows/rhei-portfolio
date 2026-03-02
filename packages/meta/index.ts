@@ -8,7 +8,7 @@ export const META = {
   home: {
     title: "프론트엔드 개발자 포트폴리오",
     description:
-      "프론트엔드 개발자 강다혜의 포트폴리오입니다. 프로젝트와 이력서를 확인하세요.",
+      "프론트엔드 개발자 강다혜의 포트폴리오입니다. 모노레포로 프로젝트, 이력서, 실험실까지 하나의 도메인에서 확인할 수 있습니다.",
     thumbnail:
       "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-home/thumbnail/mainThumbnail.webp",
   },
