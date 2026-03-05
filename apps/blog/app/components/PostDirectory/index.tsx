@@ -65,7 +65,7 @@ export default function PostDirectory({
                         {post.title}
                       </h2>
                       <p
-                        className="text-responsive-p text-gray-500 dark:text-gray-300"
+                        className="text-responsive-p text-gray-500"
                         style={{
                           viewTransitionName: `list-post-subtitle-${post.id}`,
                         }}

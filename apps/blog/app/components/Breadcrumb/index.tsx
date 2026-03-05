@@ -47,7 +47,7 @@ function Item({ link, title }: { link: string; title: string }) {
   return (
     <Link
       to={link}
-      className="hover:text-brand overflow-hidden text-ellipsis whitespace-nowrap break-keep text-gray-400 dark:text-gray-300"
+      className="hover:text-brand overflow-hidden text-ellipsis whitespace-nowrap break-keep text-gray-500"
     >
       {title}
     </Link>

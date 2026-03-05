@@ -46,7 +46,7 @@ export default function PostHeader({
       </h1>
       {subTitle && (
         <h2
-          className="text-responsive-p break-keep text-gray-400 dark:text-gray-300"
+          className="text-responsive-p break-keep text-gray-500"
           style={
             getSubtitleTransitionName()
               ? { viewTransitionName: getSubtitleTransitionName() }

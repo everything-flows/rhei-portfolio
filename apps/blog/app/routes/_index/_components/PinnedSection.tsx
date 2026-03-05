@@ -61,7 +61,7 @@ function FirstPost({ post }: { post: Document }) {
               {post.title}
             </h3>
             <p
-              className="text-responsive-p text-gray-400 dark:text-gray-300"
+              className="text-responsive-p text-gray-500"
               style={{ viewTransitionName: `pinned-post-subtitle-${post.id}` }}
             >
               {post.subTitle}
@@ -126,7 +126,7 @@ function PostCard({
                 {post.title}
               </h3>
               <p
-                className="text-p line-clamp-2 break-all text-gray-400 dark:text-gray-300"
+                className="text-p line-clamp-2 break-all text-gray-500"
                 style={{
                   viewTransitionName: `pinned-post-subtitle-${post.id}`,
                 }}
