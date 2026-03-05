@@ -9,9 +9,7 @@ export default function Info() {
         />
         <div>
           <h1 className="text-h2">강다혜</h1>
-          <p className="text-p text-gray-400 dark:text-gray-400">
-            FRONT-END 개발자
-          </p>
+          <p className="text-p text-gray-500">FRONT-END 개발자</p>
         </div>
       </div>
 

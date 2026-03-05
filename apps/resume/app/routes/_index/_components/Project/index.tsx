@@ -21,13 +21,11 @@ export default function Project() {
                         | {project.description}
                       </span>
                     </h3>
-                    <p className="text-gray-400 dark:text-gray-300">
-                      {project.position}
-                    </p>
+                    <p className="text-gray-500">{project.position}</p>
                   </div>
                 </section>
 
-                <p className="whitespace-nowrap text-[1rem] text-gray-300 dark:text-gray-400">
+                <p className="whitespace-nowrap text-[1rem] text-gray-500">
                   {getPeriod(project.period)}
                 </p>
               </section>

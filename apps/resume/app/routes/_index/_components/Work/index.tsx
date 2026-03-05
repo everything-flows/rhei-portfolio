@@ -20,13 +20,11 @@ export default function Work() {
                   />
                   <div>
                     <h3 className="font-bold">{work.title}</h3>
-                    <p className="text-gray-400 dark:text-gray-300">
-                      {work.position}
-                    </p>
+                    <p className="text-gray-500">{work.position}</p>
                   </div>
                 </section>
 
-                <p className="whitespace-nowrap text-[1rem] text-gray-300 dark:text-gray-400">
+                <p className="whitespace-nowrap text-[1rem] text-gray-500">
                   {getPeriod(work.period)}
                 </p>
               </section>
