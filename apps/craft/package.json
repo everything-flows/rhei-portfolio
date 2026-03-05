@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@rhei/meta": "file:../../packages/meta",
-    "@rhei/react": "file:../../packages/react",
     "@rhei/ui": "file:../../packages/ui",
     "@supabase/ssr": "^0.6.1",
     "motion": "^12.23.22",

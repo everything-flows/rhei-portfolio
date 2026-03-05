@@ -26,7 +26,6 @@
 │   ├── blog # 블로그
 │   ├── resume # 실험실
 │   ├── craft # 이력서
-│   └── debounce-throttle # 디바운스&스로틀 예시
 └── packages
     ├── ui # 공통 UI 컴포넌트
     └── meta # SEO 및 공통 메타 정보
@@ -40,14 +39,13 @@
   - [apps/blog](./apps/blog): `Remix`, `Zustand`
   - [apps/resume](./apps/resume): `Remix`
   - [apps/craft](./apps/craft): `Next.js`
-  - [apps/debounce-throttle](./apps/craft): `Vanilla JS`
 - **스타일링**: `Tailwind`
 - **DB & 인증**: `Supabase`
 - **배포**: `Cloudflare Pages`
 
 ## 🚀 배포 구조
 
-Cloudflare Pages Functions를 통해 다음과 같이 요청을 프록시합니다:
+메인 페이지, 블로그, 이력서, 실험실은 각각 배포되며, Cloudflare Pages Functions를 통해 다음과 같이 요청을 프록시합니다.
 
 - `/` → `apps/home`
 - `/blog` → `apps/blog`

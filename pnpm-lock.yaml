@@ -36,9 +36,6 @@ importers:
       '@rhei/meta':
         specifier: file:../../packages/meta
         version: link:../../packages/meta
-      '@rhei/react':
-        specifier: file:../../packages/react
-        version: link:../../packages/react
       '@rhei/ui':
         specifier: file:../../packages/ui
         version: link:../../packages/ui
@@ -236,9 +233,6 @@ importers:
       '@rhei/meta':
         specifier: file:../../packages/meta
         version: link:../../packages/meta
-      '@rhei/react':
-        specifier: file:../../packages/react
-        version: file:packages/react(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@rhei/ui':
         specifier: file:../../packages/ui
         version: file:packages/ui(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -370,9 +364,6 @@ importers:
       '@rhei/meta':
         specifier: workspace:*
         version: link:../../packages/meta
-      '@rhei/react':
-        specifier: workspace:*
-        version: link:../../packages/react
       '@rhei/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -479,9 +470,6 @@ importers:
       '@rhei/meta':
         specifier: workspace:*
         version: link:../../packages/meta
-      '@rhei/react':
-        specifier: workspace:*
-        version: link:../../packages/react
       '@rhei/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -569,24 +557,6 @@ importers:
         version: 4.9.1(@cloudflare/workers-types@4.20250409.0)
 
   packages/meta: {}
-
-  packages/react:
-    devDependencies:
-      '@types/react':
-        specifier: ^18.2.20
-        version: 18.3.20
-      '@types/react-dom':
-        specifier: ^18.2.7
-        version: 18.3.6(@types/react@18.3.20)
-      react:
-        specifier: ^18.2.0
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.3.1(react@18.3.1)
-      typescript:
-        specifier: ^5.1.6
-        version: 5.8.3
 
   packages/ui:
     dependencies:
@@ -2264,12 +2234,6 @@ packages:
 
   '@remix-run/web-stream@1.1.0':
     resolution: {integrity: sha512-KRJtwrjRV5Bb+pM7zxcTJkhIqWWSy+MYsIxHK+0m5atcznsf15YwUBWHWulZerV2+vvHH1Lp1DD7pw6qKW8SgA==}
-
-  '@rhei/react@file:packages/react':
-    resolution: {directory: packages/react, type: directory}
-    peerDependencies:
-      react: ^18.2.0
-      react-dom: ^18.2.0
 
   '@rhei/ui@file:packages/ui':
     resolution: {directory: packages/ui, type: directory}
@@ -9340,11 +9304,6 @@ snapshots:
   '@remix-run/web-stream@1.1.0':
     dependencies:
       web-streams-polyfill: 3.3.3
-
-  '@rhei/react@file:packages/react(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
-    dependencies:
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
 
   '@rhei/ui@file:packages/ui(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:

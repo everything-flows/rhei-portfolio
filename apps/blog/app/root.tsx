@@ -14,7 +14,7 @@ import { useState } from "react";
 
 import Font from "./_components/Font";
 import "./tailwind.css";
-import "../../../packages/ui/styles/utilities.css"; // FIXME
+import "../../../packages/ui/utilities.css"; // FIXME
 import GoogleAnalytics from "./_components/GoogleAnalytics";
 import CategorySidebar from "./components/CategorySidebar";
 import NotFoundPage from "./components/NotFoundPage";
