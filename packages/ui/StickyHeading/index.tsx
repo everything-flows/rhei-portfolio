@@ -13,7 +13,7 @@ import getAncestorHeadingHeights from "./getAncestorHeadingHeights";
 export default function StickyHeading({
   children,
 }: {
-  children: React.ReactElement;
+  children: React.ReactElement<React.HTMLAttributes<HTMLElement>>;
 }) {
   const ref = useRef<HTMLElement>(null);
   const [top, setTop] = useState(0);
