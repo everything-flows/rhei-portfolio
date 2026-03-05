@@ -8,7 +8,7 @@ import {
 } from "@remix-run/react";
 
 import "./tailwind.css";
-import "@rhei/ui/styles/utilities.css";
+import "@rhei/ui/utilities.css";
 
 import Font from "./_components/Font";
 import GoogleAnalytics from "./_components/GoogleAnalytics";
