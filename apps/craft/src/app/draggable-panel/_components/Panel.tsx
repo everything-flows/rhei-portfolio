@@ -133,7 +133,8 @@ export default function Panel({
         });
 
         if (closestPanel) {
-          const rect = (closestPanel as Element).getBoundingClientRect();
+          const panel = closestPanel as Element;
+          const rect = panel.getBoundingClientRect();
           const x = touch.clientX - rect.left;
           const y = touch.clientY - rect.top;
           const width = rect.width;
@@ -147,7 +148,7 @@ export default function Panel({
             position = y < height / 2 ? "top" : "bottom";
           }
 
-          const targetId = closestPanel.getAttribute("data-panel-id");
+          const targetId = panel.getAttribute("data-panel-id");
           if (targetId && targetId !== id) {
             setLocalDragState((prev) => ({
               ...prev,
@@ -155,10 +156,9 @@ export default function Panel({
               position,
             }));
 
-            // globalDragState도 업데이트하기 위해 onDragOver 호출
             const fakeEvent = {
               preventDefault: () => {},
-              currentTarget: closestPanel,
+              currentTarget: panel,
               clientX: touch.clientX,
               clientY: touch.clientY,
             } as unknown as React.DragEvent;
