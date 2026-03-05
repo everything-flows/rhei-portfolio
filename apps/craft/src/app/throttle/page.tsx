@@ -24,7 +24,7 @@ const EXAMPLE_LIST = [
   },
 ];
 
-function Card({ data }: { data: any }) {
+function Card({ data }: { data: (typeof EXAMPLE_LIST)[number] }) {
   const { title, description, src, img } = data;
 
   return (

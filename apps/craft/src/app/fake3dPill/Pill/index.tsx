@@ -1,7 +1,7 @@
 "use client";
 
-import PillElement from "./PillElement";
 import { PillContext } from "./PillContext";
+import PillElement from "./PillElement";
 
 export default function Pill({
   width = "4rem",

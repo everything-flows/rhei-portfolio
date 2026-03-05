@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+
 import { DragState, SplitNode } from "../type";
 import Wrapper from "./Wrapper";
 
@@ -24,7 +25,7 @@ export default function Split({
   onRatioChange: (id: string, ratio: number) => void;
 }) {
   const { left, right, orientation, id, ratio } = node;
-  const [isHover, setIsHover] = useState(false);
+  const [_isHover, setIsHover] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [draggingSplitId, setDraggingSplitId] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
