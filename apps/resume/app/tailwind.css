@@ -54,7 +54,7 @@
   }
 
   .text-sub {
-    @apply text-gray-300 dark:text-gray-300;
+    @apply text-gray-500;
     word-break: keep-all;
   }
 }
