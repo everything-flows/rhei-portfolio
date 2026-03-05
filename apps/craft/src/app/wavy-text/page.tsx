@@ -1,6 +1,6 @@
+import { Footer } from "@rhei/ui";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { Footer } from "@rhei/ui";
 
 import { type Example, EXAMPLE_LIST } from "./constants";
 import WavyText from "./WavyText";

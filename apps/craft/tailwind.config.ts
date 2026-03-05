@@ -1,5 +1,6 @@
-import type { Config } from "tailwindcss";
 import preset from "../../packages/ui/tailwind-preset";
+
+import type { Config } from "tailwindcss";
 
 export default {
   presets: [preset as Config],

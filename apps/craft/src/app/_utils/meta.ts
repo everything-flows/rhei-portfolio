@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
 import { META } from "@rhei/meta";
+
+import type { Metadata } from "next";
 
 const title = `${META.craft.title} | ${META.siteName}`;
 const description = META.craft.description;

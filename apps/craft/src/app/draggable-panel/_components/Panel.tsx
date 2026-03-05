@@ -133,7 +133,7 @@ export default function Panel({
         });
 
         if (closestPanel) {
-          const rect = closestPanel.getBoundingClientRect();
+          const rect = (closestPanel as Element).getBoundingClientRect();
           const x = touch.clientX - rect.left;
           const y = touch.clientY - rect.top;
           const width = rect.width;

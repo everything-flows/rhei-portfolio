@@ -1,4 +1,5 @@
 import { createClient } from "@/utils/supabase-server";
+
 import GNBClientWrapper from "./index.client";
 
 export default async function GNBWrapper() {
