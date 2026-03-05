@@ -75,7 +75,7 @@ function constructWavyTree({
   }
 
   if (React.isValidElement(node)) {
-    const element = node as ReactElement<Record<string, unknown>>;
+    const element = node as ReactElement<{ children?: ReactNode }>;
     const { type, props } = element;
     const { retNode, textLength } = constructWavyTree({
       node: props.children,
