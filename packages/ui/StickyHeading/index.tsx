@@ -73,12 +73,12 @@ export default function StickyHeading({
   }
 
   return cloneElement(children, {
-    ref,
+    ref: ref as React.Ref<HTMLElement>,
     style: {
       ...(children.props.style || {}),
       position: "sticky",
       top: `${top}px`,
       zIndex,
     },
-  });
+  } as React.HTMLAttributes<HTMLElement> & { ref: React.Ref<HTMLElement> });
 }
