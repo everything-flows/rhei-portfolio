@@ -1,4 +1,4 @@
-import { StickyHeading } from "@rhei/react";
+import { StickyHeading } from "@rhei/ui";
 
 export default function SectionTitle({ content }: { content: string }) {
   return (
