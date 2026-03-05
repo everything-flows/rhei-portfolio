@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 
-import { bounceTransition, tapAnimation } from "@/constants/motion";
+import { bounceTransition, tapAnimation } from "@rhei/ui";
 
 interface Card {
   title: string;

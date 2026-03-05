@@ -2,7 +2,7 @@ import { Link, useSearchParams } from "@remix-run/react";
 import { motion } from "motion/react";
 
 import RightChevronIcon from "~/assets/RightChevronIcon";
-import { bounceTransition, tapAnimation } from "~/constants/motion";
+import { bounceTransition, tapAnimation } from "@rhei/ui";
 
 export default function Pagination({
   currentPage,

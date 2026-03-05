@@ -1,7 +1,7 @@
 import { Link } from "@remix-run/react";
 import { motion } from "motion/react";
 
-import { bounceTransition, tapAnimation } from "~/constants/motion";
+import { bounceTransition, tapAnimation } from "@rhei/ui";
 import { Gradient } from "~/routes/_index/_components/PinnedSection";
 import type { Document } from "~/types/post";
 import convertUrl from "~/utils/convertUrl";
