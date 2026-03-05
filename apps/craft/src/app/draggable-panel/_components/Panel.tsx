@@ -1,4 +1,5 @@
 import { useCallback, useState, useRef, useEffect } from "react";
+
 import { DragState, PanelNode } from "../type";
 
 export default function Panel({
@@ -113,10 +114,10 @@ export default function Panel({
       if (isDraggingTouch) {
         // 현재 터치 위치에서 가장 가까운 패널 찾기
         const allPanels = document.querySelectorAll("[data-panel-id]");
-        let closestPanel: any = null;
+        let closestPanel: Element | null = null;
         let closestDistance = Infinity;
 
-        allPanels.forEach((panel: any) => {
+        allPanels.forEach((panel) => {
           const rect = panel.getBoundingClientRect();
           const centerX = rect.left + rect.width / 2;
           const centerY = rect.top + rect.height / 2;
@@ -160,7 +161,7 @@ export default function Panel({
               currentTarget: closestPanel,
               clientX: touch.clientX,
               clientY: touch.clientY,
-            } as any;
+            } as unknown as React.DragEvent;
             onDragOver(fakeEvent, targetId);
           }
         }
