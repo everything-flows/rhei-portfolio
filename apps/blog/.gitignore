@@ -6,3 +6,6 @@ node_modules
 .dev.vars
 
 .wrangler
+
+# 마이그레이션/트리 스크립트 출력
+scripts/output/*.txt
