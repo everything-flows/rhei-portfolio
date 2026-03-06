@@ -2,6 +2,7 @@ import { queryOptions } from "@tanstack/react-query";
 import { groupBy } from "es-toolkit";
 
 import {
+  DEFAULT_SUB_BLOG,
   POST_SUMMARY_ATTR,
   POST_TABLE,
   POST_TAG_TABLE,
@@ -12,8 +13,6 @@ import type { Database } from "~/types/supabase";
 import snakeToCamel from "~/utils/snakeToCamel";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
-
-const SUB_BLOG_ID = "cse";
 
 const PINNED_POST_IDS = [
   "debounce-and-throttle",
@@ -48,7 +47,7 @@ async function getPinnedPostList({
     supabaseClient
       .from(POST_TABLE)
       .select(POST_SUMMARY_ATTR)
-      .eq("sub_blog", SUB_BLOG_ID)
+      .eq("sub_blog", DEFAULT_SUB_BLOG)
       .in("id", [...PINNED_POST_IDS])
       .returns<Record<string, unknown>[]>(),
     supabaseClient

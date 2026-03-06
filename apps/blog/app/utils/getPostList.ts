@@ -1,4 +1,8 @@
-import { POST_SUMMARY_ATTR, POST_TABLE } from "~/constants/supabase";
+import {
+  DEFAULT_SUB_BLOG,
+  POST_SUMMARY_ATTR,
+  POST_TABLE,
+} from "~/constants/supabase";
 import type { Document } from "~/types/post";
 import type { Database } from "~/types/supabase";
 
@@ -12,17 +16,26 @@ export async function getPostList({
   showAll = true,
   page,
   pageSize = 10,
+  excludeDatabase = false,
+  subBlog = DEFAULT_SUB_BLOG,
 }: {
   supabaseClient: SupabaseClient<Database, "public">;
   showAll?: boolean;
   page?: number;
   pageSize?: number;
+  excludeDatabase?: boolean;
+  subBlog?: string;
 }): Promise<Document[] | { postList: Document[]; totalCount: number }> {
-  const baseQuery = supabaseClient
+  let baseQuery = supabaseClient
     .from(POST_TABLE)
     .select(POST_SUMMARY_ATTR, { count: "exact" })
+    .eq("sub_blog", subBlog)
     .in("show_main", showAll ? [true, false] : [true])
     .order("created_at", { ascending: false });
+
+  if (excludeDatabase) {
+    baseQuery = baseQuery.neq("type", "database");
+  }
 
   const query =
     page !== undefined

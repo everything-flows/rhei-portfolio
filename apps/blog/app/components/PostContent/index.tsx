@@ -141,11 +141,16 @@ function renderNodes(node, index) {
         }
 
         case "img": {
+          const { alt, width } = parseImageAlt(node.properties.alt);
+
           return (
             <img
               key={index}
-              className="border-sub mx-auto my-4 w-full rounded-md border sm:w-[80dvw] md:w-[75dvw] lg:w-[60%]"
-              alt={node.properties.alt}
+              className={`border-sub mx-auto my-4 rounded-md border ${
+                width ? "" : "w-full sm:w-[80dvw] md:w-[75dvw] lg:w-[60%]"
+              }`}
+              style={width ? { width } : undefined}
+              alt={alt}
               src={convertUrl(node.properties.src)}
               loading="lazy"
             />
@@ -382,4 +387,13 @@ function renderNodes(node, index) {
       }
     }
   }
+}
+
+function parseImageAlt(rawAlt: string): { alt: string; width?: string } {
+  if (!rawAlt?.includes("|")) return { alt: rawAlt };
+
+  const [alt, widthPart] = rawAlt.split("|").map((s) => s.trim());
+  if (!widthPart) return { alt };
+
+  return { alt, width: widthPart };
 }

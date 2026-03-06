@@ -1,3 +1,5 @@
+export const DEFAULT_SUB_BLOG = "cse";
+
 export const POST_TABLE = "posts";
 export const TAG_TABLE = "tags";
 export const POST_TAG_TABLE = "posts_tags";
