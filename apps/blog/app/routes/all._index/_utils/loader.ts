@@ -41,6 +41,7 @@ export default async function loader({ context, request }: LoaderFunctionArgs) {
     supabaseClient,
     page,
     pageSize: PAGE_SIZE,
+    excludeDatabase: true,
   });
 
   if (Array.isArray(result)) {
