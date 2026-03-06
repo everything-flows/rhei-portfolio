@@ -1,14 +1,14 @@
 /**
  * 트리 구조 파일을 파싱해 Supabase posts 테이블에 반영하는 마이그레이션 스크립트.
  * - 없던 포스트: type=database, created_at/last_edited_at=오늘, insert
- * - 기존 포스트: parent_id, custom_order, sub_title(부제목) 필요 시 update
+ * - 기존 포스트: parent_id, custom_order, sub_title(부제목), emoji(이모지) 필요 시 update
  * - 트리 한 줄 형식: "제목 — 부제목 (sub_blog) [id] | tag_id, ..." (태그는 선택)
  *
  * 보장: posts 테이블에는 delete를 호출하지 않습니다. 있던 글은 절대 삭제되지 않습니다.
  * (posts_tags는 트리 파일의 태그 목록과 맞추기 위해 추가/삭제할 수 있음)
  *
  * 실행: pnpm run migrate:tree [tree-file-path]
- * 기본 tree 파일: scripts/tree-to-migrate.txt
+ * 기본 tree 파일: scripts/output/post-to-be.txt
  */
 
 import { readFile } from "node:fs/promises";
@@ -141,7 +141,7 @@ async function main() {
 
   const __dirname = dirname(fileURLToPath(import.meta.url));
   const treePath =
-    process.argv[2] ?? join(__dirname, "tree-to-migrate.txt");
+    process.argv[2] ?? join(__dirname, "output", "post-to-be.txt");
   const treeContent = await readFile(treePath, "utf-8").catch((e) => {
     console.error("트리 파일을 읽을 수 없습니다:", treePath, e.message);
     process.exit(1);
@@ -163,11 +163,12 @@ async function main() {
     parent_id: string | null;
     custom_order: number | null;
     sub_title: string | null;
+    emoji: string | null;
   };
 
   const { data: existingRows } = await supabase
     .from(POST_TABLE)
-    .select("id, parent_id, custom_order, sub_title")
+    .select("id, parent_id, custom_order, sub_title, emoji")
     .returns<ExistingRow[]>();
 
   const existingMap = new Map<string, ExistingRow>(
@@ -210,12 +211,14 @@ async function main() {
         parent_id: node.parentId,
         custom_order: node.customOrder,
         sub_title: node.subTitle,
+        emoji: node.emoji,
       });
     } else {
       const needUpdate =
         existing.parent_id !== node.parentId ||
         (existing.custom_order ?? -1) !== node.customOrder ||
-        (existing.sub_title ?? null) !== (node.subTitle ?? null);
+        (existing.sub_title ?? null) !== (node.subTitle ?? null) ||
+        (existing.emoji ?? null) !== (node.emoji ?? null);
       if (needUpdate) {
         const { error } = await supabase
           .from(POST_TABLE)
@@ -223,6 +226,7 @@ async function main() {
             parent_id: node.parentId,
             custom_order: node.customOrder,
             sub_title: node.subTitle,
+            emoji: node.emoji,
           })
           .eq("id", node.id);
         if (error) {

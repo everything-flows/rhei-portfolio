@@ -1,7 +1,7 @@
 /**
  * Supabase posts 테이블에서 parent_id 관계를 읽어 트리 구조를 파일로 저장하는 스크립트.
  * 실행: pnpm run tree (apps/blog/.env 또는 .dev.vars의 SUPABASE_URL, SUPABASE_ANON_KEY 사용)
- * 결과: scripts/output/post-tree.txt, scripts/output/tags.txt (태그 테이블만)
+ * 결과: scripts/output/post-as-is.txt, scripts/output/tags.txt (태그 테이블만)
  */
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
@@ -208,7 +208,7 @@ async function main() {
   const outputDir = join(__dirname, "output");
   await mkdir(outputDir, { recursive: true });
 
-  const txtPath = join(outputDir, "post-tree.txt");
+  const txtPath = join(outputDir, "post-as-is.txt");
   const tagsOnlyTxtPath = join(outputDir, "tags.txt");
 
   const header =
