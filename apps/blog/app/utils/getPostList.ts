@@ -12,17 +12,23 @@ export async function getPostList({
   showAll = true,
   page,
   pageSize = 10,
+  excludeDatabase = false,
 }: {
   supabaseClient: SupabaseClient<Database, "public">;
   showAll?: boolean;
   page?: number;
   pageSize?: number;
+  excludeDatabase?: boolean;
 }): Promise<Document[] | { postList: Document[]; totalCount: number }> {
-  const baseQuery = supabaseClient
+  let baseQuery = supabaseClient
     .from(POST_TABLE)
     .select(POST_SUMMARY_ATTR, { count: "exact" })
     .in("show_main", showAll ? [true, false] : [true])
     .order("created_at", { ascending: false });
+
+  if (excludeDatabase) {
+    baseQuery = baseQuery.neq("type", "database");
+  }
 
   const query =
     page !== undefined
