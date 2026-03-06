@@ -4,6 +4,8 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
+    "tree": "tsx scripts/build-post-tree.ts",
+    "migrate:tree": "tsx scripts/migrate-post-tree.ts",
     "build": "remix vite:build",
     "deploy": "wrangler pages deploy ./build/client",
     "dev": "remix vite:dev",
@@ -60,6 +62,7 @@
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^3.4.4",
+    "tsx": "^4.19.2",
     "typescript": "^5.1.6",
     "vite": "^6.0.0",
     "vite-tsconfig-paths": "^4.2.1",
