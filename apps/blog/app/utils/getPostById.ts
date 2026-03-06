@@ -1,4 +1,5 @@
 import {
+  DEFAULT_SUB_BLOG,
   POST_DETAIL_ATTR,
   POST_SUMMARY_ATTR,
   POST_TABLE,
@@ -13,7 +14,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 
 export async function getPostById({
   supabaseClient,
-  subBlogId = "cse",
+  subBlogId = DEFAULT_SUB_BLOG,
   postId,
   isDetail = true,
 }: {

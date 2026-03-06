@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 
 import fetchCategoryData from "~/_utils/fetchCategoryData";
+import { DEFAULT_SUB_BLOG } from "~/constants/supabase";
 import useCategoryStore from "~/stores/category";
 
 export default function useFetchCategory() {
@@ -11,7 +12,7 @@ export default function useFetchCategory() {
   const { supabaseCredential } = useRouteLoaderData("root");
   const { setCategory } = useCategoryStore();
 
-  const subBlogId = params.subBlogId || "cse";
+  const subBlogId = params.subBlogId ?? DEFAULT_SUB_BLOG;
 
   const supabase = createBrowserClient(
     supabaseCredential.url,
