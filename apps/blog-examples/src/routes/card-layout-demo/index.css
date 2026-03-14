@@ -1,0 +1,7 @@
+@import "@rhei/ui/utilities.css";
+
+@config "../../../tailwind.config.ts";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
