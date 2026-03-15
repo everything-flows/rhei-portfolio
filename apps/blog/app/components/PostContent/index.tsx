@@ -193,7 +193,7 @@ function MobileToc({
   }, [isOpen]);
 
   return (
-    <div className="relative sticky top-4 z-10 mb-4 lg:hidden">
+    <div className="relative sticky top-4 z-10 mb-4 flex justify-end lg:hidden">
       <motion.button
         ref={buttonRef}
         onClick={() => setIsOpen(!isOpen)}
@@ -217,8 +217,8 @@ function MobileToc({
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.95, opacity: 0, y: -4 }}
             transition={{ duration: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ transformOrigin: "top left" }}
-            className="custom-scrollbar absolute z-10 mt-2 max-h-[60vh] w-full overflow-y-auto rounded-xl border bg-white/80 p-4 backdrop-blur-md dark:bg-neutral-900/80"
+            style={{ transformOrigin: "top right" }}
+            className="custom-scrollbar absolute right-0 z-10 mt-2 max-h-[60vh] w-full overflow-y-auto rounded-xl border bg-white/80 p-4 backdrop-blur-md dark:bg-neutral-900/80"
           >
             <TocList
               tocItems={tocItems}
