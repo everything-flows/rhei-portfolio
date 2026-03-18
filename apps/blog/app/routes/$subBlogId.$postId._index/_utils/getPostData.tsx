@@ -41,7 +41,7 @@ export default async function getPostData({
   if (isNormalPost(postInfo)) {
     return {
       postInfo,
-      postContent: await parse("# Table Of Contents\n" + postInfo.content),
+      postContent: await parse(postInfo.content),
     };
   }
 

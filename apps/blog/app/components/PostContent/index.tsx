@@ -1,12 +1,36 @@
 import { Link } from "@remix-run/react";
-import { ReactElement } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { ReactElement, ReactNode, useEffect, useRef, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 import Highlight from "~/components/Highlight";
+import { bounceTransition, tapAnimation } from "~/constants/motion";
 import convertUrl from "~/utils/convertUrl";
 
 import ThemedIframe from "./ThemedIframe";
+
+type TocItem = { level: number; id: string; text: string };
+
+function extractToc(
+  children: { type: string; tagName?: string; children?: unknown[] }[],
+): TocItem[] {
+  const items: TocItem[] = [];
+  for (const child of children) {
+    if (
+      child.type === "element" &&
+      child.tagName &&
+      ["h1", "h2", "h3"].includes(child.tagName)
+    ) {
+      items.push({
+        level: parseInt(child.tagName[1]),
+        id: getId(child.children),
+        text: solve(child.children),
+      });
+    }
+  }
+  return items;
+}
 
 function getId(child) {
   return solve(child)
@@ -39,6 +63,176 @@ function solve(child) {
     .join("");
 }
 
+function useActiveHeadings(tocItems: TocItem[]) {
+  const [activeIds, setActiveIds] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const calculate = () => {
+      const viewTop = window.scrollY;
+      const viewBottom = window.scrollY + window.innerHeight;
+
+      const headings = tocItems
+        .map(({ id, level }) => {
+          const el = document.getElementById(id);
+          if (!el) return null;
+          return { id, level, top: el.getBoundingClientRect().top + window.scrollY };
+        })
+        .filter(Boolean) as { id: string; level: number; top: number }[];
+
+      const active = new Set<string>();
+
+      headings.forEach(({ id, level, top }, i) => {
+        // 구역: 이 헤딩부터 바로 다음 헤딩(레벨 무관)까지
+        const sectionBottom =
+          i < headings.length - 1
+            ? headings[i + 1].top
+            : document.documentElement.scrollHeight;
+
+        if (top < viewBottom && sectionBottom > viewTop + 1) {
+          active.add(id);
+        }
+      });
+
+      setActiveIds(active);
+    };
+
+    calculate();
+    window.addEventListener("scroll", calculate, { passive: true });
+    window.addEventListener("resize", calculate, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", calculate);
+      window.removeEventListener("resize", calculate);
+    };
+  }, [tocItems]);
+
+  return activeIds;
+}
+
+function TocList({
+  tocItems,
+  minLevel,
+  activeIds,
+  onClickItem,
+}: {
+  tocItems: TocItem[];
+  minLevel: number;
+  activeIds: Set<string>;
+  onClickItem?: () => void;
+}) {
+  return (
+    <ul>
+      {tocItems.map((item, i) => (
+        <li key={i} style={{ paddingLeft: `${(item.level - minLevel) * 12}px` }}>
+          <Link
+            to={`#${item.id}`}
+            className={`text-sm ${activeIds.has(item.id) ? "text-brand font-semibold" : ""}`}
+            onClick={onClickItem}
+          >
+            {item.text}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function PostTocLayout({
+  tocItems,
+  minLevel,
+  mainChildren,
+}: {
+  tocItems: TocItem[];
+  minLevel: number;
+  mainChildren: ReactNode[];
+}) {
+  const activeIds = useActiveHeadings(tocItems);
+
+  return (
+    <div className="flex gap-8">
+      <div className="min-w-0 flex-1">
+        <MobileToc tocItems={tocItems} minLevel={minLevel} activeIds={activeIds} />
+        {mainChildren}
+      </div>
+      <aside className="hidden w-[280px] shrink-0 pt-6 lg:block">
+        <div className="custom-scrollbar sticky top-8 max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <p className="mb-2 font-bold">Table of Contents</p>
+          <TocList tocItems={tocItems} minLevel={minLevel} activeIds={activeIds} />
+        </div>
+      </aside>
+    </div>
+  );
+}
+
+function MobileToc({
+  tocItems,
+  minLevel,
+  activeIds,
+}: {
+  tocItems: TocItem[];
+  minLevel: number;
+  activeIds: Set<string>;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        buttonRef.current &&
+        panelRef.current &&
+        !buttonRef.current.contains(e.target as Node) &&
+        !panelRef.current.contains(e.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
+
+  return (
+    <div className="relative sticky top-4 z-10 mb-4 flex justify-end lg:hidden">
+      <motion.button
+        ref={buttonRef}
+        onClick={() => setIsOpen(!isOpen)}
+        whileTap={tapAnimation.small}
+        transition={bounceTransition}
+        className="flex cursor-pointer items-center gap-2 rounded-full border bg-white/80 px-4 py-2 text-sm font-bold shadow-md backdrop-blur-md dark:bg-neutral-900/80"
+      >
+        <span>TOC</span>
+        <motion.span
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          ▼
+        </motion.span>
+      </motion.button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            ref={panelRef}
+            initial={{ scale: 0.9, opacity: 0, y: -8 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: -4 }}
+            transition={{ duration: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+            style={{ transformOrigin: "top right" }}
+            className="custom-scrollbar absolute right-0 top-full z-10 mt-2 max-h-[60vh] w-full overflow-y-auto rounded-xl border bg-white/80 p-4 backdrop-blur-md dark:bg-neutral-900/80"
+          >
+            <TocList
+              tocItems={tocItems}
+              minLevel={minLevel}
+              activeIds={activeIds}
+              onClickItem={() => setIsOpen(false)}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function PostContent({ content }: { content: ReactElement }) {
   return (
     <section className="text-responsive-p mx-auto max-w-6xl break-keep">
@@ -47,7 +241,7 @@ export default function PostContent({ content }: { content: ReactElement }) {
   );
 }
 
-function renderNodes(node, index) {
+function renderNodes(node, index): ReactNode {
   if (!node) {
     return;
   }
@@ -59,8 +253,20 @@ function renderNodes(node, index) {
     }
 
     case "root": {
-      return node.children.map((child, index: number) =>
-        renderNodes(child, index),
+      const children = node.children as typeof node.children;
+      const tocItems = extractToc(children);
+      const mainChildren = children.map((child, i) => renderNodes(child, i));
+
+      if (tocItems.length === 0) return mainChildren;
+
+      const minLevel = Math.min(...tocItems.map((t) => t.level));
+
+      return (
+        <PostTocLayout
+          tocItems={tocItems}
+          minLevel={minLevel}
+          mainChildren={mainChildren}
+        />
       );
     }
 
