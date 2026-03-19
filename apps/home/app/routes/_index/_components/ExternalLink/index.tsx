@@ -26,7 +26,7 @@ function Card({ data }: { data: (typeof LINK_LIST)[number] }) {
       target={isExternal ? "_blank" : "_self"}
       rel={rel}
       aria-label={description}
-      className="border-brand external-link-card hover:bg-brand group relative block flex aspect-[2/1] items-end overflow-hidden rounded-md border-2 p-2 transition-colors"
+      className="border-brand external-link-card hover:bg-brand group relative block flex aspect-[2/1] items-end overflow-hidden rounded-3xl border p-2 transition-colors"
       whileTap={tapAnimation.medium}
       transition={bounceTransition}
     >
