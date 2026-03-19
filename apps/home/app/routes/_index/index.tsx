@@ -4,11 +4,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import About from "./_components/About";
 import Banner from "./_components/Banner";
+import ExternalLink from "./_components/ExternalLink";
 import Header from "./_components/Header";
-// import Tools from "./_components/Tools";
-// import Blog from "./_components/Blog";
-// import Toc from "./_components/Toc";
 import Notification from "./_components/Notification";
+// import Tools from "./_components/Tools";
+// import Toc from "./_components/Toc";
 
 export { default as loader } from "./_utils/loader";
 
@@ -25,6 +25,7 @@ export default function Index() {
         </header>
         <main className="content-x">
           <Header />
+          <ExternalLink />
           <Banner />
           <Notification />
           {/* <Toc /> */}
