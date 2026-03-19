@@ -78,5 +78,33 @@ export function meta() {
         sameAs: [META.url.github],
       },
     },
+    {
+      "script:ld+json": {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: META.siteName,
+        url: META.url.site,
+        hasPart: [
+          {
+            "@type": "WebPage",
+            name: "Resume",
+            description: META.resume.description,
+            url: `${META.url.site}/resume`,
+          },
+          {
+            "@type": "WebPage",
+            name: "Blog",
+            description: META.blog.description,
+            url: `${META.url.site}/blog`,
+          },
+          {
+            "@type": "WebPage",
+            name: "Craft",
+            description: META.craft.description,
+            url: `${META.url.site}/craft`,
+          },
+        ],
+      },
+    },
   ];
 }
