@@ -57,6 +57,20 @@
 }
 
 @layer utilities {
+  .external-link-card {
+    container-type: inline-size;
+  }
+
+  .external-link-card__title {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  @supports (font-size: 1cqw) {
+    .external-link-card__title {
+      font-size: clamp(1.25rem, 20cqw, 4rem);
+    }
+  }
+
   .blob-outer-container {
     position: absolute;
     height: 100%;

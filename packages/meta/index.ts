@@ -6,9 +6,9 @@ export const META = {
     github: "https://github.com/everything-flows",
   },
   home: {
-    title: "프론트엔드 개발자 포트폴리오",
+    title: "프론트엔드 개발자의 기술 블로그",
     description:
-      "프론트엔드 개발자 강다혜의 포트폴리오입니다. 모노레포로 프로젝트, 이력서, 실험실까지 하나의 도메인에서 확인할 수 있습니다.",
+      "프론트엔드 개발자 강다혜의 포트폴리오입니다. 모노레포로 프로젝트, 이력서, 블로그, 실험실까지 하나의 도메인에서 확인할 수 있습니다.",
     thumbnail:
       "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-home/thumbnail/mainThumbnail.webp",
   },
@@ -22,7 +22,7 @@ export const META = {
   resume: {
     title: "프론트엔드 개발자 이력서",
     description:
-      "프론트엔드 개발자 강다혜 이력서입니다. 경력, 프로젝트, 기술 스택을 확인하세요.",
+      "프론트엔드 개발자 강다혜 이력서입니다. 경력, 프로젝트, 기술 스택을 기술합니다.",
   },
   craft: {
     title: "실험실",

@@ -33,6 +33,10 @@ export function meta() {
       content: "website",
     },
     {
+      property: "og:locale",
+      content: "ko_KR",
+    },
+    {
       property: "og:site_name",
       content: META.siteName,
     },
@@ -64,12 +68,42 @@ export function meta() {
     {
       "script:ld+json": {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        name: META.siteName,
+        "@type": "Person",
+        name: "강다혜",
+        alternateName: "Dahye Kang",
+        jobTitle: "프론트엔드 개발자",
         url: META.url.site,
-        logo: META.home.thumbnail,
+        image: META.home.thumbnail,
         description: description,
         sameAs: [META.url.github],
+      },
+    },
+    {
+      "script:ld+json": {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: META.siteName,
+        url: META.url.site,
+        hasPart: [
+          {
+            "@type": "WebPage",
+            name: "Resume",
+            description: META.resume.description,
+            url: `${META.url.site}/resume`,
+          },
+          {
+            "@type": "WebPage",
+            name: "Blog",
+            description: META.blog.description,
+            url: `${META.url.site}/blog`,
+          },
+          {
+            "@type": "WebPage",
+            name: "Craft",
+            description: META.craft.description,
+            url: `${META.url.site}/craft`,
+          },
+        ],
       },
     },
   ];
