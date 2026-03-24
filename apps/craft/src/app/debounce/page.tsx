@@ -87,5 +87,3 @@ export default async function DebouncePage() {
     </>
   );
 }
-
-export const runtime = "edge";

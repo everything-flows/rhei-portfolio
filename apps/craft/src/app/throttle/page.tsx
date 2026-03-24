@@ -87,5 +87,3 @@ export default async function ThrottlePage() {
     </>
   );
 }
-
-export const runtime = "edge";
