@@ -15,7 +15,7 @@ export default function meta({ data }) {
   const title = `${postInfo.title} | ${META.siteName}`;
   const description = `${postInfo.subTitle} | ${META.blog.description}`;
   const thumbnail = postInfo.thumbnail || META.blog.thumbnail;
-  const url = `${META.url.site}/blog/${postInfo.subBlog}/${postInfo.id}`;
+  const url = `${META.url.site}/blog/${postInfo.subBlog ?? "cse"}/${postInfo.id}`;
 
   return [
     {

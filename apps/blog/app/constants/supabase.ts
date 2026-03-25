@@ -21,6 +21,7 @@ export const POST_DETAIL_ATTR_LIST = [
   "emoji",
   "title",
   "sub_title",
+  "sub_blog",
   "created_at",
   "content",
   "type",
