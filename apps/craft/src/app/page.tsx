@@ -61,5 +61,3 @@ const ITEM_LIST = [
       "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-craft//draggable-panel.webp",
   },
 ];
-
-export const runtime = "edge";

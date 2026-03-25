@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import CloseIcon from "~/assets/CloseIcon";
 import HamburgerIcon from "~/assets/HamburgerIcon";
 import CategoryList from "~/components/CategoryList";
-import { bounceTransition, tapAnimation } from "~/constants/motion";
+import { bounceTransition, tapAnimation } from "@rhei/ui";
 
 export default function CategorySidebar() {
   const [isOpen, setIsOpen] = useState(false);

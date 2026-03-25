@@ -36,5 +36,3 @@ export default async function fake3dPillPage() {
     </>
   );
 }
-
-export const runtime = "edge";

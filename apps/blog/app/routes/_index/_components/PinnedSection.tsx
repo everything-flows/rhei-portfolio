@@ -3,7 +3,7 @@ import { createBrowserClient } from "@supabase/ssr";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { motion } from "motion/react";
 
-import { bounceTransition, tapAnimation } from "~/constants/motion";
+import { bounceTransition, tapAnimation } from "@rhei/ui";
 import { Document } from "~/types/post";
 import convertUrl from "~/utils/convertUrl";
 

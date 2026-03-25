@@ -1,4 +1,5 @@
 import { Footer } from "@rhei/ui";
+
 import Screen from "./_components/Screen";
 
 export default function Page() {

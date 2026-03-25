@@ -30,7 +30,7 @@ function Thumbnail() {
 
 export default function Notification() {
   return (
-    <section className="mx-auto mt-[10dvh] flex max-w-3xl flex-col gap-4 py-4">
+    <section className="mx-auto mt-12 flex max-w-3xl flex-col gap-4">
       <div className="flex gap-4">
         <Thumbnail />
         <article className={rheiChatStyle}>

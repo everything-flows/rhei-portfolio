@@ -1,6 +1,7 @@
-import { ReactNode } from "react";
 import { Link } from "@remix-run/react";
 import { StickyHeading } from "@rhei/ui";
+import { ReactNode } from "react";
+
 import SectionTitle from "../SectionTitle";
 
 export default function Activity() {

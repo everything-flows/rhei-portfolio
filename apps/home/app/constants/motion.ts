@@ -15,3 +15,4 @@ export const tapAnimation = {
   // 가장 큰 요소 (전체 카드)
   large: { scaleX: 1.01, scaleY: 0.99 },
 };
+

@@ -12,7 +12,7 @@ function WavyItem({ item, index = 0 }: { item: string; index: number }) {
 
   useEffect(() => {
     const phaseOffset = index * PHASE_DELAY;
-    let start = performance.now();
+    const start = performance.now();
 
     const animate = (time: number) => {
       const elapsed = time - start;
@@ -75,7 +75,7 @@ function constructWavyTree({
   }
 
   if (React.isValidElement(node)) {
-    const element = node as ReactElement<any>;
+    const element = node as ReactElement<{ children?: ReactNode }>;
     const { type, props } = element;
     const { retNode, textLength } = constructWavyTree({
       node: props.children,

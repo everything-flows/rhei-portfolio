@@ -1,3 +1,5 @@
+"use client";
+
 import {
   cloneElement,
   isValidElement,
@@ -11,7 +13,7 @@ import getAncestorHeadingHeights from "./getAncestorHeadingHeights";
 export default function StickyHeading({
   children,
 }: {
-  children: React.ReactElement;
+  children: React.ReactElement<React.HTMLAttributes<HTMLElement>>;
 }) {
   const ref = useRef<HTMLElement>(null);
   const [top, setTop] = useState(0);
@@ -71,12 +73,12 @@ export default function StickyHeading({
   }
 
   return cloneElement(children, {
-    ref,
+    ref: ref as React.Ref<HTMLElement>,
     style: {
       ...(children.props.style || {}),
       position: "sticky",
       top: `${top}px`,
       zIndex,
     },
-  });
+  } as React.HTMLAttributes<HTMLElement> & { ref: React.Ref<HTMLElement> });
 }

@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 import { GNB } from "@rhei/ui";
 import { motion } from "motion/react";
 
-import { bounceTransition, tapAnimation } from "~/constants/motion";
+import { bounceTransition, tapAnimation } from "@rhei/ui";
 
 export default function NotFoundPage() {
   return (

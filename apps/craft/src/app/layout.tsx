@@ -1,5 +1,7 @@
 import "./globals.css";
+
 import { cookies } from "next/headers";
+
 import GNBWrapper from "./_components/GNBWrapper";
 import GoogleAnalytics from "./_components/GoogleAnalytics";
 
@@ -29,5 +31,3 @@ export default async function RootLayout({
     </html>
   );
 }
-
-export const runtime = "edge";

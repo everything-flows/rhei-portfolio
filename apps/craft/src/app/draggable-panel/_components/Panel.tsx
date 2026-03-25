@@ -1,4 +1,5 @@
 import { useCallback, useState, useRef, useEffect } from "react";
+
 import { DragState, PanelNode } from "../type";
 
 export default function Panel({
@@ -113,10 +114,10 @@ export default function Panel({
       if (isDraggingTouch) {
         // 현재 터치 위치에서 가장 가까운 패널 찾기
         const allPanels = document.querySelectorAll("[data-panel-id]");
-        let closestPanel: any = null;
+        let closestPanel: Element | null = null;
         let closestDistance = Infinity;
 
-        allPanels.forEach((panel: any) => {
+        allPanels.forEach((panel) => {
           const rect = panel.getBoundingClientRect();
           const centerX = rect.left + rect.width / 2;
           const centerY = rect.top + rect.height / 2;
@@ -132,7 +133,8 @@ export default function Panel({
         });
 
         if (closestPanel) {
-          const rect = closestPanel.getBoundingClientRect();
+          const panel = closestPanel as Element;
+          const rect = panel.getBoundingClientRect();
           const x = touch.clientX - rect.left;
           const y = touch.clientY - rect.top;
           const width = rect.width;
@@ -146,7 +148,7 @@ export default function Panel({
             position = y < height / 2 ? "top" : "bottom";
           }
 
-          const targetId = closestPanel.getAttribute("data-panel-id");
+          const targetId = panel.getAttribute("data-panel-id");
           if (targetId && targetId !== id) {
             setLocalDragState((prev) => ({
               ...prev,
@@ -154,13 +156,12 @@ export default function Panel({
               position,
             }));
 
-            // globalDragState도 업데이트하기 위해 onDragOver 호출
             const fakeEvent = {
               preventDefault: () => {},
-              currentTarget: closestPanel,
+              currentTarget: panel,
               clientX: touch.clientX,
               clientY: touch.clientY,
-            } as any;
+            } as unknown as React.DragEvent;
             onDragOver(fakeEvent, targetId);
           }
         }

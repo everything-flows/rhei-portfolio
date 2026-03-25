@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 
-import { bounceTransition, tapAnimation } from "@/constants/motion";
+import { bounceTransition, tapAnimation } from "@rhei/ui";
 
 interface Card {
   title: string;
@@ -41,9 +41,7 @@ export default function CardItem({ data }: { data: Card }) {
           </div>
           <div className="mt-3 px-1">
             <h3 className="text-reverse text-lg font-bold">{title}</h3>
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              {description}
-            </p>
+            <p className="mt-1 text-sm text-gray-500">{description}</p>
           </div>
         </article>
       </Link>

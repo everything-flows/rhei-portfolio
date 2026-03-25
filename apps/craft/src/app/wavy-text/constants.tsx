@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+
 import WavyText from "./WavyText";
 
 export interface Example {
