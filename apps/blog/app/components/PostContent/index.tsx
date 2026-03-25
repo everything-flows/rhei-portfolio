@@ -4,8 +4,8 @@ import { ReactElement, ReactNode, useEffect, useRef, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
+import { bounceTransition, tapAnimation } from "@rhei/ui";
 import Highlight from "~/components/Highlight";
-import { bounceTransition, tapAnimation } from "~/constants/motion";
 import convertUrl from "~/utils/convertUrl";
 
 import ThemedIframe from "./ThemedIframe";

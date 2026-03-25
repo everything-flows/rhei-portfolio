@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 
+import { bounceTransition, tapAnimation } from "@rhei/ui";
 import CircleArrowIcon from "~/assets/CircleArrowIcon";
-import { bounceTransition, tapAnimation } from "~/constants/motion";
 
 export default function ExternalLink() {
   return (
