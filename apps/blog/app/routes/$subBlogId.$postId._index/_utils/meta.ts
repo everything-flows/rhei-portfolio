@@ -7,7 +7,7 @@ export default function meta({ data }) {
 
   const { postInfo } = postData;
 
-  const publishedTime = toISOStringSafe(postData.createdAt);
+  const publishedTime = toISOStringSafe(postInfo.createdAt);
   const modifiedTime = toISOStringSafe(
     postInfo.lastEditedAt ?? postInfo.createdAt,
   );
