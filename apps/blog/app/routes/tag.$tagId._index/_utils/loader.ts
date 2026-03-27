@@ -50,13 +50,19 @@ export default async function loader({
 
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(tagDataQueryOptions(supabaseClient, tagId));
-  const result = await queryClient.fetchQuery(
-    postListByTagIdQueryOptions(supabaseClient, tagId, page),
-  );
+  const [tagData, result] = await Promise.all([
+    queryClient.fetchQuery(tagDataQueryOptions(supabaseClient, tagId)),
+    queryClient.fetchQuery(postListByTagIdQueryOptions(supabaseClient, tagId, page)),
+  ]);
 
-  const { totalCount } = result;
+  const { postList, totalCount } = result;
   const totalPages = Math.ceil(totalCount / PAGE_SIZE);
 
-  return json({ dehydratedState: dehydrate(queryClient), currentPage: page, totalPages });
+  return json({
+    dehydratedState: dehydrate(queryClient),
+    currentPage: page,
+    totalPages,
+    tagData,
+    postList,
+  });
 }
