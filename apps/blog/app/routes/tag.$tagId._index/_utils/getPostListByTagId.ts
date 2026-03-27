@@ -1,3 +1,5 @@
+import { queryOptions } from "@tanstack/react-query";
+
 import { DEFAULT_SUB_BLOG, POST_TAG_TABLE } from "~/constants/supabase";
 import type { Document } from "~/types/post";
 import type { Database } from "~/types/supabase";
@@ -5,7 +7,22 @@ import { getPostById } from "~/utils/getPostById";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-export async function getPostListByTagId({
+const PAGE_SIZE = 10;
+
+export const postListByTagIdQueryOptions = (
+  supabaseClient: SupabaseClient<Database, "public">,
+  tagId: string,
+  page: number,
+) =>
+  queryOptions({
+    queryKey: ["postListByTagId", tagId, page],
+    queryFn: async (): Promise<{ postList: Document[]; totalCount: number }> => {
+      const result = await getPostListByTagId({ supabaseClient, tagId, page, pageSize: PAGE_SIZE });
+      return result as { postList: Document[]; totalCount: number };
+    },
+  });
+
+async function getPostListByTagId({
   supabaseClient,
   tagId,
   page,

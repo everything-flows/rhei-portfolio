@@ -1,3 +1,5 @@
+import { queryOptions } from "@tanstack/react-query";
+
 import {
   DEFAULT_SUB_BLOG,
   POST_SUMMARY_ATTR,
@@ -11,7 +13,21 @@ import snakeToCamel from "./snakeToCamel";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-export async function getPostList({
+const PAGE_SIZE = 10;
+
+export const allPostListQueryOptions = (
+  supabaseClient: SupabaseClient<Database, "public">,
+  page: number,
+) =>
+  queryOptions({
+    queryKey: ["allPostList", page],
+    queryFn: async (): Promise<{ postList: Document[]; totalCount: number }> => {
+      const result = await getPostList({ supabaseClient, page, pageSize: PAGE_SIZE, excludeDatabase: true });
+      return result as { postList: Document[]; totalCount: number };
+    },
+  });
+
+async function getPostList({
   supabaseClient,
   showAll = true,
   page,

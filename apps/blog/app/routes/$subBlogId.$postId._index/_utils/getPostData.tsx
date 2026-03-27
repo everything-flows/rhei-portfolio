@@ -23,7 +23,7 @@ export const postDetailQueryOptions = (
     queryFn: () => getPostData({ supabaseClient, subBlogId, postId }),
   });
 
-export default async function getPostData({
+async function getPostData({
   supabaseClient,
   subBlogId,
   postId,

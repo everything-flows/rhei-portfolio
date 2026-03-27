@@ -1,12 +1,13 @@
-import { type LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { json, type LoaderFunctionArgs } from "@remix-run/cloudflare";
 import {
   createServerClient,
   parseCookieHeader,
   serializeCookieHeader,
 } from "@supabase/ssr";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
 
-import { getPostListByTagId } from "./getPostListByTagId";
-import { getTagDataById } from "./getTagDataById";
+import { postListByTagIdQueryOptions } from "./getPostListByTagId";
+import { tagDataQueryOptions } from "./getTagDataById";
 
 const PAGE_SIZE = 10;
 
@@ -27,6 +28,9 @@ export default async function loader({
   }
 
   const { tagId } = params;
+  if (!tagId) {
+    throw new Response("Tag not found", { status: 404 });
+  }
 
   const supabaseClient = createServerClient(SUPABASE_URL!, SUPABASE_ANON_KEY!, {
     cookies: {
@@ -44,20 +48,15 @@ export default async function loader({
     },
   });
 
-  const tagData = await getTagDataById({ supabaseClient, tagId });
-  const result = await getPostListByTagId({
-    supabaseClient,
-    tagId,
-    page,
-    pageSize: PAGE_SIZE,
-  });
+  const queryClient = new QueryClient();
 
-  if (Array.isArray(result)) {
-    return { tagData, postList: result, currentPage: 1, totalPages: 1 };
-  }
+  await queryClient.prefetchQuery(tagDataQueryOptions(supabaseClient, tagId));
+  const result = await queryClient.fetchQuery(
+    postListByTagIdQueryOptions(supabaseClient, tagId, page),
+  );
 
-  const { postList, totalCount } = result;
+  const { totalCount } = result;
   const totalPages = Math.ceil(totalCount / PAGE_SIZE);
 
-  return { tagData, postList, currentPage: page, totalPages };
+  return json({ dehydratedState: dehydrate(queryClient), currentPage: page, totalPages });
 }

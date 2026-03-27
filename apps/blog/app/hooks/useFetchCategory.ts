@@ -3,7 +3,7 @@ import { createBrowserClient } from "@supabase/ssr";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 
-import fetchCategoryData from "~/_utils/fetchCategoryData";
+import { categoryQueryOptions } from "~/_utils/fetchCategoryData";
 import { DEFAULT_SUB_BLOG } from "~/constants/supabase";
 import useCategoryStore from "~/stores/category";
 
@@ -19,12 +19,9 @@ export default function useFetchCategory() {
     supabaseCredential.key,
   );
 
-  const { data: fetchedCategoryList = [], isLoading } = useQuery({
-    queryKey: ["categories", subBlogId],
-    queryFn: () => fetchCategoryData({ supabaseClient: supabase, subBlogId }),
-    staleTime: 5 * 60 * 1000,
-    gcTime: 10 * 60 * 1000,
-  });
+  const { data: fetchedCategoryList = [], isLoading } = useQuery(
+    categoryQueryOptions(supabase, subBlogId),
+  );
 
   useEffect(() => {
     if (fetchedCategoryList.length > 0) {

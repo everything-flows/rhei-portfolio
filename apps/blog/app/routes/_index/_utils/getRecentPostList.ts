@@ -20,7 +20,7 @@ export const recentPostQueryOptions = (
     queryFn: () => getRecentPostList({ supabaseClient, showAll: false }),
   });
 
-export default async function getRecentPostList({
+async function getRecentPostList({
   supabaseClient,
   count = 10,
   showAll = true,

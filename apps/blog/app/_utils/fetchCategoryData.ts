@@ -1,12 +1,26 @@
+import { queryOptions } from "@tanstack/react-query";
+
 import { POST_SUMMARY_ATTR, POST_TABLE } from "~/constants/supabase";
 import type { Document } from "~/types/post";
+import type { Database } from "~/types/supabase";
 import snakeToCamel from "~/utils/snakeToCamel";
 
 import { buildTree } from "./buildTree";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-export default async function fetchCategoryData({
+export const categoryQueryOptions = (
+  supabaseClient: SupabaseClient<Database, "public">,
+  subBlogId: string,
+) =>
+  queryOptions({
+    queryKey: ["categories", subBlogId],
+    queryFn: () => fetchCategoryData({ supabaseClient, subBlogId }),
+    staleTime: 5 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
+  });
+
+async function fetchCategoryData({
   supabaseClient,
   subBlogId,
 }: {

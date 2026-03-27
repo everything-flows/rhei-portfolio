@@ -1,9 +1,20 @@
+import { queryOptions } from "@tanstack/react-query";
+
 import { TAG_ATTR, TAG_TABLE } from "~/constants/supabase";
 import type { Database } from "~/types/supabase";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-export async function getTagDataById({
+export const tagDataQueryOptions = (
+  supabaseClient: SupabaseClient<Database, "public">,
+  tagId: string,
+) =>
+  queryOptions({
+    queryKey: ["tagData", tagId],
+    queryFn: () => getTagDataById({ supabaseClient, tagId }),
+  });
+
+async function getTagDataById({
   supabaseClient,
   tagId,
 }: {

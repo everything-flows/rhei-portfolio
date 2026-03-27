@@ -1,9 +1,20 @@
+import { queryOptions } from "@tanstack/react-query";
+
 import type { Database } from "~/types/supabase";
 import snakeToCamel from "~/utils/snakeToCamel";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-export async function getSubBlogInfo({
+export const subBlogInfoQueryOptions = (
+  supabaseClient: SupabaseClient<Database, "public">,
+  subBlogId: string,
+) =>
+  queryOptions({
+    queryKey: ["subBlogInfo", subBlogId],
+    queryFn: () => getSubBlogInfo({ supabaseClient, subBlogId }),
+  });
+
+async function getSubBlogInfo({
   supabaseClient,
   subBlogId,
 }: {

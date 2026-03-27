@@ -1,11 +1,12 @@
-import { type LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { json, type LoaderFunctionArgs } from "@remix-run/cloudflare";
 import {
   createServerClient,
   parseCookieHeader,
   serializeCookieHeader,
 } from "@supabase/ssr";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
 
-import { getPostList } from "~/utils/getPostList";
+import { allPostListQueryOptions } from "~/utils/getPostList";
 
 const PAGE_SIZE = 10;
 
@@ -37,19 +38,14 @@ export default async function loader({ context, request }: LoaderFunctionArgs) {
     },
   });
 
-  const result = await getPostList({
-    supabaseClient,
-    page,
-    pageSize: PAGE_SIZE,
-    excludeDatabase: true,
-  });
+  const queryClient = new QueryClient();
 
-  if (Array.isArray(result)) {
-    return { postList: result, currentPage: 1, totalPages: 1 };
-  }
+  const result = await queryClient.fetchQuery(
+    allPostListQueryOptions(supabaseClient, page),
+  );
 
-  const { postList, totalCount } = result;
+  const { totalCount } = result;
   const totalPages = Math.ceil(totalCount / PAGE_SIZE);
 
-  return { postList, currentPage: page, totalPages };
+  return json({ dehydratedState: dehydrate(queryClient), currentPage: page, totalPages });
 }

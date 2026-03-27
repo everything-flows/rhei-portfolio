@@ -1,12 +1,13 @@
-import { type LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { json, type LoaderFunctionArgs } from "@remix-run/cloudflare";
 import {
   createServerClient,
   parseCookieHeader,
   serializeCookieHeader,
 } from "@supabase/ssr";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
 
-import { getSubBlogInfo } from "./getSubBlogInfo";
-import getSubBlogPostList from "./getSubBlogPostList";
+import { subBlogInfoQueryOptions } from "./getSubBlogInfo";
+import { subBlogPostListQueryOptions } from "./getSubBlogPostList";
 
 const PAGE_SIZE = 10;
 
@@ -47,24 +48,25 @@ export default async function loader({
     },
   });
 
-  const blogInfo = await getSubBlogInfo({ supabaseClient, subBlogId });
+  const queryClient = new QueryClient();
+
+  const blogInfo = await queryClient.fetchQuery(
+    subBlogInfoQueryOptions(supabaseClient, subBlogId),
+  );
   if (!blogInfo) {
     throw new Response("Sub blog not found", { status: 404 });
   }
 
-  const result = await getSubBlogPostList({
-    supabaseClient,
-    subBlogId,
-    page,
-    pageSize: PAGE_SIZE,
-  });
+  const result = await queryClient.fetchQuery(
+    subBlogPostListQueryOptions(supabaseClient, subBlogId, page),
+  );
 
-  if (Array.isArray(result)) {
-    return { blogInfo, postData: result, currentPage: 1, totalPages: 1 };
-  }
-
-  const { postList, totalCount } = result;
+  const { totalCount } = result;
   const totalPages = Math.ceil(totalCount / PAGE_SIZE);
 
-  return { blogInfo, postData: postList, currentPage: page, totalPages };
+  return json({
+    dehydratedState: dehydrate(queryClient),
+    currentPage: page,
+    totalPages,
+  });
 }
