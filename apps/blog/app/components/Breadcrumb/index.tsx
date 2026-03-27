@@ -1,44 +1,35 @@
 import { Link } from "@remix-run/react";
 import { useMemo } from "react";
 
-import useFetchCategory from "~/hooks/useFetchCategory";
-import useCategoryStore from "~/stores/category";
+import useCategory from "~/hooks/useCategory";
 import type { Category } from "~/types/post";
 import { getBreadcrumbData } from "~/utils/breadcrumb";
 
 import BreadcrumbSkeleton from "./Skeleton";
 
 export default function Breadcrumb({ postId }: { postId: string }) {
-  const { categoryList } = useCategoryStore();
-
-  useFetchCategory();
+  const { categoryList } = useCategory();
 
   const breadcrumbData = useMemo(() => {
     return getBreadcrumbData({ categoryList, id: postId });
   }, [postId, categoryList]);
 
-  if (!breadcrumbData) {
-    return null;
+  // FIXME
+  if (!breadcrumbData || breadcrumbData.length === 0) {
+    return <BreadcrumbSkeleton />;
   }
 
   return (
     <div className="flex h-6 items-center gap-2">
-      {breadcrumbData.length === 0 ? (
-        <BreadcrumbSkeleton />
-      ) : (
-        breadcrumbData.map((item: Category, index: number) => (
-          <div
-            key={item.id}
-            className="flex items-center gap-2 overflow-hidden"
-          >
-            {index > 0 && <p>/</p>}
-            <Item
-              link={`/${item.subBlog}/${item.id}`}
-              title={item.emoji + " " + item.title}
-            />
-          </div>
-        ))
-      )}
+      {breadcrumbData.map((item: Category, index: number) => (
+        <div key={item.id} className="flex items-center gap-2 overflow-hidden">
+          {index > 0 && <p>/</p>}
+          <Item
+            link={`/${item.subBlog}/${item.id}`}
+            title={item.emoji + " " + item.title}
+          />
+        </div>
+      ))}
     </div>
   );
 }

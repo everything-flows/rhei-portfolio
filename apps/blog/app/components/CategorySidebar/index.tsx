@@ -3,7 +3,9 @@ import { useState, useRef, useEffect } from "react";
 
 import CloseIcon from "~/assets/CloseIcon";
 import HamburgerIcon from "~/assets/HamburgerIcon";
+import AsyncErrorBoundary from "~/_components/AsyncErrorBoundary";
 import CategoryList from "~/components/CategoryList";
+import CategoryListSkeleton from "~/components/CategoryList/Skeleton";
 import { bounceTransition, tapAnimation } from "@rhei/ui";
 
 export default function CategorySidebar() {
@@ -59,7 +61,9 @@ export default function CategorySidebar() {
             className="bg-normal fixed bottom-20 right-4 z-40 flex w-80 max-w-[calc(100vw-2rem)] flex-col rounded-2xl shadow-[0px_0px_32px_0px_#0263ff40] dark:shadow-[0px_0px_32px_0px_#f94b2840] sm:right-6 md:right-12"
           >
             <div className="custom-scrollbar max-h-[60vh] overflow-auto p-4">
-              <CategoryList />
+              <AsyncErrorBoundary suspenseFallback={<CategoryListSkeleton />}>
+                <CategoryList />
+              </AsyncErrorBoundary>
             </div>
           </motion.div>
         )}

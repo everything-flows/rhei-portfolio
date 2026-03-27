@@ -1,4 +1,6 @@
+import AsyncErrorBoundary from "~/_components/AsyncErrorBoundary";
 import Breadcrumb from "~/components/Breadcrumb";
+import BreadcrumbSkeleton from "~/components/Breadcrumb/Skeleton";
 import TagList from "~/components/TagList";
 import { Document } from "~/types/post";
 
@@ -32,7 +34,9 @@ export default function PostHeader({
 
   return (
     <section className="mx-auto mb-8 max-w-6xl border-b border-gray-200 pb-8 dark:border-gray-600">
-      <Breadcrumb postId={id} />
+      <AsyncErrorBoundary suspenseFallback={<BreadcrumbSkeleton />}>
+        <Breadcrumb postId={id} />
+      </AsyncErrorBoundary>
 
       <h1
         className="text-responsive-h1 mt-2 break-keep"

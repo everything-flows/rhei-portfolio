@@ -1,26 +1,18 @@
 import { useParams } from "@remix-run/react";
 import { AnimatePresence, motion } from "motion/react";
 
-import useFetchCategory from "~/hooks/useFetchCategory";
-import useCategoryStore from "~/stores/category";
+import useCategory from "~/hooks/useCategory";
 import type { Category } from "~/types/post";
 
 import CategoryItem from "./CategoryItem";
-import CategoryListSkeleton from "./Skeleton";
 
 export default function CategoryList() {
   const params = useParams();
-  const { categoryList: storedCategoryList } = useCategoryStore();
-
-  const { isLoading } = useFetchCategory();
-
-  if (isLoading || storedCategoryList.length === 0) {
-    return <CategoryListSkeleton />;
-  }
+  const { categoryToggleList } = useCategory();
 
   return (
     <div>
-      {storedCategoryList.map((datum: Category) => {
+      {categoryToggleList.map((datum: Category) => {
         return renderTreeItem(datum, 0, params.postId || "");
       })}
     </div>

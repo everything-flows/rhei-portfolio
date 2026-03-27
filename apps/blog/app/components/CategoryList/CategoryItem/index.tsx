@@ -1,7 +1,7 @@
 import { Link } from "@remix-run/react";
 
 import RightChevronIcon from "~/assets/RightChevronIcon";
-import useCategoryStore from "~/stores/category";
+import useCategory from "~/hooks/useCategory";
 
 export default function CategoryItem({
   id,
@@ -22,7 +22,7 @@ export default function CategoryItem({
   indent: number;
   hasChildren: boolean;
 }) {
-  const { toggleCategory } = useCategoryStore();
+  const { toggleCategory } = useCategory();
 
   const handleAnchorClick = (event: React.MouseEvent) => {
     const target: HTMLElement | null = event.target as HTMLElement | null;

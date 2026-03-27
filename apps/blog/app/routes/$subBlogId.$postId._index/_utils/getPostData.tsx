@@ -9,10 +9,6 @@ import parse from "../parse";
 
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-function isNormalPost(data: Document) {
-  return data.type === DocumentType.Post;
-}
-
 export const postDetailQueryOptions = (
   supabaseClient: SupabaseClient<Database, "public">,
   subBlogId: string,
@@ -53,4 +49,8 @@ async function getPostData({
       parentId: postId,
     }),
   };
+}
+
+function isNormalPost(data: Document) {
+  return data.type === DocumentType.Post;
 }
