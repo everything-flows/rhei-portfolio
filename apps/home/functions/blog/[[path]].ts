@@ -1,12 +1,13 @@
 export const onRequest: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
 
-  if (url.pathname === "/blog") {
-    url.pathname = "/blog/";
+  if (url.pathname === "/blog/") {
+    url.pathname = "/blog";
     return Response.redirect(url.toString(), 301);
   }
 
-  const isBlogRoute = url.pathname.startsWith("/blog/");
+  const isBlogRoute =
+    url.pathname === "/blog" || url.pathname.startsWith("/blog/");
   if (!isBlogRoute) return new Response("Not found", { status: 404 });
 
   const targetUrl = `https://blog.rhei.me${url.pathname}${url.search}`;
