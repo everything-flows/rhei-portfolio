@@ -1,5 +1,10 @@
 {
   "version": 1,
   "include": ["/*"],
-  "exclude": ["/favicon.ico", "/assets/*", "/blogassets/*"]
+  "exclude": [
+    "/favicon.ico",
+    "/assets/*",
+    "/blogassets/*",
+    "/blog/blogassets/*"
+  ]
 }
