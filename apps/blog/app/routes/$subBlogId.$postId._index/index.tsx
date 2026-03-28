@@ -18,6 +18,17 @@ import { postDetailQueryOptions } from "./_utils/getPostData";
 export { default as loader } from "./_utils/loader";
 export { default as meta } from "./_utils/meta";
 
+export default function PostDetailRoute() {
+  const { dehydratedState } = useLoaderData();
+  const { postId } = useParams();
+
+  return (
+    <HydrationBoundary state={dehydratedState}>
+      <PostPage key={postId} />
+    </HydrationBoundary>
+  );
+}
+
 function PostPage() {
   const { subBlogId, postId } = useParams();
   const location = useLocation();
@@ -66,16 +77,5 @@ function PostPage() {
 
       <Footer />
     </>
-  );
-}
-
-export default function PostDetailRoute() {
-  const { dehydratedState } = useLoaderData();
-  const { postId } = useParams();
-
-  return (
-    <HydrationBoundary state={dehydratedState}>
-      <PostPage key={postId} />
-    </HydrationBoundary>
   );
 }

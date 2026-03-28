@@ -1,9 +1,9 @@
 import { Link, useRouteLoaderData } from "@remix-run/react";
+import { bounceTransition, tapAnimation } from "@rhei/ui";
 import { createBrowserClient } from "@supabase/ssr";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { motion } from "motion/react";
 
-import { bounceTransition, tapAnimation } from "@rhei/ui";
 import { Document } from "~/types/post";
 import convertUrl from "~/utils/convertUrl";
 
@@ -11,13 +11,13 @@ import { pinnedPostQueryOptions } from "../_utils/getPinnedPostList";
 
 export default function PinnedSection() {
   const { supabaseCredential } = useRouteLoaderData("root");
-  const supabase = createBrowserClient(
+  const supabaseClient = createBrowserClient(
     supabaseCredential.url,
     supabaseCredential.key,
   );
 
   const { data: pinnedPostList } = useSuspenseQuery(
-    pinnedPostQueryOptions({ supabaseClient: supabase }),
+    pinnedPostQueryOptions(supabaseClient),
   );
 
   return (
