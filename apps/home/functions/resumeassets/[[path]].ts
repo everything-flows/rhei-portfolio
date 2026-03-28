@@ -1,14 +1,10 @@
 export const onRequest: PagesFunction = async ({ request }) => {
   const url = new URL(request.url);
 
-  if (url.pathname === "/resume/") {
-    url.pathname = "/resume";
-    return Response.redirect(url.toString(), 301);
-  }
-
-  const isResumeRoute =
-    url.pathname === "/resume" || url.pathname.startsWith("/resume/");
-  if (!isResumeRoute) return new Response("Not found", { status: 404 });
+  const isResumeAssetRoute =
+    url.pathname === "/resumeassets" ||
+    url.pathname.startsWith("/resumeassets/");
+  if (!isResumeAssetRoute) return new Response("Not found", { status: 404 });
 
   const targetUrl = `https://rhei-resume.pages.dev${url.pathname}${url.search}`;
   const response = await fetch(targetUrl, {
