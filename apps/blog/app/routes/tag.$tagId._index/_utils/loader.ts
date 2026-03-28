@@ -52,8 +52,14 @@ export default async function loader({
 
   const [tagData, result] = await Promise.all([
     queryClient.fetchQuery(tagDataQueryOptions(supabaseClient, tagId)),
-    queryClient.fetchQuery(postListByTagIdQueryOptions(supabaseClient, tagId, page)),
+    queryClient.fetchQuery(
+      postListByTagIdQueryOptions(supabaseClient, tagId, page),
+    ),
   ]);
+
+  if (!tagData) {
+    throw new Response("Tag not found", { status: 404 });
+  }
 
   const { postList, totalCount } = result;
   const totalPages = Math.ceil(totalCount / PAGE_SIZE);
