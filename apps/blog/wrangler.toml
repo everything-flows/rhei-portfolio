@@ -2,7 +2,7 @@ name = "rhei-blog"
 compatibility_date = "2024-05-01"
 
 [build]
-command = "npm run build && mkdir -p build/client/blog && mv build/client/assets build/client/blog/"
+command = "npm run build"
 upload = { dir = "./build/client", format = "directory" }
 
 [site]
