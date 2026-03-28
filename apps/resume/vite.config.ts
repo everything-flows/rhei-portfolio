@@ -12,9 +12,7 @@ declare module "@remix-run/cloudflare" {
 }
 
 export default defineConfig({
-  build: {
-    assetsDir: "resume/assets",
-  },
+  base: "/resume",
   plugins: [
     remixCloudflareDevProxy(),
     remix({
