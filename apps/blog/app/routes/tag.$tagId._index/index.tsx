@@ -43,7 +43,7 @@ function TagPage({
   return (
     <>
       <header className="content-x">
-        <GNB route="/blog" />
+        <GNB route="/blog/" />
       </header>
 
       <main className="content-x">
