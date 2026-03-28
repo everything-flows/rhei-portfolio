@@ -28,6 +28,7 @@ function Index() {
       </header>
 
       <main className="content-x flex flex-col">
+        <h1 className="sr-only">프론트엔드 개발자 블로그</h1>
         <AsyncErrorBoundary
           fallbackRender={({ onRetry }) => (
             <div>
