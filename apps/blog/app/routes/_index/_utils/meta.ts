@@ -80,6 +80,15 @@ export default function meta({ data }) {
         "@context": "https://schema.org",
         "@type": "Blog",
         name: title,
+        keywords: [
+          "개발자 블로그",
+          "프론트엔드 개발자 블로그",
+          "기술 블로그",
+          "테크 블로그",
+          "React",
+          "Next.js",
+          "웹 성능 최적화",
+        ],
         url: blogUrl,
         image: {
           "@type": "ImageObject",
