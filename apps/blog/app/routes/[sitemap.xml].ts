@@ -41,7 +41,7 @@ export async function loader({ context, request }: LoaderFunctionArgs) {
   const content = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>${META.url.site}/blog/</loc>
+    <loc>${META.url.site}/blog</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <priority>1.0</priority>
   </url>
