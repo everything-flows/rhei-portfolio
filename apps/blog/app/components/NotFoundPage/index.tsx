@@ -8,7 +8,7 @@ export default function NotFoundPage() {
   return (
     <div className="flex min-h-dvh flex-col">
       <header className="content-x">
-        <GNB route="/blog/" />
+        <GNB route="/blog" />
       </header>
 
       <main className="content-x m-auto flex flex-1 flex-col items-center justify-center">

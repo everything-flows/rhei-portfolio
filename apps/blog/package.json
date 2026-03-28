@@ -6,7 +6,7 @@
   "scripts": {
     "tree": "tsx scripts/build-post-tree.ts",
     "migrate:tree": "tsx scripts/migrate-post-tree.ts",
-    "build": "remix vite:build && mkdir -p build/client/blog && rm -rf build/client/blog/assets && cp -R build/client/assets build/client/blog/assets",
+    "build": "remix vite:build && mkdir -p build/client && rm -rf build/client/blogassets && cp -R build/client/assets build/client/blogassets",
     "deploy": "wrangler pages deploy ./build/client",
     "dev": "remix vite:dev",
     "local": "remix vite:dev --host",
