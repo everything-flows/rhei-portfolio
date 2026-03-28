@@ -10,7 +10,7 @@ import {
 } from "@remix-run/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Font from "./_components/Font";
 import "./tailwind.css";
@@ -69,6 +69,26 @@ export default function App() {
         },
       }),
   );
+
+  useEffect(() => {
+    if (window.location.pathname === "/blog") {
+      window.location.replace("/blog/");
+    }
+  }, []);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (path === "/blog" || path === "/blog/") {
+        window.location.replace("/blog/");
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
