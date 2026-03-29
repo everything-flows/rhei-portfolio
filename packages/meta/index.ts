@@ -22,7 +22,7 @@ export const META = {
   resume: {
     title: "프론트엔드 개발자 이력서",
     description:
-      "프론트엔드 개발자 강다혜 이력서입니다. 경력, 프로젝트, 기술 스택을 기술합니다.",
+      "프론트엔드 개발자 강다혜의 이력서입니다. React, TypeScript, Next.js 기반 개발 경험과 프로젝트, 기술 스택을 확인할 수 있습니다.",
   },
   craft: {
     title: "실험실",
