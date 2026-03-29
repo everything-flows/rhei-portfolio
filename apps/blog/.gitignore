@@ -9,3 +9,6 @@ node_modules
 
 # 마이그레이션/트리 스크립트 출력
 scripts/output/*.txt
+
+# 로컬 포스트 파일
+preview/*.md

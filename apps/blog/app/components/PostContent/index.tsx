@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Link, useLocation } from "@remix-run/react";
 import { AnimatePresence, motion } from "motion/react";
 import { ReactElement, ReactNode, useEffect, useRef, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -119,12 +119,18 @@ function TocList({
   activeIds: Set<string>;
   onClickItem?: () => void;
 }) {
+  const location = useLocation();
+
   return (
     <ul>
       {tocItems.map((item, i) => (
         <li key={i} style={{ paddingLeft: `${(item.level - minLevel) * 12}px` }}>
           <Link
-            to={`#${item.id}`}
+            to={{
+              pathname: location.pathname,
+              search: location.search,
+              hash: `#${item.id}`,
+            }}
             className={`text-sm ${activeIds.has(item.id) ? "text-brand font-semibold" : ""}`}
             onClick={onClickItem}
           >
@@ -368,15 +374,15 @@ function renderNodes(node, index): ReactNode {
 
           if (href[0] === "#")
             return (
-              <Link
+              <a
                 key={index}
-                to={href}
+                href={href}
                 className="text-responsive-p text-blue-600 underline dark:text-orange-500"
               >
                 {node.children.map((child, index: number) =>
                   renderNodes(child, index),
                 )}
-              </Link>
+              </a>
             );
 
           return (
