@@ -1,8 +1,9 @@
 import { META } from "@rhei/meta";
 
-const date = new Date().toISOString();
+export async function loader() {
+  const date = new Date().toISOString();
 
-const content = `<?xml version="1.0" encoding="UTF-8"?>
+  const content = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${META.url.site}</loc>
@@ -24,7 +25,6 @@ const content = `<?xml version="1.0" encoding="UTF-8"?>
   </url>
 </urlset>`;
 
-export async function loader() {
   return new Response(content, {
     status: 200,
     headers: {
