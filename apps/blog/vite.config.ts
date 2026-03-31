@@ -26,4 +26,13 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  esbuild: {
+    jsx: "automatic",
+  },
+  server: {
+    watch: {
+      // preview 폴더의 파일 변경을 감지하여 HMR 트리거
+      ignored: ["!**/preview/**"],
+    },
+  },
 });

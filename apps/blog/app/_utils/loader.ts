@@ -1,10 +1,16 @@
 import { LoaderFunctionArgs } from "@remix-run/cloudflare";
 
 export const loader = async ({ context, request }: LoaderFunctionArgs) => {
-  const supabaseCredential = {
-    url: context.cloudflare.env.SUPABASE_URL,
-    key: context.cloudflare.env.SUPABASE_ANON_KEY,
-  };
+  const url = new URL(request.url);
+  const isPreview = url.pathname.startsWith("/blog/preview");
+
+  // preview 페이지에서는 supabaseCredential을 제공하지 않음
+  const supabaseCredential = isPreview
+    ? null
+    : {
+        url: context.cloudflare.env.SUPABASE_URL,
+        key: context.cloudflare.env.SUPABASE_ANON_KEY,
+      };
 
   const cookie = request.headers.get("Cookie") ?? "";
   const theme = cookie.includes("theme=dark") ? "dark" : "light";
