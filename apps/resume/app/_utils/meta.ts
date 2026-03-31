@@ -65,17 +65,21 @@ export default function meta() {
     {
       "script:ld+json": {
         "@context": "https://schema.org",
-        "@type": "Person",
-        name: META.author,
+        "@type": "ProfilePage",
         url: url,
-        image: META.home.thumbnail,
-        description: description,
-        sameAs: [META.url.github],
-        jobTitle: "프론트엔드 개발자",
-        worksFor: {
-          "@type": "Organization",
-          name: META.siteName,
-          url: META.url.site,
+        mainEntity: {
+          "@type": "Person",
+          name: META.author,
+          url: url,
+          image: META.home.thumbnail,
+          description: description,
+          sameAs: [META.url.github],
+          jobTitle: "프론트엔드 개발자",
+          worksFor: {
+            "@type": "Organization",
+            name: META.siteName,
+            url: META.url.site,
+          },
         },
       },
     },
