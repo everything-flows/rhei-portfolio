@@ -1,10 +1,11 @@
 import { Link, useLocation } from "@remix-run/react";
+import { bounceTransition, tapAnimation } from "@rhei/ui";
 import { AnimatePresence, motion } from "motion/react";
 import { ReactElement, ReactNode, useEffect, useRef, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { nord } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
-import { bounceTransition, tapAnimation } from "@rhei/ui";
+import Callout from "~/components/Callout";
 import Highlight from "~/components/Highlight";
 import convertUrl from "~/utils/convertUrl";
 
@@ -75,7 +76,11 @@ function useActiveHeadings(tocItems: TocItem[]) {
         .map(({ id, level }) => {
           const el = document.getElementById(id);
           if (!el) return null;
-          return { id, level, top: el.getBoundingClientRect().top + window.scrollY };
+          return {
+            id,
+            level,
+            top: el.getBoundingClientRect().top + window.scrollY,
+          };
         })
         .filter(Boolean) as { id: string; level: number; top: number }[];
 
@@ -124,7 +129,10 @@ function TocList({
   return (
     <ul>
       {tocItems.map((item, i) => (
-        <li key={i} style={{ paddingLeft: `${(item.level - minLevel) * 12}px` }}>
+        <li
+          key={i}
+          style={{ paddingLeft: `${(item.level - minLevel) * 12}px` }}
+        >
           <Link
             to={{
               pathname: location.pathname,
@@ -156,13 +164,21 @@ function PostTocLayout({
   return (
     <div className="flex gap-8">
       <div className="min-w-0 flex-1">
-        <MobileToc tocItems={tocItems} minLevel={minLevel} activeIds={activeIds} />
+        <MobileToc
+          tocItems={tocItems}
+          minLevel={minLevel}
+          activeIds={activeIds}
+        />
         {mainChildren}
       </div>
       <aside className="hidden w-[280px] shrink-0 pt-6 lg:block">
         <div className="custom-scrollbar sticky top-8 max-h-[calc(100vh-4rem)] overflow-y-auto">
           <p className="mb-2 font-bold">Table of Contents</p>
-          <TocList tocItems={tocItems} minLevel={minLevel} activeIds={activeIds} />
+          <TocList
+            tocItems={tocItems}
+            minLevel={minLevel}
+            activeIds={activeIds}
+          />
         </div>
       </aside>
     </div>
@@ -239,6 +255,26 @@ function MobileToc({
   );
 }
 
+function parseInlineMarkdown(text: string, baseIndex: number): ReactNode {
+  // Split on **bold**, *italic*, `code` patterns
+  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g);
+  if (parts.length === 1) return text;
+
+  return parts.map((part, i) => {
+    const key = `${baseIndex}-${i}`;
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <span key={key} className="font-bold">{part.slice(2, -2)}</span>;
+    }
+    if (part.startsWith("*") && part.endsWith("*")) {
+      return <em key={key}>{part.slice(1, -1)}</em>;
+    }
+    if (part.startsWith("`") && part.endsWith("`")) {
+      return <code key={key} className="rounded-md bg-gray-100 px-1 dark:bg-gray-800">{part.slice(1, -1)}</code>;
+    }
+    return part;
+  });
+}
+
 export default function PostContent({ content }: { content: ReactElement }) {
   return (
     <section className="text-responsive-p mx-auto max-w-6xl break-keep">
@@ -247,7 +283,7 @@ export default function PostContent({ content }: { content: ReactElement }) {
   );
 }
 
-function renderNodes(node, index): ReactNode {
+export function renderNodes(node, index = 0): ReactNode {
   if (!node) {
     return;
   }
@@ -255,7 +291,7 @@ function renderNodes(node, index): ReactNode {
   switch (node.type) {
     case "text": {
       if (!node.value) return;
-      return node.value;
+      return parseInlineMarkdown(node.value, index);
     }
 
     case "root": {
@@ -571,6 +607,21 @@ function renderNodes(node, index): ReactNode {
                 renderNodes(child, index),
               )}
             </Highlight>
+          );
+        }
+
+        case "Callout":
+        case "callout": {
+          return (
+            <Callout
+              key={index}
+              type={node.properties?.type}
+              className={node.properties?.className?.join(" ")}
+            >
+              {node.children.map((child, index: number) =>
+                renderNodes(child, index),
+              )}
+            </Callout>
           );
         }
 
