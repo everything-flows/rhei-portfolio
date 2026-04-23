@@ -504,6 +504,10 @@ export function renderNodes(node, index = 0): ReactNode {
               </code>
             );
 
+          const codeText = node.children
+            .map((child) => child.value ?? "")
+            .join("");
+
           return (
             <div key={index}>
               <SyntaxHighlighter
@@ -511,9 +515,7 @@ export function renderNodes(node, index = 0): ReactNode {
                 language={node.properties?.className[0]?.split("language-")[1]}
                 PreTag="div"
               >
-                {node.children.map((child, index: number) =>
-                  renderNodes(child, index),
-                )}
+                {codeText}
               </SyntaxHighlighter>
             </div>
           );
