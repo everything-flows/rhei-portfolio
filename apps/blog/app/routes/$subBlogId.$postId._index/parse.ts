@@ -27,9 +27,12 @@ function remarkEscapeCodeInHtml() {
 
 export default async function parse(content: string) {
   const processor = await unified()
-    .use([remarkParse, remarkMath, remarkGfm, rehypeKatex])
+    .use(remarkParse)
+    .use(remarkMath)
+    .use(remarkGfm)
     .use(remarkEscapeCodeInHtml)
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeKatex)
     .use(rehypeRaw);
 
   const file = new VFile();
