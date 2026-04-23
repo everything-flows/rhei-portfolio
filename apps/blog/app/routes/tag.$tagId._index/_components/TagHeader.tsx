@@ -1,9 +1,9 @@
 export default function TagHeader({
-  data,
+  tag,
 }: {
-  data: { title: string; content: string[] };
+  tag: { title: string; content: string[] };
 }) {
-  const { title, content } = data;
+  const { title, content } = tag;
 
   return (
     <section className="mx-auto mb-8 max-w-6xl border-b border-gray-200 pb-8 dark:border-gray-600">

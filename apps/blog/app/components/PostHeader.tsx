@@ -5,15 +5,15 @@ import TagList from "~/components/TagList";
 import { Document } from "~/types/post";
 
 export default function PostHeader({
-  data,
+  post,
   fromDirectory,
   fromPinned,
 }: {
-  data: Document;
+  post: Document;
   fromDirectory?: boolean;
   fromPinned?: boolean;
 }) {
-  const { title, subTitle, id, tags } = data;
+  const { title, subTitle, id, tags } = post;
 
   const getTitleTransitionName = () => {
     if (fromDirectory) return `list-post-title-${id}`;

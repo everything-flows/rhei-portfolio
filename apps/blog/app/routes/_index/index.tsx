@@ -32,9 +32,9 @@ function Index() {
         <AsyncErrorBoundary
           fallbackRender={({ onRetry }) => (
             <div>
-              test
+              <p>포스트를 불러오지 못했습니다.</p>
               <button type="button" onClick={onRetry}>
-                retry
+                다시 시도
               </button>
             </div>
           )}
@@ -44,9 +44,9 @@ function Index() {
         <AsyncErrorBoundary
           fallbackRender={({ onRetry }) => (
             <div>
-              test
+              <p>포스트를 불러오지 못했습니다.</p>
               <button type="button" onClick={onRetry}>
-                retry
+                다시 시도
               </button>
             </div>
           )}

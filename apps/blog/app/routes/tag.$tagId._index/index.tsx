@@ -1,7 +1,11 @@
 import { useLoaderData, useParams, useRouteLoaderData } from "@remix-run/react";
 import { Footer, GNB } from "@rhei/ui";
 import { createBrowserClient } from "@supabase/ssr";
-import { HydrationBoundary, useSuspenseQuery } from "@tanstack/react-query";
+import {
+  DehydratedState,
+  HydrationBoundary,
+  useSuspenseQueries,
+} from "@tanstack/react-query";
 
 import AsyncErrorBoundary from "~/_components/AsyncErrorBoundary";
 import PostDirectory from "~/components/PostDirectory";
@@ -9,6 +13,8 @@ import PostDirectory from "~/components/PostDirectory";
 import TagHeader from "./_components/TagHeader";
 import { postListByTagIdQueryOptions } from "./_utils/getPostListByTagId";
 import { tagDataQueryOptions } from "./_utils/getTagDataById";
+
+import type loader from "./_utils/loader";
 
 export { default as loader } from "./_utils/loader";
 export { default as meta } from "./_utils/meta";
@@ -27,18 +33,14 @@ function TagPage({
     supabaseCredential.key,
   );
 
-  const { data: tagData } = useSuspenseQuery(
-    tagDataQueryOptions(supabaseClient, tagId!),
-  );
-  const { data: postResult } = useSuspenseQuery(
-    postListByTagIdQueryOptions(supabaseClient, tagId!, currentPage),
-  );
+  const [{ data: tagData }, { data: postResult }] = useSuspenseQueries({
+    queries: [
+      tagDataQueryOptions(supabaseClient, tagId!),
+      postListByTagIdQueryOptions(supabaseClient, tagId!, currentPage),
+    ],
+  });
 
   const { postList } = postResult;
-
-  if (!tagData) {
-    return null;
-  }
 
   return (
     <>
@@ -47,7 +49,7 @@ function TagPage({
       </header>
 
       <main className="content-x">
-        <TagHeader data={tagData} />
+        <TagHeader tag={tagData!} />
 
         <PostDirectory
           postList={postList}
@@ -62,11 +64,11 @@ function TagPage({
 }
 
 export default function PostPage() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { dehydratedState, currentPage, totalPages } = useLoaderData() as any;
+  const { dehydratedState, currentPage, totalPages } =
+    useLoaderData<typeof loader>();
 
   return (
-    <HydrationBoundary state={dehydratedState}>
+    <HydrationBoundary state={dehydratedState as unknown as DehydratedState}>
       <AsyncErrorBoundary>
         <TagPage currentPage={currentPage} totalPages={totalPages} />
       </AsyncErrorBoundary>

@@ -1,52 +1,26 @@
 import { json, type LoaderFunctionArgs } from "@remix-run/cloudflare";
-import {
-  createServerClient,
-  parseCookieHeader,
-  serializeCookieHeader,
-} from "@supabase/ssr";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
+
+import { PAGE_SIZE } from "~/constants/supabase";
+import { createSupabaseServerClient } from "~/utils/createSupabaseServerClient";
 
 import { subBlogInfoQueryOptions } from "./getSubBlogInfo";
 import { subBlogPostListQueryOptions } from "./getSubBlogPostList";
-
-const PAGE_SIZE = 10;
 
 export default async function loader({
   context,
   request,
   params,
 }: LoaderFunctionArgs) {
-  const headers = new Headers();
   const url = new URL(request.url);
   const page = Math.max(1, Number(url.searchParams.get("page")) || 1);
-
-  const SUPABASE_URL = context.cloudflare.env.SUPABASE_URL;
-  const SUPABASE_ANON_KEY = context.cloudflare.env.SUPABASE_ANON_KEY;
-
-  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-    throw new Error("Missing SUPABASE env variables");
-  }
 
   const { subBlogId } = params;
   if (!subBlogId) {
     throw new Response("Sub blog not found", { status: 404 });
   }
 
-  const supabaseClient = createServerClient(SUPABASE_URL!, SUPABASE_ANON_KEY!, {
-    cookies: {
-      getAll() {
-        return parseCookieHeader(request.headers.get("Cookie") ?? "");
-      },
-      setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value, options }) =>
-          headers.append(
-            "Set-Cookie",
-            serializeCookieHeader(name, value, options),
-          ),
-        );
-      },
-    },
-  });
+  const { supabaseClient } = createSupabaseServerClient(context, request);
 
   const queryClient = new QueryClient();
 

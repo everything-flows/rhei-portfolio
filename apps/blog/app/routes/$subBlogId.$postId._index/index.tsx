@@ -10,9 +10,9 @@ import { HydrationBoundary, useSuspenseQuery } from "@tanstack/react-query";
 
 import PostContent from "~/components/PostContent";
 import PostDirectory from "~/components/PostDirectory";
+import PostHeader from "~/components/PostHeader";
 import { DocumentType } from "~/types/post";
 
-import PostHeader from "./_components/PostHeader";
 import { postDetailQueryOptions } from "./_utils/getPostData";
 
 export { default as loader } from "./_utils/loader";
@@ -44,8 +44,10 @@ function PostPage() {
   );
 
   const { data: postData } = useSuspenseQuery(
-    postDetailQueryOptions(supabaseClient, subBlogId, postId),
+    postDetailQueryOptions(supabaseClient, subBlogId!, postId!),
   );
+
+  if (!postData) return null;
 
   const { postInfo, postContent, childPostList } = postData;
   const { type } = postInfo;
@@ -59,20 +61,15 @@ function PostPage() {
       <main className="content-x">
         <PostHeader
           key={postInfo.id}
-          data={postInfo}
+          post={postInfo}
           fromDirectory={state?.fromDirectory}
           fromPinned={state?.fromPinned}
         />
 
-        {(() => {
-          switch (type) {
-            case DocumentType.Post:
-              return <PostContent content={postContent} />;
-            case DocumentType.Directory:
-              return <PostDirectory postList={childPostList!} />;
-            // FIXME
-          }
-        })()}
+        {type === DocumentType.Post && <PostContent content={postContent} />}
+        {type === DocumentType.Directory && (
+          <PostDirectory postList={childPostList ?? []} />
+        )}
       </main>
 
       <Footer />

@@ -16,7 +16,7 @@ export const recentPostQueryOptions = (
   supabaseClient: SupabaseClient<Database, "public">,
 ) =>
   queryOptions({
-    queryKey: ["recentPostList"],
+    queryKey: ["recentPostList", { showAll: false }],
     queryFn: () => getRecentPostList({ supabaseClient, showAll: false }),
   });
 
