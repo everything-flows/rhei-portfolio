@@ -7,7 +7,7 @@ export default function Font() {
         href={PRETENDARD_CSS_URL}
         crossOrigin="anonymous"
       />
-      <link rel="stylesheet" href={PRETENDARD_CSS_URL} />
+      <link rel="stylesheet" href={PRETENDARD_CSS_URL} crossOrigin="anonymous" />
     </>
   );
 }
