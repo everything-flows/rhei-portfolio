@@ -276,7 +276,7 @@ function parseInlineMarkdown(text: string, baseIndex: number): ReactNode {
       return (
         <code
           key={key}
-          className="bg-gray-150 rounded-md px-1 dark:bg-gray-800"
+          className="rounded-md bg-gray-500/30 px-1 dark:bg-gray-400/40"
         >
           {part.slice(1, -1)}
         </code>
@@ -506,7 +506,7 @@ export function renderNodes(node, index = 0): ReactNode {
             return (
               <code
                 key={index}
-                className="bg-gray-150 rounded-md px-1 dark:bg-gray-800"
+                className="rounded-md bg-gray-500/30 px-1 dark:bg-gray-400/40"
                 {...node.properties}
               >
                 {node.children.map((child, index: number) =>
