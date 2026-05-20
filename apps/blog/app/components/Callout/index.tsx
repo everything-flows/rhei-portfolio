@@ -91,22 +91,22 @@ const TipIcon = () => (
 const config = {
   info: {
     Icon: InfoIcon,
-    className: "bg-blue-100/80 text-black dark:bg-blue-900/40 dark:text-black",
+    className: "bg-blue-100/80 text-black dark:bg-blue-900/40 dark:text-white",
     iconClassName: "text-blue-500 dark:text-blue-400",
   },
   warn: {
     Icon: WarnIcon,
-    className: "bg-yellow-100/80 text-black dark:bg-yellow-900/40 dark:text-black",
+    className: "bg-yellow-100/80 text-black dark:bg-yellow-900/40 dark:text-white",
     iconClassName: "text-yellow-500 dark:text-yellow-400",
   },
   error: {
     Icon: ErrorIcon,
-    className: "bg-red-100/80 text-black dark:bg-red-900/40 dark:text-black",
+    className: "bg-red-100/80 text-black dark:bg-red-900/40 dark:text-white",
     iconClassName: "text-red-500 dark:text-red-400",
   },
   tip: {
     Icon: TipIcon,
-    className: "bg-green-100/80 text-black dark:bg-green-900/40 dark:text-black",
+    className: "bg-green-100/80 text-black dark:bg-green-900/40 dark:text-white",
     iconClassName: "text-green-500 dark:text-green-400",
   },
 } as const;

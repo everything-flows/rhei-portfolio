@@ -263,13 +263,24 @@ function parseInlineMarkdown(text: string, baseIndex: number): ReactNode {
   return parts.map((part, i) => {
     const key = `${baseIndex}-${i}`;
     if (part.startsWith("**") && part.endsWith("**")) {
-      return <span key={key} className="font-bold">{part.slice(2, -2)}</span>;
+      return (
+        <span key={key} className="font-bold">
+          {part.slice(2, -2)}
+        </span>
+      );
     }
     if (part.startsWith("*") && part.endsWith("*")) {
       return <em key={key}>{part.slice(1, -1)}</em>;
     }
     if (part.startsWith("`") && part.endsWith("`")) {
-      return <code key={key} className="rounded-md bg-gray-100 px-1 dark:bg-gray-800">{part.slice(1, -1)}</code>;
+      return (
+        <code
+          key={key}
+          className="bg-gray-150 rounded-md px-1 dark:bg-gray-800"
+        >
+          {part.slice(1, -1)}
+        </code>
+      );
     }
     return part;
   });
@@ -495,7 +506,7 @@ export function renderNodes(node, index = 0): ReactNode {
             return (
               <code
                 key={index}
-                className="rounded-md bg-gray-100 px-1 dark:bg-gray-800"
+                className="bg-gray-150 rounded-md px-1 dark:bg-gray-800"
                 {...node.properties}
               >
                 {node.children.map((child, index: number) =>
