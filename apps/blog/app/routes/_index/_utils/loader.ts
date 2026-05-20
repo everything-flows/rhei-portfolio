@@ -10,8 +10,10 @@ export default async function loader({ context, request }: LoaderFunctionArgs) {
   const { supabaseClient } = createSupabaseServerClient(context, request);
 
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(pinnedPostQueryOptions(supabaseClient));
-  await queryClient.prefetchQuery(recentPostQueryOptions(supabaseClient));
+  await Promise.all([
+    queryClient.prefetchQuery(pinnedPostQueryOptions(supabaseClient)),
+    queryClient.prefetchQuery(recentPostQueryOptions(supabaseClient)),
+  ]);
 
   return json({ dehydratedState: dehydrate(queryClient) });
 }
