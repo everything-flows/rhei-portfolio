@@ -389,7 +389,7 @@ export function renderNodes(node, index = 0): ReactNode {
           return (
             <p
               key={index}
-              className="text-responsive-p py-3"
+              className="text-responsive-p mb-4 last:mb-0"
               {...node.properties}
             >
               {node.children.map((child, index: number) =>
