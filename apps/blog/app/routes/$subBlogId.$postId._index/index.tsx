@@ -18,6 +18,16 @@ import { postDetailQueryOptions } from "./_utils/getPostData";
 export { default as loader } from "./_utils/loader";
 export { default as meta } from "./_utils/meta";
 
+export function links() {
+  return [
+    {
+      rel: "stylesheet",
+      href: "https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css",
+      crossOrigin: "anonymous",
+    },
+  ];
+}
+
 export default function PostDetailRoute() {
   const { dehydratedState } = useLoaderData();
   const { postId } = useParams();
