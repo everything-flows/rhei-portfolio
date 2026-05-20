@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 import SectionTitle from "./SectionTitle";
 
 export default function Award() {
@@ -21,7 +23,9 @@ export default function Award() {
                   <span className="font-extrabold">{award.place}</span>
                 </td>
                 <td className="w-full min-w-[20rem]">{award.content}</td>
-                <td className="text-sub">{award.date}</td>
+                <td className="text-sub">
+                  {format(new Date(award.date), "yyyy. MM.")}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -33,18 +37,18 @@ export default function Award() {
 
 const AWARD = [
   {
-    date: "2022.04",
+    date: "2022-04-29",
     content: "2022년 제 13회 서강대학교 스타트업 오디션(창업경진대회)",
     place: "우수상",
   },
   {
-    date: "2021.02",
+    date: "2021-02-28",
     content:
       "신촌지역 대학생 프로그래밍 대회 동아리 연합 겨울 대회 (SUAPC 2021 WINTER)",
     place: "6th place (동상)",
   },
   {
-    date: "2020.11",
+    date: "2020-11-28",
     content:
       "서강대학교 프로그래밍 경진 대회 (Sogang Programming Contest) Master division",
     place: "5th place (동상)",
