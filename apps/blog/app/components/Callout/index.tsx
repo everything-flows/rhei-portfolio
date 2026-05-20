@@ -16,7 +16,7 @@ export default function Callout({
       <span className={`mt-1 shrink-0 ${iconClassName}`}>
         <Icon />
       </span>
-      {children}
+      <div className="min-w-0 flex-1">{children}</div>
     </div>
   );
 }
