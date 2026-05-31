@@ -24,7 +24,7 @@ export default function Award() {
                 </td>
                 <td className="w-full min-w-[20rem]">{award.content}</td>
                 <td className="text-sub">
-                  {format(new Date(award.date), "yyyy. MM.")}
+                  {format(new Date(award.date), "yyyy.MM.")}
                 </td>
               </tr>
             ))}
