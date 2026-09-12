@@ -1,4 +1,7 @@
+import { Link } from "@remix-run/react";
 import { differenceInDays, format } from "date-fns";
+
+import { Tech, TECH_LINKS } from "~/_constants/techLinks";
 
 import SectionTitle from "../SectionTitle";
 
@@ -33,11 +36,16 @@ export default function Work() {
 
               <ul className="my-1 flex flex-wrap gap-x-2 gap-y-1">
                 {work.stack?.map((stack) => (
-                  <li
-                    key={stack}
-                    className="rounded-md bg-gray-100 px-2 text-gray-800 dark:bg-gray-800 dark:text-gray-100"
-                  >
-                    {stack}
+                  <li key={stack}>
+                    <Link
+                      to={TECH_LINKS[stack]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-md bg-gray-100 px-2 text-gray-800 dark:bg-gray-800 dark:text-gray-100"
+                      aria-label={`${stack} 기술 문서 - 새 창에서 열림`}
+                    >
+                      {stack}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -88,7 +96,7 @@ const WORK = [
     position: "Frontend Developer Assistant (단기계약직) | 인터랙션팀",
     description:
       "사용자 인터랙션에 사용되는 컴포넌트와 애니메이션 라이브러리를 유지보수하며, 디자인 툴과 서비스 코드 사이의 연결을 개선했습니다.",
-    stack: ["TypeScript", "React.js"],
+    stack: [Tech.TypeScript, Tech.React],
     content: [
       {
         title: "API 마이그레이션 자동화 및 개발 생산성 개선",
@@ -137,7 +145,7 @@ const WORK = [
     location: "경기도 성남시",
     position: "Frontend Developer (인턴) | FE 플랫폼팀",
     description: "인턴십 과제 수행: Vanilla JS 환경에서 블록 코딩 서비스 구현",
-    stack: ["TypeScript", "Jest"],
+    stack: [Tech.TypeScript, Tech.Jest],
     content: [
       {
         title: "Event Loop 기반 인터랙션 개선",
@@ -164,7 +172,7 @@ const WORK = [
     position: "Frontend Developer (인턴) | 개발팀",
     description:
       "한글 코딩 언어를 이용한 종합 코딩 교육 플랫폼 | React를 이용한 웹 및 앱 서비스 구현 및 유지보수",
-    stack: ["TypeScript", "React.js", "Supabase"],
+    stack: [Tech.TypeScript, Tech.React, Tech.Supabase],
     content: [
       {
         title: "Yarn 기반 모노레포 전환으로 배포 효율화",
@@ -184,7 +192,7 @@ const WORK = [
     location: "서울시 강남구",
     position: "Frontend Developer (인턴) | 개발팀",
     description: "반려동물 건강 상태 진단 및 수의사와의 실시간 채팅 서비스",
-    stack: ["TypeScript", "Next.js", "React Native"],
+    stack: [Tech.TypeScript, Tech.NextJs, Tech.ReactNative],
     content: [
       {
         title: "한글 검색 UX 개선을 위한 알고리즘 적용",

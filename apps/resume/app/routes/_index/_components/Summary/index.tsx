@@ -1,5 +1,7 @@
 import { Link } from "@remix-run/react";
 
+import { Tech, TECH_LINKS } from "~/_constants/techLinks";
+
 import SectionTitle from "../SectionTitle";
 
 export default function Summary() {
@@ -57,14 +59,14 @@ export default function Summary() {
                   <div className="flex flex-wrap gap-1">
                     {stack.list.map((item) => (
                       <Link
-                        key={item.title}
-                        to={item.link}
+                        key={item}
+                        to={TECH_LINKS[item]}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="rounded-md bg-gray-100 px-2 dark:bg-gray-800"
-                        aria-label={`${item.title} 기술 문서 - 새 창에서 열림`}
+                        aria-label={`${item} 기술 문서 - 새 창에서 열림`}
                       >
-                        {item.title}
+                        {item}
                       </Link>
                     ))}
                   </div>
@@ -81,31 +83,14 @@ export default function Summary() {
 const STACK = [
   {
     title: "핵심 스택",
-    list: [
-      {
-        title: "JavaScript",
-        link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-      },
-      { title: "TypeScript", link: "https://www.typescriptlang.org/" },
-      { title: "React", link: "https://react.dev/" },
-      { title: "Next.js", link: "https://nextjs.org/" },
-      { title: "Remix", link: "https://remix.run/" },
-    ],
+    list: [Tech.JavaScript, Tech.TypeScript, Tech.React, Tech.NextJs, Tech.Remix],
   },
   {
     title: "상태 관리",
-    list: [
-      { title: "Tanstack Query", link: "https://tanstack.com/query/latest" },
-      { title: "Zustand", link: "https://zustand-demo.pmnd.rs/" },
-      // { title: "Redux", link: "https://redux.js.org/" },
-    ],
+    list: [Tech.TanstackQuery, Tech.Zustand],
   },
   {
     title: "스타일링",
-    list: [
-      { title: "Tailwind", link: "https://tailwindcss.com/" },
-      { title: "Emotion", link: "https://emotion.sh/docs/introduction" },
-      { title: "Styled Components", link: "https://styled-components.com/" },
-    ],
+    list: [Tech.Tailwind, Tech.Emotion, Tech.StyledComponents],
   },
 ];
