@@ -86,6 +86,34 @@ export function getPeriod(period: { start: string; end?: string }) {
 
 const WORK = [
   {
+    title: "현대오토에버",
+    logo: "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-resume/autoever.webp",
+    period: {
+      start: "2026-07-26",
+    },
+    location: "서울시 강남구",
+    position: "Frontend Engineer | 엔터프라이즈IT개발팀",
+    description: "LLM을 활용해 업무 처리를 돕는 사내 AI 플랫폼 구축",
+    stack: [Tech.TypeScript, Tech.NextJs, Tech.Java, Tech.SpringBoot],
+    content: [
+      {
+        title: "전사 AI 플랫폼 H-AIgent 구축",
+        list: [
+          "각 팀이 자체적으로 만들어 쓰던 AI 툴을 전사로 확대해, 여러 사람이 함께 쓸 수 있는 도구로 공유하는 플랫폼 구축에 참여했습니다.",
+          "데이터 파기 솔루션: 테이블 간 의존 관계를 파악하고, 연관된 데이터를 안전하게 삭제할 수 있는 앱 서비스 개발에 참여했습니다.",
+          "ITSMate: 자연어로 들어온 ITSM 업무 요청이 외부 솔루션 ServiceNow과 연동되도록 신규 API를 개발했습니다.",
+        ],
+      },
+      {
+        title: "계열사 대상 AI 플랫폼 구축",
+        list: [
+          "고객사에 품질 관리 수준을 보여주기 위해 FE/BE 테스트 결과를 시각화하는 대시보드 페이지를 제작했습니다.",
+          "JUnit 등에서 생성되는 XML 형식의 테스트 실행 결과 파일을 파싱해, 테스트 시나리오 트리와 테스트 커버리지·라인 커버리지 추이를 확인할 수 있습니다.",
+        ],
+      },
+    ],
+  },
+  {
     title: "비바리퍼블리카",
     logo: "https://tnzycdohhtvupgagmwfx.supabase.co/storage/v1/object/public/rhei-resume/toss.webp",
     period: {
@@ -95,7 +123,7 @@ const WORK = [
     location: "서울시 강남구",
     position: "Frontend Developer Assistant (단기계약직) | 인터랙션팀",
     description:
-      "사용자 인터랙션에 사용되는 컴포넌트와 애니메이션 라이브러리를 유지보수하며, 디자인 툴과 서비스 코드 사이의 연결을 개선했습니다.",
+      "사용자 인터랙션에 사용되는 컴포넌트와 애니메이션 라이브러리 유지보수하고, 디자인 툴과 서비스 코드 사이의 연결 개선",
     stack: [Tech.TypeScript, Tech.React],
     content: [
       {

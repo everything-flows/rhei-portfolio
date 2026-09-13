@@ -12,6 +12,8 @@ export const Tech = {
   StyledComponents: "Styled Components",
   Jest: "Jest",
   Supabase: "Supabase",
+  Java: "JAVA",
+  SpringBoot: "Spring Boot",
 } as const;
 
 export type Tech = (typeof Tech)[keyof typeof Tech];
@@ -30,4 +32,6 @@ export const TECH_LINKS: Record<Tech, string> = {
   [Tech.StyledComponents]: "https://styled-components.com/",
   [Tech.Jest]: "https://jestjs.io/",
   [Tech.Supabase]: "https://supabase.com/",
+  [Tech.Java]: "https://www.java.com/",
+  [Tech.SpringBoot]: "https://spring.io/projects/spring-boot",
 };
